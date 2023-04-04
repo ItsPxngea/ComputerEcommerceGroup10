@@ -1,6 +1,11 @@
-package domain;
+package za.ac.cput.domain;
 
 import java.util.Objects;
+/*
+Author: Alexander Draai - 220118744
+This is the Pojo + Builder for the InvoiceHistory Class.
+Date: 04 - 04 - 2023
+ */
 
 public class InvoiceHistory {
     private String historyID ;

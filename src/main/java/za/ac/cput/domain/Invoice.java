@@ -1,8 +1,12 @@
-package domain;
+package za.ac.cput.domain;
 
 import java.util.Date;
 import java.util.Objects;
-
+/*
+Author: Alexander Draai - 220118744
+This is the Pojo + Builder for the Invoice Class.
+Date: 04 - 04 - 2023
+ */
 public class Invoice {
     private String invoiceNumber ;
     private String productID ;
@@ -69,7 +73,7 @@ public class Invoice {
         this.dateOfTransaction = builder.dateOfTransaction;
     }
 
-    private static class Builder {
+    public static class Builder {
         private String invoiceNumber ;
         private String productID ;
         private String storeID ;

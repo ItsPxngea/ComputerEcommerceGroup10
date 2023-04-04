@@ -1,16 +1,14 @@
 package za.ac.cput.util;
 
 import org.apache.commons.validator.routines.EmailValidator;
+import za.ac.cput.domain.Invoice;
 
 import java.util.Random;
 import java.util.UUID;
 
 public class Helper {
     public static boolean isNullOrEmpty(String str){
-        if (str == null || str.isEmpty()){
-            return true;
-        }
-        return false;
+        return str == null || str.isEmpty();
     }
 
     public static boolean isValidEmail(String email) {
@@ -29,19 +27,25 @@ public class Helper {
         return customerID;
     }
 
+    public static String generateInvoiceNumber (String productName){
+        Random random = new Random();
+        int randNum = random.nextInt(900000) + 100000;
+        String randStr = generateRandomString();
+        return productName.substring(0,2) + randStr + randNum;
+    }
+    static String generateRandomString() { // This function is used to create a random string and returning the first 3 letters of the random string.
+        UUID randomStringUUID = UUID.randomUUID();
+        return randomStringUUID.toString().replaceAll("_", "").substring(0,3);
+    }
     public static boolean isInvalidDouble(Double d) {
         if (d == null || d.isNaN()) {
             return true;
-        } else if (d < 0) {
-            return true;
-        }
-        return false;
+        } else return d < 0;
     }
 
     public static boolean isInvalidInt(int i) {
-         if (i < 0) {
-            return true;
-        }
-        return false;
+        return i < 0;
     }
+
+
 }
