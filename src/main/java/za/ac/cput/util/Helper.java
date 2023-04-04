@@ -4,6 +4,8 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.Random;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Helper {
     public static boolean isNullOrEmpty(String str){
@@ -43,5 +45,11 @@ public class Helper {
             return true;
         }
         return false;
+    }
+
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        Pattern phoneNumberPattern = Pattern.compile("^\\d{10}$");
+        Matcher findAMatch = phoneNumberPattern.matcher(phoneNumber);
+        return (findAMatch.matches());
     }
 }
