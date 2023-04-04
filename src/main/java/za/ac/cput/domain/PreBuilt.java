@@ -1,5 +1,10 @@
 package za.ac.cput.domain;
-
+/*
+PreBuilt.java
+A POJO class for a computer that is already built before purchase
+Author: Michael Daniel Johnson, 221094040
+Date: 04/04/2023
+*/
 import java.util.Date;
 
 public class PreBuilt {
