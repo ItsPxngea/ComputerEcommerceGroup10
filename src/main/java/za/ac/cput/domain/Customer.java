@@ -1,9 +1,15 @@
 package za.ac.cput.domain;
 
+/* Customer.java
+POJO for the Customer
+Author: David Henriques Garrancho (221475982)
+Date: 20 March 2023
+*/
+
 import java.util.Objects;
 
 public class Customer {
-    private String customerID;
+    public String customerID;
     private String firstName;
     private String lastName;
     private String email;
@@ -65,7 +71,7 @@ public class Customer {
     }
 
     public static class Builder {
-        private String customerID;
+        public String customerID;
         private String firstName;
         private String lastName;
         private String email;
