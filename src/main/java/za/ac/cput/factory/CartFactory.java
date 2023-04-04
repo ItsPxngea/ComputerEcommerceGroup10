@@ -24,12 +24,12 @@ public class CartFactory {
             return null;
         }
 
+        String cartID = Helper.generateID();
+
         String productID = "GPU1263";
         String fname = "George";
         String lname = "Armin";
         String customerID = Helper.generateCustomerID(fname, lname);
-
-        String cartID = Helper.generateID();
 
         return new Cart.Builder().setCartID(cartID)
                 .setProductID(productID)
