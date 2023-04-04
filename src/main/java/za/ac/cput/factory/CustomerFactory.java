@@ -1,5 +1,11 @@
 package za.ac.cput.factory;
 
+/* CustomerFactory.java
+Factory for the Customer
+Author: David Henriques Garrancho (221475982)
+Date: 20 March 2023
+*/
+
 import za.ac.cput.domain.Customer;
 import za.ac.cput.util.Helper;
 
