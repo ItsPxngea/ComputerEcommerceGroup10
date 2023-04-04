@@ -17,7 +17,7 @@ public class Invoice {
     private Double price ;
     private Double totalPrice ;
     private int tax ;
-    private Date dateOfTransaction ;
+    private String dateOfTransaction ;
 
     public Invoice(){}
 
@@ -30,7 +30,7 @@ public class Invoice {
     public Double getPrice() {return price;}
     public Double getTotalPrice() {return totalPrice;}
     public int getTax() {return tax;}
-    public Date getDateOfTransaction() {return dateOfTransaction;}
+    public String getDateOfTransaction() {return dateOfTransaction;}
 
     @Override
     public boolean equals(Object o) {
@@ -83,7 +83,7 @@ public class Invoice {
         private Double price ;
         private Double totalPrice ;
         private int tax ;
-        private Date dateOfTransaction ;
+        private String dateOfTransaction ;
 
         public Builder setInvoiceNumber(String invoiceNumber) {
             this.invoiceNumber = invoiceNumber;
@@ -121,7 +121,7 @@ public class Invoice {
             this.tax = tax;
             return this;
         }
-        public Builder setDateOfTransaction(Date dateOfTransaction){
+        public Builder setDateOfTransaction(String dateOfTransaction){
             this.dateOfTransaction = dateOfTransaction;
             return this;
         }
