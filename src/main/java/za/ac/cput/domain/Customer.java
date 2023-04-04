@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Customer.java
+POJO for the Customer
+Author: David Henriques Garrancho (221475982)
+Date: 20 March 2023
+*/
+
 import java.util.Objects;
 
 public class Customer {
