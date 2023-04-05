@@ -18,11 +18,11 @@ public class Product {
     private String productBrand;
     private double productPrice;
     private String productWarranty;
-    private String productID;
-    private String productName;
-    private String reviewComment;
-    private String reviewDate;
-    private String reviewRating;
+    public String productID;
+    public String productName;
+    public String reviewComment;
+    public String reviewDate;
+    public String reviewRating;
 
     private Product(){
 
