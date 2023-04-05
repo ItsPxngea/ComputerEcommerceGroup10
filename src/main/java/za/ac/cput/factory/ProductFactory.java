@@ -1,5 +1,9 @@
 package za.ac.cput.factory;
-
+/* ProductFactory.java
+ Entity for the ProductFactory
+ Author: Reece Bergstedt - 221075240
+ Date: 22 March 2023
+*/
 import za.ac.cput.domain.Product;
 import za.ac.cput.util.Helper;
 
