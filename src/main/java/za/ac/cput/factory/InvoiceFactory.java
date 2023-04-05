@@ -10,11 +10,11 @@ This is the factory for Invoice Class
 Date: 04 - 04 - 2023
  */
 public class InvoiceFactory {
-    public static Invoice buildInvoice(String invoiceNumber, String productID, String storeID, String productName, String productDescription,
-                                       int quantity, Double price, Double totalPrice, int tax, Date dateOfTransaction)
+    public static Invoice buildInvoice(String productID, String storeID, String productName, String productDescription,
+                                       int quantity, Double price, Double totalPrice, int tax, String dateOfTransaction)
     {
-        if (Helper.isNullOrEmpty(invoiceNumber) || Helper.isNullOrEmpty(productID) ||
-            Helper.isNullOrEmpty(storeID) || Helper.isNullOrEmpty(productName) || Helper.isNullOrEmpty(productDescription) ) {
+        if (Helper.isNullOrEmpty(productID) || Helper.isNullOrEmpty(storeID) ||
+            Helper.isNullOrEmpty(productName) || Helper.isNullOrEmpty(productDescription) ) {
             return null;
         }
 
@@ -27,11 +27,14 @@ public class InvoiceFactory {
         }
 
         // What do I do with the date provided ?
+        if (Helper.isValidDate(dateOfTransaction) == null ) {
+            return null;
+        }
 
         String InvoiceNumber = Helper.generateInvoiceNumber(productName);
 
-        return new Invoice.Builder().setInvoiceNumber(InvoiceNumber)
-                                    .setProductID(productName)
+        return new Invoice.Builder().setInvoiceNumber(InvoiceNumber.toUpperCase())
+                                    .setProductID(productID)
                                     .setStoreID(storeID)
                                     .setProductName(productName)
                                     .setProductDescription(productDescription)

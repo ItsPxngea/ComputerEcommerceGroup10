@@ -3,6 +3,12 @@ package za.ac.cput.util;
 import org.apache.commons.validator.routines.EmailValidator;
 import za.ac.cput.domain.Invoice;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -55,6 +61,44 @@ public class Helper {
         Pattern phoneNumberPattern = Pattern.compile("^\\d{10}$");
         Matcher findAMatch = phoneNumberPattern.matcher(phoneNumber);
         return (findAMatch.matches());
+    }
+    public static LocalDate isValidDate(String dateStr){
+        if (dateStr == null) {
+            return null;
+        }
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .appendPattern("dd-MM-uuuu")
+                .toFormatter()
+                .withResolverStyle(ResolverStyle.STRICT);
+
+        try {
+            LocalDate date = LocalDate.parse(dateStr, formatter);
+            int dayOfMonth = date.getDayOfMonth();
+            if(dayOfMonth < 1 || dayOfMonth > date.getMonth().maxLength()) {
+                return null;
+            }
+            if (date.getDayOfMonth() == 29 && date.getMonth() == Month.FEBRUARY && !date.isLeapYear()) {
+                return null;
+            }
+            return date;
+
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+    
+    public static String generateProductID(String pn, String pt, String pc){
+        Random random = new Random();
+        int randNum = random.nextInt(900000) + 100000;
+        String productID = pn.substring(0,3).toUpperCase() + pt.substring(0,3).toUpperCase() + pc.substring(0,3).toUpperCase() + randNum;
+        return productID;
+    }
+
+    public static String generateBundleID(String bn, String bt, String bc){
+        Random random = new Random();
+        int randNum = random.nextInt(900000) + 100000;
+        String bundleID = bn.substring(0,3).toUpperCase() + bt.substring(0,3).toUpperCase() + bc.substring(0,3).toUpperCase() + randNum;
+        return bundleID;
     }
 
 }
