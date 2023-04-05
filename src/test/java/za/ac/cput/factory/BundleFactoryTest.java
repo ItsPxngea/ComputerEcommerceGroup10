@@ -1,5 +1,9 @@
 package za.ac.cput.factory;
-
+/* BundleFactoryTest.java
+ Entity for the BundleFactoryTest
+ Author: Reece Bergstedt - 221075240
+ Date: 22 March 2023
+*/
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Bundle;
 
