@@ -136,11 +136,11 @@ public class Bundle {
         private String bundleWarranty;
         private String bundleID;
         private String bundleName;
-        private String productID;
-        private String productName;
-        private String reviewComment;
-        private String reviewDate;
-        private String reviewRating;
+        public String productID;
+        public String productName;
+        public String reviewComment;
+        public String reviewDate;
+        public String reviewRating;
 
 
         public Builder setBundleType(String bundleType) {
