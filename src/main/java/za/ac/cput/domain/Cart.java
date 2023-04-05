@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class Cart {
     private String cartID;
-    private String customerID;
+    public String customerID;
     public String productID;
     public String productName;
     public int productQuantity;
@@ -79,7 +79,7 @@ public class Cart {
 
     public static class Builder {
         private String cartID;
-        private String customerID;
+        public String customerID;
         public String productID;
         public String productName;
         public int productQuantity;
