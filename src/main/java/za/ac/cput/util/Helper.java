@@ -86,5 +86,19 @@ public class Helper {
             return null;
         }
     }
+    
+    public static String generateProductID(String pn, String pt, String pc){
+        Random random = new Random();
+        int randNum = random.nextInt(900000) + 100000;
+        String productID = pn.substring(0,3).toUpperCase() + pt.substring(0,3).toUpperCase() + pc.substring(0,3).toUpperCase() + randNum;
+        return productID;
+    }
+
+    public static String generateBundleID(String bn, String bt, String bc){
+        Random random = new Random();
+        int randNum = random.nextInt(900000) + 100000;
+        String bundleID = bn.substring(0,3).toUpperCase() + bt.substring(0,3).toUpperCase() + bc.substring(0,3).toUpperCase() + randNum;
+        return bundleID;
+    }
 
 }
