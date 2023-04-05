@@ -25,7 +25,7 @@ public class Helper {
     public static String generateCustomerID(String fn, String ln){
         Random random = new Random();
         int randNum = random.nextInt(900000) + 100000;
-        String customerID = fn.substring(0,3).toUpperCase() + ln.substring(0,3).toUpperCase() + randNum + System.currentTimeMillis();
+        String customerID = fn.substring(0,3).toUpperCase() + ln.substring(0,3).toUpperCase() + randNum;
         return customerID;
     }
 
