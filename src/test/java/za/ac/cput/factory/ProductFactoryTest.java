@@ -1,5 +1,9 @@
 package za.ac.cput.factory;
-
+/* ProductFactoryTest.java
+ Entity for the ProductFactoryTest
+ Author: Reece Bergstedt - 221075240
+ Date: 22 March 2023
+*/
 import org.junit.jupiter.api.Test;
 
 import za.ac.cput.domain.Product;
