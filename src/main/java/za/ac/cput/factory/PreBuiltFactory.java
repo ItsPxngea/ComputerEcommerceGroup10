@@ -13,8 +13,8 @@ import za.ac.cput.util.Helper;
 import java.util.Date;
 
 public class PreBuiltFactory {
-    public static PreBuilt buildPreBuilt(String productName, String reviewComment, String reviewRating, Date reviewDate, String buildCategory, String buildType, String buildWarranty) {
-        if (Helper.isNullOrEmpty(productName) || (Helper.isNullOrEmpty(reviewComment)) || (Helper.isNullOrEmpty(reviewRating)) || Helper.isNullOrEmpty(buildCategory) || Helper.isNullOrEmpty(buildCategory) || Helper.isNullOrEmpty(buildType) || Helper.isNullOrEmpty(buildWarranty) || Helper.isNullOrEmpty(buildType)) {
+    public static PreBuilt buildPreBuilt(String productName, String reviewComment, String reviewRating, Date reviewDate, String buildCategory, String buildType, String buildWarranty, double buildPrice) {
+        if (Helper.isNullOrEmpty(productName) || (Helper.isNullOrEmpty(reviewComment)) || (Helper.isNullOrEmpty(reviewRating)) || Helper.isNullOrEmpty(buildCategory) || Helper.isNullOrEmpty(buildCategory) || Helper.isNullOrEmpty(buildType) || Helper.isNullOrEmpty(buildWarranty) || Helper.isNullOrEmpty(buildType) ||  Helper.isInvalidDouble(buildPrice)){
 
             return null;
         }
@@ -24,7 +24,6 @@ public class PreBuiltFactory {
         String productID = Helper.generateID();
         String buildName = "Freezing Blizzard";
         String lastName = "Joe";
-        double buildPrice = 2000;
 
         return new PreBuilt.Builder().setBuildID(preBuiltID)
                 .setBuildCategory(buildCategory)
