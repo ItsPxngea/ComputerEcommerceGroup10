@@ -1,5 +1,10 @@
 package za.ac.cput.domain;
-
+/*
+CheckOut.java
+A POJO class for user to check out at purchase
+Author: Michael Daniel Johnson, 221094040
+Date: 04/04/2023
+*/
 import java.util.Objects;
 
 public class CheckOut {
