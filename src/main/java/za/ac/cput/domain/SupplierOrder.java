@@ -72,45 +72,6 @@ public class SupplierOrder {
         return totalCost;
     }
 
-    public void setSupplierID(String supplierID) {
-        this.supplierID = supplierID;
-    }
-
-    public void setProductID(String productID) {
-        this.productID = productID;
-    }
-
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
-    }
-
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
-    }
-
-    public void setDateOfOrder(String dateOfOrder) {
-        this.dateOfOrder = dateOfOrder;
-    }
-
-    public void setExpectedDeliveryDate(String expectedDeliveryDate) {
-        this.expectedDeliveryDate = expectedDeliveryDate;
-    }
-
-    public void setActualDeliveryDate(String actualDeliveryDate) {
-        this.actualDeliveryDate = actualDeliveryDate;
-    }
-
-    public void setImportTax(double importTax) {
-        this.importTax = importTax;
-    }
-
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -143,6 +104,18 @@ public class SupplierOrder {
 
 
     public SupplierOrder(Builder b){
+
+        this.supplierID = b.supplierID;
+        this.productID = b.productID;
+        this.productQuantity = b.productQuantity;
+        this.productPrice = b.productPrice;
+        this.orderID = b.orderID;
+        this.dateOfOrder = b.dateOfOrder;
+        this.expectedDeliveryDate = b.expectedDeliveryDate;
+        this.actualDeliveryDate = b.actualDeliveryDate;
+        this.importTax = b.importTax;
+        this.totalCost = b.totalCost;
+
 
     }
 

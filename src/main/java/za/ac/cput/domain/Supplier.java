@@ -20,32 +20,6 @@ public class Supplier {
         this.supplierProductLine = supplierProductLine;
     }
 
-
-
-    public void setSupplierID(String supplierID) {
-        this.supplierID = supplierID;
-    }
-
-    public void setSupplierCompanyName(String supplierCompanyName) {
-        this.supplierCompanyName = supplierCompanyName;
-    }
-
-    public void setSupplierTel(String supplierTel) {
-        this.supplierTel = supplierTel;
-    }
-
-    public void setSupplierEmail(String supplierEmail) {
-        this.supplierEmail = supplierEmail;
-    }
-
-    public void setSupplierAddress(String supplierAddress) {
-        this.supplierAddress = supplierAddress;
-    }
-
-    public void setSupplierProductLine(String supplierProductLine) {
-        this.supplierProductLine = supplierProductLine;
-    }
-
     public String getSupplierID() {
         return supplierID;
     }
