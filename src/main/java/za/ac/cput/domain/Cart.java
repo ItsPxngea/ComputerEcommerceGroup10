@@ -69,7 +69,7 @@ public class Cart {
     }
 
     private Cart(Cart.Builder b){
-        this.cartID = b.customerID;
+        this.cartID = b.cartID;
         this.customerID = b.customerID;
         this.productID = b.productID;
         this.productName = b.productName;

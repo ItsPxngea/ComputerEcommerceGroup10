@@ -9,6 +9,8 @@ Date: 20 March 2023
 import za.ac.cput.domain.Cart;
 import za.ac.cput.util.Helper;
 
+import java.util.UUID;
+
 public class CartFactory {
 
     public static Cart buildCart(String productName, int productQuantity, double productPrice){
@@ -27,9 +29,7 @@ public class CartFactory {
         String cartID = Helper.generateID();
 
         String productID = "GPU1263";
-        String fname = "George";
-        String lname = "Armin";
-        String customerID = Helper.generateCustomerID(fname, lname);
+        String customerID = Helper.generateCustomerID("George", "Armin");
 
         return new Cart.Builder().setCartID(cartID)
                 .setProductID(productID)
