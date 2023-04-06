@@ -67,7 +67,7 @@ public class Helper {
             return null;
         }
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-                .appendPattern("dd-MM-uuuu")
+                .appendPattern("dd-MM-yyyy")
                 .toFormatter()
                 .withResolverStyle(ResolverStyle.STRICT);
 

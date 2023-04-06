@@ -1,9 +1,9 @@
-package java.za.ac.cput.factory;
+package za.ac.cput.factory;
 
-//import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.PreBuilt;
-import za.ac.cput.factory.PreBuiltFactory;
 
 class PreBuiltFactoryTest {
 
@@ -14,7 +14,7 @@ class PreBuiltFactoryTest {
         assertNotNull(p);
     }
     @Test
-    void emptyParameters(){
+    void emptyParameters1(){
         PreBuilt p = PreBuiltFactory.buildPreBuilt("", "Your product is good.","5 Stars","Graphics Card","Gaming","Valid", 4590);
         assertNull(p);
     }
@@ -25,13 +25,13 @@ class PreBuiltFactoryTest {
     }
 
     @Test
-    void emptyParameters(){
+    void emptyParameters3(){
         PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","","Valid", 4590);
         assertNull(p);
     }
 
     @Test
-    void emptyParameters3(){
+    void emptyParameters4(){
         PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","Gaming","", 4590);
         assertNull(p);
     }
