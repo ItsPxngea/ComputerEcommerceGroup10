@@ -7,7 +7,7 @@ public class SupplierOrder {
     public String supplierID;
     public String productID;
     public int productQuantity;
-    public double productPrice;
+    public double productIndividualPrice;
     private String orderID;
     private String dateOfOrder;
     private String expectedDeliveryDate;
@@ -30,8 +30,8 @@ public class SupplierOrder {
         return productQuantity;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public double getProductIndividualPrice() {
+        return productIndividualPrice;
     }
 
     public String getOrderID() {
@@ -64,12 +64,12 @@ public class SupplierOrder {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SupplierOrder that = (SupplierOrder) o;
-        return productQuantity == that.productQuantity && Double.compare(that.productPrice, productPrice) == 0 && Double.compare(that.importTax, importTax) == 0 && Double.compare(that.totalCost, totalCost) == 0 && Objects.equals(supplierID, that.supplierID) && Objects.equals(productID, that.productID) && Objects.equals(orderID, that.orderID) && Objects.equals(dateOfOrder, that.dateOfOrder) && Objects.equals(expectedDeliveryDate, that.expectedDeliveryDate) && Objects.equals(actualDeliveryDate, that.actualDeliveryDate);
+        return productQuantity == that.productQuantity && Double.compare(that.productIndividualPrice, productIndividualPrice) == 0 && Double.compare(that.importTax, importTax) == 0 && Double.compare(that.totalCost, totalCost) == 0 && Objects.equals(supplierID, that.supplierID) && Objects.equals(productID, that.productID) && Objects.equals(orderID, that.orderID) && Objects.equals(dateOfOrder, that.dateOfOrder) && Objects.equals(expectedDeliveryDate, that.expectedDeliveryDate) && Objects.equals(actualDeliveryDate, that.actualDeliveryDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(supplierID, productID, productQuantity, productPrice, orderID, dateOfOrder, expectedDeliveryDate, actualDeliveryDate, importTax, totalCost);
+        return Objects.hash(supplierID, productID, productQuantity, productIndividualPrice, orderID, dateOfOrder, expectedDeliveryDate, actualDeliveryDate, importTax, totalCost);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class SupplierOrder {
                 "supplierID='" + supplierID + '\'' +
                 ", productID='" + productID + '\'' +
                 ", productQuantity=" + productQuantity +
-                ", productPrice=" + productPrice +
+                ", productPrice=" + productIndividualPrice +
                 ", orderID='" + orderID + '\'' +
                 ", dateOfOrder='" + dateOfOrder + '\'' +
                 ", expectedDeliveryDate='" + expectedDeliveryDate + '\'' +
@@ -94,7 +94,7 @@ public class SupplierOrder {
         this.supplierID = b.supplierID;
         this.productID = b.productID;
         this.productQuantity = b.productQuantity;
-        this.productPrice = b.productPrice;
+        this.productIndividualPrice = b.productIndividualPrice;
         this.orderID = b.orderID;
         this.dateOfOrder = b.dateOfOrder;
         this.expectedDeliveryDate = b.expectedDeliveryDate;
@@ -111,7 +111,7 @@ public class SupplierOrder {
         public String supplierID;
         public String productID;
         public int productQuantity;
-        public double productPrice;
+        public double productIndividualPrice;
         private String orderID;
         private String dateOfOrder;
         private String expectedDeliveryDate;
@@ -136,8 +136,8 @@ public class SupplierOrder {
             return this;
         }
 
-        public Builder setProductPrice(double productPrice) {
-            this.productPrice = productPrice;
+        public Builder setProductIndividualPrice(double productIndividualPrice) {
+            this.productIndividualPrice = productIndividualPrice;
             return this;
         }
 
@@ -177,7 +177,7 @@ public class SupplierOrder {
             this.supplierID = supplierOrder.supplierID;
             this.productID = supplierOrder.productID;
             this.productQuantity = supplierOrder.productQuantity;
-            this.productPrice = supplierOrder.productPrice;
+            this.productIndividualPrice = supplierOrder.productIndividualPrice;
             this.orderID = supplierOrder.orderID;
             this.dateOfOrder = supplierOrder.dateOfOrder;
             this.expectedDeliveryDate = supplierOrder.expectedDeliveryDate;
