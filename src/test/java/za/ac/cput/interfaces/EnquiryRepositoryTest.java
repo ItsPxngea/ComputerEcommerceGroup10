@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EnquiryRepositoryTest {
     private static EnquiryRepository repository = EnquiryRepository.getRepository();
-    private static Enquiry enquiry = EnquiryFactory.buildEnquiry("1254574","Motherboard Broken","Computer does not turn on","Motherboard does not seem to power the CPU")
+    private static Enquiry enquiry = EnquiryFactory.buildEnquiry("1254574","Motherboard Broken","Computer does not turn on","Motherboard does not seem to power the CPU");
 
     @org.junit.jupiter.api.Test
     void create() {
