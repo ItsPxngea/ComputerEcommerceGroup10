@@ -134,72 +134,72 @@ public class Product {
         public String reviewDate;
         public String reviewRating;
 
-        public Builder setProductType(String productType) {
+        public Product.Builder setProductType(String productType) {
             this.productType = productType;
             return this;
         }
 
-        public Builder setProductCategory(String productCategory) {
+        public Product.Builder setProductCategory(String productCategory) {
             this.productCategory = productCategory;
             return this;
 
         }
 
-        public Builder setProductDescription(String productDescription) {
+        public Product.Builder setProductDescription(String productDescription) {
             this.productDescription = productDescription;
             return this;
 
         }
 
-        public Builder setProductQuantity(int productQuantity) {
+        public Product.Builder setProductQuantity(int productQuantity) {
             this.productQuantity = productQuantity;
             return this;
 
         }
 
-        public Builder setProductBrand(String productBrand) {
+        public Product.Builder setProductBrand(String productBrand) {
             this.productBrand = productBrand;
             return this;
 
         }
 
-        public Builder setProductPrice(double productPrice) {
+        public Product.Builder setProductPrice(double productPrice) {
             this.productPrice = productPrice;
             return this;
 
         }
 
-        public Builder setProductWarranty(String productWarranty) {
+        public Product.Builder setProductWarranty(String productWarranty) {
             this.productWarranty = productWarranty;
             return this;
 
         }
 
-        public Builder setProductID(String productID) {
+        public Product.Builder setProductID(String productID) {
             this.productID = productID;
             return this;
 
         }
 
-        public Builder setProductName(String productName) {
+        public Product.Builder setProductName(String productName) {
             this.productName = productName;
             return this;
 
         }
 
-        public Builder setReviewComment(String reviewComment) {
+        public Product.Builder setReviewComment(String reviewComment) {
             this.reviewComment = reviewComment;
             return this;
 
         }
 
-        public Builder setReviewDate(String reviewDate) {
+        public Product.Builder setReviewDate(String reviewDate) {
             this.reviewDate = reviewDate;
             return this;
 
         }
 
-        public Builder setReviewRating(String reviewRating) {
+        public Product.Builder setReviewRating(String reviewRating) {
             this.reviewRating = reviewRating;
             return this;
 
