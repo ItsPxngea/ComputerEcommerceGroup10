@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Enquiry {
     private String enquiryID;
-    private String customerID;
+    public String customerID;
     private String enquiryName;
     private String enquirySubjectLine;
     private String enquiryBodyContent;

@@ -1,8 +1,7 @@
 package za.ac.cput.interfaces;
 
-import za.ac.cput.domain.Cart;
-import za.ac.cput.domain.Invoice;
 
+import za.ac.cput.domain.Invoice;
 import java.util.HashSet;
 import java.util.Set;
 
