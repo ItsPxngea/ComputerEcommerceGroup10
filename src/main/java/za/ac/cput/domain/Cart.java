@@ -1,13 +1,12 @@
 package za.ac.cput.domain;
 
-/* Cart.java
-POJO for the Cart
-Author: David Henriques Garrancho (221475982)
-Date: 20 March 2023
+/*
+    POJO for the Cart
+    Author: David Henriques Garrancho (221475982)
+    Date: 20 March 2023
 */
 
 import java.util.Objects;
-
 public class Cart {
     private String cartID;
     public String customerID;
