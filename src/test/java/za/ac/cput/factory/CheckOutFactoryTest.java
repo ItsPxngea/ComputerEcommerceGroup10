@@ -1,8 +1,8 @@
-package java.za.ac.cput.factory;
+package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.CheckOut;
-import za.ac.cput.factory.CheckOutFactory;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CheckOutFactoryTest {
 
@@ -44,7 +44,7 @@ class CheckOutFactoryTest {
     }
 
     @Test
-    void testEquality() {
+    void testEquality1() {
         CheckOut checkOut = CheckOutFactory.buildCheckOut("GTX850", 5, 4500.00, 22500.00, 3375);
         CheckOut checkOut1 = CheckOutFactory.buildCheckOut("GTX650", 2, 2250.00, 4500.00, 675);
         System.out.println(checkOut.toString());
@@ -53,7 +53,7 @@ class CheckOutFactoryTest {
     }
 
     @Test
-    void testEquality() {
+    void testEquality2() {
         CheckOut checkOut = CheckOutFactory.buildCheckOut("GTX850", 5, 4500.00, 22500.00, 3375);
         CheckOut checkOut1 = checkOut;
         System.out.println(checkOut.toString());
