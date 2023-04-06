@@ -11,13 +11,8 @@ public class Supplier {
     private String supplierAddress;
     private String supplierProductLine;
 
-    public Supplier(String supplierID, String supplierCompanyName, String supplierTel, String supplierEmail, String supplierAddress, String supplierProductLine) {
-        this.supplierID = supplierID;
-        this.supplierCompanyName = supplierCompanyName;
-        this.supplierTel = supplierTel;
-        this.supplierEmail = supplierEmail;
-        this.supplierAddress = supplierAddress;
-        this.supplierProductLine = supplierProductLine;
+    public Supplier() {
+
     }
 
     public String getSupplierID() {

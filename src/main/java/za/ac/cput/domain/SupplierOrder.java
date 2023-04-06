@@ -15,21 +15,7 @@ public class SupplierOrder {
     private double importTax;
     private double totalCost;
 
-    public SupplierOrder(String supplierID, String productID,
-                         int productQuantity, double productPrice,
-                         String orderID, String dateOfOrder,
-                         String expectedDeliveryDate,
-                         String actualDeliveryDate, double importTax, double totalCost) {
-        this.supplierID = supplierID;
-        this.productID = productID;
-        this.productQuantity = productQuantity;
-        this.productPrice = productPrice;
-        this.orderID = orderID;
-        this.dateOfOrder = dateOfOrder;
-        this.expectedDeliveryDate = expectedDeliveryDate;
-        this.actualDeliveryDate = actualDeliveryDate;
-        this.importTax = importTax;
-        this.totalCost = totalCost;
+    public SupplierOrder(){
     }
 
     public String getSupplierID() {
