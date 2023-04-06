@@ -1,14 +1,11 @@
 package za.ac.cput.util;
 
 import org.apache.commons.validator.routines.EmailValidator;
-import za.ac.cput.domain.Invoice;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -16,7 +13,10 @@ import java.util.regex.Pattern;
 
 public class Helper {
     public static boolean isNullOrEmpty(String str){
-        return str == null || str.isEmpty();
+        if (str == null || str.isEmpty()){
+            return true;
+        }
+        return false;
     }
 
     public static boolean isValidEmail(String email) {
@@ -35,24 +35,17 @@ public class Helper {
         return customerID;
     }
 
-    public static String generateInvoiceNumber (String productName){
-        Random random = new Random();
-        int randNum = random.nextInt(900000) + 100000;
-        String randStr = generateRandomString();
-        return productName.substring(0,2) + randStr + randNum;
-    }
-    static String generateRandomString() { // This function is used to create a random string and returning the first 3 letters of the random string.
-        UUID randomStringUUID = UUID.randomUUID();
-        return randomStringUUID.toString().replaceAll("_", "").substring(0,3);
-    }
     public static boolean isInvalidDouble(Double d) {
         if (d == null || d.isNaN()) {
             return true;
-        } else return d < 0;
+        } else if (d < 0) {
+            return true;
+        }
+        return false;
     }
 
-
     public static boolean isInvalidInt(int i) {
+
         return i < 0;
     }
 
@@ -84,9 +77,14 @@ public class Helper {
 
         } catch (DateTimeParseException e) {
             return null;
+
+         if (i < 0) {
+            return true;
+
         }
+        return false;
     }
-    
+
     public static String generateProductID(String pn, String pt, String pc){
         Random random = new Random();
         int randNum = random.nextInt(900000) + 100000;
@@ -101,4 +99,20 @@ public class Helper {
         return bundleID;
     }
 
+    public static boolean isValidDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(date.trim());
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        Pattern phoneNumberPattern = Pattern.compile("^\\d{10}$");
+        Matcher findAMatch = phoneNumberPattern.matcher(phoneNumber);
+        return (findAMatch.matches());
+    }
 }
