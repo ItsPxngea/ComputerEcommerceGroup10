@@ -2,8 +2,6 @@ package za.ac.cput.factory;
 
 import za.ac.cput.domain.Invoice;
 import za.ac.cput.util.Helper;
-
-import java.util.Date;
 /*
 Author: Alexander Draai - 220118744
 This is the factory for Invoice Class

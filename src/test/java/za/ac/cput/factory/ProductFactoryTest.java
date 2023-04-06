@@ -7,7 +7,11 @@ import za.ac.cput.domain.Product;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/*
+    Author: Reece Bergstedt
+    This is the test class for Product Factory
+    Date: 06 - 04 - 2022
+ */
 public class ProductFactoryTest {
 
     @Test

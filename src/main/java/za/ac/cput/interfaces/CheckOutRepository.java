@@ -1,5 +1,9 @@
 package za.ac.cput.interfaces;
-
+/*
+    Author: David Garrancho
+    This is Checkout Repository
+    Date: 02 - 04 - 2022
+ */
 import za.ac.cput.domain.CheckOut;
 
 import java.util.*;

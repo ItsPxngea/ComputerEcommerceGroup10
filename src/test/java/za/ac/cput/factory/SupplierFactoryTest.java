@@ -1,5 +1,9 @@
 package za.ac.cput.factory;
-
+/*
+    Author: Ethan Botes
+    This is the test class for Supplier Factory
+    Date: 06 - 04 - 2022
+ */
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;

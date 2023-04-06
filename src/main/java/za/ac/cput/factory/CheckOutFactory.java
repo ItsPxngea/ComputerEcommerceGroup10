@@ -5,7 +5,9 @@ import za.ac.cput.util.Helper;
 
 public class CheckOutFactory {
     public static CheckOut buildCheckOut(String productName,int productQuantity,double productPrice,double totalPrice, double tax){
-        if ( Helper.isNullOrEmpty(productName) || Helper.isInvalidInt(productQuantity) || Helper.isInvalidDouble(productPrice) || Helper.isInvalidDouble(totalPrice) || Helper.isInvalidDouble(tax)){
+        if ( Helper.isNullOrEmpty(productName) || Helper.isInvalidInt(productQuantity) ||
+             Helper.isInvalidDouble(productPrice) || Helper.isInvalidDouble(totalPrice) ||
+             Helper.isInvalidDouble(tax)){
             return null;
         }
 
@@ -24,6 +26,5 @@ public class CheckOutFactory {
                 .setTotalPrice(totalPrice)
                 .setTax(tax)
                 .build();
-
     }
 }

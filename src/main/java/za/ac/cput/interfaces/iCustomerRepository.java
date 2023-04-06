@@ -1,9 +1,9 @@
 package za.ac.cput.interfaces;
 
-/* iCustomerRepository.java
-Interface for the Customer Repository
-Author: David Henriques Garrancho (221475982)
-Date: 20 March 2023
+/*
+    Author: David Henriques Garrancho (221475982)
+    Interface for the Customer Repository
+    Date: 20 March 2023
 */
 
 import za.ac.cput.domain.Customer;

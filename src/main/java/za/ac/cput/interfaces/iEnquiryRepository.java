@@ -1,7 +1,8 @@
 package za.ac.cput.interfaces;
 /*
-Author: Hanno Visser Immelman 221074414
-*/
+    Author: Hanno Visser Immelman 221074414
+    Date: 02 - 04 - 2022
+ */
 import za.ac.cput.domain.Enquiry;
 
 import java.util.Set;

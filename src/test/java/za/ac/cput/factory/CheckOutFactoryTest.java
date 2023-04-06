@@ -1,5 +1,9 @@
 package za.ac.cput.factory;
-
+/*
+    Author: Michael Johnson
+    This is the test class for CheckOut Factory
+    Date: 06 - 04 - 2022
+ */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.CheckOut;
 import static org.junit.jupiter.api.Assertions.*;

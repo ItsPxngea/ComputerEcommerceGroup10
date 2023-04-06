@@ -1,8 +1,8 @@
 package za.ac.cput.interfaces;
-/* BundleRepository.java
- Entity for the BundleRepository
- Author: Reece Bergstedt - 221075240
- Date: 22 March 2023
+/*
+     Entity for the BundleRepository
+     Author: Reece Bergstedt - 221075240
+     Date: 22 March 2023
 */
 import za.ac.cput.domain.Bundle;
 

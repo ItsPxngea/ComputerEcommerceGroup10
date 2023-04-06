@@ -1,8 +1,9 @@
 package za.ac.cput.interfaces;
 /*
-Author: Hanno Visser Immelman 221074414
+    Author: Hanno Visser Immelman 221074414
+    This is the test class for StoreDetailsRepositoryTest
+    Date: 06 - 04 - 2023
  */
-
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.StoreDetails;

@@ -1,6 +1,8 @@
 package za.ac.cput.interfaces;
 /*
-Author: Hanno Visser Immelman 221074414
+    Author: Hanno Visser Immelman 221074414
+    This is the test class for Enquiry Repository
+    Date: 06 - 04 - 2022
  */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -11,7 +13,6 @@ import java.sql.SQLOutput;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class EnquiryRepositoryTest {
     private static EnquiryRepository repository = EnquiryRepository.getRepository();

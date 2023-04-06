@@ -9,8 +9,6 @@ Date: 20 March 2023
 import za.ac.cput.domain.Cart;
 import za.ac.cput.util.Helper;
 
-import java.util.UUID;
-
 public class CartFactory {
 
     public static Cart buildCart(String productName, int productQuantity, double productPrice){
