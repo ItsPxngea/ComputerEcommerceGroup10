@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StoreDetailsRepositoryTest {
     private static StoreDetailsRepository repository = StoreDetailsRepository.getRepository();
-    private static StoreDetails sd = StoreDetailsFactory.buildStoreDetails("M computers","69 Nice Street, Cape Town","0988422548","MComp@gmail.com")
+    private static StoreDetails sd = StoreDetailsFactory.buildStoreDetails("M computers","69 Nice Street, Cape Town","0988422548","MComp@gmail.com");
 
     @org.junit.jupiter.api.Test
     void create() {
