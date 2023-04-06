@@ -5,7 +5,7 @@ package za.ac.cput.domain;
  Date: 22 March 2023
 */
 import java.util.Objects;
-import java.util.Date;
+
 
 
 public class Bundle {
@@ -95,14 +95,14 @@ public class Bundle {
     @Override
     public String toString() {
         return "Bundle{" +
-                "BundleType='" + bundleType + '\'' +
-                ", BundleCategory='" + bundleCategory + '\'' +
-                ", BundleDescription='" + bundleDescription + '\'' +
-                ", BundleQuantity='" + bundleQuantity + '\'' +
-                ", BundlePrice=" + bundlePrice +
-                ", BundleWarranty='" + bundleWarranty + '\'' +
-                ", BundleID='" + bundleID + '\'' +
-                ", BundleName='" + bundleName + '\'' +
+                "bundleType='" + bundleType + '\'' +
+                ", bundleCategory='" + bundleCategory + '\'' +
+                ", bundleDescription='" + bundleDescription + '\'' +
+                ", bundleQuantity=" + bundleQuantity +
+                ", bundlePrice=" + bundlePrice +
+                ", bundleWarranty='" + bundleWarranty + '\'' +
+                ", bundleID='" + bundleID + '\'' +
+                ", bundleName='" + bundleName + '\'' +
                 ", productID='" + productID + '\'' +
                 ", productName='" + productName + '\'' +
                 ", reviewComment='" + reviewComment + '\'' +
@@ -118,7 +118,7 @@ public class Bundle {
         this.bundleQuantity = b.bundleQuantity;
         this.bundlePrice = b.bundlePrice;
         this.bundleWarranty = b.bundleWarranty;
-        this.bundleID = b.bundleID;
+        this.bundleID = b.productID; //Davids is also like this for cart
         this.bundleName = b.bundleName;
         this.productID = b.productID;
         this.productName = b.productName;
@@ -143,79 +143,79 @@ public class Bundle {
         public String reviewRating;
 
 
-        public Builder setBundleType(String bundleType) {
-            bundleType = bundleType;
+        public Bundle.Builder setBundleType(String bundleType) {
+            this.bundleType = bundleType;
             return this;
 
         }
 
-        public Builder setBundleCategory(String bundleCategory) {
-            bundleCategory = bundleCategory;
+        public Bundle.Builder setBundleCategory(String bundleCategory) {
+            this.bundleCategory = bundleCategory;
             return this;
 
         }
 
-        public Builder setBundleDescription(String bundleDescription) {
-            bundleDescription = bundleDescription;
+        public Bundle.Builder setBundleDescription(String bundleDescription) {
+            this.bundleDescription = bundleDescription;
             return this;
 
         }
 
-        public Builder setBundleQuantity(int bundleQuantity) {
-            bundleQuantity = bundleQuantity;
+        public Bundle.Builder setBundleQuantity(int bundleQuantity) {
+            this.bundleQuantity = bundleQuantity;
             return this;
 
         }
 
-        public Builder setBundlePrice(double bundlePrice) {
-            bundlePrice = bundlePrice;
+        public Bundle.Builder setBundlePrice(double bundlePrice) {
+            this.bundlePrice = bundlePrice;
             return this;
 
         }
 
-        public Builder setBundleWarranty(String bundleWarranty) {
-            bundleWarranty = bundleWarranty;
+        public Bundle.Builder setBundleWarranty(String bundleWarranty) {
+            this.bundleWarranty = bundleWarranty;
             return this;
 
         }
 
-        public Builder setBundleID(String bundleID) {
-            bundleID = bundleID;
+        public Bundle.Builder setBundleID(String bundleID) {
+            this.bundleID = bundleID;
             return this;
 
         }
 
-        public Builder setBundleName(String bundleName) {
-            bundleName = bundleName;
+        public Bundle.Builder setBundleName(String bundleName) {
+            this.bundleName = bundleName;
             return this;
 
         }
 
-        public Builder setProductID(String productID) {
+        public Bundle.Builder setProductID(String productID) {
             this.productID = productID;
             return this;
 
         }
 
-        public Builder setProductName(String productName) {
+        public Bundle.Builder setProductName(String productName) {
             this.productName = productName;
             return this;
 
         }
 
-        public Builder setReviewComment(String reviewComment) {
+        public Bundle.Builder setReviewComment(String reviewComment) {
             this.reviewComment = reviewComment;
             return this;
 
         }
 
-        public Builder setReviewDate(String reviewDate) {
+        public Bundle.Builder setReviewDate(String reviewDate) {
             this.reviewDate = reviewDate;
             return this;
 
         }
 
-        public Builder setReviewRating(String reviewRating) {
+        public Bundle.Builder setReviewRating(String reviewRating) {
             this.reviewRating = reviewRating;
             return this;
 
@@ -230,11 +230,11 @@ public class Bundle {
             this.bundleWarranty = bundle.bundleWarranty;
             this.bundleID = bundle.bundleID;
             this.bundleName = bundle.bundleName;
-            this.productID = productID;
-            this.productName = productName;
-            this.reviewComment = reviewComment;
-            this.reviewDate = reviewDate;
-            this.reviewRating = reviewRating;
+            this.productID = bundle.productID;
+            this.productName = bundle.productName;
+            this.reviewComment = bundle.reviewComment;
+            this.reviewDate = bundle.reviewDate;
+            this.reviewRating = bundle.reviewRating;
             return this;
         }
 

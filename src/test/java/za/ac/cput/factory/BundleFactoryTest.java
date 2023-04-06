@@ -1,9 +1,5 @@
 package za.ac.cput.factory;
-/* BundleFactoryTest.java
- Entity for the BundleFactoryTest
- Author: Reece Bergstedt - 221075240
- Date: 22 March 2023
-*/
+
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Bundle;
 
@@ -42,20 +38,13 @@ public class BundleFactoryTest {
 
     @Test
     void emptyParameters4(){
-        Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",
-                1, "2 Years", "Gaming", "Great System, Great Service", "2023-04-05","4/5",2000.00, "Ryzen Setup");
-        assertNull(b);
-    }
-
-    @Test
-    void emptyParameters5(){
         Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",1
                 , "", "Gaming", "Great System, Great Service", "2023-04-05","4/5",2000.00, "Ryzen Setup");
         assertNull(b);
     }
 
     @Test
-    void emptyParameters6(){
+    void emptyParameters5(){
         Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",1
                 , "2 Years", "", "Great System, Great Service", "2023-04-05","4/5",2000.00, "Ryzen Setup");
         assertNull(b);
@@ -63,21 +52,21 @@ public class BundleFactoryTest {
 
 
     @Test
-    void emptyParameters7(){
+    void emptyParameters6(){
         Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",1
                 , "2 Years", "Gaming", "Great System, Great Service", "","4/5",2000.00, "Ryzen Setup");
         assertNull(b);
     }
 
     @Test
-    void emptyParameters8(){
+    void emptyParameters7(){
         Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",1
                 , "2 Years", "Gaming", "Great System, Great Service", "2023-04-05","",2000.00, "Ryzen Setup");
         assertNull(b);
     }
 
     @Test
-    void emptyParameters9(){
+    void emptyParameters8(){
     Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",
             1, "2 Years", "Gaming", "Great System, Great Service", "2023-04-05","4/5",2000.00, "");
         assertNull(b);
@@ -117,12 +106,10 @@ public class BundleFactoryTest {
         assertEquals(b, b2);
     }
 
-   /* @Test
-    void testDate(){
-        Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",
-                1, "2 Years", "Gaming", "Great System, Great Service", "2023-04-05","4/5",2000.00, "Ryzen Setup");
-        Bundle b2 = b;
-        System.out.println(b.toString());
-        assertEquals(b, b2);
-    }*/
+   @Test
+    void testInvalidDate() {
+       Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",
+               1, "2 Years", "Gaming", "Great System, Great Service", "dfdf", "4/5", 2000.00, "Ryzen Setup");
+       assertNull(b);
+   }
 }

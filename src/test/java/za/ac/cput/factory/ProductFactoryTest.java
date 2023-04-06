@@ -1,11 +1,8 @@
 package za.ac.cput.factory;
-/* ProductFactoryTest.java
- Entity for the ProductFactoryTest
- Author: Reece Bergstedt - 221075240
- Date: 22 March 2023
-*/
+
 import org.junit.jupiter.api.Test;
 
+import za.ac.cput.domain.Bundle;
 import za.ac.cput.domain.Product;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -119,12 +116,10 @@ public class ProductFactoryTest {
         assertEquals(p, p2);
     }
 
-   /* @Test
-    void testDate(){
-        Bundle b = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",
-                1, "2 Years", "Gaming", "Great System, Great Service", "2023-04-05","4/5",2000.00, "Ryzen Setup");
-        Bundle b2 = b;
-        System.out.println(b.toString());
-        assertEquals(b, b2);
-    }*/
+    @Test
+    void testInvalidDate() {
+        Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","hfhf","4/5", 3000.00);
+        assertNull(p);
+    }
 }
