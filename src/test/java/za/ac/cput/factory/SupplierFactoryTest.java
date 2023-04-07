@@ -19,7 +19,7 @@ class SupplierFactoryTest {
                 "0214564389", "5 Alvin Road, Woodstock", "Intel® Core™ Processors",
                 "Intel");
         System.out.println(s.toString());
-        assertNull(s);
+        assertNotNull(s);
     }
 
     @Test
@@ -100,7 +100,6 @@ class SupplierFactoryTest {
                 "Intel");
 
         Supplier s2 = s;
-        System.out.println(s.toString());
         assertEquals(s, s2);
 
     }

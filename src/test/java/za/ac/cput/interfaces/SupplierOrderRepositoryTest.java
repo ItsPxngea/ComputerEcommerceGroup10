@@ -7,7 +7,6 @@ package za.ac.cput.interfaces;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.Supplier;
 import za.ac.cput.domain.SupplierOrder;
 import za.ac.cput.factory.SupplierOrderFactory;
 
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SupplierOrderRepositoryTest {
 
     private static SupplierOrderRepository repository = SupplierOrderRepository.getRepository();
-    private static SupplierOrder supplierOrder = SupplierOrderFactory.buildSupplierOrder("2023-01-06", "2023-01-12", "2023-01-12",
+    private static SupplierOrder supplierOrder = SupplierOrderFactory.buildSupplierOrder("06-01-2023", "12-01-2023", "12-01-2023",
             120.00, 12120.00, 2, 6000.00, "Int847");
 
 
@@ -47,7 +46,6 @@ class SupplierOrderRepositoryTest {
                 .build();
         assertNotNull(repository.update(updated));
         System.out.println("Updated: " + updated);
-
     }
 
     @org.junit.jupiter.api.Test
@@ -55,7 +53,6 @@ class SupplierOrderRepositoryTest {
         boolean success = repository.delete(supplierOrder.getOrderID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
-
     }
 
     @org.junit.jupiter.api.Test

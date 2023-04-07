@@ -52,6 +52,12 @@ class PreBuiltFactoryTest {
     }
 
     @Test
+    void invalidParameters3(){
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","awfawf","Graphics Card","Gaming","Valid", 4590);
+        assertNull(p);
+    }
+
+    @Test
     void testEquality(){
         PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);
 
