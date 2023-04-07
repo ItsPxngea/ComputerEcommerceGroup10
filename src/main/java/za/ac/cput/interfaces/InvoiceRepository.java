@@ -37,9 +37,9 @@ public class InvoiceRepository implements iInvoiceRepository {
     }
 
     public Invoice update(Invoice invoice) {
-        Invoice OldInvoice = read(invoice.getInvoiceNumber());
-        if(OldInvoice != null) {
-            invoiceDB.remove(OldInvoice);
+        Invoice oldInvoice = read(invoice.getInvoiceNumber());
+        if(oldInvoice != null) {
+            invoiceDB.remove(oldInvoice);
             invoiceDB.add(invoice);
             return invoice;
         }
