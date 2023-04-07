@@ -15,7 +15,7 @@ class InvoiceHistoryRepositoryTest {
 
     private static InvoiceHistoryRepository repository = InvoiceHistoryRepository.getRepository();
     private static InvoiceHistory invoiceHistory =
-                   InvoiceHistoryFactory.buildInvoiceHistory("GT4524", "NVIDIA Graphics Card");
+                   InvoiceHistoryFactory.buildInvoiceHistory("NVIDIA Graphics Card");
 
     @org.junit.jupiter.api.Test
     void a_create() {
@@ -34,7 +34,7 @@ class InvoiceHistoryRepositoryTest {
     @org.junit.jupiter.api.Test
     void c_update() {
         InvoiceHistory updated = new InvoiceHistory.Builder().copy(invoiceHistory)
-                .setHistoryId("GTX4090")
+                .setInvoiceDescription("Cool graphics card")
                 .build();
         assertNotNull(repository.update(updated));
         System.out.println("Updated: " + updated);
