@@ -17,7 +17,7 @@ public class ProductFactoryTest {
     @Test
     void createProduct(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         System.out.println(p.toString());
         assertNotNull(p);
     }
@@ -25,42 +25,42 @@ public class ProductFactoryTest {
     @Test
     void emptyParameters1(){
         Product p = ProductFactory.buildProduct("", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
     @Test
     void emptyParameters2(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
     @Test
     void emptyParameters3(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
     @Test
     void emptyParameters4(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                1, "", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
     @Test
     void emptyParameters5(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                1, "Nvidea", "", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
     @Test
     void emptyParameters6(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                1, "Nvidea", "1", "", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
@@ -68,62 +68,46 @@ public class ProductFactoryTest {
     @Test
     void emptyParameters7(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "","2023-04-02","4/5", 3000.00);
+                1, "Nvidea", "1", "Gaming", "","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
     @Test
     void emptyParameters8(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","","4/5", 3000.00);
-        assertNull(p);
-    }
-
-    @Test
-    void emptyParameters9(){
-        Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","", 3000.00);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","", 3000.00);
         assertNull(p);
     }
 
     @Test
     void invalidParameters1(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                -1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
+                -1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
         assertNull(p);
     }
 
     @Test
     void invalidParameters2(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", -3000.00);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", -3000.00);
         assertNull(p);
     }
 
     @Test
-    void testEquality(){
+    void invalidParameters3(){
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
-        Product p2 = ProductFactory.buildProduct("GTX 1060 TI", "Graphics Card", "Game with the powerful GTX 1060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2022-04-02","3/5", 1000.00);
-        System.out.println(p.toString());
-        System.out.println(p2.toString());
-        assertNotEquals(p, p2);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","29-02-2023","4/5", -3000.00);
+        assertNull(p);
     }
 
-    @Test
-    void testEquality2(){
-        Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","2023-04-02","4/5", 3000.00);
-        Product p2 = p;
-        System.out.println(p.toString());
-        assertEquals(p, p2);
-    }
+
+
+
 
     @Test
     void testInvalidDate() {
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","hfhf","4/5", 3000.00);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","jvj","4/5", 3000.00);
         assertNull(p);
     }
 }

@@ -61,7 +61,7 @@ class CheckOutFactoryTest {
         CheckOut checkOut = CheckOutFactory.buildCheckOut("GTX850", 5, 4500.00, 22500.00, 3375);
         CheckOut checkOut1 = checkOut;
         System.out.println(checkOut.toString());
-        assertNotEquals(checkOut, checkOut1);
+        assertEquals(checkOut, checkOut1);
     }
 
 

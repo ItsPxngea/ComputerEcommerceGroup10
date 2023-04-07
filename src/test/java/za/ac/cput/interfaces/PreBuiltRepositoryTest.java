@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PreBuiltRepositoryTest {
 
     private static PreBuiltRepository repo = PreBuiltRepository.getRepo();
-    private static PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.", "5 Stars", "Graphics Card", "Gaming", "Valid", 4590);
+    private static PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.", "5 Stars","29-03-2023", "Graphics Card", "Gaming", "Valid", 4590);
 
     @Test
     void a_create() {

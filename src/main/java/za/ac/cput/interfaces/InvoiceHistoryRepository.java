@@ -30,26 +30,26 @@ public InvoiceHistory create(InvoiceHistory invoiceHistory){
     return invoiceHistory;
 }
 
-    public InvoiceHistory read(String InvoiceNumber){
+    public InvoiceHistory read(String historyID){
         InvoiceHistory invoiceHistory = invoiceHistoryDB.stream()
-                .filter(e -> e.getInvoiceNumber().equals(InvoiceNumber))
+                .filter(e -> e.getHistoryID().equals(historyID))
                 .findAny()
                 .orElse(null);
         return invoiceHistory;
     }
 
     public InvoiceHistory update(InvoiceHistory invoiceHistory){
-        InvoiceHistory OldInvoiceHistory = read(invoiceHistory.getInvoiceNumber());
-        if(OldInvoiceHistory != null){
-            invoiceHistoryDB.remove(OldInvoiceHistory);
+        InvoiceHistory oldInvoiceHistory = read(invoiceHistory.getHistoryID());
+        if(oldInvoiceHistory != null){
+            invoiceHistoryDB.remove(oldInvoiceHistory);
             invoiceHistoryDB.add(invoiceHistory);
             return invoiceHistory;
         }
         return null ;
     }
 
-    public boolean delete(String invoiceNumber){
-        InvoiceHistory invoiceToDelete = read(invoiceNumber);
+    public boolean delete(String historyID){
+        InvoiceHistory invoiceToDelete = read(historyID);
         if(invoiceToDelete == null){
             return false;
         }
