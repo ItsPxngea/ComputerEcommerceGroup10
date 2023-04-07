@@ -1,5 +1,11 @@
 package za.ac.cput.interfaces;
 
+/*
+Repository file for CheckOut to create methods for the interface
+Author: Michael Johnson, 221094040
+Date: 06/04/2023
+*/
+
 import za.ac.cput.domain.CheckOut;
 
 import java.util.*;

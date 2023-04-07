@@ -1,5 +1,11 @@
 package za.ac.cput.interfaces;
 
+/*
+Test file for CheckOut Repository
+Author: Michael Johnson, 221094040
+Date: 06/04/2023
+*/
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
