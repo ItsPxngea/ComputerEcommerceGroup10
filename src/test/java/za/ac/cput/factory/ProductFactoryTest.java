@@ -101,23 +101,13 @@ public class ProductFactoryTest {
     }
 
 
-    @Test
-    void testEquality(){
-        Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
-        Product p2 = ProductFactory.buildProduct("GTX 1060 TI", "Graphics Card", "Game with the powerful GTX 1060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","3/5", 1000.00);
-        System.out.println(p.toString());
-        System.out.println(p2.toString());
-        assertNotEquals(p, p2);
-    }
+
+
 
     @Test
-    void testEquality2(){
+    void testInvalidDate() {
         Product p = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
-        Product p2 = p;
-        System.out.println(p.toString());
-        assertEquals(p, p2);
+                1, "Nvidea", "1", "Gaming", "Great Product, Great Service","jvj","4/5", 3000.00);
+        assertNull(p);
     }
 }

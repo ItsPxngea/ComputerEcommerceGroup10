@@ -19,6 +19,7 @@ public class BundleFactoryTest {
         assertNotNull(b);
     }
 
+
     @Test
     void emptyParameters1(){
         Bundle b = BundleFactory.buildBundle("", "Gaming Pc", "Complete ryzen only pc",
