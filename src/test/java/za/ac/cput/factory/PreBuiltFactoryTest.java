@@ -12,44 +12,50 @@ class PreBuiltFactoryTest {
 
     @Test
     void createPreBuilt() {
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","Gaming","Valid", 4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);
         System.out.println(p.toString());
         assertNotNull(p);
     }
     @Test
     void emptyParameters1(){
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("", "Your product is good.","5 Stars","Graphics Card","Gaming","Valid", 4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);
         assertNull(p);
     }
     @Test
     void emptyParameters2(){
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","","Gaming","Valid", 4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);
         assertNull(p);
     }
 
     @Test
     void emptyParameters3(){
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","","Valid", 4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","","29-03-2023","Graphics Card","Gaming","Valid", 4590);
         assertNull(p);
     }
 
     @Test
     void emptyParameters4(){
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","Gaming","", 4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","","Gaming","Valid", 4590);
         assertNull(p);
     }
 
     @Test
     void invalidParameters(){
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","Gaming","Valid", -4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", -4590);
+        assertNull(p);
+    }
+
+    @Test
+    void invalidParameters2(){
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-02-2023","Graphics Card","Gaming","Valid", 4590);
         assertNull(p);
     }
 
     @Test
     void testEquality(){
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","Gaming","Valid", 4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);
 
-        PreBuilt p2 = PreBuiltFactory.buildPreBuilt("GTX600", "Your product is okay.","5 Stars","Graphics Card","Gaming","Valid", 4400);
+        PreBuilt p2 = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);
 
         System.out.println(p.toString());
         System.out.println(p2.toString());
@@ -58,12 +64,12 @@ class PreBuiltFactoryTest {
 
     @Test
     void testEquality2(){
-        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","Graphics Card","Gaming","Valid", 4590);
+        PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);
 
         PreBuilt p2 = p;
 
         System.out.println(p.toString());
-        assertNotEquals(p,p2);
+        assertEquals(p,p2);
 
     }
 

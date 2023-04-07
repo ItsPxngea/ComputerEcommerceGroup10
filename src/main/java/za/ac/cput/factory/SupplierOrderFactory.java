@@ -31,12 +31,9 @@ public class SupplierOrderFactory {
         String supplierID = Helper.generateID();
         String orderID = Helper.generateID();
 
-        Helper.isValidDate(actualDeliveryDate);
-        Helper.isValidDate(expectedDeliveryDate);
-        Helper.isValidDate(dateOfOrder);
-
-
-
+        if(Helper.isValidDate(expectedDeliveryDate)==null || Helper.isValidDate(actualDeliveryDate)==null || Helper.isValidDate(dateOfOrder)==null){
+            return null;
+        }
 
         return new SupplierOrder.Builder()
                 .setSupplierID(supplierID)
