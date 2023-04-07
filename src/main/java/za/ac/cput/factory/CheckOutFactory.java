@@ -1,5 +1,11 @@
 package za.ac.cput.factory;
 
+/*
+Factory file for CheckOut to input values
+Author: Michael Johnson, 221094040
+Date: 06/04/2023
+*/
+
 import za.ac.cput.domain.CheckOut;
 import za.ac.cput.util.Helper;
 
