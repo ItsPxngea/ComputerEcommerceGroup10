@@ -1,11 +1,14 @@
 package za.ac.cput.interfaces;
-
+/*
+    Author: David Garrancho - 221475982
+    This is the test class for Customer Repository
+    Date: 06 - 04 - 2022
+ */
 import org.junit.jupiter.api.*;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CustomerFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class CustomerRepositoryTest {
 

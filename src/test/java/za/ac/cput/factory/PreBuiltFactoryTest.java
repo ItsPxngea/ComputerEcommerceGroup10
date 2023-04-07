@@ -1,11 +1,9 @@
 package za.ac.cput.factory;
-
 /*
-Test file for PreBuilt Factory
-Author: Michael Johnson, 221094040
-Date: 06/04/2023
-*/
-
+    Author: Michael Johnson
+    This is the test class for Pre-Built Factory
+    Date: 06 - 04 - 2022
+ */
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.PreBuilt;

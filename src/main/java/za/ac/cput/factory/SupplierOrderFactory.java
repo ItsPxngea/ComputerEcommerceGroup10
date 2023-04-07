@@ -1,5 +1,12 @@
 package za.ac.cput.factory;
 
+/*
+    Factory for the SupplierOrder
+    Author: Ethan Andrew Botes (220101299)
+    Date: 6 April 2023
+*/
+
+
 import za.ac.cput.domain.Supplier;
 import za.ac.cput.domain.SupplierOrder;
 import za.ac.cput.util.Helper;

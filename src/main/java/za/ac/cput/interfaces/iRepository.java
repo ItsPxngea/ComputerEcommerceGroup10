@@ -1,4 +1,8 @@
 package za.ac.cput.interfaces;
+/*
+    Author: Group 10
+    Date: 02 - 04 - 2022
+ */
 
 public interface iRepository<T, ID> {
     T create(T t);

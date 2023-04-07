@@ -1,5 +1,7 @@
 package za.ac.cput.domain;
-
+/*
+Author: Hanno Visser Immelman 221074414
+*/
 import java.util.Objects;
 
 public class Enquiry {

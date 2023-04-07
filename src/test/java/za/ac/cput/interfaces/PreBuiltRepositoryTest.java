@@ -1,12 +1,9 @@
 package za.ac.cput.interfaces;
-
 /*
-Test file for PreBuilt Repository
-Author: Michael Johnson, 221094040
-Date: 06/04/2023
-*/
-
-
+    Author: Michael Daniel Johnson
+    This is the test class for PreBuilt Repository
+    Date: 06 - 04 - 2022
+ */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;

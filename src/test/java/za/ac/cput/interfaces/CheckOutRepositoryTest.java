@@ -1,11 +1,9 @@
 package za.ac.cput.interfaces;
-
 /*
-Test file for CheckOut Repository
-Author: Michael Johnson, 221094040
-Date: 06/04/2023
-*/
-
+    Author: Michael Daniel Johnson
+    This is the test class for Checkout Repository
+    Date: 06 - 04 - 2022
+ */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -13,7 +11,6 @@ import za.ac.cput.domain.CheckOut;
 import za.ac.cput.factory.CheckOutFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class CheckOutRepositoryTest {
 

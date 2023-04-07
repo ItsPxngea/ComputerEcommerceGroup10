@@ -1,5 +1,9 @@
 package za.ac.cput.factory;
-
+/*
+    Author: David Garrancho
+    This is the test class for Customer Factory
+    Date: 06 - 04 - 2022
+ */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Customer;
 
