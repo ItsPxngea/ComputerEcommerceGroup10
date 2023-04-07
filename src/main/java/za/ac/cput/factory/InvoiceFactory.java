@@ -25,7 +25,9 @@ public class InvoiceFactory {
         }
 
         // What do I do with the date provided ?
-        Helper.isValidDate(dateOfTransaction);
+        if(Helper.isValidDate(dateOfTransaction)==null){
+            return null;
+        }
 
         String InvoiceNumber = Helper.generateInvoiceNumber(productName);
 

@@ -73,14 +73,14 @@ public class Helper {
             return null;
         }
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-                .appendPattern("dd-MM-yyyy")
+                .appendPattern("dd-MM-uuuu")
                 .toFormatter()
                 .withResolverStyle(ResolverStyle.STRICT);
 
         try {
             LocalDate date = LocalDate.parse(dateStr, formatter);
             int dayOfMonth = date.getDayOfMonth();
-            if (dayOfMonth < 1 || dayOfMonth > date.getMonth().maxLength()) {
+            if(dayOfMonth < 1 || dayOfMonth > date.getMonth().maxLength()) {
                 return null;
             }
             if (date.getDayOfMonth() == 29 && date.getMonth() == Month.FEBRUARY && !date.isLeapYear()) {
