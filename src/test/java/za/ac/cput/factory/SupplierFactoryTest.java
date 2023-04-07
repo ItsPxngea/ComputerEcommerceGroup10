@@ -100,7 +100,6 @@ class SupplierFactoryTest {
                 "Intel");
 
         Supplier s2 = s;
-
         System.out.println(s.toString());
         assertEquals(s, s2);
 

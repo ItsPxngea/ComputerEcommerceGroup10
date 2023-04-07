@@ -5,9 +5,13 @@ package za.ac.cput.interfaces;
     Date: 06 - 04 - 2023
  */
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Invoice;
 import za.ac.cput.factory.InvoiceFactory;
 import static org.junit.jupiter.api.Assertions.*;
+
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class InvoiceRepositoryTest {
     private static InvoiceRepository repository = InvoiceRepository.getRepository();
      private static Invoice invoice =  InvoiceFactory.buildInvoice("GT312", "CPT105", "GTX 4090",
@@ -16,21 +20,21 @@ class InvoiceRepositoryTest {
                                                                     15,"06-04-2023");
 
     @org.junit.jupiter.api.Test
-    void create() {
+    void a_create() {
         Invoice created = repository.create(invoice);
         assertEquals(invoice.getInvoiceNumber(),created.getInvoiceNumber());
         System.out.println("Create: " + created);
     }
 
     @org.junit.jupiter.api.Test
-    void read() {
+    void b_read() {
         Invoice read = repository.read(invoice.getInvoiceNumber());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @org.junit.jupiter.api.Test
-    void update() {
+    void c_update() {
         Invoice updated = new Invoice.Builder().copy(invoice)
                 .setProductID("GTY564")
                 .setProductName("Ryzen 7")
@@ -41,14 +45,14 @@ class InvoiceRepositoryTest {
     }
 
     @org.junit.jupiter.api.Test
-    void delete() {
+    void e_delete() {
         boolean success = repository.delete(invoice.getInvoiceNumber());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }
 
     @org.junit.jupiter.api.Test
-    void getAll() {
+    void d_getAll() {
         System.out.println("Show All: ");
         System.out.println(repository.getAll());
     }

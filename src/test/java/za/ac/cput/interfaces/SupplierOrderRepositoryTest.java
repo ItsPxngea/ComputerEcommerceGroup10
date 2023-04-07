@@ -5,11 +5,15 @@ package za.ac.cput.interfaces;
     Date: 06 - 04 - 2023
  */
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Supplier;
 import za.ac.cput.domain.SupplierOrder;
 import za.ac.cput.factory.SupplierOrderFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class SupplierOrderRepositoryTest {
 
     private static SupplierOrderRepository repository = SupplierOrderRepository.getRepository();
@@ -47,7 +51,7 @@ class SupplierOrderRepositoryTest {
     }
 
     @org.junit.jupiter.api.Test
-    void d_delete() {
+    void e_delete() {
         boolean success = repository.delete(supplierOrder.getOrderID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
@@ -55,7 +59,7 @@ class SupplierOrderRepositoryTest {
     }
 
     @org.junit.jupiter.api.Test
-    void e_getAll() {
+    void d_getAll() {
         System.out.println("Show all: ");
         System.out.println(repository.getAll());
     }
