@@ -1,5 +1,9 @@
 package za.ac.cput.factory;
-
+/* BundleFactory.java
+ Entity for the BundleFactory
+ Author: Reece Bergstedt - 221075240
+ Date: 22 March 2023
+*/
 import za.ac.cput.domain.Bundle;
 import za.ac.cput.util.Helper;
 
