@@ -1,9 +1,12 @@
 package za.ac.cput.factory;
-
 import za.ac.cput.domain.InvoiceHistory;
 import za.ac.cput.util.Helper;
 
-
+/*
+Author: Alexander Draai - 220118744
+This is the factory for InvoiceHistory Class
+Date: 04 - 04 - 2023
+ */
 public class InvoiceHistoryFactory {
     public static InvoiceHistory buildInvoiceHistory(String invoiceDescription)
     {
