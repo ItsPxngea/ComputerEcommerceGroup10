@@ -18,7 +18,9 @@ public class Bundle {
     private String bundleWarranty;
     private String bundleID;
     private String bundleName;
+
     public String productID;
+
     public String productName;
     public String reviewComment;
     public String reviewDate;
