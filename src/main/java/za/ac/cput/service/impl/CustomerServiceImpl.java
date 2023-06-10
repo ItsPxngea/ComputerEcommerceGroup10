@@ -18,7 +18,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
-    private static CustomerServiceImpl getService(){
+    public static CustomerServiceImpl getService(){
         if(service == null){
             service = new CustomerServiceImpl();
         }
