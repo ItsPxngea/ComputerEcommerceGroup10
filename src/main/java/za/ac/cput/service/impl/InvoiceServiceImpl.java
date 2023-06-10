@@ -18,6 +18,13 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
     }
 
+    public static InvoiceServiceImpl getService(){
+        if(service == null){
+            service = new InvoiceServiceImpl();
+        }
+        return service;
+    }
+
     @Override
     public Invoice create(Invoice invoice) {
             Invoice readInvoice = repository.create(invoice);
