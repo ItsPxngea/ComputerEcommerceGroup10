@@ -48,8 +48,29 @@ public class Helper {
     public static String generateCustomerID(String fn, String ln){
         Random random = new Random();
         int randNum = random.nextInt(900000) + 100000;
-        String customerID = fn.substring(0,3).toUpperCase() + ln.substring(0,3).toUpperCase() + randNum;
-        return customerID;
+
+        StringBuilder sb = new StringBuilder();
+
+        if (fn.length() >= 3) {
+            sb.append(fn.substring(0, 3).toUpperCase());
+        } else {
+            sb.append(fn.toUpperCase());
+            for (int i = 0; i < 3 - fn.length(); i++) {
+                sb.append('X');
+            }
+        }
+
+        if (ln.length() >= 3) {
+            sb.append(ln.substring(0, 3).toUpperCase());
+        } else {
+            sb.append(ln.toUpperCase());
+            for (int i = 0; i < 3 - ln.length(); i++) {
+                sb.append('X');
+            }
+        }
+
+        sb.append(randNum);
+        return sb.toString();
     }
     public static boolean isInvalidDouble(Double d) {
         if (d == null || d.isNaN()) {

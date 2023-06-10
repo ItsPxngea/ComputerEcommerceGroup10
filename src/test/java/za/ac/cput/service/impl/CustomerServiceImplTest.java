@@ -1,38 +1,40 @@
 package za.ac.cput.service.impl;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Cart;
+import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CartFactory;
-
+import za.ac.cput.factory.CustomerFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class CartServiceImplTest {
+class CustomerServiceImplTest {
 
-    private static CartServiceImpl service = CartServiceImpl.getService();
+    private static CustomerServiceImpl service = CustomerServiceImpl.getService();
 
-    private static Cart cart = CartFactory.buildCart("GTX850", 5, 4500.00);
+    private static Customer customer = CustomerFactory.buildCustomer("David", "Ga", "gd@gmail.com", "DavGar2002BMW");
 
     @Test
     void a_create() {
-        Cart created = service.create(cart);
-        assertEquals(cart.getCartID(), created.getCartID());
+        Customer created = service.create(customer);
+        assertEquals(customer.getCustomerID(), created.getCustomerID());
         System.out.println("Create: " + created);
     }
 
     @Test
     void b_read() {
-        Cart read = service.read(cart);
+        Customer read = service.read(customer);
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @Test
     void c_update() {
-        Cart updated = new Cart.Builder().copy(cart)
-                .setProductQuantity(2)
-                .setProductPrice(4000)
+        Customer updated = new Customer.Builder().copy(customer)
+                .setLastName("Garrancho")
                 .build();
         assertNotNull(service.update(updated));
         System.out.println("Updated: " + updated);
@@ -40,7 +42,7 @@ class CartServiceImplTest {
 
     @Test
     void e_delete() {
-        boolean success = service.delete(cart);
+        boolean success = service.delete(customer);
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }
