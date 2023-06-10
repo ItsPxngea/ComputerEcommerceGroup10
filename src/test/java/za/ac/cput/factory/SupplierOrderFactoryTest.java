@@ -13,7 +13,7 @@ class SupplierOrderFactoryTest {
 
     @Test
     void createSupplierOrder(){
-        SupplierOrder sor = SupplierOrderFactory.buildSupplierOrder("2023-01-06", "2023-01-12", "2023-01-12",
+        SupplierOrder sor = SupplierOrderFactory.buildSupplierOrder("06-01-2022", "12-01-2022", "11-01-2022",
                 120.00, 12120.00, 2, 6000.00, "Int847");
         System.out.println(sor.toString());
         assertNotNull(sor);

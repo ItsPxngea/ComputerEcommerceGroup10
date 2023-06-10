@@ -8,16 +8,16 @@ This is the Pojo + Builder for the Invoice Class.
 Date: 04 - 04 - 2023
  */
 public class Invoice {
-    private String invoiceNumber ;
-    private String productID ;
-    private String storeID ;
-    private String productName ;
-    private String productDescription ;
-    private int quantity ;
-    private Double price ;
-    private Double totalPrice ;
-    private int tax ;
-    private String dateOfTransaction ;
+    public String invoiceNumber ;
+    public String productID ;
+    public String storeID ;
+    public String productName ;
+    public String productDescription ;
+    public int quantity ;
+    public Double price ;
+    public Double totalPrice ;
+    public int tax ;
+    public String dateOfTransaction ;
 
     public Invoice(){}
 
@@ -74,16 +74,16 @@ public class Invoice {
     }
 
     public static class Builder {
-        private String invoiceNumber ;
-        private String productID ;
-        private String storeID ;
-        private String productName ;
-        private String productDescription ;
-        private int quantity ;
-        private Double price ;
-        private Double totalPrice ;
-        private int tax ;
-        private String dateOfTransaction ;
+        public String invoiceNumber ;
+        public String productID ;
+        public String storeID ;
+        public String productName ;
+        public String productDescription ;
+        public int quantity ;
+        public Double price ;
+        public Double totalPrice ;
+        public int tax ;
+        public String dateOfTransaction ;
 
         public Builder setInvoiceNumber(String invoiceNumber) {
             this.invoiceNumber = invoiceNumber;

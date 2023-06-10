@@ -9,7 +9,7 @@ Date: 04 - 04 - 2023
 
 public class InvoiceHistory {
     private String historyID ;
-    private String invoiceNumber ;
+    public String invoiceNumber ;
     private String invoiceDescription ;
 
     public InvoiceHistory() {}
@@ -49,7 +49,7 @@ public class InvoiceHistory {
 
     public static class Builder {
         private String historyID ;
-        private String invoiceNumber ;
+        public String invoiceNumber ;
         private String invoiceDescription ;
 
         public Builder setHistoryId(String historyId){

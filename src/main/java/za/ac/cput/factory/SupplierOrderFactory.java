@@ -1,5 +1,12 @@
 package za.ac.cput.factory;
 
+/*
+    Factory for the SupplierOrder
+    Author: Ethan Andrew Botes (220101299)
+    Date: 6 April 2023
+*/
+
+
 import za.ac.cput.domain.Supplier;
 import za.ac.cput.domain.SupplierOrder;
 import za.ac.cput.util.Helper;
@@ -24,12 +31,9 @@ public class SupplierOrderFactory {
         String supplierID = Helper.generateID();
         String orderID = Helper.generateID();
 
-        Helper.isValidDate(actualDeliveryDate);
-        Helper.isValidDate(expectedDeliveryDate);
-        Helper.isValidDate(dateOfOrder);
-
-
-
+        if(Helper.isValidDate(expectedDeliveryDate)==null || Helper.isValidDate(actualDeliveryDate)==null || Helper.isValidDate(dateOfOrder)==null){
+            return null;
+        }
 
         return new SupplierOrder.Builder()
                 .setSupplierID(supplierID)

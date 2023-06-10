@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/*
+    POJO for the Supplier
+    Author: Ethan Andrew Botes (220101299)
+    Date: 6 April 2023
+*/
+
 import java.util.Objects;
 
 public class Supplier {
