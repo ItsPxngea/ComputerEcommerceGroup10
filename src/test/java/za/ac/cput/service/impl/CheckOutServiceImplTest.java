@@ -9,9 +9,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.CheckOut;
-import za.ac.cput.domain.PreBuilt;
 import za.ac.cput.factory.CheckOutFactory;
-import za.ac.cput.factory.PreBuiltFactory;
 
 
 import static org.junit.jupiter.api.Assertions.*;
