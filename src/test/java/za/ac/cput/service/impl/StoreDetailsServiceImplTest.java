@@ -1,7 +1,5 @@
 package za.ac.cput.service.impl;
-/*
-Author: Hanno Visser Immelman 221074414
-*/
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -9,6 +7,12 @@ import za.ac.cput.domain.StoreDetails;
 import za.ac.cput.factory.StoreDetailsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/*
+    Author: Hanno Visser Immelman 221074414
+    This is the test class StoreDetailsServiceImpl
+    Date: 10 - 06 - 2023
+*/
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class StoreDetailsServiceImplTest{

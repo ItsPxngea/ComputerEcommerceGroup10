@@ -1,6 +1,6 @@
 package za.ac.cput.repository;
 /*
-    Author: David Garrncho
+    Author: David Garrancho
     This is the test class for Cart Repository
     Date: 06 - 04 - 2022
  */

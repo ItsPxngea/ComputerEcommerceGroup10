@@ -5,7 +5,11 @@ import za.ac.cput.repository.CustomerRepository;
 import za.ac.cput.service.CustomerService;
 
 import java.util.Set;
-
+/*
+Author: Alexander Draai - 220118744
+This is the implementation for the service InvoiceServiceImpl.java
+Date: 10 - 06 - 2023
+ */
 public class CustomerServiceImpl implements CustomerService {
 
 

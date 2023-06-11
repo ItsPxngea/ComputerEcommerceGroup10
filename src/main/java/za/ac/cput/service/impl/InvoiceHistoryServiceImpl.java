@@ -5,7 +5,11 @@ import za.ac.cput.repository.InvoiceHistoryRepository;
 import za.ac.cput.service.InvoiceHistoryService;
 
 import java.util.Set;
-
+/*
+Author: Alexander Draai - 220118744
+This is the implementation for the service InvoiceHistoryServiceImpl.java
+Date: 10 - 06 - 2023
+ */
 public class InvoiceHistoryServiceImpl implements InvoiceHistoryService {
 
     private static InvoiceHistoryService serivce ;
