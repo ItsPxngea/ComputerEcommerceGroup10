@@ -1,6 +1,6 @@
 package za.ac.cput.service;
 /* BundleService.java
- Entity for the BundleService
+ Service layer for the BundleService
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
