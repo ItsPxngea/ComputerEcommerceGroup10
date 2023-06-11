@@ -7,6 +7,13 @@ import za.ac.cput.service.InvoiceService;
 
 import java.util.Set;
 
+/*
+    InvoiceServiceImpl.java
+    Author: Alexander Draai - 220118744
+    This is the implementation for the service InvoiceHistoryServiceImpl.java
+    Date: 10 - 06 - 2023
+ */
+
 public class InvoiceServiceImpl implements InvoiceService {
 
     private static InvoiceServiceImpl service ;

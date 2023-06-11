@@ -1,12 +1,17 @@
 package za.ac.cput.service.impl;
-/*
-Author: Hanno Visser Immelman 221074414
-*/
+
 import za.ac.cput.domain.StoreDetails;
 import za.ac.cput.repository.StoreDetailsRepository;
 import za.ac.cput.service.StoreDetailsService;
 
 import java.util.Set;
+
+/*
+    StoreDetailsServiceImpl.java
+    Author: Hanno Visser Immelman 221074414
+    This is the implementation for the service StoreDetailsService.java
+    Date: 10 - 06 - 2023
+ */
 
 public class StoreDetailsServiceImpl implements StoreDetailsService {
     private static StoreDetailsServiceImpl service = null;
