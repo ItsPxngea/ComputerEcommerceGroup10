@@ -1,6 +1,6 @@
 package za.ac.cput.service.impl;
 /* ProductServiceImpl.java
- Entity for the Bundle
+ This is the implementation for the service ProductServiceImpl.java
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
