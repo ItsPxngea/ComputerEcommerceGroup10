@@ -24,7 +24,6 @@ public class BundleFactory {
             return null;
         }
 
-
         if(Helper.isValidDate(reviewDate)==null){
             return null;
         }
