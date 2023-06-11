@@ -18,6 +18,7 @@ import za.ac.cput.factory.EnquiryFactory;
 class EnquiryServiceImplTest {
     private static EnquiryServiceImpl service = EnquiryServiceImpl.getService();
 
+
     private static Enquiry enquiry = EnquiryFactory.buildEnquiry("1254574", "Motherboard Broken", "Computer does not turn on", "Motherboard does not seem to power the CPU");
 
     @Test

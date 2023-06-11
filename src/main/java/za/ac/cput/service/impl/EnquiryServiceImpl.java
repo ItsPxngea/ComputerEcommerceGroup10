@@ -32,7 +32,7 @@ public class EnquiryServiceImpl implements EnquiryService {
 
     @Override
     public Enquiry read(Enquiry id){
-        return repository.read(id.getCustomerID());
+        return repository.read(id.getEnquiryID());
     }
 
     @Override
