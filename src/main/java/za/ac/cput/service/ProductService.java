@@ -1,6 +1,6 @@
 package za.ac.cput.service;
 /* ProductService.java
- Entity for the ProductService
+ Service layer for the ProductService
  Author: Reece Bergstedt - 221075240
  Date: 11 June 2023
 */
