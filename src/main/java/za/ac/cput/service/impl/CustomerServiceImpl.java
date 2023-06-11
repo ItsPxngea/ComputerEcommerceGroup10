@@ -6,9 +6,10 @@ import za.ac.cput.service.CustomerService;
 
 import java.util.Set;
 /*
-Author: Alexander Draai - 220118744
-This is the implementation for the service InvoiceServiceImpl.java
-Date: 10 - 06 - 2023
+    CustomerServiceImpl.java
+    Author: David Henriques Garrancho 221475982
+    This is the implementation for the service CustomerService.java
+    Date: 09 - 06 - 2023
  */
 public class CustomerServiceImpl implements CustomerService {
 

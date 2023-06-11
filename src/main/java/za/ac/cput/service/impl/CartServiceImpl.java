@@ -6,6 +6,13 @@ import za.ac.cput.service.CartService;
 
 import java.util.Set;
 
+/*
+    CartServiceImpl.java
+    Author: David Henriques Garrancho 221475982
+    This is the implementation for the service CartService.java
+    Date: 09 - 06 - 2023
+ */
+
 public class CartServiceImpl implements CartService {
 
     private static CartServiceImpl service = null;
