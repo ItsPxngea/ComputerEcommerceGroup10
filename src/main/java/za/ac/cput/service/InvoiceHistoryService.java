@@ -5,9 +5,9 @@ import za.ac.cput.domain.InvoiceHistory;
 
 import java.util.Set;
 /*
-Author: Alexander Draai - 220118744
-This is the Service for InvoiceHistoryService.java
-Date: 10 - 06 - 2023
+    Author: Alexander Draai - 220118744
+    This is the Service for InvoiceHistoryService.java
+    Date: 10 - 06 - 2023
  */
 public interface InvoiceHistoryService extends IService<InvoiceHistory, String>{
     Set<InvoiceHistory> getAll();
