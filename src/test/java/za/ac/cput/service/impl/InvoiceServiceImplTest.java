@@ -8,6 +8,11 @@ import za.ac.cput.factory.InvoiceFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+    Author: Alexander Draai - 220118744
+    This is the test class InvoiceServiceImpl
+    Date: 10 - 06 - 2023
+ */
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class InvoiceServiceImplTest {
 
