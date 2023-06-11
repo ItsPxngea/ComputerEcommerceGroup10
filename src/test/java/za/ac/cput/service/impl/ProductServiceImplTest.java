@@ -1,6 +1,6 @@
 package za.ac.cput.service.impl;
 /* ProductServiceImpl.java
- Entity for the ProductService
+ This is the test class ProductService
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
