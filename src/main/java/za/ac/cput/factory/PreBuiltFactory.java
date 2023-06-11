@@ -15,9 +15,18 @@ import za.ac.cput.util.Helper;
 import java.util.Date;
 
 public class PreBuiltFactory {
-    public static PreBuilt buildPreBuilt(String productName, String reviewComment, String reviewRating, Date reviewDate, String buildCategory, String buildType, String buildWarranty, double buildPrice) {
-        if (Helper.isNullOrEmpty(productName) || (Helper.isNullOrEmpty(reviewComment)) || (Helper.isNullOrEmpty(reviewRating)) || Helper.isNullOrEmpty(buildCategory) || Helper.isNullOrEmpty(buildCategory) || Helper.isNullOrEmpty(buildType) || Helper.isNullOrEmpty(buildWarranty) || Helper.isNullOrEmpty(buildType) ||  Helper.isInvalidDouble(buildPrice)){
+    public static PreBuilt buildPreBuilt(String productName, String reviewComment, String reviewRating, String reviewDate, String buildCategory, String buildType, String buildWarranty, double buildPrice) {
 
+        if (Helper.isNullOrEmpty(productName) || Helper.isNullOrEmpty(reviewComment) ||
+            Helper.isNullOrEmpty(reviewRating) || Helper.isNullOrEmpty(buildCategory) ||
+            Helper.isNullOrEmpty(buildCategory) || Helper.isNullOrEmpty(buildType) ||
+            Helper.isNullOrEmpty(buildWarranty) || Helper.isNullOrEmpty(buildType) ||
+            Helper.isInvalidDouble(buildPrice)) {
+
+            return null;
+        }
+
+        if(Helper.isValidDate(reviewDate)==null){
             return null;
         }
 

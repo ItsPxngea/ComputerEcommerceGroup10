@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Invoice;
 import static org.junit.jupiter.api.Assertions.*;
 /*
-Author: Alexander Draai - 220118744
-This is the test class for invoiceFactory
-Date: 04 - 02 - 2023
+    Author: Alexander Draai - 220118744
+    This is the test class for invoiceFactory
+    Date: 04 - 02 - 2023
  */
 class InvoiceFactoryTest {
 
@@ -14,7 +14,7 @@ class InvoiceFactoryTest {
     void createInvoice() throws Exception {
         Invoice invoice = InvoiceFactory.buildInvoice("PR103","CPT902","GTX 1660 Super",
                                                 "Graphics card manufactured by NVIDIA", 1,
-                                                    12900.00,14835.00,15,"03-04-2023");
+                                                    12900.00,14835.00,15,"28-02-2023");
         System.out.println(invoice.toString());
         assertNotNull(invoice);
     }
@@ -51,7 +51,7 @@ class InvoiceFactoryTest {
     void emptyParameter_Product_Date() throws Exception {
         Invoice invoice = InvoiceFactory.buildInvoice("PR103","CPT902","GTX 1660 Super",
                 "", 1,
-                12900.00,14835.00,15,"");
+                12900.00,14835.00,15,"29-02-2023");
         assertNull(invoice);
     }
 

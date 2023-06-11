@@ -1,16 +1,15 @@
 package za.ac.cput.domain;
 
-/* Cart.java
-POJO for the Cart
-Author: David Henriques Garrancho (221475982)
-Date: 20 March 2023
+/*
+    POJO for the Cart
+    Author: David Henriques Garrancho (221475982)
+    Date: 20 March 2023
 */
 
 import java.util.Objects;
-
 public class Cart {
     private String cartID;
-    private String customerID;
+    public String customerID;
     public String productID;
     public String productName;
     public int productQuantity;
@@ -69,7 +68,7 @@ public class Cart {
     }
 
     private Cart(Cart.Builder b){
-        this.cartID = b.customerID;
+        this.cartID = b.cartID;
         this.customerID = b.customerID;
         this.productID = b.productID;
         this.productName = b.productName;
@@ -79,7 +78,7 @@ public class Cart {
 
     public static class Builder {
         private String cartID;
-        private String customerID;
+        public String customerID;
         public String productID;
         public String productName;
         public int productQuantity;

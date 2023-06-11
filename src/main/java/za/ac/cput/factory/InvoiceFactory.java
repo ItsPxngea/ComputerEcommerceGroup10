@@ -2,8 +2,6 @@ package za.ac.cput.factory;
 
 import za.ac.cput.domain.Invoice;
 import za.ac.cput.util.Helper;
-
-import java.util.Date;
 /*
 Author: Alexander Draai - 220118744
 This is the factory for Invoice Class
@@ -27,7 +25,7 @@ public class InvoiceFactory {
         }
 
         // What do I do with the date provided ?
-        if (Helper.isValidDate(dateOfTransaction) == null ) {
+        if(Helper.isValidDate(dateOfTransaction)==null){
             return null;
         }
 

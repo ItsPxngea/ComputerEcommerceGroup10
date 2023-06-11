@@ -23,10 +23,10 @@ public class ProductFactory {
             return null;
         }
 
-
-        if(!Helper.isValidDate2(reviewDate)){
+        if(Helper.isValidDate(reviewDate)==null){
             return null;
         }
+
         String productID = Helper.generateProductID(productName, productType, productCategory);
 
         return new Product.Builder().setProductID(productID)

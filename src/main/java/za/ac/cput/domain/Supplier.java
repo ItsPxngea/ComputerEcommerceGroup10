@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/*
+    POJO for the Supplier
+    Author: Ethan Andrew Botes (220101299)
+    Date: 6 April 2023
+*/
+
 import java.util.Objects;
 
 public class Supplier {
@@ -11,13 +17,8 @@ public class Supplier {
     private String supplierAddress;
     private String supplierProductLine;
 
-    public Supplier(String supplierID, String supplierCompanyName, String supplierTel, String supplierEmail, String supplierAddress, String supplierProductLine) {
-        this.supplierID = supplierID;
-        this.supplierCompanyName = supplierCompanyName;
-        this.supplierTel = supplierTel;
-        this.supplierEmail = supplierEmail;
-        this.supplierAddress = supplierAddress;
-        this.supplierProductLine = supplierProductLine;
+    public Supplier() {
+
     }
 
     public String getSupplierID() {

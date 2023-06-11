@@ -12,7 +12,7 @@ public class CheckOut {
     public String customerID;
     public String productID;
     public String productName;
-    public String productQuantity;
+    public int productQuantity;
     public double productPrice;
     public double totalPrice;
     public double tax;
@@ -33,7 +33,7 @@ public class CheckOut {
         return productName;
     }
 
-    public String getProductQuantity() {
+    public int getProductQuantity() {
         return productQuantity;
     }
 
@@ -49,11 +49,12 @@ public class CheckOut {
         return tax;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CheckOut checkOut)) return false;
-        return Double.compare(checkOut.productPrice, productPrice) == 0 && Double.compare(checkOut.totalPrice, totalPrice) == 0 && Double.compare(checkOut.tax, tax) == 0 && checkOutID.equals(checkOut.checkOutID) && customerID.equals(checkOut.customerID) && productID.equals(checkOut.productID) && productName.equals(checkOut.productName) && productQuantity.equals(checkOut.productQuantity);
+        return productQuantity == checkOut.productQuantity && Double.compare(checkOut.productPrice, productPrice) == 0 && Double.compare(checkOut.totalPrice, totalPrice) == 0 && Double.compare(checkOut.tax, tax) == 0 && checkOutID.equals(checkOut.checkOutID) && customerID.equals(checkOut.customerID) && productID.equals(checkOut.productID) && productName.equals(checkOut.productName);
     }
 
     @Override
@@ -82,7 +83,7 @@ public class CheckOut {
         public String customerID;
         public String productID;
         public String productName;
-        public String productQuantity;
+        public int productQuantity;
         public double productPrice;
         public double totalPrice;
         public double tax;
@@ -108,7 +109,7 @@ public class CheckOut {
             return this;
         }
 
-        public CheckOut.Builder setProductQuantity(String productQuantity) {
+        public CheckOut.Builder setProductQuantity(int productQuantity) {
             this.productQuantity = productQuantity;
             return this;
         }
