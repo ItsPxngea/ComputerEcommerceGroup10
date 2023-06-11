@@ -5,7 +5,6 @@ CheckOutServiceImpl.java
 Author: Michael Daniel Johnson, 221094040
 Date: 11/06/2023
 */
-import za.ac.cput.domain.CheckOut;
 import za.ac.cput.domain.PreBuilt;
 import za.ac.cput.repository.PreBuiltRepository;
 import za.ac.cput.service.PreBuiltService;
