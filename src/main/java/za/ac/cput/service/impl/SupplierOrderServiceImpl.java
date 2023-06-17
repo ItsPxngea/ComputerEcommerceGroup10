@@ -1,7 +1,6 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.domain.SupplierOrder;
-import za.ac.cput.repository.SupplierOrderRepository;
+import za.ac.cput.repository.impl.SupplierOrderRepositoryImpl;
 import za.ac.cput.service.SupplierOrderService;
 
 import java.util.Set;
@@ -14,10 +13,10 @@ Date 11/06/2023
 public class SupplierOrderServiceImpl implements SupplierOrderService {
 
     private static SupplierOrderServiceImpl service = null;
-    private SupplierOrderRepository repository = null;
+    private SupplierOrderRepositoryImpl repository = null;
     private SupplierOrderServiceImpl(){
         if(repository == null){
-            repository = SupplierOrderRepository.getRepository();
+            repository = SupplierOrderRepositoryImpl.getRepository();
         }
     }
 
@@ -30,27 +29,27 @@ public class SupplierOrderServiceImpl implements SupplierOrderService {
     }
 
     @Override
-    public SupplierOrder create(SupplierOrder supplierOrder){
+    public za.ac.cput.domain.SupplierOrder create(za.ac.cput.domain.SupplierOrder supplierOrder){
         return repository.create(supplierOrder);
     }
 
     @Override
-    public SupplierOrder read(SupplierOrder orderID){
-        return repository.read(orderID.getOrderID());
+    public za.ac.cput.domain.SupplierOrder read(String id){
+        return repository.read(id);
     }
 
     @Override
-    public  SupplierOrder update(SupplierOrder supplierOrder){
+    public za.ac.cput.domain.SupplierOrder update(za.ac.cput.domain.SupplierOrder supplierOrder){
         return repository.update(supplierOrder);
     }
 
     @Override
-    public boolean delete(SupplierOrder orderID){
-        return repository.delete(orderID.getOrderID());
+    public boolean delete(String id){
+        return repository.delete(id);
     }
 
     @Override
-    public Set<SupplierOrder> getAll(){
+    public Set<za.ac.cput.domain.SupplierOrder> getAll(){
         return repository.getAll();
     }
 }

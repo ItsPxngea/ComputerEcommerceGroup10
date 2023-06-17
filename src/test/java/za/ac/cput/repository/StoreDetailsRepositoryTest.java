@@ -6,32 +6,32 @@ package za.ac.cput.repository;
  */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.StoreDetails;
 import za.ac.cput.factory.StoreDetailsFactory;
+import za.ac.cput.repository.impl.StoreDetailsRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class StoreDetailsRepositoryTest {
-    private static StoreDetailsRepository repository = StoreDetailsRepository.getRepository();
-    private static StoreDetails sd = StoreDetailsFactory.buildStoreDetails("M computers","69 Nice Street, Cape Town","0988422548","MComp@gmail.com");
+    private static StoreDetailsRepositoryImpl repository = StoreDetailsRepositoryImpl.getRepository();
+    private static za.ac.cput.domain.StoreDetails sd = StoreDetailsFactory.buildStoreDetails("M computers","69 Nice Street, Cape Town","0988422548","MComp@gmail.com");
 
     @org.junit.jupiter.api.Test
     void a_create() {
-        StoreDetails createSD = repository.create(sd);
+        za.ac.cput.domain.StoreDetails createSD = repository.create(sd);
         assertEquals(sd.getStoreID(),createSD.getStoreID());
         System.out.println("Create: " + createSD);
     }
 
     @org.junit.jupiter.api.Test
     void b_read() {
-        StoreDetails readSD = repository.read(sd.getStoreID());
+        za.ac.cput.domain.StoreDetails readSD = repository.read(sd.getStoreID());
         assertNotNull(readSD);
         System.out.println("Read: " + readSD);
     }
 
     @org.junit.jupiter.api.Test
     void c_update() {
-        StoreDetails updateSD = new StoreDetails.Builder().copy(sd)
+        za.ac.cput.domain.StoreDetails updateSD = new za.ac.cput.domain.StoreDetails.Builder().copy(sd)
                 .setStoreTel("072589652")
                 .build();
         assertNotNull(repository.update(updateSD));

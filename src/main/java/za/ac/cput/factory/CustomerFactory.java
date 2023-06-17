@@ -9,26 +9,35 @@ Date: 20 March 2023
 import za.ac.cput.domain.Customer;
 import za.ac.cput.util.Helper;
 
+
 public class CustomerFactory {
 
-    public static Customer buildCustomer(String firstName, String lastName, String email, String password){
-        if(Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(password)){
-            return null;
-        }
+    public static Customer buildCustomer(){
 
-        if(!Helper.isValidEmail(email)){
-            return null;
-        }
-
-        String customerID = Helper.generateCustomerID(firstName, lastName);
+        String customerID = Helper.generateID();
 
         return new Customer.Builder().setCustomerID(customerID)
+                .build();
+    }
+
+    public static Customer buildCustomer(String firstName, String lastName, String email, String password) {
+        if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(password)) {
+            return null;
+        }
+
+        if (!Helper.isValidEmail(email)) {
+            return null;
+        }
+
+        String customerID = Helper.generateID();
+
+        return new Customer.Builder()
+                .setCustomerID(customerID)
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(email)
                 .setPassword(password)
                 .build();
     }
-
 
 }

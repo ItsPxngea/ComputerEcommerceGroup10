@@ -12,8 +12,6 @@ Date: 04/04/2023
 import za.ac.cput.domain.PreBuilt;
 import za.ac.cput.util.Helper;
 
-import java.util.Date;
-
 public class PreBuiltFactory {
     public static PreBuilt buildPreBuilt(String productName, String reviewComment, String reviewRating, String reviewDate, String buildCategory, String buildType, String buildWarranty, double buildPrice) {
 

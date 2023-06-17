@@ -31,7 +31,7 @@ class EnquiryServiceImplTest {
 
     @Test
     void b_read() {
-        Enquiry read = service.read(enquiry);
+        Enquiry read = service.read(enquiry.getEnquiryID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
@@ -47,7 +47,7 @@ class EnquiryServiceImplTest {
 
     @Test
     void e_delete() {
-        boolean success = service.delete(enquiry);
+        boolean success = service.delete(enquiry.getEnquiryID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }

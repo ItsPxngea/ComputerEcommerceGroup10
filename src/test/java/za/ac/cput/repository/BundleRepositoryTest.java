@@ -6,34 +6,34 @@ package za.ac.cput.repository;
 */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.Bundle;
 import za.ac.cput.factory.BundleFactory;
+import za.ac.cput.repository.impl.BundleRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class BundleRepositoryTest {
 
-    private static BundleRepository repository = BundleRepository.getRepository();
-    private static Bundle bundle = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",
+    private static BundleRepositoryImpl repository = BundleRepositoryImpl.getRepository();
+    private static za.ac.cput.domain.Bundle bundle = BundleFactory.buildBundle("Ryzen Bundle", "Gaming Pc", "Complete ryzen only pc",
             1, "2 Years", "Gaming", "Great System, Great Service", "06-04-2023", "4/5", 2000.00, "Ryzen Setup");
 
     @org.junit.jupiter.api.Test
     void a_create() {
-        Bundle created = repository.create(bundle);
+        za.ac.cput.domain.Bundle created = repository.create(bundle);
         assertEquals(bundle.getBundleID(), created.getBundleID());
         System.out.println("Create: " + created);
     }
 
     @org.junit.jupiter.api.Test
     void b_read() {
-        Bundle read = repository.read(bundle.getBundleID());
+        za.ac.cput.domain.Bundle read = repository.read(bundle.getBundleID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @org.junit.jupiter.api.Test
     void c_update() {
-        Bundle updated = new Bundle.Builder().copy(bundle)
+        za.ac.cput.domain.Bundle updated = new za.ac.cput.domain.Bundle.Builder().copy(bundle)
                 .setBundleQuantity(2)
                 .setBundlePrice(4000)
                 .build();

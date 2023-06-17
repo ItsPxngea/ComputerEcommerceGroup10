@@ -5,11 +5,16 @@ package za.ac.cput.domain;
  Date: 22 March 2023
 */
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
 import java.util.Objects;
-import java.util.Date;
 
-
-public class Product {
+@Embeddable
+@Entity
+public class Product implements Serializable {
 
     private String productType;
     private String productCategory;
@@ -18,13 +23,15 @@ public class Product {
     private String productBrand;
     private double productPrice;
     private String productWarranty;
+
+    @Id
     public String productID;
     public String productName;
     public String reviewComment;
     public String reviewDate;
     public String reviewRating;
 
-    private Product(){
+    public Product(){
 
     }
     public String getProductType() {

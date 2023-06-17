@@ -29,7 +29,7 @@ class ProductServiceImplTest {
 
     @Test
     void b_read() {
-        Product read = productservice.read(product);
+        Product read = productservice.read(product.getProductID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
@@ -46,7 +46,7 @@ class ProductServiceImplTest {
 
     @Test
     void e_delete() {
-        boolean success = productservice.delete(product);
+        boolean success = productservice.delete(product.getProductID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }

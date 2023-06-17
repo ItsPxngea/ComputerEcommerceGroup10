@@ -1,7 +1,6 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.domain.Supplier;
-import za.ac.cput.repository.SupplierRepository;
+import za.ac.cput.repository.impl.SupplierRepositoryImpl;
 import za.ac.cput.service.SupplierService;
 
 import java.util.Set;
@@ -14,12 +13,12 @@ public class SupplierServiceImpl implements SupplierService {
 
     private static SupplierServiceImpl service = null;
 
-    private SupplierRepository repository = null;
+    private SupplierRepositoryImpl repository = null;
 
 
     private SupplierServiceImpl(){
         if(repository == null){
-            repository = SupplierRepository.getRepository();
+            repository = SupplierRepositoryImpl.getRepository();
         }
     }
 
@@ -31,25 +30,25 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier create(Supplier supplier){return repository.create(supplier);}
+    public za.ac.cput.domain.Supplier create(za.ac.cput.domain.Supplier supplier){return repository.create(supplier);}
 
     @Override
-    public Supplier read(Supplier id){
-        return repository.read(id.getSupplierID());
+    public za.ac.cput.domain.Supplier read(String id){
+        return repository.read(id);
     }
 
     @Override
-    public Supplier update(Supplier supplier){
+    public za.ac.cput.domain.Supplier update(za.ac.cput.domain.Supplier supplier){
         return repository.update(supplier);
     }
 
     @Override
-    public boolean delete(Supplier id){
-        return repository.delete(id.getSupplierID());
+    public boolean delete(String id){
+        return repository.delete(id);
     }
 
     @Override
-    public Set<Supplier> getAll(){
+    public Set<za.ac.cput.domain.Supplier> getAll(){
         return repository.getAll();
     }
 

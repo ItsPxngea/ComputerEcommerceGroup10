@@ -6,33 +6,34 @@ package za.ac.cput.repository;
  */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.Enquiry;
 import za.ac.cput.factory.EnquiryFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import za.ac.cput.repository.impl.EnquiryRepositoryImpl;
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class EnquiryRepositoryTest {
-    private static EnquiryRepository repository = EnquiryRepository.getRepository();
-    private static Enquiry enquiry = EnquiryFactory.buildEnquiry("1254574","Motherboard Broken","Computer does not turn on","Motherboard does not seem to power the CPU");
+    private static EnquiryRepositoryImpl repository = EnquiryRepositoryImpl.getRepository();
+    private static za.ac.cput.domain.Enquiry enquiry = EnquiryFactory.buildEnquiry("1254574","Motherboard Broken","Computer does not turn on","Motherboard does not seem to power the CPU");
 
     @Test
     void a_create() {
-        Enquiry createE = repository.create(enquiry);
+        za.ac.cput.domain.Enquiry createE = repository.create(enquiry);
         assertEquals(enquiry.getEnquiryID(),createE.getEnquiryID());
         System.out.println("Create: " + createE); 
     }
 
     @Test
     void b_read() {
-        Enquiry readE = repository.read(enquiry.getEnquiryID());
+        za.ac.cput.domain.Enquiry readE = repository.read(enquiry.getEnquiryID());
         assertNotNull(readE);
         System.out.println("Read: " + readE);
     }
 
     @Test
     void c_update() {
-        Enquiry updateE = new Enquiry.Builder().copy(enquiry)
+        za.ac.cput.domain.Enquiry updateE = new za.ac.cput.domain.Enquiry.Builder().copy(enquiry)
                 .setEnquiryName("Power supply broken")
                 .setEnquiryBodyContent("Power supply was faulty that caused motherboard not to turn on")
                 .build();
