@@ -4,18 +4,15 @@ package za.ac.cput.util;
     This is the helper class.
     Date: 02 - 04 - 2022
  */
+
 import org.apache.commons.validator.routines.EmailValidator;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
-import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -33,6 +30,7 @@ public class Helper {
         return ev.isValid(email);
     }
     public static String generateID(){return UUID.randomUUID().toString();}
+
     public static String generateProductID(String pn, String pt, String pc){
         Random random = new Random();
         int randNum = random.nextInt(900000) + 100000;

@@ -28,7 +28,7 @@ class PreBuiltServiceImplTest {
 
     @Test
     void b_read() {
-        PreBuilt read =  preBuiltService.read(preBuilt);
+        PreBuilt read =  preBuiltService.read(preBuilt.getBuildID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
@@ -45,7 +45,7 @@ class PreBuiltServiceImplTest {
 
     @Test
     void e_delete() {
-        boolean success = preBuiltService.delete(preBuilt);
+        boolean success = preBuiltService.delete(preBuilt.getBuildID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }

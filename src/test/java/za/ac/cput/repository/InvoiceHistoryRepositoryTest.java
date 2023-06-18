@@ -6,34 +6,35 @@ package za.ac.cput.repository;
  */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.InvoiceHistory;
 import za.ac.cput.factory.InvoiceHistoryFactory;
+import za.ac.cput.repository.impl.InvoiceHistoryImpl;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class InvoiceHistoryRepositoryTest {
 
-    private static InvoiceHistoryRepository repository = InvoiceHistoryRepository.getRepository();
-    private static InvoiceHistory invoiceHistory =
+    private static InvoiceHistoryImpl repository = InvoiceHistoryImpl.getRepository();
+    private static za.ac.cput.domain.InvoiceHistory invoiceHistory =
                    InvoiceHistoryFactory.buildInvoiceHistory("NVIDIA Graphics Card");
 
     @org.junit.jupiter.api.Test
     void a_create() {
-        InvoiceHistory created = repository.create(invoiceHistory);
+        za.ac.cput.domain.InvoiceHistory created = repository.create(invoiceHistory);
         assertEquals(invoiceHistory.getHistoryID(), created.getHistoryID());
         System.out.println("Create: " + created);
     }
 
     @org.junit.jupiter.api.Test
     void b_read() {
-        InvoiceHistory read = repository.read(invoiceHistory.getHistoryID());
+        za.ac.cput.domain.InvoiceHistory read = repository.read(invoiceHistory.getHistoryID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @org.junit.jupiter.api.Test
     void c_update() {
-        InvoiceHistory updated = new InvoiceHistory.Builder().copy(invoiceHistory)
+        za.ac.cput.domain.InvoiceHistory updated = new za.ac.cput.domain.InvoiceHistory.Builder().copy(invoiceHistory)
                 .setInvoiceDescription("Cool graphics card")
                 .build();
         assertNotNull(repository.update(updated));

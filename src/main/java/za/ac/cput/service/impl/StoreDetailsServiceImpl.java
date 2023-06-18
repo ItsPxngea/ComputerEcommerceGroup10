@@ -1,7 +1,6 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.domain.StoreDetails;
-import za.ac.cput.repository.StoreDetailsRepository;
+import za.ac.cput.repository.impl.StoreDetailsRepositoryImpl;
 import za.ac.cput.service.StoreDetailsService;
 
 import java.util.Set;
@@ -15,11 +14,11 @@ import java.util.Set;
 
 public class StoreDetailsServiceImpl implements StoreDetailsService {
     private static StoreDetailsServiceImpl service = null;
-    private StoreDetailsRepository repository = null;
+    private StoreDetailsRepositoryImpl repository = null;
 
     private StoreDetailsServiceImpl(){
         if (repository == null){
-            repository = StoreDetailsRepository.getRepository();
+            repository = StoreDetailsRepositoryImpl.getRepository();
         }
     }
 
@@ -31,27 +30,27 @@ public class StoreDetailsServiceImpl implements StoreDetailsService {
     }
 
     @Override
-    public StoreDetails create(StoreDetails storeDetails){
+    public za.ac.cput.domain.StoreDetails create(za.ac.cput.domain.StoreDetails storeDetails){
         return repository.create(storeDetails);
     }
 
     @Override
-    public StoreDetails read(StoreDetails id){
-        return repository.read(id.getStoreID());
+    public za.ac.cput.domain.StoreDetails read(String id){
+        return repository.read(id);
     }
 
     @Override
-    public StoreDetails update(StoreDetails storeDetails){
+    public za.ac.cput.domain.StoreDetails update(za.ac.cput.domain.StoreDetails storeDetails){
         return repository.update(storeDetails);
     }
 
     @Override
-    public boolean delete(StoreDetails id){
-        return repository.delete(id.getStoreID());
+    public boolean delete(String id){
+        return repository.delete(id);
     }
 
     @Override
-    public Set<StoreDetails> getAll(){
+    public Set<za.ac.cput.domain.StoreDetails> getAll(){
         return repository.getAll();
     }
 }

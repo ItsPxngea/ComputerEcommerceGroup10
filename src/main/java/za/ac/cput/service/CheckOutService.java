@@ -7,7 +7,6 @@ package za.ac.cput.service;
 
 import za.ac.cput.domain.CheckOut;
 
-
 import java.util.Set;
 public interface CheckOutService extends IService<CheckOut, String>{
     Set<CheckOut> getAll();

@@ -7,8 +7,11 @@ package za.ac.cput.factory;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.PreBuilt;
+import za.ac.cput.domain.Product;
 
 class PreBuiltFactoryTest {
+
+    Product p = ProductFactory.buildProduct("RXC260");
 
     @Test
     void createPreBuilt() {

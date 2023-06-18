@@ -6,7 +6,8 @@ package za.ac.cput.repository;
  */
 
 import za.ac.cput.domain.StoreDetails;
+
 import java.util.Set;
-public interface iStoryDetailsRepository {
+public interface StoryDetailsRepository {
     public Set<StoreDetails> getAll();
 }

@@ -1,10 +1,12 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Cart;
 import za.ac.cput.repository.CartRepository;
 import za.ac.cput.service.CartService;
 
-import java.util.Set;
+import java.util.List;
 
 /*
     CartServiceImpl.java
@@ -13,48 +15,44 @@ import java.util.Set;
     Date: 09 - 06 - 2023
  */
 
+@Service
 public class CartServiceImpl implements CartService {
 
-    private static CartServiceImpl service = null;
-    private CartRepository repository = null;
+    private CartRepository repository;
 
-    private CartServiceImpl(){
-        if(repository == null) {
-            repository =  CartRepository.getRepository();
-        }
-    }
-
-    public static CartServiceImpl getService(){
-        if(service == null){
-            service = new CartServiceImpl();
-        }
-        return service;
+    @Autowired
+    private CartServiceImpl(CartRepository repository){
+        this.repository = repository;
     }
 
     @Override
     public Cart create(Cart cart) {
-        Cart readCart = repository.create(cart);
-        return readCart;
+        return this.repository.save(cart);
     }
 
     @Override
-    public Cart read(Cart id) {
-        Cart read = repository.read(id.getCartID());
-        return read;
+    public Cart read(String CartID) {
+        return this.repository.findById(CartID).orElse(null);
     }
 
     @Override
-    public Cart update(Cart cartID) {
-        Cart cartUpdated = repository.update(cartID);
-        return cartUpdated;
+    public Cart update(Cart cart) {
+        if(this.repository.existsById(cart.getCartID()))
+            return this.repository.save(cart);
+        return null;
     }
 
     @Override
-    public boolean delete(Cart cartID) {
-        return repository.delete(cartID.getCartID());
+    public boolean delete(String CartID) {
+        if (this.repository.existsById(CartID)){
+            this.repository.deleteById(CartID);
+            return  true;
+        }
+        return false;
     }
+
     @Override
-    public Set<Cart> getAll() {
-        return repository.getAll();
+    public List<Cart> getAll() {
+        return this.repository.findAll();
     }
 }

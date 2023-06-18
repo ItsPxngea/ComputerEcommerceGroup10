@@ -32,7 +32,7 @@ class SupplierOrderServiceImplTest {
 
     @Test
     void b_read() {
-        SupplierOrder read = service.read(supplierOrder);
+        SupplierOrder read = service.read(supplierOrder.getOrderID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
@@ -48,7 +48,7 @@ class SupplierOrderServiceImplTest {
 
     @Test
     void e_delete(){
-        boolean success = service.delete(supplierOrder);
+        boolean success = service.delete(supplierOrder.getOrderID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }

@@ -30,7 +30,7 @@ class CheckOutServiceImplTest {
 
     @Test
     void b_read() {
-        CheckOut read =  checkOutService.read(checkOut);
+        CheckOut read =  checkOutService.read(checkOut.getCheckOutID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
@@ -47,7 +47,7 @@ class CheckOutServiceImplTest {
 
     @Test
     void e_delete() {
-        boolean success = checkOutService.delete(checkOut);
+        boolean success = checkOutService.delete(checkOut.getCheckOutID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }

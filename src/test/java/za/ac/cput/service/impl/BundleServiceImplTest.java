@@ -29,7 +29,7 @@ class BundleServiceImplTest {
 
     @Test
     void b_read() {
-        Bundle read =  bundleservice.read(bundle);
+        Bundle read =  bundleservice.read(bundle.getBundleID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
@@ -46,7 +46,7 @@ class BundleServiceImplTest {
 
     @Test
     void e_delete() {
-        boolean success = bundleservice.delete(bundle);
+        boolean success = bundleservice.delete(bundle.getBundleID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }

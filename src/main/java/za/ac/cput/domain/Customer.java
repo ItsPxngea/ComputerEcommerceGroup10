@@ -6,16 +6,23 @@ Author: David Henriques Garrancho (221475982)
 Date: 20 March 2023
 */
 
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Customer {
+
+@Entity
+public class Customer implements Serializable {
+
+    @Id
+    @GeneratedValue
     public String customerID;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    private Customer(){
+    public Customer(){
     }
 
     public String getCustomerID() {
