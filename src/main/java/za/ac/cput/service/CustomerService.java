@@ -1,7 +1,6 @@
 package za.ac.cput.service;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.Customer;
 
 import java.util.List;
