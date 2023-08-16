@@ -24,6 +24,14 @@ public class Customer implements Serializable {
     public Customer(){
     }
 
+    private Customer(Builder b){
+        this.customerID = b.customerID;
+        this.firstName = b.firstName;
+        this.lastName = b.lastName;
+        this.email = b.email;
+        this.password = b.password;
+    }
+
     public String getCustomerID() {
         return customerID;
     }
@@ -66,14 +74,6 @@ public class Customer implements Serializable {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
-
-    private Customer(Builder b){
-        this.customerID = b.customerID;
-        this.firstName = b.firstName;
-        this.lastName = b.lastName;
-        this.email = b.email;
-        this.password = b.password;
     }
 
     public static class Builder {
