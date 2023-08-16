@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Product;
-import za.ac.cput.factory.CartFactory;
 import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.factory.ProductFactory;
 
@@ -24,8 +23,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CartControllerTest {
 
-    public static Product product = ProductFactory.buildProduct("GTX850", 4500.00);
-    public static Customer customer = CustomerFactory.buildCustomer();
+    public static Product product = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
+            1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
+    public static Customer customer = CustomerFactory.buildCustomer("Luke",
+            "Ben",
+            "LW@gmail.com",
+            "wufh%2465");
     private static Cart cart = CartFactory.buildCart(customer, product, 3);
 
     @Autowired

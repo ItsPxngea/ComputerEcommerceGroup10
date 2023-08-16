@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class CustomerControllerTest {
 
     private static Customer customer = CustomerFactory.buildCustomer(
-            "Ashton",
-            "Williams",
-            "Aw@gmail.com",
-            "awf24325");
+            "Luke",
+            "Ben",
+            "LW@gmail.com",
+            "wufh%2465");
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -35,9 +35,9 @@ class CustomerControllerTest {
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
-        Customer savedEmployee = postResponse.getBody();
-        System.out.println("Saved data: " + savedEmployee);
-        assertEquals(customer.getCustomerID(), postResponse.getBody().getCustomerID());
+        Customer savedCustomer = postResponse.getBody();
+        System.out.println("Saved data: " + savedCustomer);
+        assertEquals(customer.getFirstName(), postResponse.getBody().getFirstName());
     }
 
     @Test
