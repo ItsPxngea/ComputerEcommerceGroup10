@@ -79,7 +79,6 @@ public class Helper {
         return false;
     }
     public static boolean isInvalidInt(int i) {
-
         return i < 0;
     }
     public static boolean isValidPhoneNumber(String phoneNumber) {

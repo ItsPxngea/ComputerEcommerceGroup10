@@ -12,14 +12,6 @@ import za.ac.cput.util.Helper;
 
 public class CustomerFactory {
 
-    public static Customer buildCustomer(){
-
-        String customerID = Helper.generateID();
-
-        return new Customer.Builder().setCustomerID(customerID)
-                .build();
-    }
-
     public static Customer buildCustomer(String firstName, String lastName, String email, String password) {
         if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(password)) {
             return null;

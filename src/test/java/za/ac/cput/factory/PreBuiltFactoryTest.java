@@ -11,8 +11,6 @@ import za.ac.cput.domain.Product;
 
 class PreBuiltFactoryTest {
 
-    Product p = ProductFactory.buildProduct("RXC260");
-
     @Test
     void createPreBuilt() {
         PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.","5 Stars","29-03-2023","Graphics Card","Gaming","Valid", 4590);

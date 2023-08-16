@@ -1,10 +1,11 @@
+/*
 package za.ac.cput.domain;
 
-/*
+
     POJO for the Cart
     Author: David Henriques Garrancho (221475982)
     Date: 20 March 2023
-*/
+
 
 
 import jakarta.persistence.*;
@@ -19,24 +20,30 @@ public class Cart implements Serializable {
     @GeneratedValue
     private String cartID;
 
-    /*@Embedded
+    @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "productID", column = @Column(name = "customer_customerid")),
-    })*/
-    @ManyToOne
-    public Customer customer;
+    })
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Customer.class)
+    private Customer customer;
 
-    /*@Embedded
+    @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "productName", column = @Column(name = "product_product_name")),
             @AttributeOverride( name = "productPrice", column = @Column(name = "product_product_price")),
-    })*/
-    @ManyToOne
-    public Product product;
+    })
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Product.class)
+    public Product;
 
     public int Quantity;
 
+    public Cart(String cartID) {
+        super();
+        this.cartID = cartID;
+    }
+
     public Cart() {
+
     }
 
     public String getCartID() {
@@ -128,4 +135,4 @@ public class Cart implements Serializable {
         }
     }
 
-}
+} */

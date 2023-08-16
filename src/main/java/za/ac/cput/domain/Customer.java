@@ -15,7 +15,6 @@ import java.util.Objects;
 public class Customer implements Serializable {
 
     @Id
-    @GeneratedValue
     public String customerID;
     private String firstName;
     private String lastName;
