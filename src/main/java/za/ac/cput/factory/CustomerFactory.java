@@ -1,7 +1,7 @@
 package za.ac.cput.factory;
 
 /* CustomerFactory.java
-Factory for the Customer
+Factory for Customer
 Author: David Henriques Garrancho (221475982)
 Date: 20 March 2023
 */

@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Sales.java
+POJO for the Sales
+Author: David Henriques Garrancho (221475982)
+Date: 16 August 2023
+*/
+
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,6 +20,13 @@ public class Sales implements Serializable{
     private Customer customer;
 
     public Sales() {
+    }
+
+    private Sales(Builder b){
+        this.saleID = b.saleID;
+        this.saleDate = b.saleDate;
+        this.totalAmount = b.totalAmount;
+        this.customer = b.customer;
     }
 
     public String getSaleID() {
@@ -55,14 +68,8 @@ public class Sales implements Serializable{
                 '}';
     }
 
-    private Sales(Builder b){
-        this.saleID = b.saleID;
-        this.saleDate = b.saleDate;
-        this.totalAmount = b.totalAmount;
-        this.customer = b.customer;
-    }
 
-    private static class Builder {
+    public static class Builder {
         private String saleID;
         private String saleDate;
         private Double totalAmount;
