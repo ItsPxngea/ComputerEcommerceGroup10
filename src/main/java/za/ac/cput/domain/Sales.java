@@ -1,11 +1,16 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Sales {
+@Entity
+public class Sales implements Serializable{
+    @Id
     private String saleID;
     private String saleDate;
     private Double totalAmount;
+    @ManyToOne
     private Customer customer;
 
     public Sales() {
