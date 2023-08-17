@@ -1,8 +1,9 @@
 package za.ac.cput.service;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import za.ac.cput.domain.Customer;
 
-import java.util.Set;
+import java.util.List;
 
 /*
     CustomerService.java
@@ -11,7 +12,6 @@ import java.util.Set;
     Date: 09 - 06 - 2023
  */
 
-public interface CustomerService extends IService<Customer, String>{
-
-    Set<Customer> getAll();
+public interface CustomerService extends IService<Customer, String> {
+    List<Customer> getAll();
 }

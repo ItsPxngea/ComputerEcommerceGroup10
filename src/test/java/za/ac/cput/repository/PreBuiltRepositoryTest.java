@@ -7,34 +7,34 @@ package za.ac.cput.repository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.PreBuilt;
 import za.ac.cput.factory.PreBuiltFactory;
+import za.ac.cput.repository.impl.PreBuiltRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class PreBuiltRepositoryTest {
 
-    private static PreBuiltRepository repo = PreBuiltRepository.getRepo();
-    private static PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.", "5 Stars","29-03-2023", "Graphics Card", "Gaming", "Valid", 4590);
+    private static PreBuiltRepositoryImpl repo = PreBuiltRepositoryImpl.getRepo();
+    private static za.ac.cput.domain.PreBuilt p = PreBuiltFactory.buildPreBuilt("GTX500", "Your product is good.", "5 Stars","29-03-2023", "Graphics Card", "Gaming", "Valid", 4590);
 
     @Test
     void a_create() {
-        PreBuilt created = repo.create(p);
+        za.ac.cput.domain.PreBuilt created = repo.create(p);
         assertEquals(p.getBuildID(), p.getBuildID());
         System.out.println("Create: " + created);
     }
 
     @Test
     void b_read() {
-        PreBuilt read = repo.read(p.getBuildID());
+        za.ac.cput.domain.PreBuilt read = repo.read(p.getBuildID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @Test
     void c_update() {
-        PreBuilt updated = new PreBuilt.Builder().copy(p)
+        za.ac.cput.domain.PreBuilt updated = new za.ac.cput.domain.PreBuilt.Builder().copy(p)
                 .setBuildType("Commercial")
                 .setBuildWarranty("invalid")
                 .build();

@@ -4,19 +4,18 @@ package za.ac.cput.service.impl;
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
-import za.ac.cput.domain.Bundle;
-import za.ac.cput.repository.BundleRepository;
+import za.ac.cput.repository.impl.BundleRepositoryImpl;
 import za.ac.cput.service.BundleService;
 
 import java.util.Set;
 
 public class BundleServiceImpl implements BundleService{
     private static BundleServiceImpl service = null;
-    private BundleRepository repository = null;
+    private BundleRepositoryImpl repository = null;
 
     private BundleServiceImpl(){
         if(repository == null){
-            repository = BundleRepository.getRepository();
+            repository = BundleRepositoryImpl.getRepository();
         }
     }
 
@@ -28,27 +27,27 @@ public class BundleServiceImpl implements BundleService{
     }
 
     @Override
-    public Bundle create(Bundle bundle) {
+    public za.ac.cput.domain.Bundle create(za.ac.cput.domain.Bundle bundle) {
         return repository.create(bundle);
     }
 
     @Override
-    public Bundle read(Bundle id) {
-        return repository.read(id.getBundleID());
+    public za.ac.cput.domain.Bundle read(String id) {
+        return repository.read(id);
     }
 
     @Override
-    public Bundle update(Bundle bundle) {
+    public za.ac.cput.domain.Bundle update(za.ac.cput.domain.Bundle bundle) {
         return repository.update(bundle);
     }
 
     @Override
-    public boolean delete(Bundle id) {
-        return repository.delete(id.getBundleID());
+    public boolean delete(String id) {
+        return repository.delete(id);
     }
 
     @Override
-    public Set<Bundle> getAll() {
+    public Set<za.ac.cput.domain.Bundle> getAll() {
         return repository.getAll();
     }
 }

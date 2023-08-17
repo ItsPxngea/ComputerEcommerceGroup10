@@ -29,7 +29,7 @@ class StoreDetailsServiceImplTest{
 
     @Test
     void b_read(){
-        StoreDetails read = service.read(storeDetails);
+        StoreDetails read = service.read(storeDetails.getStoreID());
         assertNotNull(read);
         System.out.println("Read: "+read);
     }
@@ -45,7 +45,7 @@ class StoreDetailsServiceImplTest{
 
     @Test
     void e_delete(){
-        boolean success = service.delete(storeDetails);
+        boolean success = service.delete(storeDetails.getStoreID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }

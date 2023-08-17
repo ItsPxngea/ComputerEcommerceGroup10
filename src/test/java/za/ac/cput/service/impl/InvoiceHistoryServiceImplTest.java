@@ -31,7 +31,7 @@ class InvoiceHistoryServiceImplTest {
     }
     @Test
     void b_read(){
-        InvoiceHistory invoiceRead = serviceHistory.read(invoiceHistory_One);
+        InvoiceHistory invoiceRead = serviceHistory.read(invoiceHistory_One.getHistoryID());
         assertNotNull(invoiceRead);
         System.out.println("Read -> " + invoiceRead);
     }
@@ -45,7 +45,7 @@ class InvoiceHistoryServiceImplTest {
     }
     @Test
     void d_delete(){
-        boolean success = serviceHistory.delete(invoiceHistory_One);
+        boolean success = serviceHistory.delete(invoiceHistory_One.getHistoryID());
         assertTrue(success);
         System.out.println("Success -> " + success);
     }

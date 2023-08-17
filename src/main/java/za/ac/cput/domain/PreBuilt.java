@@ -15,6 +15,7 @@ public class PreBuilt {
     private String buildDescription;
     private double buildPrice;
     private String buildWarranty;
+
     public String productID;
     public String productName;
     public String reviewComment;

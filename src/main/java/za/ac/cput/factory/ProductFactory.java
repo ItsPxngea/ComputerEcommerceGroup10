@@ -4,6 +4,7 @@ package za.ac.cput.factory;
  Author: Reece Bergstedt - 221075240
  Date: 22 March 2023
 */
+
 import za.ac.cput.domain.Product;
 import za.ac.cput.util.Helper;
 
@@ -44,6 +45,7 @@ public class ProductFactory {
                 .setReviewRating(reviewRating)
                 .build();
     }
+
 }
 
 

@@ -7,22 +7,23 @@ package za.ac.cput.repository;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.Supplier;
 import za.ac.cput.factory.SupplierFactory;
+import za.ac.cput.repository.impl.SupplierRepositoryImpl;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class SupplierRepositoryTest {
 
-    private static SupplierRepository repository = SupplierRepository.getRepository();
-    private static Supplier supplier = SupplierFactory.buildSupplier("ryzen@technologies.com", "0214580649",
+    private static SupplierRepositoryImpl repository = SupplierRepositoryImpl.getRepository();
+    private static za.ac.cput.domain.Supplier supplier = SupplierFactory.buildSupplier("ryzen@technologies.com", "0214580649",
             "12 Treebard Close, Sea Point", "2.4 Zen 3 based",
             "Ryzen");
 
 
     @org.junit.jupiter.api.Test
     void a_create() {
-        Supplier created = repository.create(supplier);
+        za.ac.cput.domain.Supplier created = repository.create(supplier);
         assertEquals(supplier.getSupplierID(), created.getSupplierID());
         System.out.println("Create: " + created);
     }
@@ -30,14 +31,14 @@ class SupplierRepositoryTest {
 
     @org.junit.jupiter.api.Test
     void b_read() {
-        Supplier read = repository.read(supplier.getSupplierID());
+        za.ac.cput.domain.Supplier read = repository.read(supplier.getSupplierID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
 
     @org.junit.jupiter.api.Test
     void c_update() {
-        Supplier updated = new Supplier.Builder().copy(supplier)
+        za.ac.cput.domain.Supplier updated = new za.ac.cput.domain.Supplier.Builder().copy(supplier)
                 .setSupplierEmail("technologies@intelsupply.com")
                 .setSupplierTel("0213007322")
                 .setSupplierCompanyName("Intel")
