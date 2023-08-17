@@ -1,1 +1,1 @@
-# ComputerEcommerceGroup10![ReadMe](https://github.com/David-Garrancho/ComputerEcommerceGroup10/assets/126564115/00e31851-8d1a-43cb-b704-1b233874f26f)
+![Computer Ecommerce](https://github.com/David-Garrancho/ComputerEcommerceGroup10/assets/126564115/9f42a500-b3ec-4b86-86ee-f6eadba9a4b1)
