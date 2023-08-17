@@ -1,5 +1,11 @@
 package za.ac.cput.service.impl;
 
+/* SalesServiceImplTest.java
+Test for service implementation for Sales
+Author: David Henriques Garrancho (221475982)
+Date: 16 August 2023
+*/
+
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +27,20 @@ class SalesServiceImplTest {
     @Autowired
     private CustomerRepository customerRepository;
 
-    private static Customer customer = CustomerFactory.buildCustomer("W", "C", "WC@gmail.com", "WC@2002");
+    private static final Customer customer = CustomerFactory.buildTestCustomer(
+            "Test2456",
+            "Luke",
+            "Ben",
+            "LW@gmail.com",
+            "wufh%2465"
+    );
 
-    private static Sales sales = SalesFactory.buildSales("16-08-2023", 4520.00, customer);
+
+    private static final Sales sales = SalesFactory.buildSales(
+            "16-08-2023",
+            4560.00,
+            customer
+    );
 
 
     @Test

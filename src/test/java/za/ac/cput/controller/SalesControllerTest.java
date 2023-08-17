@@ -1,5 +1,11 @@
 package za.ac.cput.controller;
 
+/* SalesControllerTest.java
+Test for Controller for Sales
+Author: David Henriques Garrancho (221475982)
+Date: 16 August 2023
+*/
+
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +27,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class SalesControllerTest {
     private static final Customer customer = CustomerFactory.buildCustomer(
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+            "Harry",
+            "Potter",
+            "PotterH@gmail.com",
+            "WingaurdiamLeviousa"
     );
 
 
