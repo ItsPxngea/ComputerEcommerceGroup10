@@ -37,7 +37,7 @@ class CustomerControllerTest {
         //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
         Customer savedCustomer = postResponse.getBody();
         System.out.println("Saved data: " + savedCustomer);
-        assertEquals(customer.getFirstName(), postResponse.getBody().getFirstName());
+        assertEquals(customer.getCustomerID(), postResponse.getBody().getCustomerID());
     }
 
     @Test
