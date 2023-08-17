@@ -16,7 +16,8 @@ public class Sales implements Serializable{
     private String saleID;
     private String saleDate;
     private Double totalAmount;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customerid",referencedColumnName = "customerid")
     private Customer customer;
 
     public Sales() {
