@@ -1,5 +1,11 @@
 package za.ac.cput.controller;
 
+/* SalesController.java
+Controller for Sales
+Author: David Henriques Garrancho (221475982)
+Date: 16 August 2023
+*/
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Sales;

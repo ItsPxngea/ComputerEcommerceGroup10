@@ -32,4 +32,23 @@ public class CustomerFactory {
                 .build();
     }
 
+    public static Customer buildTestCustomer(String id, String firstName, String lastName, String email, String password) {
+        if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(password) || Helper.isNullOrEmpty(id)) {
+            return null;
+        }
+
+        if (!Helper.isValidEmail(email)) {
+            return null;
+        }
+
+
+        return new Customer.Builder()
+                .setCustomerID(id)
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
+                .setPassword(password)
+                .build();
+    }
+
 }

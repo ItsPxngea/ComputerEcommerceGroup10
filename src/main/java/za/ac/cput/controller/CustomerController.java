@@ -1,5 +1,11 @@
 package za.ac.cput.controller;
 
+/* CustomerController.java
+Controller for Customer
+Author: David Henriques Garrancho (221475982)
+Date: 17 June 2023
+*/
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Customer;

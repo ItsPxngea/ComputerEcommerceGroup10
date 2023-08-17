@@ -1,5 +1,11 @@
 package za.ac.cput.controller;
 
+/* CustomerControllerTest.java
+Test for Controller for Customer
+Author: David Henriques Garrancho (221475982)
+Date: 17 June 2023
+*/
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
