@@ -1,19 +1,24 @@
 package za.ac.cput.domain;
 
-import java.util.Objects;
+import jakarta.persistence.*;
 
-public class Country {
+import java.io.Serializable;
+import java.util.Objects;
+@Entity
+public class Country implements Serializable {
+    @Id
+    @Column(name = "countryid")
     public String ID;
     public String countryName;
 
     public Country() {
     }
 
-    public Country(String ID, String countryName) {
+   /* public Country(String ID, String countryName) {
         this.ID = ID;
         this.countryName = countryName;
     }
-
+*/
     public String getID() {
         return ID;
     }
