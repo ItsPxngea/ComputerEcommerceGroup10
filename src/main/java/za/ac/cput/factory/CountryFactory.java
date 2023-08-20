@@ -1,5 +1,11 @@
 package za.ac.cput.factory;
 
+/* CountryFactory.java
+Factory class for Country.java
+Author: Michael Daniel Johnson 221094040
+Date: 19 August 2023
+*/
+
 import za.ac.cput.domain.Country;
 import za.ac.cput.util.Helper;
 

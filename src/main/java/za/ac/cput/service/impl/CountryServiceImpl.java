@@ -1,5 +1,11 @@
 package za.ac.cput.service.impl;
 
+/* CountryServiceImpl.java
+Implementation class for CountryService.java
+Author: Michael Daniel Johnson 221094040
+Date: 19 August 2023
+*/
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Country;
