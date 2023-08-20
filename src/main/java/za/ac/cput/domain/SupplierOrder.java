@@ -7,14 +7,23 @@ package za.ac.cput.domain;
 */
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class SupplierOrder {
+@Entity
+public class SupplierOrder implements Serializable {
+
 
     public String supplierID;
+
     public String productID;
     public int productQuantity;
     public double productIndividualPrice;
+    @Id
     private String orderID;
     private String dateOfOrder;
     private String expectedDeliveryDate;

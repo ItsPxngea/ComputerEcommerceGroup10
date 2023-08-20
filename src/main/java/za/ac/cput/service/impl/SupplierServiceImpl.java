@@ -1,55 +1,52 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.repository.impl.SupplierRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Supplier;
+import za.ac.cput.repository.SupplierRepository;
 import za.ac.cput.service.SupplierService;
+import java.util.List;
 
-import java.util.Set;
 /*
 Author: Ethan Botes - 220101299
 This is the implementation for the service SupplierService
 Date 11/06/2023
  */
+
+@Service
 public class SupplierServiceImpl implements SupplierService {
 
-    private static SupplierServiceImpl service = null;
+    private SupplierRepository repository;
 
-    private SupplierRepositoryImpl repository = null;
+    @Autowired
+    private SupplierServiceImpl(SupplierRepository repository){this.repository=repository;}
+
+    @Override
+    public Supplier create(Supplier supplier){return this.repository.save(supplier);}
+
+    @Override
+    public Supplier read(String supplierID){return this.repository.findById(supplierID).orElse(null);}
+
+    @Override
+    public Supplier update(Supplier supplier){
+        if(this.repository.existsById((supplier.getSupplierID())))
+            return this.repository.save(supplier);
+        return null;
+    }
 
 
-    private SupplierServiceImpl(){
-        if(repository == null){
-            repository = SupplierRepositoryImpl.getRepository();
+    @Override
+    public boolean delete(String supplierID){
+        if(this.repository.existsById(supplierID)){
+            this.repository.deleteById(supplierID);
+            return true;
         }
-    }
-
-    public static SupplierServiceImpl getService(){
-        if(service == null){
-            service = new SupplierServiceImpl();
-        }
-        return service;
+        return false;
     }
 
     @Override
-    public za.ac.cput.domain.Supplier create(za.ac.cput.domain.Supplier supplier){return repository.create(supplier);}
-
-    @Override
-    public za.ac.cput.domain.Supplier read(String id){
-        return repository.read(id);
-    }
-
-    @Override
-    public za.ac.cput.domain.Supplier update(za.ac.cput.domain.Supplier supplier){
-        return repository.update(supplier);
-    }
-
-    @Override
-    public boolean delete(String id){
-        return repository.delete(id);
-    }
-
-    @Override
-    public Set<za.ac.cput.domain.Supplier> getAll(){
-        return repository.getAll();
+    public List<Supplier> getAll() {
+        return this.repository.findAll();
     }
 
 }

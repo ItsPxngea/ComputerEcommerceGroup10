@@ -8,11 +8,12 @@ Date: 11 - 060 2023
 
 import za.ac.cput.domain.Supplier;
 
+import java.util.List;
 import java.util.Set;
 
 public interface SupplierService extends IService<Supplier, String>{
 
-    Set<Supplier> getAll();
+    List<Supplier> getAll();
 
 
 }

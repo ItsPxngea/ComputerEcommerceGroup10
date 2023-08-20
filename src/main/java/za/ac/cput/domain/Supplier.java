@@ -6,16 +6,23 @@ package za.ac.cput.domain;
     Date: 6 April 2023
 */
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Supplier {
+@Entity
+public class Supplier implements Serializable {
 
+    @Id
     public String supplierID;
     private String supplierCompanyName;
     private String supplierTel;
     private String supplierEmail;
     private String supplierAddress;
-    private String supplierProductLine;
+
 
     public Supplier() {
 
@@ -41,20 +48,21 @@ public class Supplier {
         return supplierAddress;
     }
 
-    public String getSupplierProductLine() {
-        return supplierProductLine;
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Supplier supplier = (Supplier) o;
-        return Objects.equals(supplierID, supplier.supplierID) && Objects.equals(supplierCompanyName, supplier.supplierCompanyName) && Objects.equals(supplierTel, supplier.supplierTel) && Objects.equals(supplierEmail, supplier.supplierEmail) && Objects.equals(supplierAddress, supplier.supplierAddress) && Objects.equals(supplierProductLine, supplier.supplierProductLine);
+        return Objects.equals(supplierID, supplier.supplierID) &&
+                Objects.equals(supplierCompanyName, supplier.supplierCompanyName) &&
+                Objects.equals(supplierTel, supplier.supplierTel) && Objects.equals(supplierEmail, supplier.supplierEmail)
+                && Objects.equals(supplierAddress, supplier.supplierAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(supplierID, supplierCompanyName, supplierTel, supplierEmail, supplierAddress, supplierProductLine);
+        return Objects.hash(supplierID, supplierCompanyName, supplierTel, supplierEmail, supplierAddress);
     }
 
     @Override
@@ -64,9 +72,7 @@ public class Supplier {
                 ", supplierCompanyName='" + supplierCompanyName + '\'' +
                 ", supplierTel='" + supplierTel + '\'' +
                 ", supplierEmail='" + supplierEmail + '\'' +
-                ", supplierAddress='" + supplierAddress + '\'' +
-                ", supplierProductLine='" + supplierProductLine + '\'' +
-                '}';
+                ", supplierAddress='" + supplierAddress + '\'';
     }
 
 
@@ -77,7 +83,7 @@ public class Supplier {
         this.supplierTel = b.supplierTel;
         this.supplierEmail = b.supplierEmail;
         this.supplierAddress = b.supplierAddress;
-        this.supplierProductLine = b.supplierProductLine;
+
 
     }
 
@@ -90,7 +96,7 @@ public class Supplier {
         private String supplierTel;
         private String supplierEmail;
         private String supplierAddress;
-        private String supplierProductLine;
+
 
         public Builder setSupplierID(String supplierID) {
             this.supplierID = supplierID;
@@ -117,10 +123,7 @@ public class Supplier {
             return this;
         }
 
-        public Builder setSupplierProductLine(String supplierProductLine) {
-            this.supplierProductLine = supplierProductLine;
-            return this;
-        }
+
 
 
 
@@ -131,7 +134,6 @@ public class Supplier {
             this.supplierTel = supplier.supplierTel;
             this.supplierEmail = supplier.supplierEmail;
             this.supplierAddress = supplier.supplierAddress;
-            this.supplierProductLine = supplier.supplierProductLine;
             return this;
         }
 
