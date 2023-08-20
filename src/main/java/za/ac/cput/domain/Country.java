@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Country.java
+Class for Country.java
+Author: Michael Daniel Johnson 221094040
+Date: 19 August 2023
+*/
+
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;

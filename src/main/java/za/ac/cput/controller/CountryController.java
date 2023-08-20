@@ -1,5 +1,11 @@
 package za.ac.cput.controller;
 
+/* CountryController.java
+Controller class for Country.java
+Author: Michael Daniel Johnson 221094040
+Date: 19 August 2023
+*/
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Country;
