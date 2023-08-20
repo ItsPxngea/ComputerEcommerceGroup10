@@ -23,7 +23,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country update(Country country){
-        if (this.repo.existsById(country.getID())){
+        if (this.repo.existsById(country.getCountryID())){
             return this.repo.save(country);
         }
         return null;
