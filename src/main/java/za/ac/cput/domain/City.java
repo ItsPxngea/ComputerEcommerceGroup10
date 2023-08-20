@@ -9,14 +9,20 @@ import java.util.Objects;
 public class City implements Serializable {
     @Id
     //@Column(name = "cityid")
-    public String ID;
+    public String cityID;
     public String cityName;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cityid",referencedColumnName = "countryid")
+   /* @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id",referencedColumnName = "id")
+
+
+    */
+
+
+
     public Country country;
 
-    public String getID() {
-        return ID;
+    public String getCityID() {
+        return cityID;
     }
 
     public String getCityName() {
@@ -31,18 +37,18 @@ public class City implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof City city)) return false;
-        return Objects.equals(getID(), city.getID()) && Objects.equals(getCityName(), city.getCityName()) && Objects.equals(getCountry(), city.getCountry());
+        return Objects.equals(getCityID(), city.getCityID()) && Objects.equals(getCityName(), city.getCityName()) && Objects.equals(getCountry(), city.getCountry());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getID(), getCityName(), getCountry());
+        return Objects.hash(getCityID(), getCityName(), getCountry());
     }
 
     @Override
     public String toString() {
         return "City{" +
-                "ID='" + ID + '\'' +
+                "countryID='" + cityID + '\'' +
                 ", cityName='" + cityName + '\'' +
                 ", country=" + country +
                 '}';
@@ -50,20 +56,20 @@ public class City implements Serializable {
 
     public City(){}
 
-    private City(City.Builder builder) {
-        this.ID = builder.ID;
+    private City(Builder builder) {
+        this.cityID = builder.cityID;
         this.cityName = builder.cityName;
         this.country = builder.country;
     }
 
     public static class Builder {
-        private String ID;
+        private String cityID;
         private String cityName;
 
         private Country country;
 
-        public Builder setID(String ID) {
-            this.ID = ID;
+        public Builder setCityID(String cityID) {
+            this.cityID = cityID;
             return this;
         }
 
@@ -77,8 +83,8 @@ public class City implements Serializable {
             return this;
         }
 
-        public City.Builder copy(City city) {
-            this.ID = city.ID;
+        public Builder copy(City city) {
+            this.cityID = city.cityID;
             this.cityName = city.cityName;
             this.country = city.country;
             return this;

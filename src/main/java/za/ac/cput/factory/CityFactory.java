@@ -13,7 +13,7 @@ public class CityFactory {
         }
         String ID = Helper.generateID();
 
-        return new City.Builder().setID(ID)
+        return new City.Builder().setCityID(ID)
                 .setCityName(cityName)
                 .setCountry(country)
                 .build();

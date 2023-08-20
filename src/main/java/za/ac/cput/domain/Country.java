@@ -1,26 +1,19 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.Objects;
 @Entity
 public class Country implements Serializable {
     @Id
-    @Column(name = "countryid")
-    public String ID;
+    public String countryID;
     public String countryName;
 
     public Country() {
     }
 
-   /* public Country(String ID, String countryName) {
-        this.ID = ID;
-        this.countryName = countryName;
-    }
-*/
-    public String getID() {
-        return ID;
+    public String getCountryID() {
+        return countryID;
     }
 
     public String getCountryName() {
@@ -31,33 +24,33 @@ public class Country implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Country country)) return false;
-        return Objects.equals(getID(), country.getID()) && Objects.equals(getCountryName(), country.getCountryName());
+        return Objects.equals(getCountryID(), country.getCountryID()) && Objects.equals(getCountryName(), country.getCountryName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getID(), getCountryName());
+        return Objects.hash(getCountryID(), getCountryName());
     }
 
     @Override
     public String toString() {
         return "Country{" +
-                "ID='" + ID + '\'' +
+                "countryID='" + countryID + '\'' +
                 ", countryName='" + countryName + '\'' +
                 '}';
     }
 
-    private Country(Country.Builder builder) {
-        this.ID = builder.ID;
+    private Country(Builder builder) {
+        this.countryID = builder.countryID;
         this.countryName = builder.countryName;
     }
 
     public static class Builder {
-        public String ID;
+        public String countryID;
         public String countryName;
 
-        public Builder setID(String ID) {
-            this.ID = ID;
+        public Builder setCountryID(String countryID) {
+            this.countryID = countryID;
             return this;
         }
 
@@ -66,8 +59,8 @@ public class Country implements Serializable {
             return this;
         }
 
-        public Country.Builder copy(Country country) {
-            this.ID = country.ID;
+        public Builder copy(Country country) {
+            this.countryID = country.countryID;
             this.countryName = country.countryName;
             return this;
         }
