@@ -24,7 +24,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City update(City city){
-        if(this.repository.existsById(city.getID())){
+        if(this.repository.existsById(city.getCityID())){
             return this.repository.save(city);
 
         }
