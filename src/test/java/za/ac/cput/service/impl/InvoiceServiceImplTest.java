@@ -30,7 +30,7 @@ class InvoiceServiceImplTest {
     }
     @Test
     void b_read(){
-        Invoice invoiceRead = service.read(invoice_One);
+        Invoice invoiceRead = service.read(invoice_One.getInvoiceNumber());
         assertNotNull(invoiceRead);
         System.out.println("Read ->" + invoiceRead);
     }
@@ -45,7 +45,7 @@ class InvoiceServiceImplTest {
     }
     @Test
     void d_delete(){
-        boolean success = service.delete(invoice_One);
+        boolean success = service.delete(invoice_One.getInvoiceNumber());
         assertTrue(success);
         System.out.println("Deleted -> " + success);
     }

@@ -6,16 +6,30 @@ Author: David Henriques Garrancho (221475982)
 Date: 20 March 2023
 */
 
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Customer {
+
+@Entity
+public class Customer implements Serializable {
+
+    @Id
     public String customerID;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    private Customer(){
+    public Customer(){
+    }
+
+    private Customer(Builder b){
+        this.customerID = b.customerID;
+        this.firstName = b.firstName;
+        this.lastName = b.lastName;
+        this.email = b.email;
+        this.password = b.password;
     }
 
     public String getCustomerID() {
@@ -60,14 +74,6 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
-
-    private Customer(Builder b){
-        this.customerID = b.customerID;
-        this.firstName = b.firstName;
-        this.lastName = b.lastName;
-        this.email = b.email;
-        this.password = b.password;
     }
 
     public static class Builder {

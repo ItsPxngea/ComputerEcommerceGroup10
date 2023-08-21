@@ -1,7 +1,6 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.domain.InvoiceHistory;
-import za.ac.cput.repository.InvoiceHistoryRepository;
+import za.ac.cput.repository.impl.InvoiceHistoryImpl;
 import za.ac.cput.service.InvoiceHistoryService;
 
 import java.util.Set;
@@ -14,12 +13,12 @@ import java.util.Set;
 public class InvoiceHistoryServiceImpl implements InvoiceHistoryService {
 
     private static InvoiceHistoryService serivce ;
-    private static InvoiceHistoryRepository repository ;
+    private static InvoiceHistoryImpl repository ;
 
 
     private InvoiceHistoryServiceImpl(){
         if(repository == null){
-            repository = InvoiceHistoryRepository.getRepository();
+            repository = InvoiceHistoryImpl.getRepository();
         }
     }
 
@@ -32,31 +31,31 @@ public class InvoiceHistoryServiceImpl implements InvoiceHistoryService {
 
 
     @Override
-    public InvoiceHistory create(InvoiceHistory invoiceHistory) {
-        InvoiceHistory readhistory = repository.create(invoiceHistory);
+    public za.ac.cput.domain.InvoiceHistory create(za.ac.cput.domain.InvoiceHistory invoiceHistory) {
+        za.ac.cput.domain.InvoiceHistory readhistory = repository.create(invoiceHistory);
         return readhistory;
     }
 
     @Override
-    public InvoiceHistory read(InvoiceHistory invoiceHistory) {
-        InvoiceHistory read = repository.read(invoiceHistory.getHistoryID());
+    public za.ac.cput.domain.InvoiceHistory read(String id) {
+        za.ac.cput.domain.InvoiceHistory read = repository.read(id);
         return read;
     }
 
     @Override
-    public InvoiceHistory update(InvoiceHistory invoiceHistory) {
-        InvoiceHistory updatedHistory = repository.update(invoiceHistory);
+    public za.ac.cput.domain.InvoiceHistory update(za.ac.cput.domain.InvoiceHistory invoiceHistory) {
+        za.ac.cput.domain.InvoiceHistory updatedHistory = repository.update(invoiceHistory);
         return updatedHistory;
 
     }
 
     @Override
-    public boolean delete(InvoiceHistory invoiceHistory) {
-       return repository.delete(invoiceHistory.getHistoryID());
+    public boolean delete(String id) {
+       return repository.delete(id);
     }
 
     @Override
-    public Set<InvoiceHistory> getAll() {
+    public Set<za.ac.cput.domain.InvoiceHistory> getAll() {
         return repository.getAll();
     }
 }

@@ -1,7 +1,6 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.domain.Enquiry;
-import za.ac.cput.repository.EnquiryRepository;
+import za.ac.cput.repository.impl.EnquiryRepositoryImpl;
 import za.ac.cput.service.EnquiryService;
 
 import java.util.Set;
@@ -15,11 +14,11 @@ import java.util.Set;
 
 public class EnquiryServiceImpl implements EnquiryService {
     private static EnquiryServiceImpl service = null;
-    private EnquiryRepository repository = null;
+    private EnquiryRepositoryImpl repository = null;
 
     private EnquiryServiceImpl(){
         if (repository == null){
-            repository = EnquiryRepository.getRepository();
+            repository = EnquiryRepositoryImpl.getRepository();
         }
     }
 
@@ -31,27 +30,27 @@ public class EnquiryServiceImpl implements EnquiryService {
     }
 
     @Override
-    public Enquiry create(Enquiry enquiry){
+    public za.ac.cput.domain.Enquiry create(za.ac.cput.domain.Enquiry enquiry){
         return repository.create(enquiry);
     }
 
     @Override
-    public Enquiry read(Enquiry id){
-        return repository.read(id.getEnquiryID());
+    public za.ac.cput.domain.Enquiry read(String id){
+        return repository.read(id);
     }
 
     @Override
-    public Enquiry update (Enquiry enquiry){
+    public za.ac.cput.domain.Enquiry update (za.ac.cput.domain.Enquiry enquiry){
         return repository.update(enquiry);
     }
 
     @Override
-    public boolean delete(Enquiry id){
-        return repository.delete(id.getEnquiryID());
+    public boolean delete(String id){
+        return repository.delete(id);
     }
 
     @Override
-    public Set<Enquiry> getAll(){
+    public Set<za.ac.cput.domain.Enquiry> getAll(){
         return repository.getAll();
     }
 

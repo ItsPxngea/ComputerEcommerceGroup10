@@ -7,7 +7,6 @@ package za.ac.cput.factory;
 */
 
 
-import za.ac.cput.domain.Supplier;
 import za.ac.cput.domain.SupplierOrder;
 import za.ac.cput.util.Helper;
 

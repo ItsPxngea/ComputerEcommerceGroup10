@@ -1,45 +1,65 @@
+/*
 package za.ac.cput.domain;
 
-/*
+
     POJO for the Cart
     Author: David Henriques Garrancho (221475982)
     Date: 20 March 2023
-*/
 
+
+
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.util.Objects;
-public class Cart {
+
+@Entity
+public class Cart implements Serializable {
+
+    @Id
+    @GeneratedValue
     private String cartID;
-    public String customerID;
-    public String productID;
-    public String productName;
-    public int productQuantity;
-    public double productPrice;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "productID", column = @Column(name = "customer_customerid")),
+    })
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Customer.class)
+    private Customer customer;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "productName", column = @Column(name = "product_product_name")),
+            @AttributeOverride( name = "productPrice", column = @Column(name = "product_product_price")),
+    })
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Product.class)
+    public Product;
+
+    public int Quantity;
+
+    public Cart(String cartID) {
+        super();
+        this.cartID = cartID;
+    }
 
     public Cart() {
+
     }
 
     public String getCartID() {
         return cartID;
     }
 
-    public String getCustomerID() {
-        return customerID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public String getProductID() {
-        return productID;
+    public Product getProduct() {
+        return product;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public int getProductQuantity() {
-        return productQuantity;
-    }
-
-    public double getProductPrice() {
-        return productPrice;
+    public int getQuantity() {
+        return Quantity;
     }
 
     @Override
@@ -47,80 +67,66 @@ public class Cart {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(cartID, cart.cartID) && Objects.equals(customerID, cart.customerID) && Objects.equals(productID, cart.productID) && Objects.equals(productName, cart.productName) && Objects.equals(productQuantity, cart.productQuantity) && Objects.equals(productPrice, cart.productPrice);
+        return Quantity == cart.Quantity && Objects.equals(cartID, cart.cartID) && Objects.equals(customer, cart.customer) && Objects.equals(product, cart.product);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cartID, customerID, productID, productName, productQuantity, productPrice);
+        return Objects.hash(cartID, customer, product, Quantity);
     }
 
     @Override
     public String toString() {
         return "Cart{" +
                 "cartID='" + cartID + '\'' +
-                ", customerID='" + customerID + '\'' +
-                ", productID='" + productID + '\'' +
-                ", productName='" + productName + '\'' +
-                ", productQuantity='" + productQuantity + '\'' +
-                ", productPrice='" + productPrice + '\'' +
+                ", customer=" + customer +
+                ", product=" + product +
+                ", Quantity=" + Quantity +
                 '}';
     }
 
     private Cart(Cart.Builder b){
         this.cartID = b.cartID;
-        this.customerID = b.customerID;
-        this.productID = b.productID;
-        this.productName = b.productName;
-        this.productQuantity = b.productQuantity;
-        this.productPrice = b.productPrice;
+        this.customer = b.customer;
+        this.product = b.product;
+        this.Quantity = b.Quantity;
     }
 
     public static class Builder {
         private String cartID;
-        public String customerID;
-        public String productID;
-        public String productName;
-        public int productQuantity;
-        public double productPrice;
 
-        public Cart.Builder setCartID(String cartID){
+        public Customer customer;
+
+        public Product product;
+
+        public int Quantity;
+
+
+        public Cart.Builder setCartID(String cartID) {
             this.cartID = cartID;
             return this;
         }
 
-        public Cart.Builder setCustomerID(String customerID){
-            this.customerID = customerID;
+        public Cart.Builder setCustomer(Customer customer){
+            this.customer = customer;
             return this;
         }
 
-        public Cart.Builder setProductID(String productID){
-            this.productID = productID;
+        public Cart.Builder setProduct(Product product){
+            this.product = product;
             return this;
         }
 
-        public Cart.Builder setProductName(String productName){
-            this.productName = productName;
+        public Cart.Builder setQuantity(int Quantity){
+            this.Quantity = Quantity;
             return this;
         }
 
-        public Cart.Builder setProductQuantity(int productQuantity){
-            this.productQuantity = productQuantity;
-            return this;
-        }
-
-        public Cart.Builder setProductPrice(double productPrice){
-            this.productPrice = productPrice;
-            return this;
-        }
-
-        public Cart.Builder copy(Cart cart){
+        public Builder copy(Cart cart){
             this.cartID = cart.cartID;
-            this.customerID = cart.customerID;
-            this.productID = cart.productID;
-            this.productName = cart.productName;
-            this.productQuantity = cart.productQuantity;
-            this.productPrice = cart.productPrice;
+            this.customer = cart.customer;
+            this.product = cart.product;
+            this.Quantity = cart.Quantity;
             return this;
         }
 
@@ -129,4 +135,4 @@ public class Cart {
         }
     }
 
-}
+} */
