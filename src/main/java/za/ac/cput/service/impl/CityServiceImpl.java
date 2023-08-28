@@ -1,5 +1,9 @@
 package za.ac.cput.service.impl;
-
+/* CityServiceImpl.java
+Implementation class for CityService.java
+Author: Michael Daniel Johnson 221094040
+Date: 19 August 2023
+*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.City;
@@ -24,7 +28,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City update(City city){
-        if(this.repository.existsById(city.getID())){
+        if(this.repository.existsById(city.getCityID())){
             return this.repository.save(city);
 
         }
