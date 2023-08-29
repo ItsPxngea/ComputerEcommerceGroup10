@@ -31,7 +31,7 @@ public class BundleFactory {
         String bundleID = Helper.generateBundleID(bundleName, bundleType, bundleCategory);
         String productCategory = "System";
         String productType = "Business";// What is product type?
-        String productID = Helper.generateProductID(productName, productType, productCategory);
+        String productID = Helper.generateProductID(productName, productType);
 
         return new Bundle.Builder().setBundleID(bundleID)
                 .setBundleID(bundleID)

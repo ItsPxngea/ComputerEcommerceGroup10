@@ -31,10 +31,10 @@ public class Helper {
     }
     public static String generateID(){return UUID.randomUUID().toString();}
 
-    public static String generateProductID(String pn, String pt, String pc){
+    public static String generateProductID(String pn, String pt){
         Random random = new Random();
         int randNum = random.nextInt(900000) + 100000;
-        String productID = pn.substring(0,3).toUpperCase() + pt.substring(0,3).toUpperCase() + pc.substring(0,3).toUpperCase() + randNum;
+        String productID = pn.substring(0,3).toUpperCase() + pt.substring(0,3).toUpperCase() + randNum;
         return productID;
     }
     public static String generateBundleID(String bn, String bt, String bc){
@@ -111,10 +111,10 @@ public class Helper {
         }
 
     }
-    public static String generateInvoiceNumber(String productName){
+    public static String generateInvoiceNumber(){
         Random random = new Random();
         int randNum = random.nextInt(900000) + 100000;
-        return productName.substring(0,3).toUpperCase() + randNum;
+        return String.valueOf(randNum);
     }
 
 }

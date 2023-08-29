@@ -1,6 +1,5 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.repository.impl.EnquiryRepositoryImpl;
 import za.ac.cput.service.EnquiryService;
 
 import java.util.Set;
