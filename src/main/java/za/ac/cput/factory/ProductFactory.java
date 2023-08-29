@@ -11,12 +11,8 @@ import za.ac.cput.util.Helper;
 
 public class ProductFactory {
 
-    public static Product buildProduct(String productName, String productType, String productDescription, int productQuantity, String productBrand, String productWarranty, String productCategory, String reviewComment, String reviewDate, String reviewRating, double productPrice) {
-        if (Helper.isNullOrEmpty(productName) || Helper.isNullOrEmpty(productType) || Helper.isNullOrEmpty(productDescription) || Helper.isNullOrEmpty(productBrand) || Helper.isNullOrEmpty(productWarranty) || Helper.isNullOrEmpty(productCategory) || Helper.isNullOrEmpty(reviewRating) || Helper.isNullOrEmpty(reviewComment) || Helper.isNullOrEmpty(reviewDate)) {
-            return null;
-        }
-
-        if(Helper.isInvalidInt(productQuantity)){
+    public static Product buildProduct(String productName, String productType, String productDescription, double productPrice) {
+        if (Helper.isNullOrEmpty(productName) || Helper.isNullOrEmpty(productType) || Helper.isNullOrEmpty(productDescription)) {
             return null;
         }
 
@@ -24,25 +20,13 @@ public class ProductFactory {
             return null;
         }
 
-        if(Helper.isValidDate(reviewDate)==null){
-            return null;
-        }
-
-        String productID = Helper.generateProductID(productName, productType, productCategory);
+        String productID = Helper.generateProductID(productName, productType);
 
         return new Product.Builder().setProductID(productID)
-                .setProductID(productID)
                 .setProductName(productName)
-                .setProductQuantity(productQuantity)
                 .setProductPrice(productPrice)
                 .setProductType(productType)
                 .setProductDescription(productDescription)
-                .setProductBrand(productBrand)
-                .setProductWarranty(productWarranty)
-                .setProductCategory(productCategory)
-                .setReviewComment(reviewComment)
-                .setReviewDate(reviewDate)
-                .setReviewRating(reviewRating)
                 .build();
     }
 
