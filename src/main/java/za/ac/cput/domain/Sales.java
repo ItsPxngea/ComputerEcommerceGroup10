@@ -8,6 +8,8 @@ Date: 16 August 2023
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -21,8 +23,8 @@ public class Sales implements Serializable{
     @JoinColumn(name = "customerid",referencedColumnName = "customerid")
     private Customer customer;
 
-    @OneToMany(mappedBy = "sales")
-    Set<SalesItem> sales;
+    @OneToMany(mappedBy = "sales", cascade = CascadeType.ALL)
+    private List<SalesItem> salesItems = new ArrayList<>();
 
     public Sales() {
     }

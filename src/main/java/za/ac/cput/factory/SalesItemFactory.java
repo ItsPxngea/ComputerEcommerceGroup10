@@ -5,8 +5,10 @@ import za.ac.cput.domain.Sales;
 import za.ac.cput.domain.SalesItem;
 import za.ac.cput.util.Helper;
 
+import java.util.List;
+
 public class SalesItemFactory {
-    public static SalesItem buildSales(Sales sales, Product product, int quantity, double itemPrice) {
+    public static SalesItem buildSales(Sales sales, List<Product> products, int quantity, double itemPrice) {
         if (Helper.isInvalidInt(quantity)) {
             return null;
         }
@@ -20,7 +22,7 @@ public class SalesItemFactory {
         return new SalesItem.Builder()
                 .setSalesItemID(salesItemID)
                 .setSales(sales)
-                .setProduct(product)
+                .setProducts(products) // Use the new method to set products
                 .setQuantity(quantity)
                 .setItemPrice(itemPrice)
                 .build();
