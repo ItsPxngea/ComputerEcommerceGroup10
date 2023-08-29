@@ -111,10 +111,10 @@ public class Helper {
         }
 
     }
-    public static String generateInvoiceNumber(String productName){
+    public static String generateInvoiceNumber(){
         Random random = new Random();
         int randNum = random.nextInt(900000) + 100000;
-        return productName.substring(0,3).toUpperCase() + randNum;
+        return String.valueOf(randNum);
     }
 
 }

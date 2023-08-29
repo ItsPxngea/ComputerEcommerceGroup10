@@ -4,7 +4,6 @@ package za.ac.cput.service.impl;
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
-import za.ac.cput.repository.impl.ProductRepositoryImpl;
 import za.ac.cput.service.ProductService;
 
 import java.util.Set;

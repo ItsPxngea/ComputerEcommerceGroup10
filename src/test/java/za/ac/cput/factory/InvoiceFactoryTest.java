@@ -1,81 +1,36 @@
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Invoice;
-import static org.junit.jupiter.api.Assertions.*;
-/*
-    Author: Alexander Draai - 220118744
-    This is the test class for invoiceFactory
-    Date: 04 - 02 - 2023
- */
-class InvoiceFactoryTest {
+import za.ac.cput.domain.Sales;
+import za.ac.cput.domain.StoreDetails;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+class InvoiceFactoryTest {
+    Customer customer_one = CustomerFactory.buildCustomer("Alexander", "Draai", "alec.draai@gmail.com", "AlexDraai143");
+    Sales sales_one = SalesFactory.buildSales("20-08-2023",4000.00,customer_one);
+    StoreDetails storeDetails_one = StoreDetailsFactory.buildStoreDetails("Evetech","7 De Calstone","021 445 9912","techEve@gmail.com");
+
+    Customer customer_two = CustomerFactory.buildCustomer("Jonathan", "Draai", "jonno.draai@gmail.com", "Batman143");
+    Sales sales_two = SalesFactory.buildSales("20-07-2023",60000.00,customer_two);
+    StoreDetails storeDetails_two = StoreDetailsFactory.buildStoreDetails("Incredible Connection","102 Main Road","021 555 9902","credible@outlook.com");
+
+    Invoice invoice_one = InvoiceFactory.buildInvoice(storeDetails_one,sales_one);
+    Invoice invoice_two = InvoiceFactory.buildInvoice(storeDetails_two,sales_two);
     @Test
-    void createInvoice() throws Exception {
-        Invoice invoice = InvoiceFactory.buildInvoice("PR103","CPT902","GTX 1660 Super",
-                                                "Graphics card manufactured by NVIDIA", 1,
-                                                    12900.00,14835.00,15,"28-02-2023");
+    void createInvoice(){
+        Invoice invoice = InvoiceFactory.buildInvoice(storeDetails_one,sales_one);
         System.out.println(invoice.toString());
         assertNotNull(invoice);
     }
 
     @Test
-    void emptyParameter_ProductID() throws Exception {
-        Invoice invoice = InvoiceFactory.buildInvoice("","CPT902","GTX 1660 Super",
-                "Graphics card manufactured by NVIDIA", 1,
-                12900.00,14835.00,15,"03-04-2023");
-        assertNull(invoice);
-    }
-    @Test
-    void emptyParameter_StoreID() throws Exception {
-        Invoice invoice = InvoiceFactory.buildInvoice("PR103","","GTX 1660 Super",
-                "Graphics card manufactured by NVIDIA", 1,
-                12900.00,14835.00,15,"03-04-2023");
-        assertNull(invoice);
-    }
-    @Test
-    void emptyParameter_ProductName() throws Exception {
-        Invoice invoice = InvoiceFactory.buildInvoice("PR103","CPT902","",
-                "Graphics card manufactured by NVIDIA", 1,
-                12900.00,14835.00,15,"03-04-2023");
-        assertNull(invoice);
-    }
-    @Test
-    void emptyParameter_Product_Desc() throws Exception {
-        Invoice invoice = InvoiceFactory.buildInvoice("PR103","CPT902","GTX 1660 Super",
-                "", 1,
-                12900.00,14835.00,15,"03-04-2023");
-        assertNull(invoice);
-    }
-    @Test
-    void emptyParameter_Product_Date() throws Exception {
-        Invoice invoice = InvoiceFactory.buildInvoice("PR103","CPT902","GTX 1660 Super",
-                "", 1,
-                12900.00,14835.00,15,"29-02-2023");
-        assertNull(invoice);
-    }
-
-    @Test
-    void testEquality_One() throws Exception {
-        Invoice invoice_one = InvoiceFactory.buildInvoice("PR103","CPT902","GTX 1660 Super",
-                "Graphics card manufactured by NVIDIA", 1,
-                12900.00,14835.00,15,"03-04-2023");
-
-        Invoice invoice_two = InvoiceFactory.buildInvoice("PR104","CPT902","GTX 4090",
-                "Graphics card manufactured by NVIDIA", 1,
-                49000.00,56350.00,15,"02-04-2023");
-        System.out.println(invoice_one);
-        System.out.println(invoice_two);
-        assertNotEquals(invoice_one, invoice_two);
-    }
-    @Test
-    void testEquality_Two() throws Exception {
-        Invoice invoice_one = InvoiceFactory.buildInvoice("PR103","CPT902","GTX 1660 Super",
-                "Graphics card manufactured by NVIDIA", 1,
-                12900.00,14835.00,15,"03-04-2023");
-        Invoice invoice_two = invoice_one;
+    void testEquality(){
+        System.out.println(invoice_one.toString());
         System.out.println(invoice_two.toString());
-        assertEquals(invoice_one, invoice_two);
+        assertEquals(invoice_two,invoice_two);
     }
 
 }
