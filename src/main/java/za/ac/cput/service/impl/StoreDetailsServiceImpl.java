@@ -1,6 +1,5 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.repository.impl.StoreDetailsRepositoryImpl;
 import za.ac.cput.service.StoreDetailsService;
 
 import java.util.Set;

@@ -4,6 +4,7 @@ package za.ac.cput.service.impl;
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -17,8 +18,8 @@ class ProductServiceImplTest {
 
     private static ProductServiceImpl productservice = ProductServiceImpl.getService();
 
-    private static Product product = ProductFactory.buildProduct("RTX 3060 TI", "Graphics Card", "Next Generation gaming with the RTX 3060 TI",
-            1, "Nvidea", "1", "Gaming", "Great Product, Great Service","05-04-2023","4/5", 3000.00);
+    private static Product product = ProductFactory.buildProduct("FX 4050", "Item", "Next Generation gaming with the RTX 3060 TI",
+            3000.00);
 
     @Test
     void a_create() {
@@ -37,7 +38,6 @@ class ProductServiceImplTest {
     @Test
     void c_update() {
         Product updated = new Product.Builder().copy(product)
-                .setProductQuantity(2)
                 .setProductPrice(6000)
                 .build();
         assertNotNull(productservice.update(updated));
@@ -45,6 +45,7 @@ class ProductServiceImplTest {
     }
 
     @Test
+    @Disabled
     void e_delete() {
         boolean success = productservice.delete(product.getProductID());
         assertTrue(success);

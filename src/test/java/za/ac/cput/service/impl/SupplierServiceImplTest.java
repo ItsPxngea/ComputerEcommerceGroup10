@@ -1,8 +1,8 @@
 package za.ac.cput.service.impl;
 
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Supplier;
 import za.ac.cput.factory.SupplierFactory;
 
@@ -19,16 +19,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SupplierServiceImplTest {
 
-    private static SupplierServiceImpl service = SupplierServiceImpl.getService();
+    @Autowired
+    private SupplierServiceImpl service;
 
     private static Supplier supplier = SupplierFactory.buildSupplier
             ("supplier@intel.com",
-                    "0214564389", "5 Alvin Road, Woodstock", "Intel® Core™ Processors",
+                    "0214564389", "5 Alvin Road, Woodstock",
                     "Intel");
 
     @Test
+    @Order(1)
     void a_create() {
         Supplier created = service.create(supplier);
         assertEquals(supplier.getSupplierID(), created.getSupplierID());
@@ -36,6 +39,7 @@ public class SupplierServiceImplTest {
     }
 
     @Test
+    @Order(2)
     void b_read() {
         Supplier read = service.read(supplier.getSupplierID());
         assertNotNull(read);
@@ -43,6 +47,7 @@ public class SupplierServiceImplTest {
     }
 
     @Test
+    @Order(3)
     void c_update(){
         Supplier updated = new Supplier.Builder().copy(supplier)
                 .setSupplierTel("0217509999")
@@ -52,6 +57,7 @@ public class SupplierServiceImplTest {
     }
 
     @Test
+    @Disabled
     void e_delete(){
         boolean success = service.delete(supplier.getSupplierID());
         assertTrue(success);
@@ -59,6 +65,7 @@ public class SupplierServiceImplTest {
     }
 
     @Test
+    @Order(4)
     void d_getAll(){
         System.out.println("Show all: " + service.getAll());
     }

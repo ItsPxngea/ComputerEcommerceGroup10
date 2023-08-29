@@ -6,7 +6,6 @@ Author: Michael Daniel Johnson, 221094040
 Date: 11/06/2023
 */
 
-import za.ac.cput.repository.impl.CheckOutRepositoryImpl;
 import za.ac.cput.service.CheckOutService;
 
 import java.util.Set;
