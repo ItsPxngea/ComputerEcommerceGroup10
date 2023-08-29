@@ -2,19 +2,21 @@ package za.ac.cput.domain;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class SalesItem {
+public class SalesItem implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String salesItemID;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "salesID")
-    private Sales sales;
+    Sales sales;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itemID")
-    public Product product;
+    Product product;
     private int quantity;
     private double itemPrice;
 
@@ -75,7 +77,9 @@ public class SalesItem {
 
     public static class Builder {
         private String salesItemID;
+        @JoinColumn(name = "sales_id")
         private Sales sales;
+        @JoinColumn(name = "product_id")
         public Product product;
         private int quantity;
         private double itemPrice;

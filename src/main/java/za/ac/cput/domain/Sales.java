@@ -9,6 +9,7 @@ Date: 16 August 2023
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Sales implements Serializable{
@@ -19,6 +20,9 @@ public class Sales implements Serializable{
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customerid",referencedColumnName = "customerid")
     private Customer customer;
+
+    @OneToMany(mappedBy = "sales")
+    Set<SalesItem> sales;
 
     public Sales() {
     }
