@@ -1,6 +1,5 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.repository.impl.SupplierOrderRepositoryImpl;
 import za.ac.cput.service.SupplierOrderService;
 
 import java.util.Set;

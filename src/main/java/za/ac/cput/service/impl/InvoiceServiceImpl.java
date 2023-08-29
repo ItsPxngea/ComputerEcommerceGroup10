@@ -1,61 +1,56 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.repository.impl.InvoiceRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Invoice;
+import za.ac.cput.repository.InvoiceRepository;
 import za.ac.cput.service.InvoiceService;
 
-import java.util.Set;
+import java.util.List;
 
 /*
     InvoiceServiceImpl.java
     Author: Alexander Draai - 220118744
-    This is the implementation for the service InvoiceHistoryServiceImpl.java
+    This is the implementation for the service Invoice.java
     Date: 10 - 06 - 2023
  */
-
+@Service
 public class InvoiceServiceImpl implements InvoiceService {
 
-    private static InvoiceServiceImpl service ;
-    private static InvoiceRepositoryImpl repository;
+    private final InvoiceRepository repository;
+    @Autowired
+    public InvoiceServiceImpl (InvoiceRepository repository) {
+       this.repository = repository;
+    }
 
-    public InvoiceServiceImpl (){
-        if (repository == null){
-            repository = InvoiceRepositoryImpl.getRepository();
+    @Override
+    public Invoice create(Invoice invoice) {
+        return this.repository.save(invoice);
+    }
+
+    @Override
+    public Invoice read(String invoiceNumber) {
+        return this.repository.findById(invoiceNumber).orElse(null);
+    }
+
+    @Override
+    public Invoice update(Invoice invoice) {
+       if(this.repository.existsById(invoice.getInvoiceNumber()))
+           return this.repository.save(invoice);
+       return null;
+    }
+
+    @Override
+    public boolean delete(String invoiceNumber) {
+        if(this.repository.existsById(invoiceNumber)){
+            this.repository.deleteById(invoiceNumber);
+            return true;
         }
-    }
-
-    public static InvoiceServiceImpl getService(){
-        if(service == null){
-            service = new InvoiceServiceImpl();
-        }
-        return service;
+        return false;
     }
 
     @Override
-    public za.ac.cput.domain.Invoice create(za.ac.cput.domain.Invoice invoice) {
-            za.ac.cput.domain.Invoice readInvoice = repository.create(invoice);
-            return readInvoice;
-        }
-
-    @Override
-    public za.ac.cput.domain.Invoice read(String id) {
-        za.ac.cput.domain.Invoice read = repository.read(id);
-        return read;
-    }
-
-    @Override
-    public za.ac.cput.domain.Invoice update(za.ac.cput.domain.Invoice invoice) {
-        za.ac.cput.domain.Invoice InvoiceUpdated = repository.update(invoice);
-        return invoice;
-    }
-
-    @Override
-    public boolean delete(String id) {
-        Boolean success = repository.delete(id);
-        return success;
-    }
-
-    @Override
-    public Set<za.ac.cput.domain.Invoice> getAll() {
-        return repository.getAll();
+    public List<Invoice> getAll() {
+        return repository.findAll();
     }
 }
