@@ -1,9 +1,14 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.StoreDetails;
+import za.ac.cput.domain.StoreDetails;
+import za.ac.cput.repository.SalesRepository;
+import za.ac.cput.repository.StoreDetailsRepository;
 import za.ac.cput.service.StoreDetailsService;
 
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -15,30 +20,41 @@ import java.util.Set;
 
 @Service
 public class StoreDetailsServiceImpl implements StoreDetailsService {
-    private static StoreDetailsServiceImpl service;
+    private StoreDetailsRepository repository;
 
-    @Override
-    public StoreDetails create(StoreDetails storeDetails){
-        return service.create(storeDetails);
+    @Autowired
+    private StoreDetailsServiceImpl(StoreDetailsRepository repository){
+        this.repository = repository;
     }
 
     @Override
-    public StoreDetails read(String id){
-        return service.read(id);
+    public StoreDetails create(StoreDetails storeDetails) {
+        return this.repository.save(storeDetails);
     }
 
     @Override
-    public StoreDetails update(StoreDetails storeDetails){
-        return service.update(storeDetails);
+    public StoreDetails read(String salesID) {
+        return this.repository.findById(salesID).orElse(null);
     }
 
     @Override
-    public boolean delete(String id){
-        return service.delete(id);
+    public StoreDetails update(StoreDetails storeDetails) {
+        if(this.repository.existsById((storeDetails.getStoreID())))
+            return this.repository.save(storeDetails);
+        return null;
     }
 
     @Override
-    public Set<StoreDetails> getAll(){
-        return service.getAll();
+    public boolean delete(String salesID) {
+        if(this.repository.existsById(salesID)){
+            this.repository.deleteById(salesID);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public List<StoreDetails> getAll() {
+        return this.repository.findAll();
     }
 }

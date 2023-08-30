@@ -18,13 +18,13 @@ import java.util.Objects;
 public class SupplierOrder implements Serializable {
 
 
+    @Id
+    private String orderID;
     public String supplierID;
 
     public String productID;
     public int productQuantity;
     public double productIndividualPrice;
-    @Id
-    private String orderID;
     private String dateOfOrder;
     private String expectedDeliveryDate;
     private String actualDeliveryDate;

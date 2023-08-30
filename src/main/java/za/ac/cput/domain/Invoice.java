@@ -1,7 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,147 +9,87 @@ Author: Alexander Draai - 220118744
 This is the Pojo + Builder for the Invoice Class.
 Date: 04 - 04 - 2023
  */
-
 @Entity
 public class Invoice implements Serializable {
-
     @Id
     public String invoiceNumber ;
-    public String productID ;
-    public String storeID ;
-    public String productName ;
-    public String productDescription ;
-    public int quantity ;
-    public Double price ;
-    public Double totalPrice ;
-    public int tax ;
-    public String dateOfTransaction ;
+    @ManyToOne
+    @JoinColumn(name = "storeID")
+    public StoreDetails storeDetails ;
 
+    @ManyToOne
+    @JoinColumn(name = "salesID")
+    public Sales sales ;
+
+    // Constructors
     public Invoice(){}
 
-    public String getInvoiceNumber() {return invoiceNumber;}
-    public String getProductID() {return productID;}
-    public String getStoreID() {return storeID;}
-    public String getProductName() {return productName;}
-    public String getProductDescription() {return productDescription;}
-    public int getQuantity() {return quantity;}
-    public Double getPrice() {return price;}
-    public Double getTotalPrice() {return totalPrice;}
-    public int getTax() {return tax;}
-    public String getDateOfTransaction() {return dateOfTransaction;}
+    public Invoice(String invoiceNumber, StoreDetails storeDetails, Sales sales) {
+        this.invoiceNumber = invoiceNumber;
+        this.storeDetails = storeDetails;
+        this.sales = sales;
+    }
 
+    // Getters
+    public String getInvoiceNumber() {return invoiceNumber;}
+    public StoreDetails getStoreDetails() {return storeDetails;}
+    public Sales getSales() {return sales;}
+
+    // Equals , Hashcode & ToString
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Invoice invoice = (Invoice) o;
-        return quantity == invoice.quantity && tax == invoice.tax && Objects.equals(invoiceNumber, invoice.invoiceNumber) && Objects.equals(productID, invoice.productID) && Objects.equals(storeID, invoice.storeID) && Objects.equals(productName, invoice.productName) && Objects.equals(productDescription, invoice.productDescription) && Objects.equals(price, invoice.price) && Objects.equals(totalPrice, invoice.totalPrice) && Objects.equals(dateOfTransaction, invoice.dateOfTransaction);
+        return Objects.equals(invoiceNumber, invoice.invoiceNumber) && Objects.equals(storeDetails, invoice.storeDetails) && Objects.equals(sales, invoice.sales);
     }
     @Override
-    public int hashCode() {
-        return Objects.hash(invoiceNumber, productID, storeID, productName, productDescription, quantity, price, totalPrice, tax, dateOfTransaction);
-    }
+    public int hashCode() {return Objects.hash(invoiceNumber, storeDetails, sales);}
     @Override
     public String toString() {
         return "Invoice{" +
-                "invoiceNo='" + invoiceNumber + '\'' +
-                ", productID='" + productID + '\'' +
-                ", storeID='" + storeID + '\'' +
-                ", productName='" + productName + '\'' +
-                ", productDescription='" + productDescription + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", totalPrice=" + totalPrice +
-                ", tax=" + tax +
-                ", dateOfTransaction=" + dateOfTransaction +
+                "invoiceNumber='" + invoiceNumber + '\'' +
+                ", storeDetails=" + storeDetails +
+                ", sales=" + sales +
                 '}';
     }
 
-
+    // Builder
     private Invoice (Builder builder){
         this.invoiceNumber = builder.invoiceNumber;
-        this.productID = builder.productID;
-        this.storeID = builder.storeID;
-        this.productName = builder.productName;
-        this.productDescription = builder.productDescription;
-        this.quantity = builder.quantity;
-        this.price = builder.price;
-        this.totalPrice = builder.totalPrice;
-        this.tax = builder.tax;
-        this.dateOfTransaction = builder.dateOfTransaction;
+        this.storeDetails = builder.storeDetails;
+        this.sales = builder.sales;
     }
 
     public static class Builder {
         public String invoiceNumber ;
-        public String productID ;
-        public String storeID ;
-        public String productName ;
-        public String productDescription ;
-        public int quantity ;
-        public Double price ;
-        public Double totalPrice ;
-        public int tax ;
-        public String dateOfTransaction ;
+        public StoreDetails storeDetails ;
+        public Sales sales ;
 
-        public Builder setInvoiceNumber(String invoiceNumber) {
+        public Builder setInvoiceNumber(String invoiceNumber){
             this.invoiceNumber = invoiceNumber;
             return this;
         }
-        public Builder setProductID(String productID) {
-            this.productID = productID;
+
+        public Builder setStoreDetails(StoreDetails storeDetails){
+            this.storeDetails = storeDetails;
             return this;
         }
-        public Builder setStoreID(String storeID) {
-            this.storeID = storeID;
-            return this;
-        }
-        public Builder setProductName(String product){
-            this.productName = product;
-            return this;
-        }
-        public Builder setProductDescription(String productDescription){
-            this.productDescription = productDescription;
-            return this;
-        }
-        public Builder setQuantity (int  quantity){
-            this.quantity = quantity;
-            return this;
-        }
-        public Builder setPrice (double price){
-            this.price = price;
-            return this;
-        }
-        public Builder setTotalPrice(double totalPrice){
-            this.totalPrice = totalPrice;
-            return this;
-        }
-        public Builder setTax (int tax){
-            this.tax = tax;
-            return this;
-        }
-        public Builder setDateOfTransaction(String dateOfTransaction){
-            this.dateOfTransaction = dateOfTransaction;
+
+        public Builder setSales(Sales sales){
+            this.sales = sales;
             return this;
         }
 
         public Builder copy(Invoice invoice){
             this.invoiceNumber = invoice.invoiceNumber;
-            this.productID = invoice.productID;
-            this.storeID = invoice.storeID;
-            this.productName = invoice.productName;
-            this.productDescription = invoice.productDescription;
-            this.quantity = invoice.quantity;
-            this.price = invoice.price;
-            this.totalPrice = invoice.totalPrice;
-            this.tax = invoice.tax;
-            this.dateOfTransaction = invoice.dateOfTransaction;
+            this.storeDetails = invoice.storeDetails;
+            this.sales = invoice.sales;
             return this;
         }
-
         public Invoice build() {
             return new Invoice(this);
         }
-
-    }
+    } // End of Builder
 
 }

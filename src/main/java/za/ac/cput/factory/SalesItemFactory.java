@@ -5,6 +5,8 @@ import za.ac.cput.domain.Sales;
 import za.ac.cput.domain.SalesItem;
 import za.ac.cput.util.Helper;
 
+import java.util.List;
+
 public class SalesItemFactory {
     public static SalesItem buildSales(Sales sales, Product product, int quantity, double itemPrice) {
         if (Helper.isInvalidInt(quantity)) {
@@ -25,4 +27,5 @@ public class SalesItemFactory {
                 .setItemPrice(itemPrice)
                 .build();
     }
+
 }
