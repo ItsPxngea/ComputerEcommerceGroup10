@@ -3,6 +3,8 @@ package za.ac.cput.service.impl;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Invoice;
 import za.ac.cput.factory.InvoiceFactory;
 
@@ -15,9 +17,11 @@ import static org.junit.jupiter.api.Assertions.*;
     Date: 10 - 06 - 2023
  */
 @TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class InvoiceServiceImplTest {
 
-    private static InvoiceServiceImpl service = InvoiceServiceImpl.getService();
+    @Autowired
+    private static InvoiceServiceImpl service;
     private static Invoice invoice_One = InvoiceFactory.buildInvoice("4845","124","GTX4090",
                                                                     "Graphics Card",6,49500.50,
                                                                     52400.60,15,"20-05-2023");

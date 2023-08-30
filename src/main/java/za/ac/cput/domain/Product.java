@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-@Embeddable
 @Entity
 public class Product implements Serializable {
 

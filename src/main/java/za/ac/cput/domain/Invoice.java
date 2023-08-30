@@ -1,12 +1,20 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
 import java.util.Objects;
 /*
 Author: Alexander Draai - 220118744
 This is the Pojo + Builder for the Invoice Class.
 Date: 04 - 04 - 2023
  */
-public class Invoice {
+
+@Entity
+public class Invoice implements Serializable {
+
+    @Id
     public String invoiceNumber ;
     public String productID ;
     public String storeID ;

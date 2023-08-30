@@ -2,9 +2,15 @@ package za.ac.cput.domain;
 /*
 Author: Hanno Visser Immelman 221074414
 */
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 
+@Entity
 public class StoreDetails {
+
+    @Id
     private String storeID;
     private String storeName;
     private String storeAddress;
