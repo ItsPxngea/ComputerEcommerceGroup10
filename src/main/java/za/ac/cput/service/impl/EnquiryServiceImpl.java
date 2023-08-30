@@ -1,5 +1,7 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Enquiry;
 import za.ac.cput.service.EnquiryService;
 
 import java.util.Set;
@@ -11,46 +13,33 @@ import java.util.Set;
     Date: 10 - 06 - 2023
  */
 
+@Service
 public class EnquiryServiceImpl implements EnquiryService {
-    private static EnquiryServiceImpl service = null;
-    private EnquiryRepositoryImpl repository = null;
+    private static EnquiryServiceImpl service;
 
-    private EnquiryServiceImpl(){
-        if (repository == null){
-            repository = EnquiryRepositoryImpl.getRepository();
-        }
-    }
-
-    public static EnquiryServiceImpl getService(){
-        if (service == null){
-            service = new EnquiryServiceImpl();
-        }
-        return service;
+    @Override
+    public Enquiry create(Enquiry enquiry){
+        return service.create(enquiry);
     }
 
     @Override
-    public za.ac.cput.domain.Enquiry create(za.ac.cput.domain.Enquiry enquiry){
-        return repository.create(enquiry);
+    public Enquiry read(String id){
+        return service.read(id);
     }
 
     @Override
-    public za.ac.cput.domain.Enquiry read(String id){
-        return repository.read(id);
-    }
-
-    @Override
-    public za.ac.cput.domain.Enquiry update (za.ac.cput.domain.Enquiry enquiry){
-        return repository.update(enquiry);
+    public Enquiry update (Enquiry enquiry){
+        return service.update(enquiry);
     }
 
     @Override
     public boolean delete(String id){
-        return repository.delete(id);
+        return service.delete(id);
     }
 
     @Override
-    public Set<za.ac.cput.domain.Enquiry> getAll(){
-        return repository.getAll();
+    public Set<Enquiry> getAll(){
+        return service.getAll();
     }
 
 }

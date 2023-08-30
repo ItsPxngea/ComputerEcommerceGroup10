@@ -1,5 +1,8 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.SupplierOrder;
 import za.ac.cput.service.SupplierOrderService;
 
 import java.util.Set;
@@ -9,46 +12,35 @@ Author: Ethan Botes - 220101299
 This is the implementation for the service SupplierOrderService
 Date 11/06/2023
  */
+
+@Service
 public class SupplierOrderServiceImpl implements SupplierOrderService {
 
-    private static SupplierOrderServiceImpl service = null;
-    private SupplierOrderRepositoryImpl repository = null;
-    private SupplierOrderServiceImpl(){
-        if(repository == null){
-            repository = SupplierOrderRepositoryImpl.getRepository();
-        }
-    }
+    @Autowired
+    private static SupplierOrderServiceImpl service;
 
-
-    public static SupplierOrderServiceImpl getService(){
-        if(service == null){
-            service = new SupplierOrderServiceImpl();
-        }
-        return service;
+    @Override
+    public SupplierOrder create(za.ac.cput.domain.SupplierOrder supplierOrder){
+        return service.create(supplierOrder);
     }
 
     @Override
-    public za.ac.cput.domain.SupplierOrder create(za.ac.cput.domain.SupplierOrder supplierOrder){
-        return repository.create(supplierOrder);
+    public SupplierOrder read(String id){
+        return service.read(id);
     }
 
     @Override
-    public za.ac.cput.domain.SupplierOrder read(String id){
-        return repository.read(id);
-    }
-
-    @Override
-    public za.ac.cput.domain.SupplierOrder update(za.ac.cput.domain.SupplierOrder supplierOrder){
-        return repository.update(supplierOrder);
+    public SupplierOrder update(za.ac.cput.domain.SupplierOrder supplierOrder){
+        return service.update(supplierOrder);
     }
 
     @Override
     public boolean delete(String id){
-        return repository.delete(id);
+        return service.delete(id);
     }
 
     @Override
-    public Set<za.ac.cput.domain.SupplierOrder> getAll(){
-        return repository.getAll();
+    public Set<SupplierOrder> getAll(){
+        return service.getAll();
     }
 }

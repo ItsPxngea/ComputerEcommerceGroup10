@@ -7,6 +7,8 @@ Date: 11 - 060 2023
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Supplier;
 import za.ac.cput.domain.SupplierOrder;
 import za.ac.cput.factory.SupplierFactory;
@@ -14,10 +16,12 @@ import za.ac.cput.factory.SupplierOrderFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class SupplierOrderServiceImplTest {
 
-    private static SupplierOrderServiceImpl service = SupplierOrderServiceImpl.getService();
+    @Autowired
+    private static SupplierOrderServiceImpl service;
 
     private static SupplierOrder supplierOrder = SupplierOrderFactory.buildSupplierOrder
             ("06-01-2022", "12-01-2022", "11-01-2022",

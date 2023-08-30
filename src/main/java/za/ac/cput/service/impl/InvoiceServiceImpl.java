@@ -1,56 +1,47 @@
 package za.ac.cput.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Invoice;
-import za.ac.cput.repository.InvoiceRepository;
 import za.ac.cput.service.InvoiceService;
 
-import java.util.List;
+import java.util.Set;
 
 /*
     InvoiceServiceImpl.java
     Author: Alexander Draai - 220118744
-    This is the implementation for the service Invoice.java
+    This is the implementation for the service InvoiceHistoryServiceImpl.java
     Date: 10 - 06 - 2023
  */
-@Service
+
 public class InvoiceServiceImpl implements InvoiceService {
 
-    private final InvoiceRepository repository;
-    @Autowired
-    public InvoiceServiceImpl (InvoiceRepository repository) {
-       this.repository = repository;
-    }
+    private static InvoiceServiceImpl service ;
 
     @Override
-    public Invoice create(Invoice invoice) {
-        return this.repository.save(invoice);
-    }
-
-    @Override
-    public Invoice read(String invoiceNumber) {
-        return this.repository.findById(invoiceNumber).orElse(null);
-    }
-
-    @Override
-    public Invoice update(Invoice invoice) {
-       if(this.repository.existsById(invoice.getInvoiceNumber()))
-           return this.repository.save(invoice);
-       return null;
-    }
-
-    @Override
-    public boolean delete(String invoiceNumber) {
-        if(this.repository.existsById(invoiceNumber)){
-            this.repository.deleteById(invoiceNumber);
-            return true;
+    public za.ac.cput.domain.Invoice create(Invoice invoice) {
+            za.ac.cput.domain.Invoice readInvoice = service.create(invoice);
+            return readInvoice;
         }
-        return false;
+
+    @Override
+    public za.ac.cput.domain.Invoice read(String id) {
+        za.ac.cput.domain.Invoice read = service.read(id);
+        return read;
     }
 
     @Override
-    public List<Invoice> getAll() {
-        return repository.findAll();
+    public za.ac.cput.domain.Invoice update(Invoice invoice) {
+        za.ac.cput.domain.Invoice InvoiceUpdated = service.update(invoice);
+        return invoice;
+    }
+
+    @Override
+    public boolean delete(String id) {
+        Boolean success = service.delete(id);
+        return success;
+    }
+
+    @Override
+    public Set<Invoice> getAll() {
+        return service.getAll();
     }
 }

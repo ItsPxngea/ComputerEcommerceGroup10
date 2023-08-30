@@ -3,6 +3,8 @@ package za.ac.cput.service.impl;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.StoreDetails;
 import za.ac.cput.factory.StoreDetailsFactory;
 
@@ -16,8 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 */
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class StoreDetailsServiceImplTest{
-    private static StoreDetailsServiceImpl service = StoreDetailsServiceImpl.getService();
+
+    @Autowired
+    private static StoreDetailsServiceImpl service;
     private static StoreDetails storeDetails = StoreDetailsFactory.buildStoreDetails("M computers","69 Nice Street, Cape Town","0988422548","MComp@gmail.com");
 
     @Test

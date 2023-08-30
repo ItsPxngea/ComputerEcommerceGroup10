@@ -4,49 +4,37 @@ package za.ac.cput.service.impl;
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Product;
 import za.ac.cput.service.ProductService;
 
 import java.util.Set;
 
+@Service
 public class ProductServiceImpl implements ProductService{
-    private static ProductServiceImpl service = null;
-    private ProductRepositoryImpl repository = null;
-
-    private ProductServiceImpl(){
-        if(repository == null){
-            repository = ProductRepositoryImpl.getRepository();
-        }
-    }
-
-    public static ProductServiceImpl getService(){
-        if(service == null){
-            service = new ProductServiceImpl();
-        }
-        return service;
-    }
-
+    private static ProductServiceImpl service;
     @Override
-    public za.ac.cput.domain.Product create(za.ac.cput.domain.Product product) {
-        return repository.create(product);
+    public za.ac.cput.domain.Product create(Product product) {
+        return service.create(product);
     }
 
     @Override
     public za.ac.cput.domain.Product read(String id) {
-        return repository.read(id);
+        return service.read(id);
     }
 
     @Override
-    public za.ac.cput.domain.Product update(za.ac.cput.domain.Product product) {
-        return repository.update(product);
+    public za.ac.cput.domain.Product update(Product product) {
+        return service.update(product);
     }
 
     @Override
     public boolean delete(String id) {
-        return repository.delete(id);
+        return service.delete(id);
     }
 
     @Override
-    public Set<za.ac.cput.domain.Product> getAll() {
-        return repository.getAll();
+    public Set<Product> getAll() {
+        return service.getAll();
     }
 }

@@ -2,9 +2,16 @@ package za.ac.cput.domain;
 /*
 Author: Hanno Visser Immelman 221074414
 */
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Enquiry {
+@Entity
+public class Enquiry implements Serializable {
+
+    @Id
     private String enquiryID;
     public String customerID;
     private String enquiryName;

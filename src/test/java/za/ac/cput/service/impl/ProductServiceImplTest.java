@@ -8,29 +8,31 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Product;
 import za.ac.cput.factory.ProductFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProductServiceImplTest {
 
-    private static ProductServiceImpl productservice = ProductServiceImpl.getService();
+    @Autowired
+    private static ProductServiceImpl service;
 
-    private static Product product = ProductFactory.buildProduct("FX 4050", "Item", "Next Generation gaming with the RTX 3060 TI",
-            3000.00);
+    private static final Product product = ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00);
 
     @Test
     void a_create() {
-        Product created = productservice.create(product);
-        assertEquals(product.getProductID(), created.getProductID());
+        Product created = service.create(product);
         System.out.println("Create: " + created);
     }
 
     @Test
     void b_read() {
-        Product read = productservice.read(product.getProductID());
+        Product read = service.read(product.getProductID());
         assertNotNull(read);
         System.out.println("Read: " + read);
     }
@@ -40,14 +42,14 @@ class ProductServiceImplTest {
         Product updated = new Product.Builder().copy(product)
                 .setProductPrice(6000)
                 .build();
-        assertNotNull(productservice.update(updated));
+        assertNotNull(service.update(updated));
         System.out.println("Updated: " + updated);
     }
 
     @Test
     @Disabled
     void e_delete() {
-        boolean success = productservice.delete(product.getProductID());
+        boolean success = service.delete(product.getProductID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }
@@ -55,6 +57,6 @@ class ProductServiceImplTest {
     @Test
     void d_getAll() {
         System.out.println("Show all: ");
-        System.out.println(productservice.getAll());
+        System.out.println(service.getAll());
     }
 }

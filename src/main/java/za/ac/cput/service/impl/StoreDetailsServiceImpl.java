@@ -1,5 +1,7 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.StoreDetails;
 import za.ac.cput.service.StoreDetailsService;
 
 import java.util.Set;
@@ -11,45 +13,32 @@ import java.util.Set;
     Date: 10 - 06 - 2023
  */
 
+@Service
 public class StoreDetailsServiceImpl implements StoreDetailsService {
-    private static StoreDetailsServiceImpl service = null;
-    private StoreDetailsRepositoryImpl repository = null;
+    private static StoreDetailsServiceImpl service;
 
-    private StoreDetailsServiceImpl(){
-        if (repository == null){
-            repository = StoreDetailsRepositoryImpl.getRepository();
-        }
-    }
-
-    public static StoreDetailsServiceImpl getService(){
-        if (service == null){
-            service = new StoreDetailsServiceImpl();
-        }
-        return service;
+    @Override
+    public StoreDetails create(StoreDetails storeDetails){
+        return service.create(storeDetails);
     }
 
     @Override
-    public za.ac.cput.domain.StoreDetails create(za.ac.cput.domain.StoreDetails storeDetails){
-        return repository.create(storeDetails);
+    public StoreDetails read(String id){
+        return service.read(id);
     }
 
     @Override
-    public za.ac.cput.domain.StoreDetails read(String id){
-        return repository.read(id);
-    }
-
-    @Override
-    public za.ac.cput.domain.StoreDetails update(za.ac.cput.domain.StoreDetails storeDetails){
-        return repository.update(storeDetails);
+    public StoreDetails update(StoreDetails storeDetails){
+        return service.update(storeDetails);
     }
 
     @Override
     public boolean delete(String id){
-        return repository.delete(id);
+        return service.delete(id);
     }
 
     @Override
-    public Set<za.ac.cput.domain.StoreDetails> getAll(){
-        return repository.getAll();
+    public Set<StoreDetails> getAll(){
+        return service.getAll();
     }
 }
