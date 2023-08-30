@@ -1,8 +1,10 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Invoice;
 import za.ac.cput.service.InvoiceService;
 
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -12,6 +14,7 @@ import java.util.Set;
     Date: 10 - 06 - 2023
  */
 
+@Service
 public class InvoiceServiceImpl implements InvoiceService {
 
     private static InvoiceServiceImpl service ;
@@ -41,7 +44,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public Set<Invoice> getAll() {
+    public List<Invoice> getAll() {
         return service.getAll();
     }
 }

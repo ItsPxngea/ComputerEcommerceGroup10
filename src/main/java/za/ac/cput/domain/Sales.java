@@ -8,21 +8,24 @@ Date: 16 August 2023
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class Sales implements Serializable{
+public class Sales implements Serializable {
     @Id
     private String saleID;
     private String saleDate;
     private Double totalAmount;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customerid",referencedColumnName = "customerid")
+
+    @ManyToOne
+    @JoinColumn(name = "customerID")
     private Customer customer;
 
     @OneToMany(mappedBy = "sales")
-    Set<SalesItem> sales;
+    private List<SalesItem> salesItems = new ArrayList<>();
 
     public Sales() {
     }

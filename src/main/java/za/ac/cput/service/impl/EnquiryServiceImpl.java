@@ -1,9 +1,13 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Enquiry;
+import za.ac.cput.domain.Enquiry;
+import za.ac.cput.repository.EnquiryRepository;
 import za.ac.cput.service.EnquiryService;
 
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -15,31 +19,42 @@ import java.util.Set;
 
 @Service
 public class EnquiryServiceImpl implements EnquiryService {
-    private static EnquiryServiceImpl service;
+    private EnquiryRepository repository;
 
-    @Override
-    public Enquiry create(Enquiry enquiry){
-        return service.create(enquiry);
+    @Autowired
+    private EnquiryServiceImpl(EnquiryRepository repository){
+        this.repository = repository;
     }
 
     @Override
-    public Enquiry read(String id){
-        return service.read(id);
+    public Enquiry create(Enquiry enquiry) {
+        return this.repository.save(enquiry);
     }
 
     @Override
-    public Enquiry update (Enquiry enquiry){
-        return service.update(enquiry);
+    public Enquiry read(String customerID) {
+        return this.repository.findById(customerID).orElse(null);
     }
 
     @Override
-    public boolean delete(String id){
-        return service.delete(id);
+    public Enquiry update(Enquiry enquiry) {
+        if(this.repository.existsById((enquiry.getCustomerID())))
+            return this.repository.save(enquiry);
+        return null;
     }
 
     @Override
-    public Set<Enquiry> getAll(){
-        return service.getAll();
+    public boolean delete(String customerID) {
+        if (this.repository.existsById(customerID)){
+            this.repository.deleteById(customerID);
+            return  true;
+        }
+        return false;
+    }
+
+    @Override
+    public List<Enquiry> getAll() {
+        return this.repository.findAll();
     }
 
 }

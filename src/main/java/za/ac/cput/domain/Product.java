@@ -5,12 +5,10 @@ package za.ac.cput.domain;
  Date: 22 March 2023
 */
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -26,8 +24,8 @@ public class Product implements Serializable {
     private String productDescription;
     private double productPrice;
 
-    @OneToMany(mappedBy = "product")
-    List<SalesItem> sales;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<SalesItem> salesItems = new ArrayList<>();
 
     public Product(){
 

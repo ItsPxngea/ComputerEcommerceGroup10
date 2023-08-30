@@ -3,20 +3,22 @@ package za.ac.cput.domain;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class SalesItem implements Serializable {
 
     @Id
     private String salesItemID;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "salesID")
-    Sales sales;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "itemID")
-    Product product;
+    @JoinColumn(name = "salesID")
+    private Sales sales;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     private int quantity;
     private double itemPrice;
 
@@ -37,10 +39,6 @@ public class SalesItem implements Serializable {
 
     public Sales getSales() {
         return sales;
-    }
-
-    public Product getProduct() {
-        return product;
     }
 
     public int getQuantity() {
@@ -77,10 +75,8 @@ public class SalesItem implements Serializable {
 
     public static class Builder {
         private String salesItemID;
-        @JoinColumn(name = "sales_id")
         private Sales sales;
-        @JoinColumn(name = "product_id")
-        public Product product;
+        private Product product;  // Added this line
         private int quantity;
         private double itemPrice;
 
@@ -112,12 +108,15 @@ public class SalesItem implements Serializable {
         public Builder copy(SalesItem salesItem){
             this.salesItemID = salesItem.salesItemID;
             this.sales = salesItem.sales;
-            this.product = salesItem.product;
+            this.product = salesItem.product;  // Updated this line
             this.quantity = salesItem.quantity;
             this.itemPrice = salesItem.itemPrice;
             return this;
         }
 
-        public SalesItem build(){return new SalesItem(this);}
+        public SalesItem build(){
+            return new SalesItem(this);
+        }
     }
+
 }

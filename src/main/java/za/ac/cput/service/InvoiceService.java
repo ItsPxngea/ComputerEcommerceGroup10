@@ -1,5 +1,6 @@
 package za.ac.cput.service;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Invoice;
 
 import java.util.List;
