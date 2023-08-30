@@ -18,14 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest
-@Transactional
 class SalesServiceImplTest {
 
     @Autowired
     private SalesServiceImpl service;
-
-    @Autowired
-    private CustomerRepository customerRepository;
 
     private static final Customer customer = CustomerFactory.buildTestCustomer(
             "Test2456",
@@ -46,7 +42,6 @@ class SalesServiceImplTest {
     @Test
     @Transactional
     void a_create() {
-        customerRepository.save(customer);
         Sales created = service.create(sales);
         System.out.println("Created " + created);
     }

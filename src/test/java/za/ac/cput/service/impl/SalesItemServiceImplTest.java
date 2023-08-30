@@ -25,12 +25,10 @@ class SalesItemServiceImplTest {
     @Autowired
     private SalesItemServiceImpl service;
 
-    //private static final List<Product> products = Arrays.asList(
-    //        ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
-    //        ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
-    //);
-
-    private static final Product product = ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00);
+    private static final List<Product> products = Arrays.asList(
+            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
+            ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
+    );
 
     private static final Customer customer = CustomerFactory.buildTestCustomer(
             "Test2456",
@@ -47,8 +45,8 @@ class SalesItemServiceImplTest {
             customer
     );
 
-    //private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 4, 4800);
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, product, 4, 4800);
+    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 4, 4800);
+
 
 
     @Test

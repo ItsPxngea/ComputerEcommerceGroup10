@@ -8,24 +8,17 @@ import za.ac.cput.util.Helper;
 import java.util.List;
 
 public class SalesItemFactory {
-    public static SalesItem buildSales(Sales sales, Product product, int quantity, double itemPrice) {
-        if (Helper.isInvalidInt(quantity)) {
-            return null;
-        }
-
-        if (Helper.isInvalidDouble(itemPrice)) {
-            return null;
-        }
+    public static SalesItem buildSales(Sales sales, List<Product> products, int quantity, double itemPrice) {
+        // Check for invalid values here
 
         String salesItemID = Helper.generateID();
 
         return new SalesItem.Builder()
                 .setSalesItemID(salesItemID)
                 .setSales(sales)
-                .setProduct(product)
+                .setProducts(products) // Use the new method to set products
                 .setQuantity(quantity)
                 .setItemPrice(itemPrice)
                 .build();
     }
-
 }
