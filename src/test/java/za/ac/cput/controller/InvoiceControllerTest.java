@@ -1,11 +1,5 @@
 package za.ac.cput.controller;
 
-/* SalesItemControllerTest.java
-Test for Controller for SalesItem
-Author: David Henriques Garrancho (221475982)
-Date: 29 August 2023
-*/
-
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,75 +10,70 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Customer;
-import za.ac.cput.domain.Product;
+import za.ac.cput.domain.Invoice;
 import za.ac.cput.domain.Sales;
-import za.ac.cput.domain.SalesItem;
+import za.ac.cput.domain.StoreDetails;
 import za.ac.cput.factory.CustomerFactory;
-import za.ac.cput.factory.ProductFactory;
+import za.ac.cput.factory.InvoiceFactory;
 import za.ac.cput.factory.SalesFactory;
-import za.ac.cput.factory.SalesItemFactory;
-
-import java.util.Arrays;
-import java.util.List;
+import za.ac.cput.factory.StoreDetailsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-class SalesItemControllerTest {
-
-    private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060", 3000.00),
-            ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
+class InvoiceControllerTest {
+    private static final Customer customer_one = CustomerFactory.buildCustomer(
+            "Jason",
+            "King",
+            "KingJason@gmail.com",
+            "AlexDraai143"
+    );
+    private static final Sales sales_one = SalesFactory.buildSales(
+            "05-08-2023",
+            7000.00,
+            customer_one
+    );
+    private static final StoreDetails storeDetails_one = StoreDetailsFactory.buildStoreDetails(
+            "Evetech",
+            "7 De Calstone",
+            "021 445 9912",
+            "techEve@gmail.com"
     );
 
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test2456",
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+    private static final Invoice invoice = InvoiceFactory.buildInvoice(
+            storeDetails_one,
+            sales_one
     );
-
-
-    private static final Sales sales = SalesFactory.buildSales(
-            "16-08-2023",
-            4560.00,
-            customer
-    );
-
-
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products , 2, 8000.00);
 
     @Autowired
     private TestRestTemplate restTemplate;
+    private final String baseURL = "http://localhost:8080/invoice" ;
 
-    private final String baseURL = "http://localhost:8080/salesItem";
 
     @Order(1)
     @Test
     @Transactional
     void create() {
         String url = baseURL + "/create";
-        ResponseEntity<SalesItem> postResponse = restTemplate.postForEntity(url, salesItem, SalesItem.class);
+        ResponseEntity<Invoice> postResponse = restTemplate.postForEntity(url, invoice, Invoice.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
-        SalesItem savedSalesItem = postResponse.getBody();
-        System.out.println("Saved data: " + savedSalesItem);
+        Invoice savedInvoice = postResponse.getBody();
+        System.out.println("Saved data: " + savedInvoice);
 
-        assertEquals(salesItem.getSalesItemID(), postResponse.getBody().getSalesItemID());
+        assertEquals(invoice.getInvoiceNumber(), postResponse.getBody().getInvoiceNumber());
     }
 
     @Order(2)
     @Test
     @Transactional
     void read() {
-        String url = baseURL + "/read/" + salesItem.getSalesItemID();
+        String url = baseURL + "/read/" + invoice.getInvoiceNumber();
         System.out.println("URL: " + url);
-        ResponseEntity<SalesItem> response = restTemplate.getForEntity(url, SalesItem.class);
-        assertEquals(salesItem.getSalesItemID(), response.getBody().getSalesItemID());
+        ResponseEntity<Invoice> response = restTemplate.getForEntity(url, Invoice.class);
+        assertEquals(invoice.getInvoiceNumber(), response.getBody().getInvoiceNumber());
         System.out.println(response.getBody());
     }
 
@@ -92,11 +81,17 @@ class SalesItemControllerTest {
     @Test
     @Transactional
     void update() {
-        SalesItem updated = new SalesItem.Builder().copy(salesItem).setItemPrice(4000.00).build();
+        StoreDetails storeDetails_one = StoreDetailsFactory.buildStoreDetails(
+                "Game",
+                "7 De Calstone",
+                "021 445 9912",
+                "techEve@gmail.com"
+        );
+        Invoice updated = new Invoice.Builder().copy(invoice).setStoreDetails(storeDetails_one).build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
         System.out.println("Post data: " + updated);
-        ResponseEntity<SalesItem> response = restTemplate.postForEntity(url, updated, SalesItem.class);
+        ResponseEntity<Invoice> response = restTemplate.postForEntity(url, updated, Invoice.class);
         assertNotNull(response.getBody());
     }
 
@@ -105,7 +100,7 @@ class SalesItemControllerTest {
     @Disabled
     @Transactional
     void delete() {
-        String url = baseURL + "/delete/" + salesItem.getSalesItemID();
+        String url = baseURL + "/delete/" + invoice.getInvoiceNumber();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }
@@ -122,4 +117,6 @@ class SalesItemControllerTest {
         System.out.println(response);
         System.out.println(response.getBody());
     }
+
+
 }

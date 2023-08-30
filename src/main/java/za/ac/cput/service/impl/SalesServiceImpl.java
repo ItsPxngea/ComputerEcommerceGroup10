@@ -21,7 +21,9 @@ public class SalesServiceImpl implements SalesService {
     private SalesRepository repository;
 
     @Autowired
-    private SalesServiceImpl(SalesRepository repository){this.repository = repository;}
+    private SalesServiceImpl(SalesRepository repository){
+        this.repository = repository;
+    }
 
     @Override
     public Sales create(Sales sales) {
