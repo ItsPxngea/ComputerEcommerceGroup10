@@ -1,7 +1,13 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Enquiry;
+import za.ac.cput.domain.Enquiry;
+import za.ac.cput.repository.EnquiryRepository;
 import za.ac.cput.service.EnquiryService;
 
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -11,46 +17,44 @@ import java.util.Set;
     Date: 10 - 06 - 2023
  */
 
+@Service
 public class EnquiryServiceImpl implements EnquiryService {
-    private static EnquiryServiceImpl service = null;
-    private EnquiryRepositoryImpl repository = null;
+    private EnquiryRepository repository;
 
-    private EnquiryServiceImpl(){
-        if (repository == null){
-            repository = EnquiryRepositoryImpl.getRepository();
+    @Autowired
+    private EnquiryServiceImpl(EnquiryRepository repository){
+        this.repository = repository;
+    }
+
+    @Override
+    public Enquiry create(Enquiry enquiry) {
+        return this.repository.save(enquiry);
+    }
+
+    @Override
+    public Enquiry read(String customerID) {
+        return this.repository.findById(customerID).orElse(null);
+    }
+
+    @Override
+    public Enquiry update(Enquiry enquiry) {
+        if(this.repository.existsById((enquiry.getCustomerID())))
+            return this.repository.save(enquiry);
+        return null;
+    }
+
+    @Override
+    public boolean delete(String customerID) {
+        if (this.repository.existsById(customerID)){
+            this.repository.deleteById(customerID);
+            return  true;
         }
-    }
-
-    public static EnquiryServiceImpl getService(){
-        if (service == null){
-            service = new EnquiryServiceImpl();
-        }
-        return service;
+        return false;
     }
 
     @Override
-    public za.ac.cput.domain.Enquiry create(za.ac.cput.domain.Enquiry enquiry){
-        return repository.create(enquiry);
-    }
-
-    @Override
-    public za.ac.cput.domain.Enquiry read(String id){
-        return repository.read(id);
-    }
-
-    @Override
-    public za.ac.cput.domain.Enquiry update (za.ac.cput.domain.Enquiry enquiry){
-        return repository.update(enquiry);
-    }
-
-    @Override
-    public boolean delete(String id){
-        return repository.delete(id);
-    }
-
-    @Override
-    public Set<za.ac.cput.domain.Enquiry> getAll(){
-        return repository.getAll();
+    public List<Enquiry> getAll() {
+        return this.repository.findAll();
     }
 
 }

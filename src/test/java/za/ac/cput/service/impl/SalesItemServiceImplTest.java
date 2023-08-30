@@ -26,7 +26,7 @@ class SalesItemServiceImplTest {
     private SalesItemServiceImpl service;
 
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060", 3000.00),
+            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
             ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
     );
 
@@ -45,12 +45,13 @@ class SalesItemServiceImplTest {
             customer
     );
 
+    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 4, 4800);
 
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products , 2, 8000.00);
 
 
     @Test
     @Order(1)
+    @Transactional
     void create() {
         SalesItem created = service.create(salesItem);
         System.out.println("Created " + created);
@@ -63,23 +64,20 @@ class SalesItemServiceImplTest {
         SalesItem read = service.read(salesItem.getSalesItemID());
         assertNotNull(read);
         System.out.println("Read: "+ read);
-
-        List<Product> products = read.getProducts();
-        for (Product product : products) {
-            System.out.println("Product: " + product);
-        }
     }
 
     @Test
     @Order(3)
+    @Transactional
     void update() {
-        SalesItem updated = new SalesItem.Builder().copy(salesItem).setItemPrice(7800.00).build();
+        SalesItem updated = new SalesItem.Builder().copy(salesItem).setItemPrice(1200).build();
         assertNotNull(updated);
         System.out.println("Updated: " + updated);
     }
 
     @Test
     @Disabled
+    @Transactional
     void delete() {
         boolean success = service.delete(salesItem.getSalesItemID());
         assertTrue(success);

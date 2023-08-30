@@ -13,12 +13,12 @@ Date: 04 - 04 - 2023
 public class Invoice implements Serializable {
     @Id
     public String invoiceNumber ;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "storeID", referencedColumnName = "storeID")
+    @ManyToOne
+    @JoinColumn(name = "storeID")
     public StoreDetails storeDetails ;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "salesID", referencedColumnName = "salesID")
+    @ManyToOne
+    @JoinColumn(name = "salesID")
     public Sales sales ;
 
     // Constructors

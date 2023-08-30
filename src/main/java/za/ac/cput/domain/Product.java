@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-@Embeddable
 @Entity
 public class Product implements Serializable {
 
@@ -25,6 +24,8 @@ public class Product implements Serializable {
     private String productDescription;
     private double productPrice;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<SalesItem> salesItems = new ArrayList<>();
 
     public Product(){
 

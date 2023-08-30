@@ -13,17 +13,13 @@ import java.util.Objects;
 @Entity
 public class City implements Serializable {
     @Id
-    //@Column(name = "cityid")
+    @Column(name = "cityid")
     public String cityID;
     public String cityName;
-   /* @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id",referencedColumnName = "id")
 
 
-    */
-
-
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "countryid",referencedColumnName = "countryid")
     public Country country;
 
     public String getCityID() {

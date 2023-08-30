@@ -1,11 +1,5 @@
 package za.ac.cput.controller;
 
-/* SalesItemControllerTest.java
-Test for Controller for SalesItem
-Author: David Henriques Garrancho (221475982)
-Date: 29 August 2023
-*/
-
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +25,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Transactional
 class SalesItemControllerTest {
 
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060", 3000.00),
+            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
             ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
     );
 
@@ -54,8 +47,7 @@ class SalesItemControllerTest {
             customer
     );
 
-
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products , 2, 8000.00);
+    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 2, 1200);
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -71,8 +63,8 @@ class SalesItemControllerTest {
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
-        SalesItem savedSalesItem = postResponse.getBody();
-        System.out.println("Saved data: " + savedSalesItem);
+        SalesItem savedSales = postResponse.getBody();
+        System.out.println("Saved data: " + savedSales);
 
         assertEquals(salesItem.getSalesItemID(), postResponse.getBody().getSalesItemID());
     }
@@ -92,7 +84,7 @@ class SalesItemControllerTest {
     @Test
     @Transactional
     void update() {
-        SalesItem updated = new SalesItem.Builder().copy(salesItem).setItemPrice(4000.00).build();
+        SalesItem updated = new SalesItem.Builder().copy(salesItem).setItemPrice(3560.00).build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
         System.out.println("Post data: " + updated);
@@ -102,8 +94,8 @@ class SalesItemControllerTest {
 
     @Order(5)
     @Test
-    @Disabled
     @Transactional
+    @Disabled
     void delete() {
         String url = baseURL + "/delete/" + salesItem.getSalesItemID();
         System.out.println("URL: " + url);

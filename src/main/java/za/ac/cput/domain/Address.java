@@ -18,10 +18,8 @@ public class Address {
     @JoinColumn(name = "cityID", referencedColumnName = "cityID")
     public City city;
 
-    // Constructors
     public Address() {}
 
-    // Builder
     private Address(Builder builder) {
         this.addressID = builder.addressID;
         this.streetAddress = builder.streetAddress;
@@ -29,13 +27,12 @@ public class Address {
         this.city = builder.city;
     }
 
-    // Getters
+
     public String getAddressID() {return addressID;}
     public String getStreetAddress() {return streetAddress;}
     public String getPostalCode() {return postalCode;}
     public City getCity() {return city;}
 
-    // Hash-Code, Equals
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
