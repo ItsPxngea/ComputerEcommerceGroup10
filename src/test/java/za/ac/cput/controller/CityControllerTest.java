@@ -26,7 +26,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class CityControllerTest {
 
-    private static final Country country= CountryFactory.createCountry("South Africa");
+
+    //find out how to call value from database if there is one (Country)
+    //Changing values for countryName work
+    //Values that are repeated, cause issues with read, and timeout issues with getAll method
+    private static final Country country= CountryFactory.createCountry("Pakistan");
 
     private static final City city = CityFactory.createCity("Cape Town",country);
 
@@ -70,7 +74,6 @@ class CityControllerTest {
                 .setCityName("Paris")
                 .build();
         String url = baseURL + "/update";
-        System.out.println("URL: "+url);
         System.out.println("Post Data: "+updated);
         ResponseEntity<City> response = restTemplate.postForEntity(url,updated, City.class);
         assertNotNull(response.getBody());
@@ -95,7 +98,6 @@ class CityControllerTest {
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,entity, String.class);
         System.out.println("Show All:");
-        System.out.println(response);
         System.out.println(response.getBody());
     }
 }
