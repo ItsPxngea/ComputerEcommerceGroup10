@@ -81,11 +81,13 @@ public class Helper {
     public static boolean isInvalidInt(int i) {
         return i < 0;
     }
-    public static boolean isValidPhoneNumber(String phoneNumber) {
+    /*public static boolean isValidPhoneNumber(String phoneNumber) {
         Pattern phoneNumberPattern = Pattern.compile("^\\d{10}$");
         Matcher findAMatch = phoneNumberPattern.matcher(phoneNumber);
         return (findAMatch.matches());
     }
+
+     */
     public static LocalDate isValidDate(String dateStr) {
         if (dateStr == null) {
             return null;

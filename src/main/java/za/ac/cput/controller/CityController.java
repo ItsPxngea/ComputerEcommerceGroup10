@@ -25,7 +25,7 @@ public class CityController {
     @GetMapping("/read/{id}")
     public City read(@PathVariable String id){return cityService.read(id);}
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/update")
     public City update(@RequestBody City city){return cityService.update(city);}
 
     @DeleteMapping("/delete/{id}")
