@@ -13,7 +13,7 @@ import java.util.Objects;
 @Entity
 public class City implements Serializable {
     @Id
-    @Column(name = "cityid")
+    //@Column(name = "cityid")
     public String cityID;
     public String cityName;
 

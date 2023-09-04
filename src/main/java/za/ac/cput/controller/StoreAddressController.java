@@ -8,7 +8,7 @@ import za.ac.cput.service.StoreAddressService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/storeAddress")
+@RequestMapping("/storeaddress")
 public class StoreAddressController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class StoreAddressController {
         return storeAddressService.read(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     public StoreAddress update(@RequestBody StoreAddress storeAddress) {
         return storeAddressService.update(storeAddress);
     }

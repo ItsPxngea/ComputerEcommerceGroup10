@@ -8,15 +8,29 @@ Date: 19 August 2023
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 @Entity
+
+//@Table(name = "countryTable",indexes = @Index(name = "countryName", columnList = "countryName"))
 public class Country implements Serializable {
     @Id
     public String countryID;
+    @Column
     public String countryName;
+/*
+    @OneToMany(
+            mappedBy = "country",
+            cascade = CascadeType.ALL
+    )
+    public List<City> cityList;
 
-    public Country() {
-    }
+ */
+
+
+
+
+    public Country(){}
 
     public String getCountryID() {
         return countryID;
