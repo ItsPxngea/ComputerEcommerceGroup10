@@ -94,7 +94,7 @@ public class StoreDetails {
         }
 
         public Builder setStoreTel(String storeTel){
-            this.storeID = storeID;
+            this.storeTel = storeTel;
             return this;
         }
 

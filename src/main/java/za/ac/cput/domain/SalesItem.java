@@ -13,7 +13,7 @@ public class SalesItem implements Serializable {
     private String salesItemID;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "salesID")
+    @JoinColumn(name = "saleID")
     private Sales sales;
 
     @ManyToMany(cascade = CascadeType.ALL)

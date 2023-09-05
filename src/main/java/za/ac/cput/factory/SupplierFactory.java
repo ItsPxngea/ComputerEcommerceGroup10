@@ -17,9 +17,7 @@ public class SupplierFactory {
             return null;
         }
 
-        if(!Helper.isValidPhoneNumber(supplierTel)){
-            return null;
-        }
+
 
         if(!Helper.isValidEmail(supplierEmail)){
             return null;

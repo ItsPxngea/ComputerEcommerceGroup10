@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 public class StoreAddress implements Serializable {
     @Id
-    private String storeAddressID;
+    public String storeAddressID;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressID")
     private Address address;

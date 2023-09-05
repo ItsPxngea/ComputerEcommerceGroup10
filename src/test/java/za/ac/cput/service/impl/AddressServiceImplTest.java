@@ -10,7 +10,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
-import za.ac.cput.domain.Invoice;
+//import za.ac.cput.domain.Invoice;
 import za.ac.cput.factory.AddressFactory;
 import za.ac.cput.factory.CityFactory;
 import za.ac.cput.factory.CountryFactory;
