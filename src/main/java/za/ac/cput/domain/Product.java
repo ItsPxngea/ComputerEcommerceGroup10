@@ -24,6 +24,9 @@ public class Product implements Serializable {
     public String productDescription;
     public double productPrice;
 
+     @OneToMany(cascade = CascadeType.ALL)
+    private List<SalesItem> salesItems = new ArrayList<>();
+
     public Product(){
 
     }
