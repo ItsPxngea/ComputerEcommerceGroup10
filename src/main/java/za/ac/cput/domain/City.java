@@ -13,12 +13,12 @@ import java.util.Objects;
 @Entity
 public class City implements Serializable {
     @Id
-    //@Column(name = "cityid")
     public String cityID;
     public String cityName;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "country",referencedColumnName = "countryName")
     @JoinColumn(name = "countryid",referencedColumnName = "countryid")
     public Country country;
 
@@ -49,9 +49,9 @@ public class City implements Serializable {
     @Override
     public String toString() {
         return "City{" +
-                "countryID='" + cityID + '\'' +
+                "cityID='" + cityID + '\'' +
                 ", cityName='" + cityName + '\'' +
-                ", country=" + country +
+                ", "+ country +
                 '}';
     }
 

@@ -11,7 +11,7 @@ import java.util.Set;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-    private final AddressRepository repository;
+    private AddressRepository repository;
     @Autowired
     public AddressServiceImpl(AddressRepository repository){
         this.repository = repository;
