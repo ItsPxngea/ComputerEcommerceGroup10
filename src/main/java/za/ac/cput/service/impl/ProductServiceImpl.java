@@ -11,7 +11,6 @@ import za.ac.cput.repository.ProductRepository;
 import za.ac.cput.service.ProductService;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -28,8 +27,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product read(String salesID) {
-        return this.repository.findById(salesID).orElse(null);
+    public Product read(String productID) {
+        return this.repository.findById(productID).orElse(null);
     }
 
     @Override
@@ -40,9 +39,9 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public boolean delete(String salesID) {
-        if(this.repository.existsById(salesID)){
-            this.repository.deleteById(salesID);
+    public boolean delete(String productID) {
+        if(this.repository.existsById(productID)){
+            this.repository.deleteById(productID);
             return true;
         }
         return false;
