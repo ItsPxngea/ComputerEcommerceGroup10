@@ -33,14 +33,12 @@ public class ReviewServiceImplTest {
     private static final Review review = ReviewFactory.buildReview( 7, product, customer);
 
     @Test
-    @Transactional
     void a_create() {
         Review created = service.create(review);
         System.out.println("Created " + created);
     }
 
     @Test
-    @Transactional
     void b_read() {
         //assert review != null;
         Review read = service.read(review.getReviewID());
@@ -49,7 +47,6 @@ public class ReviewServiceImplTest {
     }
 
     @Test
-    @Transactional
     void c_update() {
         Review updated = new Review.Builder().copy(review).setRating(8).build();
         assertNotNull(updated);
@@ -58,7 +55,6 @@ public class ReviewServiceImplTest {
 
     @Test
     @Disabled
-    @Transactional
     void d_delete() {
         boolean success = service.delete(review.getReviewID());
         assertTrue(success);
@@ -66,7 +62,6 @@ public class ReviewServiceImplTest {
     }
 
     @Test
-    @Transactional
     void e_getAll() {
         System.out.println("Show All:");
         System.out.println(service.getAll());
