@@ -51,7 +51,6 @@ class ProductServiceImplTest {
     private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 4, 4800);
 
     @Test
-    @Transactional
     void a_create() {
 
         for (Product product : products) {
@@ -61,7 +60,6 @@ class ProductServiceImplTest {
     }
 
     @Test
-    @Transactional
     void b_read() {
 
         for (Product product : products) {
@@ -73,7 +71,6 @@ class ProductServiceImplTest {
     }
 
     @Test
-    @Transactional
     void c_update() {
 
         for (Product product : products) {
@@ -98,7 +95,6 @@ class ProductServiceImplTest {
     }
 
     @Test
-    @Transactional
     void d_getAll() {
         System.out.println("Show all: ");
         System.out.println(service.getAll());
