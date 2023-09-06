@@ -29,6 +29,7 @@ class SalesItemControllerTest {
 
     private static final List<Product> products = Arrays.asList(
             ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
+            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00),
             ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
     );
 
@@ -43,11 +44,11 @@ class SalesItemControllerTest {
 
     private static final Sales sales = SalesFactory.buildSales(
             "16-08-2023",
-            4560.00,
+            11800.00,
             customer
     );
 
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 2, 1200);
+    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, products.size(), 1200);
 
     @Autowired
     private TestRestTemplate restTemplate;

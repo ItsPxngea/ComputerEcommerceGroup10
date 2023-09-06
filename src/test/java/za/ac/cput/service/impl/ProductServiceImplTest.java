@@ -35,20 +35,6 @@ class ProductServiceImplTest {
             ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00),
                     ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
                     );
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test2456",
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
-    );
-
-    private static final Sales sales = SalesFactory.buildSales(
-            "16-08-2023",
-            4560.00,
-            customer
-    );
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 4, 4800);
 
     @Test
     void a_create() {

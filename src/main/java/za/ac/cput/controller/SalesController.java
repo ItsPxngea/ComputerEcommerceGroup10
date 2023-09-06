@@ -30,7 +30,7 @@ public class SalesController {
         return salesService.read(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     public Sales update(@RequestBody Sales sales) {
         return salesService.update(sales);
     }

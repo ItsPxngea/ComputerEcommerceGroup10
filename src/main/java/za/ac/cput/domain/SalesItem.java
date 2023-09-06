@@ -13,10 +13,10 @@ public class SalesItem implements Serializable {
     private String salesItemID;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "saleID")
+    @JoinColumn(name = "salesID")
     private Sales sales;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "sales_item_products",
             joinColumns = @JoinColumn(name = "sales_item_id"),
@@ -90,7 +90,6 @@ public class SalesItem implements Serializable {
                 ", itemPrice=" + itemPrice +
                 ", quantity=" + quantity +
                 ", productIDs=" + productIds +
-                // ... other fields ...
                 '}';
     }
 
