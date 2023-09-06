@@ -18,8 +18,7 @@ public class City implements Serializable {
 
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "country",referencedColumnName = "countryName")
-    @JoinColumn(name = "countryid",referencedColumnName = "countryid")
+    @JoinColumn(name = "country",referencedColumnName = "countryid")
     public Country country;
 
     public String getCityID() {

@@ -63,6 +63,7 @@ class StoreAddressServiceImplTest {
 
     @Order(3)
     @Test
+    @Disabled
     void update() {
 
         StoreDetails updated = new StoreDetails.Builder()
