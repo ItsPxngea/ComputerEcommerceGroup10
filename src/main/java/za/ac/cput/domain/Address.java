@@ -2,6 +2,8 @@ package za.ac.cput.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 /*
 Author: Alexander Draai - 220118744
@@ -17,6 +19,9 @@ public class Address {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cityID", referencedColumnName = "cityID")
     public City city;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private StoreDetails storeDetails;
 
     public Address() {}
 

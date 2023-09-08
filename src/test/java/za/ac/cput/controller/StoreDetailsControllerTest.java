@@ -8,16 +8,36 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
+import za.ac.cput.domain.Country;
 import za.ac.cput.domain.StoreDetails;
+import za.ac.cput.factory.AddressFactory;
+import za.ac.cput.factory.CityFactory;
+import za.ac.cput.factory.CountryFactory;
 import za.ac.cput.factory.StoreDetailsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class StoreDetailsControllerTest {
+
+    private static Country southAfrica = CountryFactory.createCountry(
+            "South Africa"
+    );
+    private static City homeCity = CityFactory.createCity(
+            "Cape Town",
+            southAfrica
+    );
+    private static Address homeAddress = AddressFactory.buildAddress(
+            "53 Main Road",
+            "6045",
+            homeCity
+    );
+
     private static StoreDetails storeDetails = StoreDetailsFactory.buildStoreDetails(
             "M computers",
-            "69 Nice Street, Cape Town",
+            homeAddress,
             "0988422548",
             "MComp@gmail.com");
 

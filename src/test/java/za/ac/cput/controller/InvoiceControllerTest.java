@@ -9,20 +9,29 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Customer;
-import za.ac.cput.domain.Invoice;
-import za.ac.cput.domain.Sales;
-import za.ac.cput.domain.StoreDetails;
-import za.ac.cput.factory.CustomerFactory;
-import za.ac.cput.factory.InvoiceFactory;
-import za.ac.cput.factory.SalesFactory;
-import za.ac.cput.factory.StoreDetailsFactory;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
 class InvoiceControllerTest {
+
+    private static Country southAfrica = CountryFactory.createCountry(
+            "South Africa"
+    );
+    private static City homeCity = CityFactory.createCity(
+            "Cape Town",
+            southAfrica
+    );
+    private static Address homeAddress = AddressFactory.buildAddress(
+            "53 Main Road",
+            "6045",
+            homeCity
+    );
+
+
     private static final Customer customer_one = CustomerFactory.buildCustomer(
             "Jason",
             "King",
@@ -36,7 +45,7 @@ class InvoiceControllerTest {
     );
     private static final StoreDetails storeDetails_one = StoreDetailsFactory.buildStoreDetails(
             "Evetech",
-            "7 De Calstone",
+            homeAddress,
             "021 445 9912",
             "techEve@gmail.com"
     );
@@ -81,12 +90,6 @@ class InvoiceControllerTest {
     @Test
     @Transactional
     void update() {
-        StoreDetails storeDetails_one = StoreDetailsFactory.buildStoreDetails(
-                "Game",
-                "7 De Calstone",
-                "021 445 9912",
-                "techEve@gmail.com"
-        );
         Invoice updated = new Invoice.Builder().copy(invoice).setStoreDetails(storeDetails_one).build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
