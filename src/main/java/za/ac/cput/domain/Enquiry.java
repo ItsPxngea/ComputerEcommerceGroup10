@@ -2,8 +2,7 @@ package za.ac.cput.domain;
 /*
 Author: Hanno Visser Immelman 221074414
 */
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,7 +12,11 @@ public class Enquiry implements Serializable {
 
     @Id
     private String enquiryID;
-    public String customerID;
+
+    @ManyToOne
+    @JoinColumn(name = "customerID")
+    private Customer customer;
+
     private String enquiryName;
     private String enquirySubjectLine;
     private String enquiryBodyContent;
@@ -23,10 +26,6 @@ public class Enquiry implements Serializable {
 
     public String getEnquiryID() {
         return enquiryID;
-    }
-
-    public String getCustomerID() {
-        return customerID;
     }
 
     public String getEnquiryName() {
@@ -41,24 +40,28 @@ public class Enquiry implements Serializable {
         return enquiryBodyContent;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Enquiry enquiry = (Enquiry) o;
-        return Objects.equals(enquiryID, enquiry.enquiryID) && Objects.equals(customerID, enquiry.customerID) && Objects.equals(enquiryName, enquiry.enquiryName) && Objects.equals(enquirySubjectLine, enquiry.enquirySubjectLine) && Objects.equals(enquiryBodyContent, enquiry.enquiryBodyContent);
+        return Objects.equals(enquiryID, enquiry.enquiryID) && Objects.equals(customer, enquiry.customer) && Objects.equals(enquiryName, enquiry.enquiryName) && Objects.equals(enquirySubjectLine, enquiry.enquirySubjectLine) && Objects.equals(enquiryBodyContent, enquiry.enquiryBodyContent);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(enquiryID, customerID, enquiryName, enquirySubjectLine, enquiryBodyContent);
+        return Objects.hash(enquiryID, customer, enquiryName, enquirySubjectLine, enquiryBodyContent);
     }
 
     @Override
     public String toString() {
         return "Enquiry{" +
                 "enquiryID='" + enquiryID + '\'' +
-                ", customerID='" + customerID + '\'' +
+                ", customer=" + customer +
                 ", enquiryName='" + enquiryName + '\'' +
                 ", enquirySubjectLine='" + enquirySubjectLine + '\'' +
                 ", enquiryBodyContent='" + enquiryBodyContent + '\'' +
@@ -67,7 +70,7 @@ public class Enquiry implements Serializable {
 
     private Enquiry(Builder b){
         this.enquiryID = b.enquiryID;
-        this.customerID = b.customerID;
+        this.customer = b.customer;
         this.enquiryName = b.enquiryName;
         this.enquirySubjectLine = b.enquirySubjectLine;
         this.enquiryBodyContent = b.enquiryBodyContent;
@@ -75,7 +78,7 @@ public class Enquiry implements Serializable {
 
     public static class Builder{
         private String enquiryID;
-        private String customerID;
+        private Customer customer;
         private String enquiryName;
         private String enquirySubjectLine;
         private String enquiryBodyContent;
@@ -85,8 +88,8 @@ public class Enquiry implements Serializable {
             return this;
         }
 
-        public Builder setCustomerID(String customerID){
-            this.customerID = customerID;
+        public Builder setCustomer(Customer customer) {
+            this.customer = customer;
             return this;
         }
 
@@ -107,7 +110,7 @@ public class Enquiry implements Serializable {
 
         public Builder copy(Enquiry enquiry){
             this.enquiryID = enquiry.enquiryID;
-            this.customerID = enquiry.customerID;
+            this.customer = enquiry.customer;
             this.enquiryName = enquiry.enquiryName;
             this.enquirySubjectLine = enquiry.enquirySubjectLine;
             this.enquiryBodyContent = enquiry.enquiryBodyContent;
