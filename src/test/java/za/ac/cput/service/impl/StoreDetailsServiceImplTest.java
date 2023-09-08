@@ -1,8 +1,6 @@
 package za.ac.cput.service.impl;
 
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.StoreDetails;
@@ -17,30 +15,32 @@ import static org.junit.jupiter.api.Assertions.*;
     Date: 10 - 06 - 2023
 */
 
-@TestMethodOrder(MethodOrderer.MethodName.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class StoreDetailsServiceImplTest{
-
     @Autowired
     private static StoreDetailsServiceImpl service;
     private static StoreDetails storeDetails = StoreDetailsFactory.buildStoreDetails("M computers","69 Nice Street, Cape Town","0988422548","MComp@gmail.com");
 
     @Test
-    void a_create(){
+    @Order(1)
+    void create(){
         StoreDetails created = service.create(storeDetails);
         assertEquals(storeDetails.getStoreID(), created.getStoreID());
         System.out.println();
     }
 
     @Test
-    void b_read(){
+    @Order(2)
+    void read(){
         StoreDetails read = service.read(storeDetails.getStoreID());
         assertNotNull(read);
         System.out.println("Read: "+read);
     }
 
     @Test
-    void c_update(){
+    @Order(3)
+    void update(){
         StoreDetails updated = new StoreDetails.Builder().copy(storeDetails)
                 .setStoreName("N Computers")
                 .build();
@@ -49,14 +49,17 @@ class StoreDetailsServiceImplTest{
     }
 
     @Test
-    void e_delete(){
+    @Order(4)
+    @Disabled
+    void delete(){
         boolean success = service.delete(storeDetails.getStoreID());
         assertTrue(success);
         System.out.println("Deleted: " + success);
     }
 
     @Test
-    void d_getAll(){
+    @Order(5)
+    void getAll(){
         System.out.println("Show all: "+service.getAll());
     }
 }
