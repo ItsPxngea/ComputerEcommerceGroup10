@@ -9,7 +9,8 @@ public class StoreDetailsFactory {
         if (Helper.isNullOrEmpty(storeName) || Helper.isNullOrEmpty(storeAddress))
             return null;
 
-
+        if (!Helper.isValidPhoneNumber(storeTel))
+            return null;
 
         if (!Helper.isValidEmail(storeEmail))
             return null;
