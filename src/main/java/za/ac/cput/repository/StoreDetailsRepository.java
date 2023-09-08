@@ -7,13 +7,8 @@ package za.ac.cput.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.StoreDetails;
 
-import java.util.List;
-import java.util.Set;
-
 @Repository
-public interface StoreDetailsRepository extends JpaRepository<StoreDetails, String> {
-
+public interface StoreDetailsRepository extends JpaRepository<StoreDetails,String> {
 }
