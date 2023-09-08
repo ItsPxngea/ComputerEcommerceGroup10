@@ -5,11 +5,10 @@ Author: Hanno Visser Immelman 221074414
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
 import java.util.Objects;
-
 @Entity
-public class StoreDetails {
-
+public class StoreDetails implements Serializable {
     @Id
     private String storeID;
     private String storeName;
@@ -94,7 +93,7 @@ public class StoreDetails {
         }
 
         public Builder setStoreTel(String storeTel){
-            this.storeTel = storeTel;
+            this.storeID = storeID;
             return this;
         }
 
