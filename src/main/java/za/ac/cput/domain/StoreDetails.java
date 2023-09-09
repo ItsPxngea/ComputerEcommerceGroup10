@@ -98,7 +98,7 @@ public class StoreDetails implements Serializable {
         }
 
         public Builder setStoreTel(String storeTel){
-            this.storeID = storeID;
+            this.storeTel = storeTel;
             return this;
         }
 

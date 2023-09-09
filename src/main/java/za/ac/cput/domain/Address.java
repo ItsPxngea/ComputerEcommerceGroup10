@@ -23,6 +23,9 @@ public class Address {
     @ManyToOne(cascade = CascadeType.ALL)
     private StoreDetails storeDetails;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Supplier supplier;
+
     public Address() {}
 
     private Address(Builder builder) {
