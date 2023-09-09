@@ -12,6 +12,7 @@ import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.factory.ProductFactory;
 import za.ac.cput.factory.SalesFactory;
 import za.ac.cput.factory.SalesItemFactory;
+import za.ac.cput.repository.SalesItemRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,33 +26,36 @@ class SalesItemServiceImplTest {
     @Autowired
     private SalesItemServiceImpl service;
 
+    @Autowired
+    private SalesItemRepository repository;
+
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
-            ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
+            ProductFactory.buildProduct("FX 1050", "GPU", "Next Generation gaming with the RTX 1050", 2000.00),
+            ProductFactory.buildProduct("RX 950", "GPU", "Next Generation gaming with the RTX 950", 1200.00)
     );
 
     private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test2456",
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+            "Test123",
+            "David",
+            "Garrancho",
+            "Garranchod@gmail.com",
+            "what2465"
     );
 
 
     private static final Sales sales = SalesFactory.buildSales(
-            "16-08-2023",
+            "30-08-2023",
             4560.00,
             customer
     );
 
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 4, 4800);
+    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 2, 3200.00);
 
 
 
     @Test
     @Order(1)
-    @Transactional
+    //@Transactional
     void create() {
         SalesItem created = service.create(salesItem);
         System.out.println("Created " + created);
@@ -59,7 +63,7 @@ class SalesItemServiceImplTest {
 
     @Test
     @Order(2)
-    @Transactional
+    //@Transactional
     void read() {
         SalesItem read = service.read(salesItem.getSalesItemID());
         assertNotNull(read);
@@ -68,16 +72,17 @@ class SalesItemServiceImplTest {
 
     @Test
     @Order(3)
-    @Transactional
+    //@Transactional
     void update() {
         SalesItem updated = new SalesItem.Builder().copy(salesItem).setItemPrice(1200).build();
+        repository.save(updated);
         assertNotNull(updated);
         System.out.println("Updated: " + updated);
     }
 
     @Test
     @Disabled
-    @Transactional
+    //@Transactional
     void delete() {
         boolean success = service.delete(salesItem.getSalesItemID());
         assertTrue(success);
@@ -86,7 +91,7 @@ class SalesItemServiceImplTest {
 
     @Test
     @Order(4)
-    @Transactional
+    //@Transactional
     void getAll() {
         System.out.println("Show All:");
         System.out.println(service.getAll());

@@ -31,4 +31,22 @@ public class SalesFactory {
                 .build();
     }
 
+    public static Sales buildTestSales(String id, String salesDate, Double totalAmount, Customer customer) {
+        if (Helper.isValidDate(salesDate) == null) {
+            return null;
+        }
+
+        if (Helper.isInvalidDouble(totalAmount)) {
+            return null;
+        }
+
+
+        return new Sales.Builder()
+                .setSaleID(id)
+                .setSaleDate(salesDate)
+                .setTotalAmount(totalAmount)
+                .setCustomer(customer)
+                .build();
+    }
+
 }

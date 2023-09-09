@@ -13,12 +13,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Product;
-import za.ac.cput.domain.Supplier;
-import za.ac.cput.domain.SupplierOrder;
-import za.ac.cput.factory.ProductFactory;
-import za.ac.cput.factory.SupplierFactory;
-import za.ac.cput.factory.SupplierOrderFactory;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,8 +33,24 @@ Date: 20/08/2023
 
 class SupplierOrderControllerTest {
 
-    private static final Supplier supplier = SupplierFactory.buildSupplier("abc@example.com",
-            "0823415673", "123 Main Street", "ABC Corporation");
+    private final static Country southAfrica = CountryFactory.createCountry(
+            "South Africa"
+    );
+    private final static City homeCity = CityFactory.createCity(
+            "Cape Town",
+            southAfrica
+    );
+    private final static Address homeAddress = AddressFactory.buildAddress(
+            "53 Main Road",
+            "6045",
+            homeCity
+    );
+
+    private final static Supplier supplier = SupplierFactory.buildSupplier
+            ("supplier@intel.com",
+                    "0214564389",
+                    homeAddress,
+                    "Intel");
 
     private static final List<Product> products = Arrays.asList(
             ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),

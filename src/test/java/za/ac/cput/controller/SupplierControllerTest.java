@@ -13,7 +13,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
+import za.ac.cput.domain.Country;
 import za.ac.cput.domain.Supplier;
+import za.ac.cput.factory.AddressFactory;
+import za.ac.cput.factory.CityFactory;
+import za.ac.cput.factory.CountryFactory;
 import za.ac.cput.factory.SupplierFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,12 +29,24 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class SupplierControllerTest {
 
-    private static Supplier supplier = SupplierFactory.buildSupplier(
-            "intel@intelqueries.com",
-            "0213459876",
-            "21 Rodes Street, Woodstock",
-            "Intel"
+    private final static Country southAfrica = CountryFactory.createCountry(
+            "South Africa"
     );
+    private final static City homeCity = CityFactory.createCity(
+            "Cape Town",
+            southAfrica
+    );
+    private final static Address homeAddress = AddressFactory.buildAddress(
+            "53 Main Road",
+            "6045",
+            homeCity
+    );
+
+    private final static Supplier supplier = SupplierFactory.buildSupplier
+            ("supplier@intel.com",
+                    "0214564389",
+                    homeAddress,
+                    "Intel");
 
     @Autowired
     private TestRestTemplate restTemplate;

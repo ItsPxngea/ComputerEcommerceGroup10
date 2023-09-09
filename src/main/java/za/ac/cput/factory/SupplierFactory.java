@@ -7,13 +7,14 @@ package za.ac.cput.factory;
 */
 
 
+import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Supplier;
 import za.ac.cput.util.Helper;
 public class SupplierFactory {
 
-    public static Supplier buildSupplier(String supplierEmail, String supplierTel, String supplierAddress, String supplierCompanyName){
+    public static Supplier buildSupplier(String supplierEmail, String supplierTel, Address supplierAddress, String supplierCompanyName){
 
-        if(Helper.isNullOrEmpty(supplierAddress) || Helper.isNullOrEmpty(supplierCompanyName)){
+        if(Helper.isNullOrEmpty(supplierCompanyName)){
             return null;
         }
 

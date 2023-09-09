@@ -27,6 +27,9 @@ public class Product implements Serializable {
      @OneToMany(cascade = CascadeType.ALL)
     private List<SalesItem> salesItems = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<SupplierOrder> supplierOrders = new ArrayList<>();
+
     public Product(){
 
     }

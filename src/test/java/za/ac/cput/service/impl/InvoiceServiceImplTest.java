@@ -6,14 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Customer;
-import za.ac.cput.domain.Invoice;
-import za.ac.cput.domain.Sales;
-import za.ac.cput.domain.StoreDetails;
-import za.ac.cput.factory.CustomerFactory;
-import za.ac.cput.factory.InvoiceFactory;
-import za.ac.cput.factory.SalesFactory;
-import za.ac.cput.factory.StoreDetailsFactory;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,30 +22,45 @@ import static org.junit.jupiter.api.Assertions.*;
 class InvoiceServiceImplTest {
 
     @Autowired
-    private static InvoiceServiceImpl service;
+    private InvoiceServiceImpl service;
+
+    private static Country southAfrica = CountryFactory.createCountry(
+            "South Africa"
+    );
+    private static  City homeCity = CityFactory.createCity(
+            "Cape Town",
+            southAfrica
+    );
+    private static  Address homeAddress = AddressFactory.buildAddress(
+            "53 Main Road",
+            "6045",
+            homeCity
+    );
 
 
-    private static final Customer customer_one = CustomerFactory.buildCustomer(
+    private static final Customer customer = CustomerFactory.buildCustomer(
             "Jason",
             "King",
             "KingJason@gmail.com",
             "AlexDraai143"
     );
-    private static final Sales sales_one = SalesFactory.buildSales(
+    private static final Sales sales = SalesFactory.buildTestSales(
+            "21c73f2d-a23e-4a2b-9fbb-e367d32d8b72",
             "05-08-2023",
             7000.00,
-            customer_one
+            customer
     );
-    private static final StoreDetails storeDetails_one = StoreDetailsFactory.buildStoreDetails(
+    private static final StoreDetails storeDetails = StoreDetailsFactory.buildTestStoreDetails(
+            "123",
             "Evetech",
-            "7 De Calstone",
+            homeAddress,
             "021 445 9912",
             "techEve@gmail.com"
     );
 
     private static final Invoice invoice = InvoiceFactory.buildInvoice(
-            storeDetails_one,
-            sales_one
+            storeDetails,
+            sales
     );
 
 

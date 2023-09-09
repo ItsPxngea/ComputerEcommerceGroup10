@@ -3,7 +3,13 @@ package za.ac.cput.service.impl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
+import za.ac.cput.domain.Country;
 import za.ac.cput.domain.StoreDetails;
+import za.ac.cput.factory.AddressFactory;
+import za.ac.cput.factory.CityFactory;
+import za.ac.cput.factory.CountryFactory;
 import za.ac.cput.factory.StoreDetailsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,15 +25,29 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class StoreDetailsServiceImplTest{
     @Autowired
-    private static StoreDetailsServiceImpl service;
-    private static StoreDetails storeDetails = StoreDetailsFactory.buildStoreDetails("M computers","69 Nice Street, Cape Town","0988422548","MComp@gmail.com");
+    private StoreDetailsServiceImpl service;
+
+    private static Country southAfrica = CountryFactory.createCountry(
+            "South Africa"
+    );
+    private static City homeCity = CityFactory.createCity(
+            "Cape Town",
+            southAfrica
+    );
+    private static Address homeAddress = AddressFactory.buildAddress(
+            "53 Main Road",
+            "6045",
+            homeCity
+    );
+
+    private static StoreDetails storeDetails = StoreDetailsFactory.buildStoreDetails("M computers",homeAddress,"0988422548","MComp@gmail.com");
 
     @Test
     @Order(1)
     void create(){
         StoreDetails created = service.create(storeDetails);
         assertEquals(storeDetails.getStoreID(), created.getStoreID());
-        System.out.println();
+        System.out.println(created);
     }
 
     @Test

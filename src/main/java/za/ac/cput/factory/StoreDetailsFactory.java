@@ -2,14 +2,12 @@ package za.ac.cput.factory;
 /*
 Author: Hanno Visser Immelman 221074414
 */
+import za.ac.cput.domain.Address;
 import za.ac.cput.domain.StoreDetails;
 import za.ac.cput.util.Helper;
 public class StoreDetailsFactory {
-    public static StoreDetails buildStoreDetails(String storeName, String storeAddress, String storeTel, String storeEmail){
-        if (Helper.isNullOrEmpty(storeName) || Helper.isNullOrEmpty(storeAddress))
-            return null;
-
-        if (!Helper.isValidPhoneNumber(storeTel))
+    public static StoreDetails buildStoreDetails(String storeName, Address address, String storeTel, String storeEmail){
+        if (Helper.isNullOrEmpty(storeName))
             return null;
 
         if (!Helper.isValidEmail(storeEmail))
@@ -19,7 +17,24 @@ public class StoreDetailsFactory {
 
         return new StoreDetails.Builder().setStoreID(storeID)
                 .setStoreName(storeName)
-                .setStoreAddress(storeAddress)
+                .setStoreAddress(address)
+                .setStoreTel(storeTel)
+                .setStoreEmail(storeEmail)
+                .build();
+    }
+
+    public static StoreDetails buildTestStoreDetails(String id, String storeName, Address address, String storeTel, String storeEmail){
+        if (Helper.isNullOrEmpty(storeName))
+            return null;
+
+
+
+        if (!Helper.isValidEmail(storeEmail))
+            return null;
+
+        return new StoreDetails.Builder().setStoreID(id)
+                .setStoreName(storeName)
+                .setStoreAddress(address)
                 .setStoreTel(storeTel)
                 .setStoreEmail(storeEmail)
                 .build();
