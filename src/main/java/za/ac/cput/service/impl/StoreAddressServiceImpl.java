@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.domain.StoreAddress;
 import za.ac.cput.repository.StoreAddressRepository;
 import za.ac.cput.service.StoreAddressService;
+
 import java.util.List;
 
 
@@ -17,6 +18,7 @@ public class StoreAddressServiceImpl implements StoreAddressService {
     private StoreAddressServiceImpl(StoreAddressRepository repository) {
         this.repository = repository;
     }
+
     @Override
     public StoreAddress create(StoreAddress storeAddress) {
         return this.repository.save(storeAddress);
@@ -29,18 +31,18 @@ public class StoreAddressServiceImpl implements StoreAddressService {
 
     @Override
     public StoreAddress update(StoreAddress storeAddress) {
-        if(this.repository.existsById(storeAddress.getStoreAddressID()))
+        if (this.repository.existsById(storeAddress.getStoreAddressID()))
             return this.repository.save(storeAddress);
         return null;
     }
 
     @Override
     public boolean delete(String id) {
-        if(this.repository.existsById(id)){
+        if (this.repository.existsById(id)) {
             this.repository.deleteById(id);
             return true;
         }
-            return false;
+        return false;
     }
 
     @Override

@@ -22,7 +22,8 @@ public class ProductFactory {
 
         String productID = Helper.generateProductID(productName, productType);
 
-        return new Product.Builder().setProductID(productID)
+        return new Product.Builder()
+                .setProductID(productID)
                 .setProductName(productName)
                 .setProductPrice(productPrice)
                 .setProductType(productType)

@@ -22,7 +22,7 @@ import za.ac.cput.factory.CountryFactory;
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Transactional
+//@Transactional
 class CountryControllerTest {
 
     private static final Country country = CountryFactory.createCountry("France");
@@ -33,7 +33,7 @@ class CountryControllerTest {
     private final String baseURL = "http://localhost:8080/country";
 
     @Order(1)
-    @Transactional
+    //@Transactional
     @Test
     void create() {
         String url = baseURL + "/create";
@@ -48,7 +48,7 @@ class CountryControllerTest {
     }
 
     @Order(2)
-    @Transactional
+   // @Transactional
     @Test
     void read() {
         String url = baseURL + "/read/" + country.getCountryID();
@@ -59,7 +59,7 @@ class CountryControllerTest {
     }
 
     @Order(3)
-    @Transactional
+    //@Transactional
     @Test
     //not working properly
     void update() {
@@ -67,7 +67,6 @@ class CountryControllerTest {
                 .setCountryName("Finland")
                 .build();
         String url = baseURL + "/update";
-        System.out.println("URL: "+ url);
         System.out.println("Post Data: "+ updated);
         ResponseEntity<Country> response = restTemplate.postForEntity(url, updated, Country.class);
         assertNotNull(response.getBody());
@@ -75,7 +74,7 @@ class CountryControllerTest {
     }
 
     @Order(5)
-    @Transactional
+   // @Transactional
     @Test
     @Disabled
     void delete() {
@@ -85,7 +84,7 @@ class CountryControllerTest {
     }
 
     @Order(4)
-    @Transactional
+   // @Transactional
     @Test
     void getAll() {
         String url = baseURL +"/getAll";
@@ -93,7 +92,6 @@ class CountryControllerTest {
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,entity,String.class);
         System.out.println("Show All:");
-        System.out.println(response);
         System.out.println(response.getBody());
     }
 }

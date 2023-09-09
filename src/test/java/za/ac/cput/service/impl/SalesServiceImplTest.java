@@ -22,9 +22,11 @@ class SalesServiceImplTest {
 
     @Autowired
     private SalesServiceImpl service;
+    @Autowired
+    private SalesRepository repository;
 
     private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test2456",
+            "e0295579-70a0-48f3-b0c8-3f3fbe66b6cc",
             "Luke",
             "Ben",
             "LW@gmail.com",
@@ -40,14 +42,14 @@ class SalesServiceImplTest {
 
 
     @Test
-    @Transactional
+    //@Transactional
     void a_create() {
         Sales created = service.create(sales);
         System.out.println("Created " + created);
     }
 
     @Test
-    @Transactional
+    //@Transactional
     void b_read() {
         Sales read = service.read(sales.getSaleID());
         System.out.println("Read: "+ read);
@@ -55,9 +57,10 @@ class SalesServiceImplTest {
     }
 
     @Test
-    @Transactional
+    //@Transactional
     void c_update() {
         Sales updated = new Sales.Builder().copy(sales).setSaleDate("15-09-2023").setTotalAmount(3520.00).build();
+        repository.save(updated);
         assertNotNull(updated);
         System.out.println("Updated: " + updated);
     }
@@ -68,7 +71,7 @@ class SalesServiceImplTest {
     }
 
     @Test
-    @Transactional
+    //@Transactional
     void d_getAll() {
         System.out.println("Show All:");
         System.out.println(service.getAll());

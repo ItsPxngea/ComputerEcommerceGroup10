@@ -8,11 +8,7 @@ import za.ac.cput.util.Helper;
 
 public class StoreAddressFactory {
 
-    public static StoreAddress build(String storeAddressID, Address address, StoreDetails storeDetails ) {
-
-        if (Helper.isNullOrEmpty(storeAddressID)) {
-            return null;
-        }
+    public static StoreAddress build( Address address, StoreDetails storeDetails ) {
 
         String newStoreAddressID = Helper.generateID();
 

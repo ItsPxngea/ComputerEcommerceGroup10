@@ -48,7 +48,6 @@ class CityServiceImplTest {
     //@Transactional
     void b_read() {
         City read = cityService.read(city.getCityID());
-
         assertNotNull(read);
         System.out.println("Read: "+read);
     }
