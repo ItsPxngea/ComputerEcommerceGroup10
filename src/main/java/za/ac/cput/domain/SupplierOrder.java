@@ -7,12 +7,14 @@ package za.ac.cput.domain;
 */
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 public class SupplierOrder implements Serializable {
@@ -20,9 +22,19 @@ public class SupplierOrder implements Serializable {
 
     @Id
     private String orderID;
-    public String supplierID;
 
-    public String productID;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="supplierid")
+    public Supplier supplier;
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "supplier_order_products",
+            joinColumns = @JoinColumn(name = "orderid"),
+            inverseJoinColumns = @JoinColumn(name = "productid")
+    )
+    private List<Product> products = new ArrayList<>();
     public int productQuantity;
     public double productIndividualPrice;
     private String dateOfOrder;
@@ -31,15 +43,31 @@ public class SupplierOrder implements Serializable {
     private double importTax;
     private double totalCost;
 
+
     public SupplierOrder(){
     }
 
-    public String getSupplierID() {
-        return supplierID;
+    private SupplierOrder(Builder b){
+
+        this.supplier = b.supplier;
+        this.products = b.products;
+        this.productQuantity = b.productQuantity;
+        this.productIndividualPrice = b.productIndividualPrice;
+        this.orderID = b.orderID;
+        this.dateOfOrder = b.dateOfOrder;
+        this.expectedDeliveryDate = b.expectedDeliveryDate;
+        this.actualDeliveryDate = b.actualDeliveryDate;
+        this.importTax = b.importTax;
+        this.totalCost = b.totalCost;
+
     }
 
-    public String getProductID() {
-        return productID;
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public List<Product> getProducts() {
+        return products;
     }
 
     public int getProductQuantity() {
@@ -80,19 +108,28 @@ public class SupplierOrder implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SupplierOrder that = (SupplierOrder) o;
-        return productQuantity == that.productQuantity && Double.compare(that.productIndividualPrice, productIndividualPrice) == 0 && Double.compare(that.importTax, importTax) == 0 && Double.compare(that.totalCost, totalCost) == 0 && Objects.equals(supplierID, that.supplierID) && Objects.equals(productID, that.productID) && Objects.equals(orderID, that.orderID) && Objects.equals(dateOfOrder, that.dateOfOrder) && Objects.equals(expectedDeliveryDate, that.expectedDeliveryDate) && Objects.equals(actualDeliveryDate, that.actualDeliveryDate);
+        return productQuantity == that.productQuantity && Double.compare(that.productIndividualPrice, productIndividualPrice)
+                == 0 && Double.compare(that.importTax, importTax) == 0 && Double.compare(that.totalCost, totalCost) == 0 &&
+                Objects.equals(supplier, that.supplier) && Objects.equals(products, that.products) && Objects.equals(orderID, that.orderID)
+                && Objects.equals(dateOfOrder, that.dateOfOrder) && Objects.equals(expectedDeliveryDate, that.expectedDeliveryDate) &&
+                Objects.equals(actualDeliveryDate, that.actualDeliveryDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(supplierID, productID, productQuantity, productIndividualPrice, orderID, dateOfOrder, expectedDeliveryDate, actualDeliveryDate, importTax, totalCost);
+        return Objects.hash(supplier, products, productQuantity, productIndividualPrice, orderID, dateOfOrder, expectedDeliveryDate, actualDeliveryDate, importTax, totalCost);
     }
 
     @Override
     public String toString() {
+
+        String productsIds = products.stream()
+                .map(Product::getProductID)
+                .collect(Collectors.joining(", "));
+
         return "SupplierOrder{" +
-                "supplierID='" + supplierID + '\'' +
-                ", productID='" + productID + '\'' +
+                "supplier='" + supplier + '\'' +
+                ", productsIDs='" + productsIds + '\'' +
                 ", productQuantity=" + productQuantity +
                 ", productPrice=" + productIndividualPrice +
                 ", orderID='" + orderID + '\'' +
@@ -105,29 +142,15 @@ public class SupplierOrder implements Serializable {
     }
 
 
-    public SupplierOrder(Builder b){
 
-        this.supplierID = b.supplierID;
-        this.productID = b.productID;
-        this.productQuantity = b.productQuantity;
-        this.productIndividualPrice = b.productIndividualPrice;
-        this.orderID = b.orderID;
-        this.dateOfOrder = b.dateOfOrder;
-        this.expectedDeliveryDate = b.expectedDeliveryDate;
-        this.actualDeliveryDate = b.actualDeliveryDate;
-        this.importTax = b.importTax;
-        this.totalCost = b.totalCost;
-
-
-    }
 
 
     public static class Builder{
 
-        public String supplierID;
-        public String productID;
-        public int productQuantity;
-        public double productIndividualPrice;
+        private Supplier supplier;
+        private List<Product> products = new ArrayList<>();
+        private int productQuantity;
+        private double productIndividualPrice;
         private String orderID;
         private String dateOfOrder;
         private String expectedDeliveryDate;
@@ -137,13 +160,13 @@ public class SupplierOrder implements Serializable {
 
 
 
-        public Builder setSupplierID(String supplierID) {
-            this.supplierID = supplierID;
+        public Builder setSupplier(Supplier supplier) {
+            this.supplier = supplier;
             return this;
         }
 
-        public Builder setProductID(String productID) {
-            this.productID = productID;
+        public Builder setProducts(List<Product> products) {
+            this.products = products;
             return this;
         }
 
@@ -190,8 +213,8 @@ public class SupplierOrder implements Serializable {
 
 
         public Builder copy(SupplierOrder supplierOrder){
-            this.supplierID = supplierOrder.supplierID;
-            this.productID = supplierOrder.productID;
+            this.supplier = supplierOrder.supplier;
+            this.products = supplierOrder.products;
             this.productQuantity = supplierOrder.productQuantity;
             this.productIndividualPrice = supplierOrder.productIndividualPrice;
             this.orderID = supplierOrder.orderID;
