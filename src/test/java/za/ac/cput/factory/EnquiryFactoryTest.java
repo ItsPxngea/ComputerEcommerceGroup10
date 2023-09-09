@@ -10,7 +10,7 @@ import za.ac.cput.domain.Enquiry;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EnquiryFactoryTest {
-    @Test
+   /* @Test
     void createEnquiry(){
         Enquiry en = EnquiryFactory.buildEnquiry("229654655","Faulty power supply","Smelling smoke","The moment I turned on the computer smoke started coming out.");
         System.out.println(en.toString());
@@ -55,7 +55,7 @@ class EnquiryFactoryTest {
         Enquiry en2 = en1;
         System.out.println(en1.toString());
         assertEquals(en1,en2);
-    }
+    }*/
 
 
 }

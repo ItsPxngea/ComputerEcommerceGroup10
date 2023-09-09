@@ -38,15 +38,15 @@ public class EnquiryServiceImpl implements EnquiryService {
 
     @Override
     public Enquiry update(Enquiry enquiry) {
-        if(this.repository.existsById((enquiry.getCustomerID())))
+        if(this.repository.existsById((enquiry.getEnquiryID())))
             return this.repository.save(enquiry);
         return null;
     }
 
     @Override
-    public boolean delete(String customerID) {
-        if (this.repository.existsById(customerID)){
-            this.repository.deleteById(customerID);
+    public boolean delete(String enquiryID) {
+        if (this.repository.existsById(enquiryID)){
+            this.repository.deleteById(enquiryID);
             return  true;
         }
         return false;
