@@ -4,49 +4,51 @@ package za.ac.cput.service.impl;
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
 */
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Product;
+import za.ac.cput.repository.ProductRepository;
 import za.ac.cput.service.ProductService;
 
-import java.util.Set;
+import java.util.List;
 
+@Service
 public class ProductServiceImpl implements ProductService{
-    private static ProductServiceImpl service = null;
-    private ProductRepositoryImpl repository = null;
+    private ProductRepository repository;
 
-    private ProductServiceImpl(){
-        if(repository == null){
-            repository = ProductRepositoryImpl.getRepository();
+    @Autowired
+    private ProductServiceImpl(ProductRepository repository){
+        this.repository = repository;
+    }
+
+    @Override
+    public Product create(Product product) {
+        return this.repository.save(product);
+    }
+
+    @Override
+    public Product read(String productID) {
+        return this.repository.findById(productID).orElse(null);
+    }
+
+    @Override
+    public Product update(Product product) {
+        if(this.repository.existsById((product.getProductID())))
+            return this.repository.save(product);
+        return null;
+    }
+
+    @Override
+    public boolean delete(String productID) {
+        if(this.repository.existsById(productID)){
+            this.repository.deleteById(productID);
+            return true;
         }
-    }
-
-    public static ProductServiceImpl getService(){
-        if(service == null){
-            service = new ProductServiceImpl();
-        }
-        return service;
+        return false;
     }
 
     @Override
-    public za.ac.cput.domain.Product create(za.ac.cput.domain.Product product) {
-        return repository.create(product);
-    }
-
-    @Override
-    public za.ac.cput.domain.Product read(String id) {
-        return repository.read(id);
-    }
-
-    @Override
-    public za.ac.cput.domain.Product update(za.ac.cput.domain.Product product) {
-        return repository.update(product);
-    }
-
-    @Override
-    public boolean delete(String id) {
-        return repository.delete(id);
-    }
-
-    @Override
-    public Set<za.ac.cput.domain.Product> getAll() {
-        return repository.getAll();
+    public List<Product> getAll() {
+        return this.repository.findAll();
     }
 }

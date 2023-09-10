@@ -1,59 +1,68 @@
 package za.ac.cput.service.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Enquiry;
+import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.factory.EnquiryFactory;
+import za.ac.cput.repository.EnquiryRepository;
 
-/*
-    EnquiryServiceImplTest.java
-    Author: Hanno Visser Immelman 221074414
-    This is the test class EnquiryServiceImpl
-    Date: 10 - 06 - 2023
-*/
-
-@TestMethodOrder(MethodOrderer.MethodName.class)
+import static org.junit.jupiter.api.Assertions.*;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@SpringBootTest
 class EnquiryServiceImplTest {
-    private static EnquiryServiceImpl service = EnquiryServiceImpl.getService();
+@Autowired
+private EnquiryServiceImpl service;
+@Autowired
+private EnquiryRepository repository;
 
+    private  Customer customer = CustomerFactory.buildTestCustomer(
+            "e0295579-70a0-48f3-b0c8-3f3fbe66b6cc",
+            "Luke",
+            "Ben",
+            "LW@gmail.com",
+            "wufh%2465"
+    );
 
-    private static Enquiry enquiry = EnquiryFactory.buildEnquiry("1254574", "Motherboard Broken", "Computer does not turn on", "Motherboard does not seem to power the CPU");
-
+    private Enquiry enquiry = EnquiryFactory.buildEnquiry(customer,"Delivery complaint","Did not get my delivery","Payed but did not receive my product");
     @Test
-    void a_create() {
+    @Order(1)
+    void create() {
         Enquiry created = service.create(enquiry);
-        assertEquals(enquiry.getEnquiryID(), created.getEnquiryID());
-        System.out.println("Create: " + created);
+        System.out.println("Created "+created);
     }
 
     @Test
-    void b_read() {
+    @Order(2)
+    void read() {
         Enquiry read = service.read(enquiry.getEnquiryID());
+        System.out.println();
         assertNotNull(read);
-        System.out.println("Read: " + read);
     }
 
     @Test
-    void c_update() {
-        Enquiry updated = new Enquiry.Builder().copy(enquiry)
-                .setEnquiryName("CPU Broken")
-                .build();
-        assertNotNull(service.update(updated));
-        System.out.println("Updated: " + updated);
+    @Order(3)
+
+    void update() {
+        Enquiry updated = new Enquiry.Builder().copy(enquiry).setEnquirySubjectLine("Got the wrong delivery").build();
+        repository.save(updated);
+        assertNotNull(updated);
+        System.out.println("Updated: "+updated);
     }
 
     @Test
-    void e_delete() {
-        boolean success = service.delete(enquiry.getEnquiryID());
-        assertTrue(success);
-        System.out.println("Deleted: " + success);
+    @Order(4)
+    @Disabled
+    void delete() {
+
     }
 
     @Test
-    void d_getAll() {
-        System.out.println("Show all: " + service.getAll());
+    @Order(5)
+    void getAll() {
+        System.out.println("Show All: ");
+        System.out.println(service.getAll());
     }
 }

@@ -2,8 +2,8 @@ package za.ac.cput.domain;
 /*
 Author: Hanno Visser Immelman 221074414
 */
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 @Entity
@@ -11,9 +11,15 @@ public class StoreDetails implements Serializable {
     @Id
     private String storeID;
     private String storeName;
-    private String storeAddress;
     private String storeTel;
     private String storeEmail;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "store_address",
+            joinColumns = @JoinColumn(name = "store_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private Address address;
 
     public StoreDetails() {
     }
@@ -26,8 +32,8 @@ public class StoreDetails implements Serializable {
         return storeName;
     }
 
-    public String getStoreAddress() {
-        return storeAddress;
+    public Address getAddress() {
+        return address;
     }
 
     public String getStoreTel() {
@@ -43,12 +49,12 @@ public class StoreDetails implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StoreDetails that = (StoreDetails) o;
-        return Objects.equals(storeID, that.storeID) && Objects.equals(storeName, that.storeName) && Objects.equals(storeAddress, that.storeAddress) && Objects.equals(storeTel, that.storeTel) && Objects.equals(storeEmail, that.storeEmail);
+        return Objects.equals(storeID, that.storeID) && Objects.equals(storeName, that.storeName) && Objects.equals(address, that.address) && Objects.equals(storeTel, that.storeTel) && Objects.equals(storeEmail, that.storeEmail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(storeID, storeName, storeAddress, storeTel, storeEmail);
+        return Objects.hash(storeID, storeName, address, storeTel, storeEmail);
     }
 
     @Override
@@ -56,7 +62,7 @@ public class StoreDetails implements Serializable {
         return "StoreDetails{" +
                 "storeID='" + storeID + '\'' +
                 ", storeName='" + storeName + '\'' +
-                ", storeAddress='" + storeAddress + '\'' +
+                ", address='" + address + '\'' +
                 ", storeTel='" + storeTel + '\'' +
                 ", storeEmail='" + storeEmail + '\'' +
                 '}';
@@ -65,14 +71,14 @@ public class StoreDetails implements Serializable {
     private StoreDetails(Builder b){
         this.storeID = b.storeID;
         this.storeName = b.storeName;
-        this.storeAddress = b.storeAddress;
+        this.address = b.address;
         this.storeTel = b.storeTel;
         this.storeEmail = b.storeEmail;
     }
     public static class Builder {
         private String storeID;
         private String storeName;
-        private String storeAddress;
+        private Address address;
         private String storeTel;
         private String storeEmail;
 
@@ -86,13 +92,13 @@ public class StoreDetails implements Serializable {
             return this;
         }
 
-        public Builder setStoreAddress(String storeAddress){
-            this.storeAddress = storeAddress;
+        public Builder setStoreAddress(Address address){
+            this.address = address;
             return this;
         }
 
         public Builder setStoreTel(String storeTel){
-            this.storeID = storeID;
+            this.storeTel = storeTel;
             return this;
         }
 
@@ -104,7 +110,7 @@ public class StoreDetails implements Serializable {
         public Builder copy(StoreDetails storeDetails){
             this.storeID = storeDetails.storeID;
             this.storeName = storeDetails.storeName;
-            this.storeAddress = storeDetails.storeAddress;
+            this.address = storeDetails.address;
             this.storeTel = storeDetails.storeTel;
             this.storeEmail = storeDetails.storeEmail;
             return this;

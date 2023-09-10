@@ -14,16 +14,17 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class Sales implements Serializable{
+public class Sales implements Serializable {
     @Id
     private String saleID;
     private String saleDate;
     private Double totalAmount;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customerid",referencedColumnName = "customerid")
+
+    @ManyToOne
+    @JoinColumn(name = "customerID")
     private Customer customer;
 
-    @OneToMany(mappedBy = "sales", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sales")
     private List<SalesItem> salesItems = new ArrayList<>();
 
     public Sales() {

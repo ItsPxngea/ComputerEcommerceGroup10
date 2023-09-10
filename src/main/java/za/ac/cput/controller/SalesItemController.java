@@ -23,7 +23,7 @@ public class SalesItemController {
         return salesItemService.read(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     public SalesItem update(@RequestBody SalesItem salesItem) {
         return salesItemService.update(salesItem);
     }
@@ -38,3 +38,4 @@ public class SalesItemController {
         return salesItemService.getAll();
     }
 }
+

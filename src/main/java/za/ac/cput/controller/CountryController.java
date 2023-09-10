@@ -26,7 +26,7 @@ public class CountryController {
     @GetMapping("/read/{id}")
     public Country read(@PathVariable String id){return countryService.read(id);}
 
-    @PutMapping("/update/{id}")
+    @PostMapping("/update")
     public Country update(@RequestBody Country country){return countryService.update(country);}
 
     @DeleteMapping("/delete/{id}")

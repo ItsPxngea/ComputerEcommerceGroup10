@@ -1,55 +1,57 @@
 package za.ac.cput.service.impl;
 
-import za.ac.cput.repository.impl.SupplierRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import za.ac.cput.domain.Supplier;
+import za.ac.cput.repository.SupplierRepository;
 import za.ac.cput.service.SupplierService;
 
+import java.util.List;
 import java.util.Set;
 /*
 Author: Ethan Botes - 220101299
 This is the implementation for the service SupplierService
 Date 11/06/2023
  */
+
+@Service
 public class SupplierServiceImpl implements SupplierService {
 
-    private static SupplierServiceImpl service = null;
-
-    private SupplierRepositoryImpl repository = null;
-
-
-    private SupplierServiceImpl(){
-        if(repository == null){
-            repository = SupplierRepositoryImpl.getRepository();
-        }
-    }
-
-    public static SupplierServiceImpl getService(){
-        if(service == null){
-            service = new SupplierServiceImpl();
-        }
-        return service;
+    private SupplierRepository repository;
+    
+    @Autowired
+    private SupplierServiceImpl(SupplierRepository repository){
+        this.repository = repository;
     }
 
     @Override
-    public za.ac.cput.domain.Supplier create(za.ac.cput.domain.Supplier supplier){return repository.create(supplier);}
-
-    @Override
-    public za.ac.cput.domain.Supplier read(String id){
-        return repository.read(id);
+    public Supplier create(Supplier supplierOrder){
+        return this.repository.save(supplierOrder);
     }
 
     @Override
-    public za.ac.cput.domain.Supplier update(za.ac.cput.domain.Supplier supplier){
-        return repository.update(supplier);
+    public Supplier read(String id){
+        return this.repository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Supplier update(Supplier supplierOrder){
+        if(this.repository.existsById((supplierOrder.getSupplierID())))
+            return this.repository.save(supplierOrder);
+        return null;
     }
 
     @Override
     public boolean delete(String id){
-        return repository.delete(id);
+        if(this.repository.existsById(id)){
+            this.repository.deleteById(id);
+            return true;
+        }
+        return false;
     }
-
     @Override
-    public Set<za.ac.cput.domain.Supplier> getAll(){
-        return repository.getAll();
+    public List<Supplier> getAll(){
+        return repository.findAll();
     }
 
 }

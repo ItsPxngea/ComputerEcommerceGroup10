@@ -11,17 +11,19 @@ public class SalesItem implements Serializable {
 
     @Id
     private String salesItemID;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "salesID")
-    Sales sales;
+    private Sales sales;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "sales_item_products",
             joinColumns = @JoinColumn(name = "sales_item_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private List<Product> products = new ArrayList<>();
+
     private int quantity;
     private double itemPrice;
 
@@ -34,6 +36,10 @@ public class SalesItem implements Serializable {
         this.products = b.products;
         this.quantity = b.quantity;
         this.itemPrice = b.itemPrice;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public String getSalesItemID() {
@@ -56,8 +62,8 @@ public class SalesItem implements Serializable {
         return products;
     }
 
-    public void addProducts(List<Product> products) {
-        this.products.addAll(products);
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
     @Override
@@ -75,7 +81,6 @@ public class SalesItem implements Serializable {
 
     @Override
     public String toString() {
-
         String productIds = products.stream()
                 .map(Product::getProductID)
                 .collect(Collectors.joining(", "));
@@ -90,9 +95,7 @@ public class SalesItem implements Serializable {
 
     public static class Builder {
         private String salesItemID;
-        @JoinColumn(name = "sales_id")
         private Sales sales;
-        @JoinColumn(name = "product_id")
         private List<Product> products = new ArrayList<>();
         private int quantity;
         private double itemPrice;
@@ -130,12 +133,15 @@ public class SalesItem implements Serializable {
         public Builder copy(SalesItem salesItem){
             this.salesItemID = salesItem.salesItemID;
             this.sales = salesItem.sales;
-            this.products = salesItem.products;
+            this.products = salesItem.products;  // Updated this line
             this.quantity = salesItem.quantity;
             this.itemPrice = salesItem.itemPrice;
             return this;
         }
 
-        public SalesItem build(){return new SalesItem(this);}
+        public SalesItem build(){
+            return new SalesItem(this);
+        }
     }
+
 }

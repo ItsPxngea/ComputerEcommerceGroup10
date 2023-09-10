@@ -16,14 +16,10 @@ public class City implements Serializable {
     //@Column(name = "cityid")
     public String cityID;
     public String cityName;
-   /* @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id",referencedColumnName = "id")
 
 
-    */
-
-
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "countryid",referencedColumnName = "countryid")
     public Country country;
 
     public String getCityID() {

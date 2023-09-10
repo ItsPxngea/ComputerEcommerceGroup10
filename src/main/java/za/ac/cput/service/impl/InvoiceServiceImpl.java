@@ -7,44 +7,42 @@ import za.ac.cput.repository.InvoiceRepository;
 import za.ac.cput.service.InvoiceService;
 
 import java.util.List;
+import java.util.Set;
 
 /*
     InvoiceServiceImpl.java
     Author: Alexander Draai - 220118744
-    This is the implementation for the service Invoice.java
+    This is the implementation for the service InvoiceHistoryServiceImpl.java
     Date: 10 - 06 - 2023
  */
+
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
 
-    private final InvoiceRepository repository;
     @Autowired
-    public InvoiceServiceImpl (InvoiceRepository repository) {
-       this.repository = repository;
-    }
+    private InvoiceRepository repository; // Assuming you have an InvoiceRepository
+
 
     @Override
     public Invoice create(Invoice invoice) {
-        return this.repository.save(invoice);
+        return repository.save(invoice);
     }
 
     @Override
-    public Invoice read(String invoiceNumber) {
-        return this.repository.findById(invoiceNumber).orElse(null);
+    public Invoice read(String id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Invoice update(Invoice invoice) {
-       if(this.repository.existsById(invoice.getInvoiceNumber()))
-           return this.repository.save(invoice);
-       return null;
+        return repository.save(invoice);
     }
 
     @Override
-    public boolean delete(String invoiceNumber) {
-        if(this.repository.existsById(invoiceNumber)){
-            this.repository.deleteById(invoiceNumber);
-            return true;
+    public boolean delete(String id) {
+        if (this.repository.existsById(id)){
+            this.repository.deleteById(id);
+            return  true;
         }
         return false;
     }

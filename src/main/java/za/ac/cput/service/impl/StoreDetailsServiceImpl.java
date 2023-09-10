@@ -1,7 +1,14 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import za.ac.cput.domain.Customer;
+import za.ac.cput.domain.StoreDetails;
+import za.ac.cput.repository.StoreDetailsRepository;
 import za.ac.cput.service.StoreDetailsService;
 
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -10,46 +17,44 @@ import java.util.Set;
     This is the implementation for the service StoreDetailsService.java
     Date: 10 - 06 - 2023
  */
-
+@Service
 public class StoreDetailsServiceImpl implements StoreDetailsService {
-    private static StoreDetailsServiceImpl service = null;
-    private StoreDetailsRepositoryImpl repository = null;
+    private StoreDetailsRepository repository;
+    @Autowired
+    private StoreDetailsServiceImpl(StoreDetailsRepository repository){
+        this.repository = repository;
+    }
 
-    private StoreDetailsServiceImpl(){
-        if (repository == null){
-            repository = StoreDetailsRepositoryImpl.getRepository();
+    @Override
+    public StoreDetails create(StoreDetails storeDetails){
+        return this.repository.save(storeDetails);
+    }
+
+    @Override
+    public StoreDetails read(String storeDetailsId){
+        return this.repository.findById(storeDetailsId).orElse(null);
+    }
+
+    @Override
+    public StoreDetails update(StoreDetails storeDetails){
+        if (this.repository.existsById((storeDetails.getStoreID()))){
+            return this.repository.save(storeDetails);
         }
-    }
-
-    public static StoreDetailsServiceImpl getService(){
-        if (service == null){
-            service = new StoreDetailsServiceImpl();
-        }
-        return service;
+        return null;
     }
 
     @Override
-    public za.ac.cput.domain.StoreDetails create(za.ac.cput.domain.StoreDetails storeDetails){
-        return repository.create(storeDetails);
+    public boolean delete(String storeDetailsId){
+       if (this.repository.existsById(storeDetailsId)){
+           this.repository.deleteById(storeDetailsId);
+           return true;
+       }
+       return false;
     }
 
     @Override
-    public za.ac.cput.domain.StoreDetails read(String id){
-        return repository.read(id);
+    public List<StoreDetails> getAll(){
+        return this.repository.findAll();
     }
 
-    @Override
-    public za.ac.cput.domain.StoreDetails update(za.ac.cput.domain.StoreDetails storeDetails){
-        return repository.update(storeDetails);
-    }
-
-    @Override
-    public boolean delete(String id){
-        return repository.delete(id);
-    }
-
-    @Override
-    public Set<za.ac.cput.domain.StoreDetails> getAll(){
-        return repository.getAll();
-    }
 }
