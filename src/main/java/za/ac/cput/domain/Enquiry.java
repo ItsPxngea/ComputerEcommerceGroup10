@@ -1,7 +1,9 @@
 package za.ac.cput.domain;
 /*
 Author: Hanno Visser Immelman 221074414
-*/
+
+ */
+
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -122,3 +124,5 @@ public class Enquiry implements Serializable {
         }
     }
 }
+
+

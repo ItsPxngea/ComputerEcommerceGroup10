@@ -38,7 +38,6 @@ class AddressControllerTest {
 
     @Order(1)
     @Test
-    @Transactional
     void create() {
         String url = baseURL + "/create";
         ResponseEntity<Address> postResponse = restTemplate.postForEntity(url, homeAddress, Address.class);
@@ -53,7 +52,6 @@ class AddressControllerTest {
 
     @Order(2)
     @Test
-    @Transactional
     void read() {
         String url = baseURL + "/read/" + homeAddress.getAddressID();
         System.out.println("URL: " + url);
@@ -64,7 +62,6 @@ class AddressControllerTest {
 
     @Order(3)
     @Test
-    @Transactional
     void update() {
          Address homeAddress = AddressFactory.buildAddress(
                 "53 Main Road",
@@ -83,7 +80,6 @@ class AddressControllerTest {
 
     @Order(5)
     @Test
-    @Transactional
     @Disabled
     void delete() {
         String url = baseURL + "/delete/" + homeAddress.getAddressID();
@@ -93,7 +89,6 @@ class AddressControllerTest {
 
     @Order(4)
     @Test
-    @Transactional
     void getAll() {
         String url = baseURL + "/getAll";
         HttpHeaders headers = new HttpHeaders();

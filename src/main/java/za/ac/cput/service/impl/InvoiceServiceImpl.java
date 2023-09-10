@@ -14,7 +14,9 @@ import java.util.Set;
     Author: Alexander Draai - 220118744
     This is the implementation for the service InvoiceHistoryServiceImpl.java
     Date: 10 - 06 - 2023
+
  */
+
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
@@ -52,3 +54,5 @@ public class InvoiceServiceImpl implements InvoiceService {
         return repository.findAll();
     }
 }
+
+

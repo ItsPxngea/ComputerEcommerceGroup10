@@ -38,3 +38,5 @@ public class EnquiryController {
         return enquiryService.getAll();
     }
 }
+
+

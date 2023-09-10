@@ -11,8 +11,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 @Entity
-
-//@Table(name = "countryTable",indexes = @Index(name = "countryName", columnList = "countryName"))
 public class Country implements Serializable {
     @Id
     public String countryID;
