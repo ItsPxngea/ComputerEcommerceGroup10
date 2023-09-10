@@ -1,4 +1,4 @@
-/*package za.ac.cput.service.impl;
+package za.ac.cput.service.impl;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
     Author: Alexander Draai - 220118744
     This is the test class InvoiceServiceImpl
     Date: 10 - 06 - 2023
+
+ */
 
 
 
@@ -101,5 +103,5 @@ class InvoiceServiceImplTest {
 
 }
 
- */
+
 
