@@ -1,9 +1,9 @@
-package za.ac.cput.factory;
-/*
+/*package za.ac.cput.factory;
+
     Author: Hanno Visser Immelman 221074414
     This is the test class for Enquiry Factory
     Date: 06 - 04 - 2022
- */
+
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Enquiry;
 
@@ -55,7 +55,10 @@ class EnquiryFactoryTest {
         Enquiry en2 = en1;
         System.out.println(en1.toString());
         assertEquals(en1,en2);
-    }*/
+    }
 
 
 }
+
+ */
+

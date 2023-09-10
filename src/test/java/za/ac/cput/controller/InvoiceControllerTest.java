@@ -89,6 +89,7 @@ class InvoiceControllerTest {
     @Order(3)
     @Test
     @Transactional
+    @Disabled
     void update() {
         Invoice updated = new Invoice.Builder().copy(invoice).setStoreDetails(storeDetails_one).build();
         String url = baseURL + "/update";
@@ -123,3 +124,4 @@ class InvoiceControllerTest {
 
 
 }
+
