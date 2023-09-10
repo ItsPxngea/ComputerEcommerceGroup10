@@ -19,7 +19,9 @@ import static org.junit.jupiter.api.Assertions.*;
     Author: Hanno Visser Immelman 221074414
     This is the test class StoreDetailsServiceImpl
     Date: 10 - 06 - 2023
-*/
+
+ */
+
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -83,3 +85,5 @@ class StoreDetailsServiceImplTest{
         System.out.println("Show all: "+service.getAll());
     }
 }
+
+
