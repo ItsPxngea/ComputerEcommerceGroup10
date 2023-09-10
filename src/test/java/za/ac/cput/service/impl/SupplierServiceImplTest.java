@@ -21,11 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
         Author: Ethan Botes - 220101299
         This is the test class for SupplierServiceImpl
         Date: 11 - 06 - 2023
-
-     */
-
-
-
+    */
 
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -97,7 +93,3 @@ public class SupplierServiceImplTest {
 
 
 }
-
-
-
-

@@ -4,9 +4,7 @@ package za.ac.cput.factory;
     Factory for the SupplierOrder
     Author: Ethan Andrew Botes (220101299)
     Date: 6 April 2023
-
- */
-
+*/
 
 
 import za.ac.cput.domain.Product;
@@ -56,6 +54,4 @@ public class SupplierOrderFactory {
     }
 
 }
-
-
 

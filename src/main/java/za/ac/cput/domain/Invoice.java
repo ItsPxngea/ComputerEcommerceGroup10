@@ -4,26 +4,22 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-
-/*Author: Alexander Draai - 220118744
+/*
+Author: Alexander Draai - 220118744
 This is the Pojo + Builder for the Invoice Class.
 Date: 04 - 04 - 2023
-
  */
-
-
 @Entity
 public class Invoice implements Serializable {
     @Id
     public String invoiceNumber ;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "storeid", referencedColumnName = "storeid")
+    @JoinColumn(name = "storeID")
     public StoreDetails storeDetails ;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "salesID", referencedColumnName = "saleID")
-
+    @JoinColumn(name = "salesID")
     public Sales sales ;
     public Invoice(){}
 
@@ -89,7 +85,3 @@ public class Invoice implements Serializable {
     } // End of Builder
 
 }
-
-
-
-

@@ -20,12 +20,12 @@ public class Address {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cityID", referencedColumnName = "cityID")
     public City city;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Supplier supplier;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private StoreDetails storeDetails;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Supplier supplier;
 
     public Address() {}
 

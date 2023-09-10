@@ -69,5 +69,3 @@ private EnquiryRepository repository;
         System.out.println(service.getAll());
     }
 }
-
-

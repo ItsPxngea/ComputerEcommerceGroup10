@@ -23,8 +23,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Transactional
 class CityControllerTest {
 
+
+    //find out how to call value from database if there is one (Country)
+    //Changing values for countryName work
+    //Values that are repeated, cause issues with read, and timeout issues with getAll method
     private static final Country country= CountryFactory.createCountry("Pakistan");
 
     private static final City city = CityFactory.createCity("Cape Town",country);
@@ -35,6 +40,7 @@ class CityControllerTest {
     private final String baseURL = "http://localhost:8080/city";
 
     @Order(1)
+    @Transactional
     @Test
     void create() {
         String url = baseURL + "/create";
@@ -49,6 +55,7 @@ class CityControllerTest {
     }
 
     @Order(2)
+    @Transactional
     @Test
     void read() {
         String url = baseURL + "/read/" + city.getCityID();
@@ -59,12 +66,13 @@ class CityControllerTest {
     }
 
     @Order(3)
+    @Transactional
     @Test
+    //update doesnt work properly
     void update() {
         City updated = new City.Builder().copy(city)
-                .setCityName("Scotland")
+                .setCityName("Paris")
                 .build();
-
         String url = baseURL + "/update";
         System.out.println("Post Data: "+updated);
         ResponseEntity<City> response = restTemplate.postForEntity(url,updated, City.class);
@@ -72,6 +80,7 @@ class CityControllerTest {
     }
 
     @Order(5)
+    @Transactional
     @Test
     @Disabled
     void delete() {
@@ -81,6 +90,7 @@ class CityControllerTest {
     }
 
     @Order(4)
+    @Transactional
     @Test
     void getAll() {
         String url = baseURL+ "/getAll";

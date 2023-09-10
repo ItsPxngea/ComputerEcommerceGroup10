@@ -8,11 +8,7 @@ import za.ac.cput.util.Helper;
 Author: Alexander Draai - 220118744
 This is the factory for Invoice Class
 Date: 04 - 04 - 2023
-
  */
-
-
-
 public class InvoiceFactory {
     public static Invoice buildInvoice(StoreDetails storeDetails, Sales sales)
     {
@@ -26,7 +22,3 @@ public class InvoiceFactory {
     }
 
 }
-
-
-
-
