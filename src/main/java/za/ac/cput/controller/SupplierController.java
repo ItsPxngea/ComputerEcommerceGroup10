@@ -1,4 +1,4 @@
-/*package za.ac.cput.controller;
+package za.ac.cput.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -45,5 +45,3 @@ public class SupplierController {
         return supplierService.getAll();
     }
 }
-
- */

@@ -1,8 +1,11 @@
-/*package za.ac.cput.controller;
+package za.ac.cput.controller;
+/*
  InvoiceController.java
 Controller for Invoice
 Author: David Henriques Garrancho (221475982)
 Date: 18 August 2023
+
+ */
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +41,3 @@ public class InvoiceController {
 
 
 }
-
- */
