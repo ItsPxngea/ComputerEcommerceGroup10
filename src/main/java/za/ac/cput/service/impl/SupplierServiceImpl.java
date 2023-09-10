@@ -12,9 +12,7 @@ import java.util.Set;
 Author: Ethan Botes - 220101299
 This is the implementation for the service SupplierService
 Date 11/06/2023
-
  */
-
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
@@ -57,5 +55,3 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
 }
-
-

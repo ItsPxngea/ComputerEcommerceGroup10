@@ -10,12 +10,8 @@ import java.util.Set;
     Author: Hanno Visser Immelman 221074414
     This is the Service for the service the Enquiry entity
     Date: 10 - 06 - 2023
-
  */
-
 
 public interface EnquiryService extends IService<Enquiry, String>{
     List<Enquiry> getAll();
 }
-
-

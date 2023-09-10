@@ -6,6 +6,7 @@ Author: Michael Daniel Johnson 221094040
 Date: 19 August 2023
 */
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,11 @@ import za.ac.cput.repository.CountryRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*@TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest
+@Transactional
+
+ */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CountryServiceImplTest {
@@ -52,7 +58,6 @@ class CountryServiceImplTest {
                 .setCountryName("Iceland")
                 .build();
         assertNotNull(updated);
-        countryRepository.save(updated);
         System.out.println("Updated: "+ updated);
     }
 
