@@ -18,7 +18,7 @@ public class Invoice implements Serializable {
     public String invoiceNumber ;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "storeID", referencedColumnName = "storeid")
+    @JoinColumn(name = "storeid", referencedColumnName = "storeid")
     public StoreDetails storeDetails ;
 
     @ManyToOne(cascade = CascadeType.ALL)
