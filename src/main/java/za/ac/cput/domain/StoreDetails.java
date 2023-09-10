@@ -16,7 +16,7 @@ public class StoreDetails implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "store_address",
-            joinColumns = @JoinColumn(name = "storeid"),
+            joinColumns = @JoinColumn(name = "store_id"),
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
     private Address address;
