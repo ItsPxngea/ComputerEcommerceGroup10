@@ -1,12 +1,9 @@
 package za.ac.cput.controller;
-/*
- InvoiceController.java
+/* InvoiceController.java
 Controller for Invoice
 Author: Alexander Draai
 Date: 18 August 2023
-
- */
-
+*/
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -3,9 +3,7 @@ package za.ac.cput.service.impl;
  This is the implementation for the service ProductServiceImpl.java
  Author: Reece Bergstedt - 221075240
  Date: 10 June 2023
-
- */
-
+*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Product;
@@ -54,4 +52,3 @@ public class ProductServiceImpl implements ProductService{
         return this.repository.findAll();
     }
 }
-

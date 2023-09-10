@@ -1,4 +1,4 @@
-/*package za.ac.cput.factory;
+package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.*;
@@ -44,5 +44,3 @@ class InvoiceFactoryTest {
     }
 
 }
-
- */

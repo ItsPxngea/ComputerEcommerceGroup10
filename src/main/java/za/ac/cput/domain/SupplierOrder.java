@@ -4,9 +4,7 @@ package za.ac.cput.domain;
     POJO for the SupplierOrder
     Author: Ethan Andrew Botes (220101299)
     Date: 6 April 2023
-
- */
-
+*/
 
 
 import jakarta.persistence.*;
@@ -236,4 +234,3 @@ public class SupplierOrder implements Serializable {
 
 
 }
-
