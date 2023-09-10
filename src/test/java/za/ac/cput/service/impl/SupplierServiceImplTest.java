@@ -3,7 +3,13 @@ package za.ac.cput.service.impl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
+import za.ac.cput.domain.Country;
 import za.ac.cput.domain.Supplier;
+import za.ac.cput.factory.AddressFactory;
+import za.ac.cput.factory.CityFactory;
+import za.ac.cput.factory.CountryFactory;
 import za.ac.cput.factory.SupplierFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,9 +31,23 @@ public class SupplierServiceImplTest {
     @Autowired
     private SupplierServiceImpl service;
 
-    private static Supplier supplier = SupplierFactory.buildSupplier
+    private final static Country southAfrica = CountryFactory.createCountry(
+            "South Africa"
+    );
+    private final static City homeCity = CityFactory.createCity(
+            "Cape Town",
+            southAfrica
+    );
+    private final static Address homeAddress = AddressFactory.buildAddress(
+            "53 Main Road",
+            "6045",
+            homeCity
+    );
+
+    private final static Supplier supplier = SupplierFactory.buildSupplier
             ("supplier@intel.com",
-                    "0214564389", "5 Alvin Road, Woodstock",
+                    "0214564389",
+                    homeAddress,
                     "Intel");
 
     @Test

@@ -44,9 +44,9 @@ public class SupplierOrderServiceImpl implements SupplierOrderService {
     }
 
     @Override
-    public boolean delete(String id){
-        if(this.repository.existsById(id)){
-            this.repository.deleteById(id);
+    public boolean delete(String orderID){
+        if(this.repository.existsById(orderID)){
+            this.repository.deleteById(orderID);
             return true;
         }
         return false;

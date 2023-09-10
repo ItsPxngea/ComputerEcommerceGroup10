@@ -13,6 +13,7 @@ Date: 04 - 04 - 2023
 public class Invoice implements Serializable {
     @Id
     public String invoiceNumber ;
+
     @ManyToOne
     @JoinColumn(name = "storeID")
     public StoreDetails storeDetails ;

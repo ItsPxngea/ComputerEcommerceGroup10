@@ -1,7 +1,9 @@
 package za.ac.cput.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Invoice;
+import za.ac.cput.repository.InvoiceRepository;
 import za.ac.cput.service.InvoiceService;
 
 import java.util.List;
@@ -17,34 +19,36 @@ import java.util.Set;
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
 
-    private static InvoiceServiceImpl service ;
+    @Autowired
+    private InvoiceRepository repository; // Assuming you have an InvoiceRepository
+
 
     @Override
-    public za.ac.cput.domain.Invoice create(Invoice invoice) {
-            za.ac.cput.domain.Invoice readInvoice = service.create(invoice);
-            return readInvoice;
-        }
-
-    @Override
-    public za.ac.cput.domain.Invoice read(String id) {
-        za.ac.cput.domain.Invoice read = service.read(id);
-        return read;
+    public Invoice create(Invoice invoice) {
+        return repository.save(invoice);
     }
 
     @Override
-    public za.ac.cput.domain.Invoice update(Invoice invoice) {
-        za.ac.cput.domain.Invoice InvoiceUpdated = service.update(invoice);
-        return invoice;
+    public Invoice read(String id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Invoice update(Invoice invoice) {
+        return repository.save(invoice);
     }
 
     @Override
     public boolean delete(String id) {
-        Boolean success = service.delete(id);
-        return success;
+        if (this.repository.existsById(id)){
+            this.repository.deleteById(id);
+            return  true;
+        }
+        return false;
     }
 
     @Override
     public List<Invoice> getAll() {
-        return service.getAll();
+        return repository.findAll();
     }
 }

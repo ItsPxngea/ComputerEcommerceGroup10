@@ -6,8 +6,7 @@ package za.ac.cput.domain;
     Date: 6 April 2023
 */
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 import java.io.Serializable;
@@ -21,7 +20,13 @@ public class Supplier implements Serializable {
     private String supplierCompanyName;
     private String supplierTel;
     private String supplierEmail;
-    private String supplierAddress;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "supplier_address",
+            joinColumns = @JoinColumn(name = "supplier_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private Address address;
 
 
     public Supplier() {
@@ -44,8 +49,8 @@ public class Supplier implements Serializable {
         return supplierEmail;
     }
 
-    public String getSupplierAddress() {
-        return supplierAddress;
+    public Address getSupplierAddress() {
+        return address;
     }
 
 
@@ -57,12 +62,12 @@ public class Supplier implements Serializable {
         return Objects.equals(supplierID, supplier.supplierID) &&
                 Objects.equals(supplierCompanyName, supplier.supplierCompanyName) &&
                 Objects.equals(supplierTel, supplier.supplierTel) && Objects.equals(supplierEmail, supplier.supplierEmail)
-                && Objects.equals(supplierAddress, supplier.supplierAddress);
+                && Objects.equals(address, supplier.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(supplierID, supplierCompanyName, supplierTel, supplierEmail, supplierAddress);
+        return Objects.hash(supplierID, supplierCompanyName, supplierTel, supplierEmail, address);
     }
 
     @Override
@@ -72,7 +77,7 @@ public class Supplier implements Serializable {
                 ", supplierCompanyName='" + supplierCompanyName + '\'' +
                 ", supplierTel='" + supplierTel + '\'' +
                 ", supplierEmail='" + supplierEmail + '\'' +
-                ", supplierAddress='" + supplierAddress + '\'';
+                ", supplierAddress='" + address + '\'';
     }
 
 
@@ -82,7 +87,7 @@ public class Supplier implements Serializable {
         this.supplierCompanyName = b.supplierCompanyName;
         this.supplierTel = b.supplierTel;
         this.supplierEmail = b.supplierEmail;
-        this.supplierAddress = b.supplierAddress;
+        this.address = b.address;
 
 
     }
@@ -95,7 +100,7 @@ public class Supplier implements Serializable {
         private String supplierCompanyName;
         private String supplierTel;
         private String supplierEmail;
-        private String supplierAddress;
+        private Address address;
 
 
         public Builder setSupplierID(String supplierID) {
@@ -118,8 +123,8 @@ public class Supplier implements Serializable {
             return this;
         }
 
-        public Builder setSupplierAddress(String supplierAddress) {
-            this.supplierAddress = supplierAddress;
+        public Builder setSupplierAddress(Address address) {
+            this.address = address;
             return this;
         }
 
@@ -133,7 +138,7 @@ public class Supplier implements Serializable {
             this.supplierCompanyName = supplier.supplierCompanyName;
             this.supplierTel = supplier.supplierTel;
             this.supplierEmail = supplier.supplierEmail;
-            this.supplierAddress = supplier.supplierAddress;
+            this.address = supplier.address;
             return this;
         }
 
