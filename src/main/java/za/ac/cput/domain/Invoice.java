@@ -23,18 +23,10 @@ public class Invoice implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "salesID", referencedColumnName = "saleID")
-    public Sales sales ;
 
-    // Constructors
+    public Sales sales ;
     public Invoice(){}
 
-    public Invoice(String invoiceNumber, StoreDetails storeDetails, Sales sales) {
-        this.invoiceNumber = invoiceNumber;
-        this.storeDetails = storeDetails;
-        this.sales = sales;
-    }
-
-    // Getters
     public String getInvoiceNumber() {return invoiceNumber;}
     public StoreDetails getStoreDetails() {return storeDetails;}
     public Sales getSales() {return sales;}
