@@ -23,7 +23,7 @@ public class Supplier implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "supplier_address",
-            joinColumns = @JoinColumn(name = "supplier_id"),
+            joinColumns = @JoinColumn(name = "supplierid"),
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
     private Address address;

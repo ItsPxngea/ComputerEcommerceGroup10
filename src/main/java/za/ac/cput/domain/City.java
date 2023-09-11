@@ -19,7 +19,7 @@ public class City implements Serializable {
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "countryid",referencedColumnName = "countryid")
+    @JoinColumn(name = "country",referencedColumnName = "countryid")
     public Country country;
 
     public String getCityID() {

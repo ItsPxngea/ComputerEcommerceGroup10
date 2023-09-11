@@ -27,9 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CityControllerTest {
 
 
-    //find out how to call value from database if there is one (Country)
-    //Changing values for countryName work
-    //Values that are repeated, cause issues with read, and timeout issues with getAll method
+
     private static final Country country= CountryFactory.createCountry("Pakistan");
 
     private static final City city = CityFactory.createCity("Cape Town",country);
