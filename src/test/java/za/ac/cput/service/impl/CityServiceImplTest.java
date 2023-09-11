@@ -35,7 +35,6 @@ class CityServiceImplTest {
 
     @Order(1)
     @Test
-    //@Transactional
     void a_create() {
         countryRepository.save(country);
         City created = cityService.create(city);
@@ -45,7 +44,6 @@ class CityServiceImplTest {
 
     @Order(2)
     @Test
-    //@Transactional
     void b_read() {
         City read = cityService.read(city.getCityID());
         assertNotNull(read);
@@ -54,12 +52,9 @@ class CityServiceImplTest {
 
     @Order(3)
     @Test
-    //@Transactional
     void c_update() {
-        //countryRepository.save(country);
         City updated = new City.Builder().copy(city)
                 .setCityName("Belgium")
-                //.setCountry(CountryFactory.createCountry("South Africa"))
                 .build();
         cityRepository.save(updated);
         assertNotNull(updated);
@@ -77,7 +72,6 @@ class CityServiceImplTest {
 
     @Order(4)
     @Test
-   //@Transactional
     void d_getAll() {
         System.out.println("Show All:");
         System.out.println(cityService.getAll());

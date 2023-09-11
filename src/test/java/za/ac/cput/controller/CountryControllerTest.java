@@ -22,7 +22,6 @@ import za.ac.cput.factory.CountryFactory;
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@Transactional
 class CountryControllerTest {
 
     private static final Country country = CountryFactory.createCountry("France");
@@ -33,7 +32,6 @@ class CountryControllerTest {
     private final String baseURL = "http://localhost:8080/country";
 
     @Order(1)
-    //@Transactional
     @Test
     void create() {
         String url = baseURL + "/create";
@@ -48,7 +46,6 @@ class CountryControllerTest {
     }
 
     @Order(2)
-   // @Transactional
     @Test
     void read() {
         String url = baseURL + "/read/" + country.getCountryID();
@@ -59,7 +56,6 @@ class CountryControllerTest {
     }
 
     @Order(3)
-    //@Transactional
     @Test
     void update() {
         Country updated = new Country.Builder().copy(country)
@@ -73,7 +69,6 @@ class CountryControllerTest {
     }
 
     @Order(5)
-   // @Transactional
     @Test
     @Disabled
     void delete() {
@@ -83,7 +78,6 @@ class CountryControllerTest {
     }
 
     @Order(4)
-   // @Transactional
     @Test
     void getAll() {
         String url = baseURL +"/getAll";
