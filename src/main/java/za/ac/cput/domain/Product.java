@@ -17,11 +17,12 @@ import java.util.Set;
 public class Product implements Serializable {
 
     @Id
-    public String productID;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    public Long productID;
     public String productName;
     public String productType;
     public String productDescription;
+    public double productCostPrice;
     public double productPrice;
 
      @OneToMany(cascade = CascadeType.ALL)
@@ -39,10 +40,11 @@ public class Product implements Serializable {
         this.productType = b.productType;
         this.productDescription = b.productDescription;
         this.productPrice = b.productPrice;
+        this.productCostPrice = b.productCostPrice;
         this.productName = b.productName;
     }
 
-    public String getProductID() {
+    public Long getProductID() {
         return productID;
     }
 
@@ -62,39 +64,44 @@ public class Product implements Serializable {
         return productName;
     }
 
+    public double getProductCostPrice() {
+        return productCostPrice;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(productID, product.productID) && Objects.equals(productPrice, product.productPrice) && Objects.equals(productName, product.productName) && Objects.equals(productType, product.productType) && Objects.equals(productDescription, product.productDescription);
+        return Double.compare(product.productCostPrice, productCostPrice) == 0 && Double.compare(product.productPrice, productPrice) == 0 && Objects.equals(productID, product.productID) && Objects.equals(productName, product.productName) && Objects.equals(productType, product.productType) && Objects.equals(productDescription, product.productDescription) && Objects.equals(salesItems, product.salesItems) && Objects.equals(supplierOrders, product.supplierOrders);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productID, productName, productType, productDescription, productPrice);
+        return Objects.hash(productID, productName, productType, productDescription, productCostPrice, productPrice, salesItems, supplierOrders);
     }
 
     @Override
     public String toString() {
-        return "Bundle{" +
-                ", productID='" + productID + '\'' +
+        return "Product{" +
+                "productID=" + productID +
+                ", productName='" + productName + '\'' +
+                ", productType='" + productType + '\'' +
                 ", productDescription='" + productDescription + '\'' +
+                ", productCostPrice=" + productCostPrice +
                 ", productPrice=" + productPrice +
-                "productType='" + productType + '\'' +
-                ", productName='" + productName + '\''
-                + '}';
+                '}';
     }
 
-
     public static class Builder {
-        public String productID;
+        public Long productID;
         private String productType;
         private String productDescription;
         private double productPrice;
+        private double productCostPrice;
         public String productName;
 
-        public Builder setProductID(String productID) {
+        public Builder setProductID(Long productID) {
             this.productID = productID;
             return this;
 
@@ -122,11 +129,17 @@ public class Product implements Serializable {
 
         }
 
+        public Builder setProductCostPrice(double productCostPrice) {
+            this.productCostPrice = productCostPrice;
+            return this;
+        }
+
         public Builder copy(Product product) {
             this.productID = product.productID;
             this.productType = product.productType;
             this.productDescription = product.productDescription;
             this.productPrice = product.productPrice;
+            this.productCostPrice = product.productCostPrice;
             this.productName = product.productName;
             return this;
         }

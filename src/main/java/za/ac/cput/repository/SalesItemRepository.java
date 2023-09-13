@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.SalesItem;
 
 @Repository
-public interface SalesItemRepository extends JpaRepository<SalesItem, String> {
+public interface SalesItemRepository extends JpaRepository<SalesItem, Long> {
 }

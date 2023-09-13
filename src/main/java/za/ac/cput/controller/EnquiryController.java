@@ -20,7 +20,7 @@ public class EnquiryController {
     }
 
     @GetMapping("/read/{id}")
-    public Enquiry read(@PathVariable String id){
+    public Enquiry read(@PathVariable Long id){
         return enquiryService.read(id);
     }
 
@@ -29,7 +29,7 @@ public class EnquiryController {
         return enquiryService.update(enquiry);
     }
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id){
+    public boolean delete(@PathVariable Long id){
         return enquiryService.delete(id);
     }
 

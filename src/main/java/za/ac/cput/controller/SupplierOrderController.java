@@ -25,7 +25,7 @@ public class SupplierOrderController {
     public SupplierOrder create(@RequestBody SupplierOrder supplierOrder){return supplierOrderService.create(supplierOrder);}
 
     @GetMapping("/read/{id}")
-    public SupplierOrder read(@PathVariable String id){return supplierOrderService.read(id);}
+    public SupplierOrder read(@PathVariable Long id){return supplierOrderService.read(id);}
 
     @PutMapping("/update")
     public SupplierOrder update(@RequestBody SupplierOrder supplierOrder){
@@ -33,7 +33,7 @@ public class SupplierOrderController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id){return supplierOrderService.delete(id);}
+    public boolean delete(@PathVariable Long id){return supplierOrderService.delete(id);}
 
     @GetMapping("/getAll")
     public List<SupplierOrder> getAll(){

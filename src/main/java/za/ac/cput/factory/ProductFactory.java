@@ -11,21 +11,19 @@ import za.ac.cput.util.Helper;
 
 public class ProductFactory {
 
-    public static Product buildProduct(String productName, String productType, String productDescription, double productPrice) {
+    public static Product buildProduct(String productName, String productType, String productDescription, double productPrice, double costPrice) {
         if (Helper.isNullOrEmpty(productName) || Helper.isNullOrEmpty(productType) || Helper.isNullOrEmpty(productDescription)) {
             return null;
         }
 
-        if(Helper.isInvalidDouble(productPrice)){
+        if(Helper.isInvalidDouble(productPrice) || Helper.isInvalidDouble(costPrice)){
             return null;
         }
 
-        String productID = Helper.generateProductID(productName, productType);
-
         return new Product.Builder()
-                .setProductID(productID)
                 .setProductName(productName)
                 .setProductPrice(productPrice)
+                .setProductCostPrice(costPrice)
                 .setProductType(productType)
                 .setProductDescription(productDescription)
                 .build();

@@ -26,12 +26,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
 class SalesControllerTest {
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test123",
-            "Harry",
-            "Potter",
-            "PotterH@gmail.com",
-            "WingaurdiamLeviousa"
+    private static final Customer customer = CustomerFactory.buildCustomer(
+            "Luke",
+            "Ben",
+            "LW@gmail.com",
+            "wufh%2465"
     );
 
 

@@ -23,7 +23,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review read(String reviewID) {
+    public Review read(Long reviewID) {
         return this.repository.findById(reviewID).orElse(null);
     }
 
@@ -35,7 +35,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Long id) {
         if(this.repository.existsById(id)){
             this.repository.deleteById(id);
             return true;

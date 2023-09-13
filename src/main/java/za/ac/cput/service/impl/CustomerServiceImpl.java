@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer read(String customerID) {
+    public Customer read(Long customerID) {
         return this.repository.findById(customerID).orElse(null);
     }
 
@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean delete(String customerID) {
+    public boolean delete(Long customerID) {
         if (this.repository.existsById(customerID)){
             this.repository.deleteById(customerID);
             return  true;
@@ -46,6 +46,18 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> getAll() {
         return this.repository.findAll();
+    }
+
+    public Customer authenticate(String email, String password) {
+        Customer customer = repository.findByEmail(email);
+
+        // If a customer with the email is found and the passwords match, return the customer
+        if (customer != null && customer.getPassword().equals(password)) {
+            return customer;
+        }
+
+        // Authentication failed, return null
+        return null;
     }
 
 }

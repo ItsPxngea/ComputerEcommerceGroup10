@@ -14,7 +14,6 @@ public class SalesItemFactory {
         String salesItemID = Helper.generateID();
 
         return new SalesItem.Builder()
-                .setSalesItemID(salesItemID)
                 .setSales(sales)
                 .setProducts(products) // Use the new method to set products
                 .setQuantity(quantity)

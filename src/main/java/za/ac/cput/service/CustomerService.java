@@ -12,6 +12,8 @@ import java.util.List;
     Date: 09 - 06 - 2023
  */
 
-public interface CustomerService extends IService<Customer, String> {
+public interface CustomerService extends IService<Customer, Long> {
     List<Customer> getAll();
+
+    Customer authenticate(String email, String password);
 }

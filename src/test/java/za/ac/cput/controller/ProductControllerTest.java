@@ -30,27 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProductControllerTest {
 
-    private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00),
-            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00),
-            ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
-    );
-
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test2456",
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
-    );
-
-    private static final Sales sales = SalesFactory.buildSales(
-            "16-08-2023",
-            4560.00,
-            customer
-    );
-
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 2, 1200);
+    private static final Product product = ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4200.00);
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -59,7 +39,6 @@ class ProductControllerTest {
 
     @Test
     void a_create() {
-        for (Product product : products) {
             String url = baseURL + "/create";
             ResponseEntity<Product> postResponse = restTemplate.postForEntity(url, product, Product.class);
             assertNotNull(postResponse);
@@ -68,44 +47,37 @@ class ProductControllerTest {
             Product savedProduct = postResponse.getBody();
             System.out.println("Saved data: " + savedProduct);
             assertEquals(product.getProductID(), postResponse.getBody().getProductID());
-        }
     }
 
     @Test
     void b_read() {
-        for (Product product : products) {
             String url = baseURL + "/read/" + product.getProductID();
             System.out.println("URL: " + url);
             ResponseEntity<Product> response = restTemplate.getForEntity(url, Product.class);
             assertEquals(product.getProductID(), response.getBody().getProductID());
             System.out.println(response.getBody());
-        }
     }
     @Test
     void c_update() {
-        for (Product product : products) {
             Product updated = new Product.Builder().copy(product).setProductName("Evga RTX 3060 Ti").build();
             String url = baseURL + "/update";
             System.out.println("URL: " + url);
             System.out.println("Post data: " + updated);
             ResponseEntity<Product> response = restTemplate.postForEntity(url, updated, Product.class);
             assertNotNull(response.getBody());
-        }
     }
 
     @Test
     @Disabled
     void e_delete() {
-        for (Product product : products) {
-            String url = baseURL + "/delete/" + product.getProductID();
-            System.out.println("URL: " + url);
-            restTemplate.delete(url);
-        }
+        String url = baseURL + "/delete/" + product.getProductID();
+        System.out.println("URL: " + url);
+        restTemplate.delete(url);
+
     }
 
     @Test
     void d_getAll() {
-        for (Product product : products) {
             String url = baseURL + "/getAll";
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<String> entity = new HttpEntity<>(null, headers);
@@ -114,5 +86,4 @@ class ProductControllerTest {
             System.out.println(response);
             System.out.println(response.getBody());
         }
-    }
 }

@@ -13,8 +13,8 @@ import java.util.Objects;
 @Entity
 public class City implements Serializable {
     @Id
-    //@Column(name = "cityid")
-    public String cityID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    public Long cityID;
     public String cityName;
 
 
@@ -22,7 +22,7 @@ public class City implements Serializable {
     @JoinColumn(name = "countryid",referencedColumnName = "countryid")
     public Country country;
 
-    public String getCityID() {
+    public Long getCityID() {
         return cityID;
     }
 
@@ -64,12 +64,12 @@ public class City implements Serializable {
     }
 
     public static class Builder {
-        private String cityID;
+        private Long cityID;
         private String cityName;
 
         private Country country;
 
-        public Builder setCityID(String cityID) {
+        public Builder setCityID(Long cityID) {
             this.cityID = cityID;
             return this;
         }

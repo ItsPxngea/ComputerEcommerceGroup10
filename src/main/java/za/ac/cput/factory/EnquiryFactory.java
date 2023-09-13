@@ -9,9 +9,10 @@ public class EnquiryFactory {
     public static Enquiry buildEnquiry(Customer customer, String enquiryName, String enquirySubjectLine, String enquiryBodyContent){
         if (Helper.isNullOrEmpty(enquiryName) || Helper.isNullOrEmpty(enquirySubjectLine) || Helper.isNullOrEmpty(enquiryBodyContent))
             return null;
+
         String enquiryID = Helper.generateID();
 
-        return new Enquiry.Builder().setEnquiryID(enquiryID)
+        return new Enquiry.Builder()
                 .setCustomer(customer)
                 .setEnquiryName(enquiryName)
                 .setEnquirySubjectLine(enquirySubjectLine)

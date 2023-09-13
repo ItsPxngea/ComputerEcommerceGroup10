@@ -30,7 +30,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier read(String id){
+    public Supplier read(Long id){
         return this.repository.findById(id).orElse(null);
     }
 
@@ -42,7 +42,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public boolean delete(String id){
+    public boolean delete(Long id){
         if(this.repository.existsById(id)){
             this.repository.deleteById(id);
             return true;

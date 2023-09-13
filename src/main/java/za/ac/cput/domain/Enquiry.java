@@ -11,7 +11,8 @@ import java.util.Objects;
 public class Enquiry implements Serializable {
 
     @Id
-    private String enquiryID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    private Long enquiryID;
 
     @ManyToOne
     @JoinColumn(name = "customerID")
@@ -24,7 +25,7 @@ public class Enquiry implements Serializable {
     public Enquiry() {
     }
 
-    public String getEnquiryID() {
+    public Long getEnquiryID() {
         return enquiryID;
     }
 
@@ -77,13 +78,13 @@ public class Enquiry implements Serializable {
     }
 
     public static class Builder{
-        private String enquiryID;
+        private Long enquiryID;
         private Customer customer;
         private String enquiryName;
         private String enquirySubjectLine;
         private String enquiryBodyContent;
 
-        public Builder setEnquiryID(String enquiryID){
+        public Builder setEnquiryID(Long enquiryID){
             this.enquiryID = enquiryID;
             return this;
         }

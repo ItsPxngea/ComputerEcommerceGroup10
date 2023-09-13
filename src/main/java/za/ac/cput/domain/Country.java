@@ -15,13 +15,14 @@ import java.util.Objects;
 //@Table(name = "countryTable",indexes = @Index(name = "countryName", columnList = "countryName"))
 public class Country implements Serializable {
     @Id
-    public String countryID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    public Long countryID;
     @Column
     public String countryName;
 
     public Country(){}
 
-    public String getCountryID() {
+    public Long getCountryID() {
         return countryID;
     }
 
@@ -55,10 +56,10 @@ public class Country implements Serializable {
     }
 
     public static class Builder {
-        public String countryID;
+        public Long countryID;
         public String countryName;
 
-        public Builder setCountryID(String countryID) {
+        public Builder setCountryID(Long countryID) {
             this.countryID = countryID;
             return this;
         }

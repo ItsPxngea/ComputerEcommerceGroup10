@@ -12,6 +12,6 @@ import java.util.Set;
     Date: 10 - 06 - 2023
  */
 
-public interface EnquiryService extends IService<Enquiry, String>{
+public interface EnquiryService extends IService<Enquiry, Long>{
     List<Enquiry> getAll();
 }

@@ -13,5 +13,5 @@ import java.util.Set;
     Date: 02 - 04 - 2022
  */
 @Repository
-public interface SupplierRepository extends JpaRepository<Supplier, String> {
+public interface SupplierRepository extends JpaRepository<Supplier, Long> {
 }

@@ -17,7 +17,6 @@ public class CountryFactory {
         }
         String countryID = Helper.generateID();
         return new Country.Builder().setCountryName(countryName)
-                .setCountryID(countryID)
                 .build();
     }
 }

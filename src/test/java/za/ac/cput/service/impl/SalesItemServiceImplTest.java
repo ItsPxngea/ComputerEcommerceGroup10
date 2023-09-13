@@ -30,16 +30,14 @@ class SalesItemServiceImplTest {
     private SalesItemRepository repository;
 
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("FX 1050", "GPU", "Next Generation gaming with the RTX 1050", 2000.00),
-            ProductFactory.buildProduct("RX 950", "GPU", "Next Generation gaming with the RTX 950", 1200.00)
+            ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4000.00),
+            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00)
     );
-
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test123",
-            "David",
-            "Garrancho",
-            "Garranchod@gmail.com",
-            "what2465"
+    private static final Customer customer = CustomerFactory.buildCustomer(
+            "Luke",
+            "Ben",
+            "LW@gmail.com",
+            "wufh%2465"
     );
 
 

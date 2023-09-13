@@ -11,6 +11,6 @@ import za.ac.cput.domain.Sales;
 
 import java.util.List;
 
-public interface SalesService extends IService<Sales, String>{
+public interface SalesService extends IService<Sales, Long>{
     List<Sales> getAll();
 }

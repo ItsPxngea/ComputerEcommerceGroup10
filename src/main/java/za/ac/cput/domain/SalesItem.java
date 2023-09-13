@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 public class SalesItem implements Serializable {
 
     @Id
-    private String salesItemID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    private Long salesItemID;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "salesID")
@@ -42,7 +43,7 @@ public class SalesItem implements Serializable {
         this.products = products;
     }
 
-    public String getSalesItemID() {
+    public Long getSalesItemID() {
         return salesItemID;
     }
 
@@ -83,7 +84,9 @@ public class SalesItem implements Serializable {
     public String toString() {
         String productIds = products.stream()
                 .map(Product::getProductID)
+                .map(Object::toString)
                 .collect(Collectors.joining(", "));
+
 
         return "SalesItem{" +
                 "salesItemID='" + salesItemID + '\'' +
@@ -94,13 +97,13 @@ public class SalesItem implements Serializable {
     }
 
     public static class Builder {
-        private String salesItemID;
+        private Long salesItemID;
         private Sales sales;
         private List<Product> products = new ArrayList<>();
         private int quantity;
         private double itemPrice;
 
-        public Builder setSalesItemID(String salesItemID) {
+        public Builder setSalesItemID(Long salesItemID) {
             this.salesItemID = salesItemID;
             return this;
         }

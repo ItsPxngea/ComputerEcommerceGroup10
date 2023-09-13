@@ -17,7 +17,6 @@ public class ReviewFactory {
         String reviewId = Helper.generateID();
 
         return new Review.Builder()
-                .setReviewID(reviewId)
                 .setRating(rating)
                 .setProduct(product)
                 .setCustomer(customer)

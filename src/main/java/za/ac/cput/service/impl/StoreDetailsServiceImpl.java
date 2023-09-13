@@ -31,7 +31,7 @@ public class StoreDetailsServiceImpl implements StoreDetailsService {
     }
 
     @Override
-    public StoreDetails read(String storeDetailsId){
+    public StoreDetails read(Long storeDetailsId){
         return this.repository.findById(storeDetailsId).orElse(null);
     }
 
@@ -44,7 +44,7 @@ public class StoreDetailsServiceImpl implements StoreDetailsService {
     }
 
     @Override
-    public boolean delete(String storeDetailsId){
+    public boolean delete(Long storeDetailsId){
        if (this.repository.existsById(storeDetailsId)){
            this.repository.deleteById(storeDetailsId);
            return true;

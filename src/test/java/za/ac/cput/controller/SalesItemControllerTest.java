@@ -28,13 +28,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class SalesItemControllerTest {
 
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
-            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00),
-            ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
+            ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4000.00),
+            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00)
     );
 
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test2456",
+    private static final Customer customer = CustomerFactory.buildCustomer(
             "Luke",
             "Ben",
             "LW@gmail.com",

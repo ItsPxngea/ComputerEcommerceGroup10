@@ -7,6 +7,8 @@ Date: 20 March 2023
 */
 
 import jakarta.persistence.*;
+
+import javax.annotation.processing.Generated;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -15,9 +17,11 @@ import java.util.Objects;
 public class Customer implements Serializable {
 
     @Id
-    public String customerID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    private Long customerID;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String password;
 
@@ -32,9 +36,7 @@ public class Customer implements Serializable {
         this.password = b.password;
     }
 
-    public String getCustomerID() {
-        return customerID;
-    }
+    public Long getCustomerID() {return customerID;}
 
     public String getFirstName() {
         return firstName;
@@ -77,13 +79,13 @@ public class Customer implements Serializable {
     }
 
     public static class Builder {
-        public String customerID;
+        public Long customerID;
         private String firstName;
         private String lastName;
         private String email;
         private String password;
 
-        public Builder setCustomerID(String customerID){
+        public Builder setCustomerID(Long customerID){
             this.customerID = customerID;
             return this;
         }

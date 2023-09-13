@@ -35,8 +35,7 @@ class StoreDetailsControllerTest {
             homeCity
     );
 
-    private static final StoreDetails storeDetails = StoreDetailsFactory.buildTestStoreDetails(
-            "123",
+    private static final StoreDetails storeDetails = StoreDetailsFactory.buildStoreDetails(
             "Evetech",
             homeAddress,
             "021 445 9912",

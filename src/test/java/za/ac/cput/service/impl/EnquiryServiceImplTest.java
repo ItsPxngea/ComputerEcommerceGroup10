@@ -21,8 +21,7 @@ private EnquiryRepository repository;
     @Autowired
     private CustomerRepository customerrepository;
 
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "e0295579-70a0-48f3-b0c8-3f3fbe66b6cc",
+    private static final Customer customer = CustomerFactory.buildCustomer(
             "Luke",
             "Ben",
             "LW@gmail.com",

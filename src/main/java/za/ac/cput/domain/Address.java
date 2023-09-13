@@ -13,7 +13,8 @@ Date: 04 - 08 - 2023
 @Entity
 public class Address {
     @Id
-    public String addressID ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    public Long addressID ;
     public String streetAddress ;
     public String postalCode;
 
@@ -37,7 +38,7 @@ public class Address {
     }
 
 
-    public String getAddressID() {return addressID;}
+    public Long getAddressID() {return addressID;}
     public String getStreetAddress() {return streetAddress;}
     public String getPostalCode() {return postalCode;}
     public City getCity() {return city;}
@@ -67,12 +68,12 @@ public class Address {
 
 
     public static class Builder {
-        public String addressID ;
+        public Long addressID ;
         public String streetAddress ;
         public String postalCode;
         public City city;
 
-        public Builder setAddressID(String addressID){
+        public Builder setAddressID(Long addressID){
             this.addressID = addressID;
             return this;
         }

@@ -17,14 +17,14 @@ import java.util.List;
 public class SupplierOrderFactory {
 
 
-    public static SupplierOrder buildSupplierOrder(String dateOfOrder, String expectedDeliveryDate, String actualDeliveryDate, double importTax, double totalCost,
-                                                   int productQuantity, double productIndividualPrice, List<Product> products, Supplier supplier){
+    public static SupplierOrder buildSupplierOrder(String dateOfOrder, String expectedDeliveryDate, double importTax, double totalCost,
+                                                   int productQuantity, List<Product> products, Supplier supplier){
 
-        if (Helper.isNullOrEmpty(dateOfOrder) || Helper.isNullOrEmpty(expectedDeliveryDate) || Helper.isNullOrEmpty(actualDeliveryDate)
+        if (Helper.isNullOrEmpty(dateOfOrder) || Helper.isNullOrEmpty(expectedDeliveryDate)
                 ) {
             return null;
         }
-        if(Helper.isInvalidDouble(importTax) || Helper.isInvalidDouble(totalCost) || Helper.isInvalidDouble(productIndividualPrice)){
+        if(Helper.isInvalidDouble(importTax) || Helper.isInvalidDouble(totalCost)){
             return null;
         }
         if(Helper.isInvalidInt(productQuantity)){
@@ -34,18 +34,15 @@ public class SupplierOrderFactory {
         String orderID = Helper.generateID();
 
 
-        if(Helper.isValidDate(expectedDeliveryDate)==null || Helper.isValidDate(actualDeliveryDate)==null || Helper.isValidDate(dateOfOrder)==null){
+        if(Helper.isValidDate(expectedDeliveryDate)==null || Helper.isValidDate(dateOfOrder)==null){
             return null;
         }
 
         return new SupplierOrder.Builder()
-                .setOrderID(orderID)
                 .setSupplier(supplier)
                 .setProductQuantity(productQuantity)
-                .setProductIndividualPrice(productIndividualPrice)
                 .setDateOfOrder(dateOfOrder)
                 .setExpectedDeliveryDate(expectedDeliveryDate)
-                .setActualDeliveryDate(actualDeliveryDate)
                 .setImportTax(importTax)
                 .setTotalCost(totalCost)
                 .setProducts(products)

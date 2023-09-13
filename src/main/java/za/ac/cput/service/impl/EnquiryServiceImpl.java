@@ -32,7 +32,7 @@ public class EnquiryServiceImpl implements EnquiryService {
     }
 
     @Override
-    public Enquiry read(String customerID) {
+    public Enquiry read(Long customerID) {
         return this.repository.findById(customerID).orElse(null);
     }
 
@@ -44,7 +44,7 @@ public class EnquiryServiceImpl implements EnquiryService {
     }
 
     @Override
-    public boolean delete(String enquiryID) {
+    public boolean delete(Long enquiryID) {
         if (this.repository.existsById(enquiryID)){
             this.repository.deleteById(enquiryID);
             return  true;

@@ -15,7 +15,7 @@ class CustomerServiceImplTest {
     @Autowired
     private CustomerServiceImpl service;
 
-    private static Customer customer = CustomerFactory.buildCustomer("W", "C", "WC@gmail.com", "WC@2002");
+    private static Customer customer = CustomerFactory.buildCustomer("Waldon", "Cartman", "WaldonCartam2002@gmail.com", "WC@2002");
 
     @Test
     @Order(1)

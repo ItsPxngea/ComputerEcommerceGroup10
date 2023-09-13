@@ -23,8 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerControllerTest {
 
-    private static Customer customer = CustomerFactory.buildTestCustomer(
-            "e0295579-70a0-48f3-b0c8-3f3fbe66b6cc",
+    private static final Customer customer = CustomerFactory.buildCustomer(
             "Luke",
             "Ben",
             "LW@gmail.com",
@@ -45,7 +44,7 @@ class CustomerControllerTest {
         //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
         Customer savedCustomer = postResponse.getBody();
         System.out.println("Saved data: " + savedCustomer);
-        assertEquals(customer.getCustomerID(), postResponse.getBody().getCustomerID());
+        assertEquals(savedCustomer.getCustomerID(), postResponse.getBody().getCustomerID());
     }
 
     @Test
