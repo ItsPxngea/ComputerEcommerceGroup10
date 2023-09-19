@@ -13,12 +13,9 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allow requests from specific origins (e.g., your Vue.js frontend)
-        config.addAllowedOrigin("http://localhost:8081"); // Replace with your frontend URL
-        config.addAllowedMethod("*"); // Allow all HTTP methods (GET, POST, etc.)
-        config.addAllowedHeader("*"); // Allow all headers
-
-        // You can add more specific CORS rules here if needed
+        config.addAllowedOrigin("http://localhost:8081");
+        config.addAllowedMethod("*");
+        config.addAllowedHeader("*");
 
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);

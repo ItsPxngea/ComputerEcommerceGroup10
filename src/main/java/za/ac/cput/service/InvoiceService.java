@@ -13,4 +13,5 @@ import java.util.List;
 
 public interface InvoiceService extends IService <Invoice, Long>{
     List<Invoice> getAll();
+
 }

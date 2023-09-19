@@ -21,7 +21,7 @@ public class Supplier implements Serializable {
     private String supplierCompanyName;
     private String supplierTel;
     private String supplierEmail;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(
             name = "supplier_address",
             joinColumns = @JoinColumn(name = "supplier_id"),

@@ -16,11 +16,11 @@ public class Review implements Serializable {
     public Long reviewID;
 
     private int rating;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "customerID")
     private Customer customer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "productID")
     private Product product;
 

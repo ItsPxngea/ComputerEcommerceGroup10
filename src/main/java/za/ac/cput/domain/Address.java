@@ -18,15 +18,9 @@ public class Address {
     public String streetAddress ;
     public String postalCode;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "cityID")
     public City city;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    private StoreDetails storeDetails;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Supplier supplier;
 
     public Address() {}
 

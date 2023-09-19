@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Transactional
 public class ReviewControllerTest {
 
-    private static final Product product = ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00);
+    private static final Product product = ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4200.00, true);
     private static final Customer customer = CustomerFactory.buildCustomer(
             "Luke",
             "Ben",

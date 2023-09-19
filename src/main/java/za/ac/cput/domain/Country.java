@@ -8,19 +8,19 @@ Date: 19 August 2023
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
-@Entity
 
-//@Table(name = "countryTable",indexes = @Index(name = "countryName", columnList = "countryName"))
+@Entity
 public class Country implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long countryID;
-    @Column
+
     public String countryName;
 
-    public Country(){}
+    // Public no-argument constructor
+    public Country() {
+    }
 
     public Long getCountryID() {
         return countryID;
@@ -33,7 +33,8 @@ public class Country implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Country country)) return false;
+        if (!(o instanceof Country)) return false;
+        Country country = (Country) o;
         return Objects.equals(getCountryID(), country.getCountryID()) && Objects.equals(getCountryName(), country.getCountryName());
     }
 
@@ -48,11 +49,6 @@ public class Country implements Serializable {
                 "countryID='" + countryID + '\'' +
                 ", countryName='" + countryName + '\'' +
                 '}';
-    }
-
-    private Country(Builder builder) {
-        this.countryID = builder.countryID;
-        this.countryName = builder.countryName;
     }
 
     public static class Builder {
@@ -78,7 +74,11 @@ public class Country implements Serializable {
         public Country build() {
             return new Country(this);
         }
-
     }
 
+    // Public constructor that allows creating instances without the builder
+    public Country(Builder builder) {
+        this.countryID = builder.countryID;
+        this.countryName = builder.countryName;
+    }
 }

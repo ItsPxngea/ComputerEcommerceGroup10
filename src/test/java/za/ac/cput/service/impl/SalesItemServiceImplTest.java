@@ -30,38 +30,28 @@ class SalesItemServiceImplTest {
     private SalesItemRepository repository;
 
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4000.00),
-            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00)
-    );
-    private static final Customer customer = CustomerFactory.buildCustomer(
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+            ProductFactory.buildTestProduct(1L),
+            ProductFactory.buildTestProduct(3L)
     );
 
-
-    private static final Sales sales = SalesFactory.buildSales(
-            "30-08-2023",
-            4560.00,
-            customer
+    private static final Sales sales = SalesFactory.buildTestSales(
+            5L
     );
 
-    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, 2, 3200.00);
-
+    private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, products.size());
 
 
     @Test
+    @Transactional
     @Order(1)
-    //@Transactional
     void create() {
         SalesItem created = service.create(salesItem);
         System.out.println("Created " + created);
     }
 
+
     @Test
     @Order(2)
-    //@Transactional
     void read() {
         SalesItem read = service.read(salesItem.getSalesItemID());
         assertNotNull(read);
@@ -70,9 +60,8 @@ class SalesItemServiceImplTest {
 
     @Test
     @Order(3)
-    //@Transactional
     void update() {
-        SalesItem updated = new SalesItem.Builder().copy(salesItem).setItemPrice(1200).build();
+        SalesItem updated = new SalesItem.Builder().copy(salesItem).build();
         repository.save(updated);
         assertNotNull(updated);
         System.out.println("Updated: " + updated);
@@ -80,7 +69,6 @@ class SalesItemServiceImplTest {
 
     @Test
     @Disabled
-    //@Transactional
     void delete() {
         boolean success = service.delete(salesItem.getSalesItemID());
         assertTrue(success);
@@ -89,7 +77,6 @@ class SalesItemServiceImplTest {
 
     @Test
     @Order(4)
-    //@Transactional
     void getAll() {
         System.out.println("Show All:");
         System.out.println(service.getAll());

@@ -24,8 +24,9 @@ public class Product implements Serializable {
     public String productDescription;
     public double productCostPrice;
     public double productPrice;
+    public boolean isStock;
 
-     @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "products")
     private List<SalesItem> salesItems = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -42,6 +43,7 @@ public class Product implements Serializable {
         this.productPrice = b.productPrice;
         this.productCostPrice = b.productCostPrice;
         this.productName = b.productName;
+        this.isStock = b.isStock;
     }
 
     public Long getProductID() {
@@ -68,17 +70,21 @@ public class Product implements Serializable {
         return productCostPrice;
     }
 
+    public boolean isStock() {
+        return isStock;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(product.productCostPrice, productCostPrice) == 0 && Double.compare(product.productPrice, productPrice) == 0 && Objects.equals(productID, product.productID) && Objects.equals(productName, product.productName) && Objects.equals(productType, product.productType) && Objects.equals(productDescription, product.productDescription) && Objects.equals(salesItems, product.salesItems) && Objects.equals(supplierOrders, product.supplierOrders);
+        return Double.compare(product.productCostPrice, productCostPrice) == 0 && Double.compare(product.productPrice, productPrice) == 0 && isStock == product.isStock && Objects.equals(productID, product.productID) && Objects.equals(productName, product.productName) && Objects.equals(productType, product.productType) && Objects.equals(productDescription, product.productDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productID, productName, productType, productDescription, productCostPrice, productPrice, salesItems, supplierOrders);
+        return Objects.hash(productID, productName, productType, productDescription, productCostPrice, productPrice, isStock);
     }
 
     @Override
@@ -90,16 +96,18 @@ public class Product implements Serializable {
                 ", productDescription='" + productDescription + '\'' +
                 ", productCostPrice=" + productCostPrice +
                 ", productPrice=" + productPrice +
+                ", isStock=" + isStock +
                 '}';
     }
 
     public static class Builder {
         public Long productID;
-        private String productType;
-        private String productDescription;
-        private double productPrice;
-        private double productCostPrice;
+        public String productType;
+        public String productDescription;
+        public double productPrice;
+        public double productCostPrice;
         public String productName;
+        public boolean isStock;
 
         public Builder setProductID(Long productID) {
             this.productID = productID;
@@ -134,6 +142,11 @@ public class Product implements Serializable {
             return this;
         }
 
+        public Builder setStock(boolean stock) {
+            isStock = stock;
+            return this;
+        }
+
         public Builder copy(Product product) {
             this.productID = product.productID;
             this.productType = product.productType;
@@ -141,6 +154,7 @@ public class Product implements Serializable {
             this.productPrice = product.productPrice;
             this.productCostPrice = product.productCostPrice;
             this.productName = product.productName;
+            this.isStock = product.isStock;
             return this;
         }
 

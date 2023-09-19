@@ -30,4 +30,10 @@ public class SalesFactory {
                 .build();
     }
 
+    public static Sales buildTestSales(Long id) {
+
+
+        return new Sales.Builder().setSaleID(id)
+                .build();
+    }
 }

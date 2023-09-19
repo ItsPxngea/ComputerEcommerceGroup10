@@ -13,15 +13,15 @@ Date: 04 - 04 - 2023
 public class Invoice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
-    public Long invoiceNumber ;
+    public Long invoiceNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "storeID")
-    public StoreDetails storeDetails ;
+    public StoreDetails storeDetails;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "salesID")
-    public Sales sales ;
+    public Sales sales;
     public Invoice(){}
 
     public Long getInvoiceNumber() {return invoiceNumber;}

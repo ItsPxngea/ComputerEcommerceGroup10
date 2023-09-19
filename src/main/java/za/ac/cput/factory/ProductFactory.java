@@ -11,7 +11,7 @@ import za.ac.cput.util.Helper;
 
 public class ProductFactory {
 
-    public static Product buildProduct(String productName, String productType, String productDescription, double productPrice, double costPrice) {
+    public static Product buildProduct(String productName, String productType, String productDescription, double productPrice, double costPrice, boolean isStock) {
         if (Helper.isNullOrEmpty(productName) || Helper.isNullOrEmpty(productType) || Helper.isNullOrEmpty(productDescription)) {
             return null;
         }
@@ -26,9 +26,14 @@ public class ProductFactory {
                 .setProductCostPrice(costPrice)
                 .setProductType(productType)
                 .setProductDescription(productDescription)
+                .setStock(isStock)
                 .build();
     }
 
+    public static Product buildTestProduct(Long id) {
+
+        return new Product.Builder().setProductID(id).build();
+    }
 }
 
 

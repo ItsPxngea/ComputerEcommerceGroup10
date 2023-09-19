@@ -17,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Country;
+import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CountryFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //@Transactional
 class CountryControllerTest {
 
-    private static final Country country = CountryFactory.createCountry("France");
+    private static final Country country = CountryFactory.createCountry("South Africa");
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -35,16 +36,15 @@ class CountryControllerTest {
     @Order(1)
     //@Transactional
     @Test
-    void create() {
+    void a_create() {
         String url = baseURL + "/create";
-        ResponseEntity<Country> postResponse = restTemplate.postForEntity(url,country,Country.class);
+        ResponseEntity<Country> postResponse = restTemplate.postForEntity(url, country, Country.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-
+        //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
         Country savedCountry = postResponse.getBody();
-        System.out.println("Saved data: "+ savedCountry);
-
-        assertEquals(country.getCountryID(), postResponse.getBody().getCountryID());
+        System.out.println("Saved data: " + savedCountry);
+        assertEquals(savedCountry.getCountryID(), postResponse.getBody().getCountryID());
     }
 
     @Order(2)

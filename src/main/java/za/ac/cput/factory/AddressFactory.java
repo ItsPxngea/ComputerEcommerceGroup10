@@ -25,5 +25,9 @@ public class AddressFactory {
                                     .build();
     } // End of Address - buildAddress
 
+    public static Address buildTestAddress(Long id){
 
+        return new Address.Builder().setAddressID(id)
+                .build();
+    }
 }

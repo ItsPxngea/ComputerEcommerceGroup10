@@ -53,8 +53,8 @@ class SupplierOrderControllerTest {
                     "Intel");
 
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4000.00),
-            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00)
+            ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4000.00, true),
+            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00, true)
     );
 
     private static final SupplierOrder supplierOrder = SupplierOrderFactory.buildSupplierOrder

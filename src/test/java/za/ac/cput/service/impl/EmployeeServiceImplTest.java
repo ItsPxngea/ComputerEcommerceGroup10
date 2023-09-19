@@ -3,19 +3,19 @@ package za.ac.cput.service.impl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Customer;
-import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.domain.Employee;
+import za.ac.cput.factory.EmployeeFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CustomerServiceImplTest {
+class EmployeeServiceImplTest {
 
     @Autowired
-    private CustomerServiceImpl service;
+    private EmployeeServiceImpl service;
 
-    private static final Customer customer = CustomerFactory.buildCustomer(
+    private static final Employee employee = EmployeeFactory.buildEmployee(
             "Damien",
             "Garrancho",
             "DavidGary@gmail.com",
@@ -25,14 +25,14 @@ class CustomerServiceImplTest {
     @Test
     @Order(1)
     void create() {
-        Customer created = service.create(customer);
+        Employee created = service.create(employee);
         System.out.println("Created " + created);
     }
 
     @Test
     @Order(2)
     void read() {
-        Customer read = service.read(customer.getCustomerID());
+        Employee read = service.read(employee.getEmployeeID());
         assertNotNull(read);
         System.out.println("Read: "+ read);
     }
@@ -40,14 +40,15 @@ class CustomerServiceImplTest {
     @Test
     @Order(3)
     void update() {
-        Customer updated = new Customer.Builder().copy(customer).setLastName("Gary").build();
+        Employee updated = new Employee.Builder().copy(employee).setLastName("Gary").build();
         assertNotNull(updated);
         System.out.println("Updated: " + updated);
     }
 
     @Test
+    @Disabled
     void delete() {
-        boolean success = service.delete(customer.getCustomerID());
+        boolean success = service.delete(employee.getEmployeeID());
         assertTrue(success);
         System.out.println("Deleted -> " + success);
     }

@@ -23,4 +23,11 @@ public class StoreDetailsFactory {
                 .build();
     }
 
+    public static StoreDetails buildTestStoreDetails(Long id){
+
+        return new StoreDetails.Builder()
+                .setStoreID(id)
+                .build();
+    }
+
 }

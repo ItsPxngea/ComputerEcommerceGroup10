@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProductControllerTest {
 
-    private static final Product product = ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4200.00);
+    private static final Product product = ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4200.00, true);
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -39,14 +39,14 @@ class ProductControllerTest {
 
     @Test
     void a_create() {
-            String url = baseURL + "/create";
-            ResponseEntity<Product> postResponse = restTemplate.postForEntity(url, product, Product.class);
-            assertNotNull(postResponse);
-            assertNotNull(postResponse.getBody());
-            //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
-            Product savedProduct = postResponse.getBody();
-            System.out.println("Saved data: " + savedProduct);
-            assertEquals(product.getProductID(), postResponse.getBody().getProductID());
+        String url = baseURL + "/create";
+        ResponseEntity<Product> postResponse = restTemplate.postForEntity(url, product, Product.class);
+        assertNotNull(postResponse);
+        assertNotNull(postResponse.getBody());
+        //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
+        Product savedProduct = postResponse.getBody();
+        System.out.println("Saved data: " + savedProduct);
+        assertEquals(savedProduct.getProductID(), postResponse.getBody().getProductID());
     }
 
     @Test
@@ -59,7 +59,7 @@ class ProductControllerTest {
     }
     @Test
     void c_update() {
-            Product updated = new Product.Builder().copy(product).setProductName("Evga RTX 3060 Ti").build();
+            Product updated = new Product.Builder().copy(product).setStock(false).build();
             String url = baseURL + "/update";
             System.out.println("URL: " + url);
             System.out.println("Post data: " + updated);

@@ -24,12 +24,12 @@ public class SupplierOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
     private Long orderID;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="supplierid")
     public Supplier supplier;
 
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "supplier_order_products",
             joinColumns = @JoinColumn(name = "orderid"),

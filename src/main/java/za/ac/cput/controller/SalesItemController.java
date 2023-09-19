@@ -37,5 +37,10 @@ public class SalesItemController {
     public List<SalesItem> getAll() {
         return salesItemService.getAll();
     }
+
+    @GetMapping("/findBySalesId/{salesId}")
+    public List<SalesItem> findBySalesId(@PathVariable Long salesId) {
+        return salesItemService.findBySales_SaleID(salesId);
+    }
 }
 

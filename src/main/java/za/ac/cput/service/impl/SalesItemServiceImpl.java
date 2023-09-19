@@ -47,4 +47,9 @@ public class SalesItemServiceImpl implements SalesItemService {
     public List<SalesItem> getAll() {
         return this.repository.findAll();
     }
+
+    @Override
+    public List<SalesItem> findBySales_SaleID(Long salesId) {
+        return repository.findBySales_SaleID(salesId);
+    }
 }

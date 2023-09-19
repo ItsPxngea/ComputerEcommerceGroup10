@@ -18,8 +18,8 @@ public class City implements Serializable {
     public String cityName;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "countryid",referencedColumnName = "countryid")
+    @ManyToOne
+    @JoinColumn(name = "countryid")
     public Country country;
 
     public Long getCityID() {

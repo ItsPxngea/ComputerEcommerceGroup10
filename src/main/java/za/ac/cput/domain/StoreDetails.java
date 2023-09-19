@@ -14,7 +14,7 @@ public class StoreDetails implements Serializable {
     private String storeName;
     private String storeTel;
     private String storeEmail;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(
             name = "store_address",
             joinColumns = @JoinColumn(name = "store_id"),
