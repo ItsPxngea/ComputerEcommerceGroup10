@@ -49,7 +49,7 @@ public class City implements Serializable {
     @Override
     public String toString() {
         return "City{" +
-                "countryID='" + cityID + '\'' +
+                "CityID='" + cityID + '\'' +
                 ", cityName='" + cityName + '\'' +
                 ", country=" + country +
                 '}';

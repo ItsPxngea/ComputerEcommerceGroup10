@@ -74,9 +74,8 @@ class CustomerControllerTest {
 
 
     @Test
-    @Disabled
     void e_delete() {
-        String url = baseURL + "/delete/" + customer.getCustomerID();
+        String url = baseURL + "/delete/" + 3L;
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

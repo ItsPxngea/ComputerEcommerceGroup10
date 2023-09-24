@@ -25,7 +25,7 @@ public class ProductController {
         return productService.read(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     public Product update(@RequestBody Product product) {
         return productService.update(product);
     }

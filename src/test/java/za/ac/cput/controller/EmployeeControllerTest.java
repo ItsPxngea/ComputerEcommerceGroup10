@@ -25,10 +25,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeeControllerTest {
 
     private static final Employee employee = EmployeeFactory.buildEmployee(
-            "David",
-            "Garrancho",
-            "DavidG@gmail.com",
-            "Hol'emup"
+            "Hanno",
+            "Immleman",
+            "HI@gmail.com",
+            "Hello2023"
     );
 
     @Autowired
@@ -75,7 +75,6 @@ class EmployeeControllerTest {
 
 
     @Test
-    @Disabled
     void e_delete() {
         String url = baseURL + "/delete/" + employee.getEmployeeID();
         System.out.println("URL: " + url);

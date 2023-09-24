@@ -34,21 +34,18 @@ class CountryControllerTest {
     private final String baseURL = "http://localhost:8080/country";
 
     @Order(1)
-    //@Transactional
     @Test
     void a_create() {
         String url = baseURL + "/create";
         ResponseEntity<Country> postResponse = restTemplate.postForEntity(url, country, Country.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
         Country savedCountry = postResponse.getBody();
         System.out.println("Saved data: " + savedCountry);
         assertEquals(savedCountry.getCountryID(), postResponse.getBody().getCountryID());
     }
 
     @Order(2)
-   // @Transactional
     @Test
     void read() {
         String url = baseURL + "/read/" + country.getCountryID();
@@ -59,7 +56,6 @@ class CountryControllerTest {
     }
 
     @Order(3)
-    //@Transactional
     @Test
     void update() {
         Country updated = new Country.Builder().copy(country)
@@ -73,7 +69,6 @@ class CountryControllerTest {
     }
 
     @Order(5)
-   // @Transactional
     @Test
     @Disabled
     void delete() {
@@ -83,7 +78,6 @@ class CountryControllerTest {
     }
 
     @Order(4)
-   // @Transactional
     @Test
     void getAll() {
         String url = baseURL +"/getAll";

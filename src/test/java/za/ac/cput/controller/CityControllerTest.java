@@ -30,7 +30,7 @@ class CityControllerTest {
     );
 
     private static  City city = CityFactory.createCity(
-            "Cape Town",
+            "Port Elizabeth",
             southAfrica
     );
 

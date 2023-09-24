@@ -9,10 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Customer;
-import za.ac.cput.domain.Product;
-import za.ac.cput.domain.Review;
-import za.ac.cput.domain.SalesItem;
+import za.ac.cput.domain.*;
 import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.factory.ProductFactory;
 import za.ac.cput.factory.ReviewFactory;
@@ -28,15 +25,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Transactional
 public class ReviewControllerTest {
 
-    private static final Product product = ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4200.00, true);
-    private static final Customer customer = CustomerFactory.buildCustomer(
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+    private static final Product product = ProductFactory.buildTestProduct(2L);
+    private static final Customer customer = CustomerFactory.buildTestCustomer(
+            3L
     );
 
-    private static final Review review = ReviewFactory.buildReview(7, product, customer);
+    private static final Review review = ReviewFactory.buildReview(3, product, customer);
 
 
     @Autowired
@@ -51,11 +45,9 @@ public class ReviewControllerTest {
         ResponseEntity<Review> postResponse = restTemplate.postForEntity(url, review, Review.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-
         Review savedReview = postResponse.getBody();
         System.out.println("Saved data: " + savedReview);
-
-        assertEquals(review.getReviewID(), postResponse.getBody().getReviewID());
+        assertEquals(savedReview.getReviewID(), postResponse.getBody().getReviewID());
     }
 
 
