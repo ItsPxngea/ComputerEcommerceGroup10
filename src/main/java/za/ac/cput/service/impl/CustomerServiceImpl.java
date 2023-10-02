@@ -1,6 +1,7 @@
 package za.ac.cput.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.repository.CustomerRepository;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
+
 
     private CustomerRepository repository;
 
@@ -51,12 +53,10 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer authenticate(String email, String password) {
         Customer customer = repository.findByEmail(email);
 
-        // If a customer with the email is found and the passwords match, return the customer
         if (customer != null && customer.getPassword().equals(password)) {
             return customer;
         }
 
-        // Authentication failed, return null
         return null;
     }
 

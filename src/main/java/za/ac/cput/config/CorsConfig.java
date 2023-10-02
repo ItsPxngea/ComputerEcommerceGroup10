@@ -1,4 +1,4 @@
-package za.ac.cput.config;
+/*package za.ac.cput.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -14,6 +14,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.addAllowedOrigin("http://localhost:8081");
+        config.addAllowedOrigin("http://192.168.1.52:8081");
         config.addAllowedMethod("*");
         config.addAllowedHeader("*");
 
@@ -21,3 +22,4 @@ public class CorsConfig {
         return new CorsFilter(source);
     }
 }
+*/

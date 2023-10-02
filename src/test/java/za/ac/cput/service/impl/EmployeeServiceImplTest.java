@@ -16,10 +16,10 @@ class EmployeeServiceImplTest {
     private EmployeeServiceImpl service;
 
     private static final Employee employee = EmployeeFactory.buildEmployee(
-            "Best",
-            "Teacher",
-            "BT@gmail.com",
-            "BT2340A44"
+            "T",
+            "T",
+            "T@gmail.com",
+            "T"
     );
 
     @Test
