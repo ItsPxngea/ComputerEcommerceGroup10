@@ -12,7 +12,7 @@ import za.ac.cput.domain.Supplier;
 import java.util.List;
 import java.util.Set;
 @Service
-public interface SupplierService extends IService<Supplier, String>{
+public interface SupplierService extends IService<Supplier, Long>{
 
     List<Supplier> getAll();
 

@@ -16,11 +16,12 @@ import java.util.Set;
 @Entity
 public class Sales implements Serializable {
     @Id
-    private String saleID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    private Long saleID;
     private String saleDate;
     private Double totalAmount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "customerID")
     private Customer customer;
 
@@ -37,7 +38,7 @@ public class Sales implements Serializable {
         this.customer = b.customer;
     }
 
-    public String getSaleID() {
+    public Long getSaleID() {
         return saleID;
     }
 
@@ -78,12 +79,12 @@ public class Sales implements Serializable {
 
 
     public static class Builder {
-        private String saleID;
+        private Long saleID;
         private String saleDate;
         private Double totalAmount;
         private Customer customer;
 
-        public Builder setSaleID(String saleID) {
+        public Builder setSaleID(Long saleID) {
             this.saleID = saleID;
             return this;
         }

@@ -26,7 +26,7 @@ public class SalesController {
     }
 
     @GetMapping("/read/{id}")
-    public Sales read(@PathVariable String id) {
+    public Sales read(@PathVariable Long id) {
         return salesService.read(id);
     }
 
@@ -36,7 +36,7 @@ public class SalesController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable Long id) {
         return salesService.delete(id);
     }
 

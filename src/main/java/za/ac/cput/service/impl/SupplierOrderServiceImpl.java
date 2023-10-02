@@ -32,7 +32,7 @@ public class SupplierOrderServiceImpl implements SupplierOrderService {
     }
 
     @Override
-    public SupplierOrder read(String id){
+    public SupplierOrder read(Long id){
         return this.repository.findById(id).orElse(null);
     }
 
@@ -44,7 +44,7 @@ public class SupplierOrderServiceImpl implements SupplierOrderService {
     }
 
     @Override
-    public boolean delete(String orderID){
+    public boolean delete(Long orderID){
         if(this.repository.existsById(orderID)){
             this.repository.deleteById(orderID);
             return true;

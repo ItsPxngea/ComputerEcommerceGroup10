@@ -27,7 +27,6 @@ public class SupplierFactory {
         String supplierID = Helper.generateID();
 
         return new Supplier.Builder()
-                .setSupplierID(supplierID)
                 .setSupplierEmail(supplierEmail)
                 .setSupplierTel(supplierTel)
                 .setSupplierAddress(supplierAddress)

@@ -26,11 +26,7 @@ class SalesServiceImplTest {
     private SalesRepository repository;
 
     private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test123",
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+        2L
     );
 
 

@@ -22,7 +22,7 @@ public class ReviewController {
     }
 
     @GetMapping("/read/{id}")
-    public Review read(@PathVariable String id) {
+    public Review read(@PathVariable Long id) {
         return reviewService.read(id);
     }
 
@@ -32,7 +32,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable Long id) {
         return reviewService.delete(id);
     }
 

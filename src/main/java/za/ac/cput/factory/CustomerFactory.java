@@ -21,10 +21,7 @@ public class CustomerFactory {
             return null;
         }
 
-        String customerID = Helper.generateID();
-
         return new Customer.Builder()
-                .setCustomerID(customerID)
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(email)
@@ -32,22 +29,9 @@ public class CustomerFactory {
                 .build();
     }
 
-    public static Customer buildTestCustomer(String id, String firstName, String lastName, String email, String password) {
-        if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(password) || Helper.isNullOrEmpty(id)) {
-            return null;
-        }
+    public static Customer buildTestCustomer(Long id) {
 
-        if (!Helper.isValidEmail(email)) {
-            return null;
-        }
-
-
-        return new Customer.Builder()
-                .setCustomerID(id)
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setPassword(password)
+        return new Customer.Builder().setCustomerID(id)
                 .build();
     }
 

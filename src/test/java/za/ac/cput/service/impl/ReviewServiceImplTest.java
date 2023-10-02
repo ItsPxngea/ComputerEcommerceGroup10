@@ -20,10 +20,8 @@ public class ReviewServiceImplTest {
     @Autowired
     private ReviewServiceImpl service;
 
-    private static final Product product = ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00);
-
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test2456",
+    private static final Product product = ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00,true);
+    private static final Customer customer = CustomerFactory.buildCustomer(
             "Luke",
             "Ben",
             "LW@gmail.com",

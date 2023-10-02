@@ -22,14 +22,10 @@ private EnquiryRepository repository;
     private CustomerRepository customerrepository;
 
     private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "e0295579-70a0-48f3-b0c8-3f3fbe66b6cc",
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+            3L
     );
 
-    private static final Enquiry enquiry = EnquiryFactory.buildEnquiry(customer,"Delivery complaint","Did not get my delivery","Payed but did not receive my product");
+    private static final Enquiry enquiry = EnquiryFactory.buildEnquiry(customer,"Delivery complaint","Did not get my delivery","Payed but did not receive my product", "20-09-2023");
     @Test
     @Order(1)
     void create() {

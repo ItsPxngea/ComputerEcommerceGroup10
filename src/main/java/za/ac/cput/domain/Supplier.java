@@ -16,11 +16,12 @@ import java.util.Objects;
 public class Supplier implements Serializable {
 
     @Id
-    public String supplierID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    public Long supplierID;
     private String supplierCompanyName;
     private String supplierTel;
     private String supplierEmail;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(
             name = "supplier_address",
             joinColumns = @JoinColumn(name = "supplier_id"),
@@ -33,7 +34,7 @@ public class Supplier implements Serializable {
 
     }
 
-    public String getSupplierID() {
+    public Long getSupplierID() {
         return supplierID;
     }
 
@@ -96,14 +97,14 @@ public class Supplier implements Serializable {
 
     public static class Builder{
 
-        public String supplierID;
+        public Long supplierID;
         private String supplierCompanyName;
         private String supplierTel;
         private String supplierEmail;
         private Address address;
 
 
-        public Builder setSupplierID(String supplierID) {
+        public Builder setSupplierID(Long supplierID) {
             this.supplierID = supplierID;
             return this;
         }

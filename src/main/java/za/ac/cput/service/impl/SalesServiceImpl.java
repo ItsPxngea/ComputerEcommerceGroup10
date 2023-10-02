@@ -31,7 +31,7 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
-    public Sales read(String salesID) {
+    public Sales read(Long salesID) {
         return this.repository.findById(salesID).orElse(null);
     }
 
@@ -43,7 +43,7 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
-    public boolean delete(String salesID) {
+    public boolean delete(Long salesID) {
         if(this.repository.existsById(salesID)){
             this.repository.deleteById(salesID);
             return true;

@@ -11,7 +11,7 @@ import za.ac.cput.domain.SupplierOrder;
 import java.util.List;
 import java.util.Set;
 
-public interface SupplierOrderService extends IService<SupplierOrder, String>{
+public interface SupplierOrderService extends IService<SupplierOrder, Long>{
 
     List<SupplierOrder> getAll();
 

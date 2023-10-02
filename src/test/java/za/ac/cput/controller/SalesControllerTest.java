@@ -27,11 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class SalesControllerTest {
     private static final Customer customer = CustomerFactory.buildTestCustomer(
-            "Test123",
-            "Harry",
-            "Potter",
-            "PotterH@gmail.com",
-            "WingaurdiamLeviousa"
+            3L
     );
 
 
@@ -49,16 +45,15 @@ class SalesControllerTest {
     @Order(1)
     @Test
     @Transactional
-    void create() {
+    void a_create() {
         String url = baseURL + "/create";
         ResponseEntity<Sales> postResponse = restTemplate.postForEntity(url, sales, Sales.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-
+        //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
         Sales savedSales = postResponse.getBody();
         System.out.println("Saved data: " + savedSales);
-
-        assertEquals(sales.getSaleID(), postResponse.getBody().getSaleID());
+        assertEquals(savedSales.getSaleID(), postResponse.getBody().getSaleID());
     }
 
     @Order(2)

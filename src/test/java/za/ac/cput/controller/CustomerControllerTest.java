@@ -23,12 +23,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerControllerTest {
 
-    private static Customer customer = CustomerFactory.buildTestCustomer(
-            "e0295579-70a0-48f3-b0c8-3f3fbe66b6cc",
-            "Luke",
-            "Ben",
-            "LW@gmail.com",
-            "wufh%2465"
+    private static final Customer customer = CustomerFactory.buildCustomer(
+            "David",
+            "Garrancho",
+            "DavidG@gmail.com",
+            "Hol'emup"
     );
 
     @Autowired
@@ -45,7 +44,7 @@ class CustomerControllerTest {
         //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
         Customer savedCustomer = postResponse.getBody();
         System.out.println("Saved data: " + savedCustomer);
-        assertEquals(customer.getCustomerID(), postResponse.getBody().getCustomerID());
+        assertEquals(savedCustomer.getCustomerID(), postResponse.getBody().getCustomerID());
     }
 
     @Test
@@ -58,18 +57,25 @@ class CustomerControllerTest {
     }
     @Test
     void c_update() {
-        Customer updated = new Customer.Builder().copy(customer).setFirstName("Ethan Andrew").build();
+        Customer updated = new Customer.Builder()
+                .copy(customer)
+                .setFirstName("David")
+                .setLastName("Smith")
+                .setEmail("david@example.com")
+                .build();
+
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
         System.out.println("Post data: " + updated);
+
         ResponseEntity<Customer> response = restTemplate.postForEntity(url, updated, Customer.class);
         assertNotNull(response.getBody());
     }
 
+
     @Test
-    @Disabled
     void e_delete() {
-        String url = baseURL + "/delete/" + customer.getCustomerID();
+        String url = baseURL + "/delete/" + 3L;
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

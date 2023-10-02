@@ -10,13 +10,14 @@ import java.util.stream.Collectors;
 public class SalesItem implements Serializable {
 
     @Id
-    private String salesItemID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    private Long salesItemID;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "salesID")
     private Sales sales;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "sales_item_products",
             joinColumns = @JoinColumn(name = "sales_item_id"),
@@ -25,7 +26,6 @@ public class SalesItem implements Serializable {
     private List<Product> products = new ArrayList<>();
 
     private int quantity;
-    private double itemPrice;
 
     public SalesItem() {
     }
@@ -35,14 +35,13 @@ public class SalesItem implements Serializable {
         this.sales = b.sales;
         this.products = b.products;
         this.quantity = b.quantity;
-        this.itemPrice = b.itemPrice;
     }
 
     public void setProducts(List<Product> products) {
         this.products = products;
     }
 
-    public String getSalesItemID() {
+    public Long getSalesItemID() {
         return salesItemID;
     }
 
@@ -54,9 +53,6 @@ public class SalesItem implements Serializable {
         return quantity;
     }
 
-    public double getItemPrice() {
-        return itemPrice;
-    }
 
     public List<Product> getProducts() {
         return products;
@@ -71,36 +67,36 @@ public class SalesItem implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SalesItem salesItem = (SalesItem) o;
-        return quantity == salesItem.quantity && Double.compare(salesItem.itemPrice, itemPrice) == 0 && Objects.equals(salesItemID, salesItem.salesItemID) && Objects.equals(sales, salesItem.sales) && Objects.equals(products, salesItem.products);
+        return quantity == salesItem.quantity && Objects.equals(salesItemID, salesItem.salesItemID) && Objects.equals(sales, salesItem.sales) && Objects.equals(products, salesItem.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(salesItemID, sales, products, quantity, itemPrice);
+        return Objects.hash(salesItemID, sales, products, quantity);
     }
 
     @Override
     public String toString() {
         String productIds = products.stream()
                 .map(Product::getProductID)
+                .map(Object::toString)
                 .collect(Collectors.joining(", "));
+
 
         return "SalesItem{" +
                 "salesItemID='" + salesItemID + '\'' +
-                ", itemPrice=" + itemPrice +
                 ", quantity=" + quantity +
                 ", productIDs=" + productIds +
                 '}';
     }
 
     public static class Builder {
-        private String salesItemID;
+        private Long salesItemID;
         private Sales sales;
         private List<Product> products = new ArrayList<>();
         private int quantity;
-        private double itemPrice;
 
-        public Builder setSalesItemID(String salesItemID) {
+        public Builder setSalesItemID(Long salesItemID) {
             this.salesItemID = salesItemID;
             return this;
         }
@@ -125,17 +121,11 @@ public class SalesItem implements Serializable {
             return this;
         }
 
-        public Builder setItemPrice(double itemPrice) {
-            this.itemPrice = itemPrice;
-            return this;
-        }
-
         public Builder copy(SalesItem salesItem){
             this.salesItemID = salesItem.salesItemID;
             this.sales = salesItem.sales;
             this.products = salesItem.products;  // Updated this line
             this.quantity = salesItem.quantity;
-            this.itemPrice = salesItem.itemPrice;
             return this;
         }
 

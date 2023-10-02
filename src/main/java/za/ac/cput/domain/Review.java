@@ -12,14 +12,15 @@ import java.util.stream.Collectors;
 public class Review implements Serializable {
 
     @Id
-    public String reviewID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
+    public Long reviewID;
 
     private int rating;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "customerID")
     private Customer customer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "productID")
     private Product product;
 
@@ -34,7 +35,7 @@ public class Review implements Serializable {
     }
 
 
-    public String getReviewID() {
+    public Long getReviewID() {
         return reviewID;
     }
 
@@ -76,13 +77,13 @@ public class Review implements Serializable {
     }
 
     public static class Builder {
-        public String reviewID;
+        public Long reviewID;
         private int rating;
         private Customer customer;
         private Product product;
 
 
-        public Builder setReviewID(String reviewID){
+        public Builder setReviewID(Long reviewID){
             this.reviewID = reviewID;
             return this;
         }

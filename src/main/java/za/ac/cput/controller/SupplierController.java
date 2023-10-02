@@ -23,7 +23,7 @@ public class SupplierController {
 
 
     @GetMapping("/read/{id}")
-    public Supplier read(@PathVariable String id) {
+    public Supplier read(@PathVariable Long id) {
         return supplierService.read(id);
     }
 
@@ -35,7 +35,7 @@ public class SupplierController {
 
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id) {
+    public boolean delete(@PathVariable Long id) {
         return supplierService.delete(id);
     }
 

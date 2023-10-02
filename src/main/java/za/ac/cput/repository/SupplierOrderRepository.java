@@ -11,6 +11,6 @@ import za.ac.cput.domain.SupplierOrder;
 import java.util.Set;
 
 @Repository
-public interface SupplierOrderRepository extends JpaRepository<SupplierOrder, String> {
+public interface SupplierOrderRepository extends JpaRepository<SupplierOrder, Long> {
 
 }

@@ -15,7 +15,12 @@ class CustomerServiceImplTest {
     @Autowired
     private CustomerServiceImpl service;
 
-    private static Customer customer = CustomerFactory.buildCustomer("W", "C", "WC@gmail.com", "WC@2002");
+    private static final Customer customer = CustomerFactory.buildCustomer(
+            "Damien",
+            "Garrancho",
+            "DavidGary@gmail.com",
+            "Gary!s23"
+    );
 
     @Test
     @Order(1)
@@ -35,14 +40,16 @@ class CustomerServiceImplTest {
     @Test
     @Order(3)
     void update() {
-        Customer updated = new Customer.Builder().copy(customer).setFirstName("David Henriques").build();
+        Customer updated = new Customer.Builder().copy(customer).setLastName("Gary").build();
         assertNotNull(updated);
         System.out.println("Updated: " + updated);
     }
 
     @Test
-    @Disabled
     void delete() {
+        boolean success = service.delete(customer.getCustomerID());
+        assertTrue(success);
+        System.out.println("Deleted -> " + success);
     }
 
     @Test

@@ -10,14 +10,13 @@ import java.util.List;
 public class ReviewFactory {
 
     public static Review buildReview(int rating, Product product, Customer customer) {
-        if (Helper.isInvalidInt(rating)) {
+        if (Helper.isInvalidInt(rating) || rating > 5 || rating < 0) {
             return null;
         }
 
-        String reviewId = Helper.generateID();
+
 
         return new Review.Builder()
-                .setReviewID(reviewId)
                 .setRating(rating)
                 .setProduct(product)
                 .setCustomer(customer)

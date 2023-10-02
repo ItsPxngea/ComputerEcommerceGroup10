@@ -53,13 +53,12 @@ class SupplierOrderControllerTest {
                     "Intel");
 
     private static final List<Product> products = Arrays.asList(
-            ProductFactory.buildProduct("FX 3060", "Item", "Next Generation gaming with the RTX 3060 TI", 3000.00),
-            ProductFactory.buildProduct("RX 4050", "Item", "Next Generation gaming with the RTX 4050", 4800.00)
+            ProductFactory.buildProduct("RTX 3060 TI", "Item", "Next Generation gaming with the RTX 4050", 4800.00, 4000.00, true),
+            ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00, true)
     );
 
     private static final SupplierOrder supplierOrder = SupplierOrderFactory.buildSupplierOrder
-            ("06-01-2022", "12-01-2022", "11-01-2022",
-                    120.00, 12120.00, 2, 6000.00, products, supplier);
+            ("06-01-2022", "12-01-2022", 120.00, 12120.00, 2, products, supplier);
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -91,7 +90,7 @@ class SupplierOrderControllerTest {
 
     @Test
     void update() {
-        SupplierOrder updated = new SupplierOrder.Builder().copy(supplierOrder).setProductIndividualPrice(12000).build();
+        SupplierOrder updated = new SupplierOrder.Builder().copy(supplierOrder).build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
         System.out.println("Post data: " + updated);
