@@ -9,7 +9,6 @@ Date: 17 June 2023
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -22,9 +21,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-
-    @Autowired
-    private AuthenticationManager customerAuthManager;
 
     @Autowired
     private CustomerService customerService;
@@ -56,18 +52,10 @@ public class CustomerController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customer customer) {
-        try {
-            String email = customer.getEmail();
-            String password = customer.getPassword();
-
-            Authentication authentication = customerAuthManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(email, password)
-            );
-
-            Customer authenticatedCustomer = (Customer) authentication.getPrincipal();
-
+        Customer authenticatedCustomer = customerService.authenticate(customer.getEmail(), customer.getPassword());
+        if (authenticatedCustomer != null) {
             return ResponseEntity.ok(authenticatedCustomer);
-        } catch (AuthenticationException e) {
+        } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
         }
     }
