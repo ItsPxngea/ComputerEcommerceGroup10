@@ -42,9 +42,7 @@ public class EmployeeController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Employee employee) {
-
         Employee authenticatedEmployee = employeeService.authenticate(employee.getEmail(), employee.getPassword());
-
         if (authenticatedEmployee != null) {
             return ResponseEntity.ok(authenticatedEmployee);
         } else {

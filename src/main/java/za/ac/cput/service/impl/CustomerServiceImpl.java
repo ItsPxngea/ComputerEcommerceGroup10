@@ -1,6 +1,8 @@
 package za.ac.cput.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.repository.CustomerRepository;
@@ -10,12 +12,8 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private CustomerRepository repository;
-
     @Autowired
-    private CustomerServiceImpl(CustomerRepository repository){
-        this.repository = repository;
-    }
+    private CustomerRepository repository;
 
     @Override
     public Customer create(Customer customer) {
@@ -29,16 +27,16 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer update(Customer customer) {
-        if(this.repository.existsById((customer.getCustomerID())))
+        if (this.repository.existsById((customer.getCustomerID())))
             return this.repository.save(customer);
         return null;
     }
 
     @Override
     public boolean delete(Long customerID) {
-        if (this.repository.existsById(customerID)){
+        if (this.repository.existsById(customerID)) {
             this.repository.deleteById(customerID);
-            return  true;
+            return true;
         }
         return false;
     }
@@ -48,16 +46,18 @@ public class CustomerServiceImpl implements CustomerService {
         return this.repository.findAll();
     }
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public Customer authenticate(String email, String password) {
         Customer customer = repository.findByEmail(email);
 
-        // If a customer with the email is found and the passwords match, return the customer
-        if (customer != null && customer.getPassword().equals(password)) {
+        if (customer != null && passwordEncoder.matches(password, customer.getPassword())) {
             return customer;
         }
 
-        // Authentication failed, return null
         return null;
     }
 
 }
+

@@ -9,6 +9,9 @@ Date: 17 June 2023
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.service.CustomerService;
@@ -49,14 +52,10 @@ public class CustomerController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customer customer) {
-
         Customer authenticatedCustomer = customerService.authenticate(customer.getEmail(), customer.getPassword());
-
         if (authenticatedCustomer != null) {
-            // Authentication successful, you can return the authenticated customer or a token
             return ResponseEntity.ok(authenticatedCustomer);
         } else {
-            // Authentication failed, return an error response
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
         }
     }
