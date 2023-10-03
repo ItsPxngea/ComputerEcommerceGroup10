@@ -7,13 +7,17 @@ Date: 20 March 2023
 */
 
 import jakarta.persistence.*;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.annotation.processing.Generated;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.*;
 
 
 @Entity
+@Setter
 public class Customer implements Serializable {
 
     @Id
@@ -24,6 +28,30 @@ public class Customer implements Serializable {
     @Column(unique = true)
     private String email;
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER  , cascade = CascadeType.PERSIST)
+    List<Role> roles ;
+
+
+    public Customer (String email , String password , List<Role> roles) {
+        this.email= email ;
+        this.password=password ;
+        this.roles=roles ;}
+
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        this.roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRoleName())));
+        return authorities;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "customer_roles",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> role = new HashSet<>();
 
     public Customer(){
     }
@@ -52,6 +80,10 @@ public class Customer implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public Set<Role> getRole() {
+        return role;
     }
 
     @Override

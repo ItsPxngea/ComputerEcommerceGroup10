@@ -13,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.config.dto.LoginDto;
+import za.ac.cput.config.dto.RegisterDto;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.service.CustomerService;
 
@@ -50,7 +52,7 @@ public class CustomerController {
         return customerService.getAll();
     }
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Customer customer) {
         Customer authenticatedCustomer = customerService.authenticate(customer.getEmail(), customer.getPassword());
         if (authenticatedCustomer != null) {
@@ -58,5 +60,15 @@ public class CustomerController {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
         }
-    }
+    }*/
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register (@RequestBody RegisterDto registerDto)
+    { return  customerService.register(registerDto);}
+
+    //RessourceEndPoint:http://localhost:8087/api/user/authenticate
+    @PostMapping("/authenticate")
+    public String authenticate(@RequestBody LoginDto loginDto)
+    { return  customerService.authenticate(loginDto);}
+
 }
