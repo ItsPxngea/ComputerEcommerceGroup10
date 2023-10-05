@@ -1,10 +1,9 @@
 package za.ac.cput.service;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.config.dto.LoginDto;
-import za.ac.cput.config.dto.RegisterDto;
-import za.ac.cput.domain.Customer;
+import za.ac.cput.dto.LoginDto;
+import za.ac.cput.dto.RegisterDto;
+import za.ac.cput.domain.User;
 import za.ac.cput.domain.Role;
 
 import java.util.List;
@@ -16,8 +15,8 @@ import java.util.List;
     Date: 09 - 06 - 2023
  */
 
-public interface CustomerService extends IService<Customer, Long> {
-    List<Customer> getAll();
+public interface UserService extends IService<User, Long> {
+    List<User> getAll();
 
     String authenticate(LoginDto loginDto);
 

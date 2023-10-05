@@ -11,4 +11,8 @@ public class MyApplication {
         SpringApplication.run(MyApplication.class, args);
     }
 
+
+    //Use the command line to get the roles into the Table
+
+
 }

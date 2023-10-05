@@ -1,4 +1,4 @@
-package za.ac.cput.config.dto;
+package za.ac.cput.dto;
 
 import lombok.AccessLevel;
 import lombok.Data;

@@ -10,26 +10,26 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import za.ac.cput.config.dto.BearerToken;
-import za.ac.cput.config.dto.LoginDto;
-import za.ac.cput.config.dto.RegisterDto;
-import za.ac.cput.config.jwt.JwtService;
-import za.ac.cput.domain.Customer;
+import za.ac.cput.dto.BearerToken;
+import za.ac.cput.dto.LoginDto;
+import za.ac.cput.dto.RegisterDto;
+import za.ac.cput.jwt.JwtService;
+import za.ac.cput.domain.User;
 import za.ac.cput.domain.Role;
 import za.ac.cput.domain.RoleName;
-import za.ac.cput.repository.CustomerRepository;
+import za.ac.cput.repository.UserRepository;
 import za.ac.cput.repository.RoleRepository;
-import za.ac.cput.service.CustomerService;
+import za.ac.cput.service.UserService;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    private CustomerRepository repository;
+    private UserRepository repository;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -40,19 +40,19 @@ public class CustomerServiceImpl implements CustomerService {
     private AuthenticationManager authenticationManager;
 
     @Override
-    public Customer create(Customer customer) {
-        return this.repository.save(customer);
+    public User create(User user) {
+        return this.repository.save(user);
     }
 
     @Override
-    public Customer read(Long customerID) {
+    public User read(Long customerID) {
         return this.repository.findById(customerID).orElse(null);
     }
 
     @Override
-    public Customer update(Customer customer) {
-        if (this.repository.existsById((customer.getCustomerID())))
-            return this.repository.save(customer);
+    public User update(User user) {
+        if (this.repository.existsById((user.getCustomerID())))
+            return this.repository.save(user);
         return null;
     }
 
@@ -66,7 +66,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> getAll() {
+    public List<User> getAll() {
         return this.repository.findAll();
     }
 
@@ -74,10 +74,10 @@ public class CustomerServiceImpl implements CustomerService {
     private PasswordEncoder passwordEncoder;
 
     /*public Customer authenticate(String email, String password) {
-        Customer customer = repository.findByEmail(email);
+        Customer user = repository.findByEmail(email);
 
-        if (customer != null && passwordEncoder.matches(password, customer.getPassword())) {
-            return customer;
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
+            return user;
         }
 
         return null;
@@ -88,15 +88,15 @@ public class CustomerServiceImpl implements CustomerService {
         if(repository.existsByEmail(registerDto.getEmail()))
         { return  new ResponseEntity<>("email is already taken !", HttpStatus.SEE_OTHER); }
         else
-        { Customer customer = new Customer();
-            customer.setEmail(registerDto.getEmail());
-            customer.setFirstName(registerDto.getFirstName());
-            customer.setLastName(registerDto.getLastName());
-            customer.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        { User user = new User();
+            user.setEmail(registerDto.getEmail());
+            user.setFirstName(registerDto.getFirstName());
+            user.setLastName(registerDto.getLastName());
+            user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
             //By Default , he/she is a simple user
             Role role = roleRepository.findByRoleName(RoleName.CUSTOMER);
-            customer.setRoles(Collections.singletonList(role));
-            repository.save(customer);
+            user.setRoles(Collections.singletonList(role));
+            repository.save(user);
             String token = jwtService.generateToken(registerDto.getEmail(),Collections.singletonList(role.getRoleName()));
             return new ResponseEntity<>(new BearerToken(token , "Bearer "),HttpStatus.OK);
 
@@ -117,10 +117,10 @@ public class CustomerServiceImpl implements CustomerService {
                 )
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        Customer customer = repository.findByEmail(authentication.getName());
+        User user = repository.findByEmail(authentication.getName()).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         List<String> rolesNames = new ArrayList<>();
-        customer.getRole().forEach(r-> rolesNames.add(r.getRoleName().toString()));
-        String token = jwtService.generateToken(customer.getEmail(), rolesNames);
+        user.getRole().forEach(r-> rolesNames.add(r.getRoleName().toString()));
+        String token = jwtService.generateToken(user.getEmail(), rolesNames);
         return token;
     }
 

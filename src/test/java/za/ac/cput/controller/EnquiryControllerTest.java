@@ -9,8 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.City;
-import za.ac.cput.domain.Customer;
+import za.ac.cput.domain.User;
 import za.ac.cput.domain.Enquiry;
 import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.factory.EnquiryFactory;
@@ -21,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class EnquiryControllerTest {
 
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
+    private static final User customer = CustomerFactory.buildTestCustomer(
             3L
     );
 

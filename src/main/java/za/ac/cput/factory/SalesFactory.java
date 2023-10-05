@@ -6,13 +6,13 @@ Author: David Henriques Garrancho (221475982)
 Date: 16 August 2023
 */
 
-import za.ac.cput.domain.Customer;
+import za.ac.cput.domain.User;
 import za.ac.cput.domain.Sales;
 import za.ac.cput.util.Helper;
 
 public class SalesFactory {
 
-    public static Sales buildSales(String salesDate, Double totalAmount, Customer customer) {
+    public static Sales buildSales(String salesDate, Double totalAmount, User customer) {
         if (Helper.isValidDate(salesDate) == null) {
             return null;
         }

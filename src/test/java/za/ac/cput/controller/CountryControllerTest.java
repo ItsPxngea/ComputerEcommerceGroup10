@@ -6,8 +6,6 @@ Author: Michael Daniel Johnson 221094040
 Date: 19 August 2023
 */
 
-import jakarta.transaction.Transactional;
-import org.apache.coyote.Response;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +15,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Country;
-import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CountryFactory;
 
 import static org.junit.jupiter.api.Assertions.*;

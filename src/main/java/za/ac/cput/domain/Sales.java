@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 public class Sales implements Serializable {
@@ -23,7 +22,7 @@ public class Sales implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "customerID")
-    private Customer customer;
+    private User customer;
 
     @OneToMany(mappedBy = "sales")
     private List<SalesItem> salesItems = new ArrayList<>();
@@ -50,7 +49,7 @@ public class Sales implements Serializable {
         return totalAmount;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
@@ -82,7 +81,7 @@ public class Sales implements Serializable {
         private Long saleID;
         private String saleDate;
         private Double totalAmount;
-        private Customer customer;
+        private User customer;
 
         public Builder setSaleID(Long saleID) {
             this.saleID = saleID;
@@ -99,7 +98,7 @@ public class Sales implements Serializable {
             return this;
         }
 
-        public Builder setCustomer(Customer customer) {
+        public Builder setCustomer(User customer) {
             this.customer = customer;
             return this;
         }

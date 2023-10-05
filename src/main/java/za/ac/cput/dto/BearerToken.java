@@ -1,9 +1,11 @@
-package za.ac.cput.config.dto;
+package za.ac.cput.dto;
 
 import lombok.Data;
 
 @Data
 public class BearerToken {
+
+    //record
 
     private String accessToken ;
     private String tokenType ;

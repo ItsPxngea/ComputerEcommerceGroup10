@@ -11,17 +11,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Product;
-import za.ac.cput.domain.Sales;
-import za.ac.cput.domain.SalesItem;
-import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.factory.ProductFactory;
-import za.ac.cput.factory.SalesFactory;
-import za.ac.cput.factory.SalesItemFactory;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

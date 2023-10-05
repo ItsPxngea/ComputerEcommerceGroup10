@@ -3,10 +3,7 @@ package za.ac.cput.domain;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Entity
 public class Review implements Serializable {
@@ -18,7 +15,7 @@ public class Review implements Serializable {
     private int rating;
     @ManyToOne
     @JoinColumn(name = "customerID")
-    private Customer customer;
+    private User customer;
 
     @ManyToOne
     @JoinColumn(name = "productID")
@@ -39,7 +36,7 @@ public class Review implements Serializable {
         return reviewID;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
@@ -79,7 +76,7 @@ public class Review implements Serializable {
     public static class Builder {
         public Long reviewID;
         private int rating;
-        private Customer customer;
+        private User customer;
         private Product product;
 
 
@@ -93,7 +90,7 @@ public class Review implements Serializable {
             return this;
         }
 
-        public Builder setCustomer(Customer customer){
+        public Builder setCustomer(User customer){
             this.customer = customer;
             return this;
         }

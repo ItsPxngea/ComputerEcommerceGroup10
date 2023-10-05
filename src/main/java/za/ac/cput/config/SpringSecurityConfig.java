@@ -11,24 +11,24 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import za.ac.cput.config.jwt.JwtAuthenticationFilter;
+import za.ac.cput.jwt.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SpringSecurityConfig {
 
-    private final JwtAuthenticationFilter jwtAuthenticationFilter ;
-    private final MyCustomerDetailsService myCustomerDetailsService ;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    private final MyUserDetailsService myUserDetailsService ;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeRequests(authorizeRequests -> {
                     authorizeRequests
-                            .requestMatchers("/auth/register", "/auth/login", "/post/seach").permitAll()
+                            .requestMatchers("/customer/register", "/customer/login", "/post/search").permitAll()
                             .anyRequest().authenticated();
                 })
                 .cors(cors -> cors.disable())
