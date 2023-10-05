@@ -28,8 +28,8 @@ public class SpringSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeRequests(authorizeRequests -> {
                     authorizeRequests
-                            .requestMatchers("/user/register", "/user/authenticate", "/post/search").permitAll()
-                            .requestMatchers("/product/getAll", "/product/read/**").hasAuthority("CUSTOMER")
+                            .requestMatchers("/user/register", "/user/authenticate", "/post/search", "/storeDetails/getAll",
+                                    "/city/getAll", "/country/getAll", "/address/getAll", "/city/read/**", "/country/read/**", "/address/read/**", "/storeDetails/read/**").permitAll()
                             .anyRequest().authenticated();
                 })
                 .cors(cors -> cors.disable())
