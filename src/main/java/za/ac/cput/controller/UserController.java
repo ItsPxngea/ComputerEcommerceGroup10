@@ -17,7 +17,7 @@ import za.ac.cput.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired

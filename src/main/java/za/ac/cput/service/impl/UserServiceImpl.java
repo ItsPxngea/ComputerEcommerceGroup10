@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private JwtService jwtService;
 
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Override
@@ -110,7 +111,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String authenticate(LoginDto loginDto) {
-        Authentication authentication= authenticationManager.authenticate(
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDto.getEmail(),
                         loginDto.getPassword()
