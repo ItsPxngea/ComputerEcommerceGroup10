@@ -5,6 +5,7 @@ import za.ac.cput.dto.LoginDto;
 import za.ac.cput.dto.RegisterDto;
 import za.ac.cput.domain.User;
 import za.ac.cput.domain.Role;
+import za.ac.cput.dto.UpdateUserDto;
 
 import java.util.List;
 
@@ -16,10 +17,18 @@ import java.util.List;
  */
 
 public interface UserService extends IService<User, Long> {
+
+    User updateUser(UpdateUserDto updateUserDto);
+
     List<User> getAll();
+
+    User saverUser(User user);
 
     String authenticate(LoginDto loginDto);
 
     ResponseEntity<?> register (RegisterDto registerDto);
+
+    User findByEmail(String email);
+
     Role saveRole(Role role);
 }

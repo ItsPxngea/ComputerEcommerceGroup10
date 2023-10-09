@@ -7,12 +7,15 @@ Date: 16 August 2023
 */
 
 import jakarta.persistence.*;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Setter
 public class Sales implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
@@ -20,12 +23,17 @@ public class Sales implements Serializable {
     private String saleDate;
     private Double totalAmount;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID")
     private User customer;
 
-    @OneToMany(mappedBy = "sales")
+    @OneToMany(mappedBy = "sales", cascade = CascadeType.PERSIST)
     private List<SalesItem> salesItems = new ArrayList<>();
+
+    public void addSalesItem(SalesItem salesItem) {
+        salesItems.add(salesItem);
+        salesItem.setSales(this);
+    }
 
     public Sales() {
     }

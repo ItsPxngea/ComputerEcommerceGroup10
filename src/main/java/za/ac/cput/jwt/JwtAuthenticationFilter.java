@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = jwtService.getToken(request);
 
         if (token != null) {
-            System.out.println("Received token: " + token); // Print the received token
+            System.out.println("Received token: " + token);
 
             if (jwtService.validateToken(token)) {
                 String email = jwtService.extractUsername(token);
@@ -43,7 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 if (userDetails != null) {
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(userDetails.getUsername(), null, userDetails.getAuthorities());
-                    System.out.println("Authenticated user with email: " + email);
+
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 } else {
                     System.out.println("User details not found for email: " + email);

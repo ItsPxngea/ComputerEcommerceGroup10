@@ -29,10 +29,11 @@ public class SpringSecurityConfig {
                 .authorizeRequests(authorizeRequests -> {
                     authorizeRequests
                             .requestMatchers("/user/register", "/user/authenticate", "/post/search", "/storeDetails/getAll",
-                                    "/city/getAll", "/country/getAll", "/address/getAll", "/city/read/**", "/country/read/**", "/address/read/**", "/storeDetails/read/**").permitAll()
+                                    "/city/getAll", "/country/getAll", "/address/getAll", "/city/read", "/country/read", "/address/read",
+                                    "/storeDetails/read").permitAll()
+                            .requestMatchers("sales/create", "review/create", "enquiry/create", "user/**").hasAuthority("CUSTOMER")
                             .anyRequest().authenticated();
                 })
-                .cors(cors -> cors.disable())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

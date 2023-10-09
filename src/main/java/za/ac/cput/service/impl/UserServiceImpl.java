@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.dto.BearerToken;
 import za.ac.cput.dto.LoginDto;
 import za.ac.cput.dto.RegisterDto;
+import za.ac.cput.dto.UpdateUserDto;
 import za.ac.cput.jwt.JwtService;
 import za.ac.cput.domain.User;
 import za.ac.cput.domain.Role;
@@ -58,6 +59,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User updateUser(UpdateUserDto updateUserDto) {
+        User user = repository.findByEmail(updateUserDto.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        user.setFirstName(updateUserDto.getFirstName());
+        user.setLastName(updateUserDto.getLastName());
+
+        return repository.save(user);
+    }
+
+    @Override
     public boolean delete(Long customerID) {
         if (this.repository.existsById(customerID)) {
             this.repository.deleteById(customerID);
@@ -85,6 +97,11 @@ public class UserServiceImpl implements UserService {
     }*/
 
     @Override
+    public Role saveRole(Role role) {
+        return roleRepository.save(role);
+    }
+
+    @Override
     public ResponseEntity<?> register(RegisterDto registerDto) {
         if(repository.existsByEmail(registerDto.getEmail()))
         { return  new ResponseEntity<>("email is already taken !", HttpStatus.SEE_OTHER); }
@@ -94,7 +111,6 @@ public class UserServiceImpl implements UserService {
             user.setFirstName(registerDto.getFirstName());
             user.setLastName(registerDto.getLastName());
             user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
-            //By Default , he/she is a simple user
             Role role = roleRepository.findByRoleName(RoleName.CUSTOMER);
             user.setRoles(Collections.singletonList(role));
             repository.save(user);
@@ -105,8 +121,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Role saveRole(Role role) {
-        return roleRepository.save(role);
+    public User findByEmail(String email) {
+        return this.repository.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public User saverUser(User user) {
+        return repository.save(user);
     }
 
     @Override

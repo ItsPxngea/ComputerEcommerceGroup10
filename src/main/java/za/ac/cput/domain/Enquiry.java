@@ -3,18 +3,20 @@ package za.ac.cput.domain;
 Author: Hanno Visser Immelman 221074414
 */
 import jakarta.persistence.*;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Setter
 public class Enquiry implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
     private Long enquiryID;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID")
     private User customer;
 

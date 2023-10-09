@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.User;
 import za.ac.cput.domain.Enquiry;
-import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.factory.UserFactory;
 import za.ac.cput.factory.EnquiryFactory;
 import za.ac.cput.repository.UserRepository;
 import za.ac.cput.repository.EnquiryRepository;
@@ -21,7 +21,7 @@ private EnquiryRepository repository;
     @Autowired
     private UserRepository customerrepository;
 
-    private static final User customer = CustomerFactory.buildTestCustomer(
+    private static final User customer = UserFactory.buildTestCustomer(
             3L
     );
 

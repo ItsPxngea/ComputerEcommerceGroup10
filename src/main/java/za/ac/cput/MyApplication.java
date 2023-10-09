@@ -12,8 +12,11 @@ import za.ac.cput.domain.RoleName;
 import za.ac.cput.repository.RoleRepository;
 import za.ac.cput.repository.UserRepository;
 import za.ac.cput.service.UserService;
+import za.ac.cput.service.impl.UserServiceImpl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @SpringBootApplication
@@ -22,8 +25,38 @@ public class MyApplication {
         SpringApplication.run(MyApplication.class, args);
     }
 
-
     @Bean
+    CommandLineRunner run(UserServiceImpl iUserService, RoleRepository iRoleRepository, UserRepository iUserRepository, PasswordEncoder passwordEncoder) {
+        return args -> {
+            List<RoleName> roleNames = Arrays.asList(RoleName.CUSTOMER, RoleName.ADMIN, RoleName.ADMIN);
+
+            for (RoleName roleName : roleNames) {
+                Role role = iRoleRepository.findByRoleName(roleName);
+
+                if (role == null) {
+                    iUserService.saveRole(new Role(roleName));
+
+                    String email = roleName.toString().toLowerCase() + "@gmail.com";
+                    String password = roleName.toString().toLowerCase() + "Password";
+
+                    iUserService.saverUser(new User(email, passwordEncoder.encode(password), new ArrayList<>()));
+
+                    role = iRoleRepository.findByRoleName(roleName);
+                    User user = (User) iUserRepository.findByEmail(email).orElse(null);
+
+                    if (user != null) {
+                        user.getRole().add(role);
+                        iUserService.saverUser(user);
+                    }
+                }
+            }
+        };
+    }
+
+
+
+
+    /*@Bean
     CommandLineRunner run(UserService iUserService, RoleRepository iRoleRepository, UserRepository iUserRepository, PasswordEncoder passwordEncoder) {
         return args ->
         {
@@ -56,6 +89,6 @@ public class MyApplication {
 
             }
         };
-    }
+    }*/
 
 }

@@ -45,11 +45,17 @@ public class JwtService {
         return extractExpiration(token).before(new Date());
     }
 
-    public String generateToken(String email , List<String> roles) {
 
-        return Jwts.builder().setSubject(email).claim("role",roles).setIssuedAt(new Date(System.currentTimeMillis()))
+    public String generateToken(String email, List<String> roles) {
+        Claims claims = Jwts.claims().setSubject(email);
+        claims.put("roles", roles);
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(Date.from(Instant.now().plus(jwtExpiration, ChronoUnit.MILLIS)))
-                .signWith(SignatureAlgorithm.HS256, secret).compact();
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
     }
 
     public boolean validateToken(String token) {

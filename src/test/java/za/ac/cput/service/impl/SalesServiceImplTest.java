@@ -24,7 +24,7 @@ class SalesServiceImplTest {
     @Autowired
     private SalesRepository repository;
 
-    private static final User customer = CustomerFactory.buildTestCustomer(
+    private static final User customer = UserFactory.buildTestCustomer(
         2L
     );
 

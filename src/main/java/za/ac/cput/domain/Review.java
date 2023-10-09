@@ -1,11 +1,13 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Setter
 public class Review implements Serializable {
 
     @Id
@@ -13,11 +15,11 @@ public class Review implements Serializable {
     public Long reviewID;
 
     private int rating;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID")
     private User customer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "productID")
     private Product product;
 

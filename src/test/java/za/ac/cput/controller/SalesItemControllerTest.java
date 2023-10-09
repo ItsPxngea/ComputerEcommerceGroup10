@@ -26,11 +26,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class SalesItemControllerTest {
     private static final List<Product> products = Arrays.asList(
             ProductFactory.buildTestProduct(1L),
-            ProductFactory.buildTestProduct(3L)
+            ProductFactory.buildTestProduct(2L)
     );
 
     private static final Sales sales = SalesFactory.buildTestSales(
-            5L
+            1L
     );
 
     private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, products.size());

@@ -3,14 +3,16 @@ package za.ac.cput.dto;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+import za.ac.cput.domain.Product;
 
 import java.io.Serializable;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LoginDto implements Serializable {
+public class ReviewDto implements Serializable {
 
-    //it's a Data Trasfer Object for Login
-    String email ;
-    String password ;
+    Long reviewID;
+    int rating;
+    UserDto customer;
+    Product product;
 }

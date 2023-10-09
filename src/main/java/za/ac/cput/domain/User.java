@@ -10,9 +10,12 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Fetch;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.util.*;
@@ -21,6 +24,7 @@ import java.util.*;
 @Entity
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class User implements Serializable , UserDetails {
 
     @Id
@@ -50,9 +54,9 @@ public class User implements Serializable , UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "customer_roles",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_customerid"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id")
     )
     private Set<Role> role = new HashSet<>();
 

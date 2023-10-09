@@ -7,12 +7,12 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import za.ac.cput.domain.Product;
 import za.ac.cput.factory.ProductFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -30,14 +30,28 @@ class ProductControllerTest {
 
     @Test
     void a_create() {
-        String url = baseURL + "/create";
-        ResponseEntity<Product> postResponse = restTemplate.postForEntity(url, product, Product.class);
-        assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
-        //assertEquals(postResponse.getStatusCode(), HttpStatus.OK);
-        Product savedProduct = postResponse.getBody();
-        System.out.println("Saved data: " + savedProduct);
-        assertEquals(savedProduct.getProductID(), postResponse.getBody().getProductID());
+        List<Product> products = new ArrayList<>();
+
+        // Create multiple Product objects
+        Product product1 = ProductFactory.buildProduct("RTX 3060 TI", "Item 1", "Next Generation gaming with the RTX 4050", 4800.00, 4200.00, true);
+        Product product2 = ProductFactory.buildProduct("GTX 1660", "Item 2", "High-performance gaming GPU", 3200.00, 2800.00, true);
+        Product product3 = ProductFactory.buildProduct("RX 6700 XT", "Item 3", "AMD's flagship gaming GPU", 5500.00, 4900.00, true);
+
+        // Add products to the list
+        products.add(product1);
+        products.add(product2);
+        products.add(product3);
+
+        for (Product product : products) {
+            ResponseEntity<Product> postResponse = restTemplate.postForEntity(baseURL + "/create", product, Product.class);
+            assertNotNull(postResponse);
+            assertNotNull(postResponse.getBody());
+            assertEquals(HttpStatus.OK, postResponse.getStatusCode());
+
+            Product savedProduct = postResponse.getBody();
+            System.out.println("Saved data: " + savedProduct);
+            assertEquals(savedProduct.getProductID(), postResponse.getBody().getProductID());
+        }
     }
 
     @Test

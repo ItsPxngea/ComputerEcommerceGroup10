@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.User;
-import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.factory.UserFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +15,7 @@ class CustomerServiceImplTest {
     @Autowired
     private UserServiceImpl service;
 
-    private static final User customer = CustomerFactory.buildCustomer(
+    private static final User customer = UserFactory.buildCustomer(
             "Damien",
             "Garrancho",
             "DavidGary@gmail.com",

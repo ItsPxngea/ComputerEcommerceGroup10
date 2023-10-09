@@ -17,15 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class InvoiceControllerTest {
 
-    private static User customer = CustomerFactory.buildTestCustomer(
-            3L
-    );
 
     private static  Sales sales = SalesFactory.buildTestSales(
-            6L
+            1L
     );
     private static  StoreDetails storeDetails = StoreDetailsFactory.buildTestStoreDetails(
-            4L
+            1L
     );
 
     private static  Invoice invoice = InvoiceFactory.buildInvoice(

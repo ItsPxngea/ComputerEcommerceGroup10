@@ -10,7 +10,7 @@ import za.ac.cput.domain.User;
 import za.ac.cput.util.Helper;
 
 
-public class CustomerFactory {
+public class UserFactory {
 
     public static User buildCustomer(String firstName, String lastName, String email, String password) {
         if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(password)) {

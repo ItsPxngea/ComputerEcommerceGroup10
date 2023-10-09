@@ -17,7 +17,7 @@ public class ReviewServiceImplTest {
     private ReviewServiceImpl service;
 
     private static final Product product = ProductFactory.buildProduct("FX 950", "Item", "Next Generation gaming with the RTX 950", 4000.00, 3500.00,true);
-    private static final User customer = CustomerFactory.buildCustomer(
+    private static final User customer = UserFactory.buildCustomer(
             "Luke",
             "Ben",
             "LW@gmail.com",

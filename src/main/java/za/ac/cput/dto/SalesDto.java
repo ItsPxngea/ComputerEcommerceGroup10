@@ -8,9 +8,10 @@ import java.io.Serializable;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LoginDto implements Serializable {
+public class SalesDto implements Serializable {
 
-    //it's a Data Trasfer Object for Login
-    String email ;
-    String password ;
+    Long saleID;
+    private String saleDate;
+    private Double totalAmount;
+    UserDto customer;
 }

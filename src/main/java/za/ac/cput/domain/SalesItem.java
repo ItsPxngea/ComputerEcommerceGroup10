@@ -1,12 +1,14 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
+@Setter
 public class SalesItem implements Serializable {
 
     @Id
