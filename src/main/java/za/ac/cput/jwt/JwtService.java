@@ -36,7 +36,6 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
     public Date extractExpiration(String token) { return extractClaim(token, Claims::getExpiration); }
-
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String email = extractUsername(token);
         return (email.equals(userDetails.getUsername()) && !isTokenExpired(token));

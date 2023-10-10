@@ -32,6 +32,8 @@ public class SpringSecurityConfig {
                                     "/city/getAll", "/country/getAll", "/address/getAll", "/city/read", "/country/read", "/address/read",
                                     "/storeDetails/read").permitAll()
                             .requestMatchers("sales/create", "review/create", "enquiry/create", "user/**").hasAuthority("CUSTOMER")
+                            .requestMatchers("user/**", "product/create").hasAuthority("EMPLOYEE")
+
                             .anyRequest().authenticated();
                 })
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

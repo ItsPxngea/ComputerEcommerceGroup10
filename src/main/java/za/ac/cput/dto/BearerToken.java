@@ -4,9 +4,6 @@ import lombok.Data;
 
 @Data
 public class BearerToken {
-
-    //record
-
     private String accessToken ;
     private String tokenType ;
 
@@ -14,6 +11,4 @@ public class BearerToken {
         this.tokenType = tokenType ;
         this.accessToken = accessToken;
     }
-
-
 }

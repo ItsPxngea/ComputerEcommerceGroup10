@@ -10,7 +10,6 @@ import java.io.Serializable;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ReviewDto implements Serializable {
-
     Long reviewID;
     int rating;
     UserDto customer;

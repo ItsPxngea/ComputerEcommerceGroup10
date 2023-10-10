@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class AddressControllerTest {
     private static Country southAfrica = CountryFactory.createTestCountry(
-            4L
+            1L
     );
     private static  City homeCity = CityFactory.createTestCity(
-            4L
+            1L
     );
     private static  Address address = AddressFactory.buildAddress(
             "53 Main Road",
@@ -36,7 +36,6 @@ class AddressControllerTest {
 
 
     @Order(1)
-    //@Transactional
     @Test
     void a_create() {
         String url = baseURL + "/create";

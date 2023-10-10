@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CityControllerTest {
 
     private static Country southAfrica = CountryFactory.createTestCountry(
-            4L
+            1L
     );
 
     private static  City city = CityFactory.createCity(

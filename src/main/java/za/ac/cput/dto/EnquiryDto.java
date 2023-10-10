@@ -9,7 +9,6 @@ import java.io.Serializable;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EnquiryDto implements Serializable {
-
        Long enquiryID;
        String enquiryName;
        String enquirySubjectLine;

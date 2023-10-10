@@ -28,7 +28,7 @@ public class MyApplication {
     @Bean
     CommandLineRunner run(UserServiceImpl iUserService, RoleRepository iRoleRepository, UserRepository iUserRepository, PasswordEncoder passwordEncoder) {
         return args -> {
-            List<RoleName> roleNames = Arrays.asList(RoleName.CUSTOMER, RoleName.ADMIN, RoleName.ADMIN);
+            List<RoleName> roleNames = Arrays.asList(RoleName.CUSTOMER, RoleName.ADMIN, RoleName.EMPLOYEE);
 
             for (RoleName roleName : roleNames) {
                 Role role = iRoleRepository.findByRoleName(roleName);
