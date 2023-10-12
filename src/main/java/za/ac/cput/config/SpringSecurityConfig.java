@@ -30,9 +30,9 @@ public class SpringSecurityConfig {
                     authorizeRequests
                             .requestMatchers("/user/register", "/user/authenticate", "/post/search", "/storeDetails/getAll",
                                     "/city/getAll", "/country/getAll", "/address/getAll", "/city/read", "/country/read", "/address/read",
-                                    "/storeDetails/read").permitAll()
-                            .requestMatchers("sales/create", "review/create", "enquiry/create", "user/**").hasAuthority("CUSTOMER")
-                            .requestMatchers("user/**", "product/create").hasAuthority("EMPLOYEE")
+                                    "/storeDetails/read", "user/**").permitAll()
+                            .requestMatchers("sales/create", "review/create", "enquiry/create").hasAuthority("CUSTOMER")
+                            .requestMatchers("product/create", "address/create").hasAuthority("EMPLOYEE")
 
                             .anyRequest().authenticated();
                 })

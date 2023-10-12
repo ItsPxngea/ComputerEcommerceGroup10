@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.domain.Role;
 import za.ac.cput.dto.LoginDto;
 import za.ac.cput.dto.RegisterDto;
 import za.ac.cput.domain.User;
@@ -86,7 +87,7 @@ public class UserController {
         userDto.setPassword(user.getPassword());
 
         List<String> roleNames = user.getRole().stream()
-                .map(role -> role.getRoleName())
+                .map(Role::getRoleName)
                 .collect(Collectors.toList());
 
         userDto.setRoleNames(roleNames);

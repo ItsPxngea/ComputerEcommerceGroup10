@@ -86,16 +86,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    /*public Customer authenticate(String email, String password) {
-        Customer user = repository.findByEmail(email);
-
-        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return user;
-        }
-
-        return null;
-    }*/
-
     @Override
     public Role saveRole(Role role) {
         return roleRepository.save(role);
