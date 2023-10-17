@@ -3,20 +3,22 @@ package za.ac.cput.domain;
 Author: Hanno Visser Immelman 221074414
 */
 import jakarta.persistence.*;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Setter
 public class Enquiry implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // or other strategy
     private Long enquiryID;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID")
-    private Customer customer;
+    private User customer;
 
     private String enquiryName;
     private String enquirySubjectLine;
@@ -47,7 +49,7 @@ public class Enquiry implements Serializable {
         return enquiryDate;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
@@ -88,7 +90,7 @@ public class Enquiry implements Serializable {
 
     public static class Builder{
         private Long enquiryID;
-        private Customer customer;
+        private User customer;
         private String enquiryName;
         private String enquirySubjectLine;
         private String enquiryBodyContent;
@@ -99,7 +101,7 @@ public class Enquiry implements Serializable {
             return this;
         }
 
-        public Builder setCustomer(Customer customer) {
+        public Builder setCustomer(User customer) {
             this.customer = customer;
             return this;
         }

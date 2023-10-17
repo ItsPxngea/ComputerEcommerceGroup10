@@ -10,12 +10,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.*;
-import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.factory.UserFactory;
 import za.ac.cput.factory.ProductFactory;
 import za.ac.cput.factory.ReviewFactory;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -26,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class ReviewControllerTest {
 
     private static final Product product = ProductFactory.buildTestProduct(2L);
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
+    private static final User customer = UserFactory.buildTestCustomer(
             3L
     );
 

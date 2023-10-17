@@ -3,8 +3,8 @@ package za.ac.cput.service.impl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Customer;
-import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.domain.User;
+import za.ac.cput.factory.UserFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class CustomerServiceImplTest {
 
     @Autowired
-    private CustomerServiceImpl service;
+    private UserServiceImpl service;
 
-    private static final Customer customer = CustomerFactory.buildCustomer(
+    private static final User customer = UserFactory.buildCustomer(
             "Damien",
             "Garrancho",
             "DavidGary@gmail.com",
@@ -25,14 +25,14 @@ class CustomerServiceImplTest {
     @Test
     @Order(1)
     void create() {
-        Customer created = service.create(customer);
+        User created = service.create(customer);
         System.out.println("Created " + created);
     }
 
     @Test
     @Order(2)
     void read() {
-        Customer read = service.read(customer.getCustomerID());
+        User read = service.read(customer.getCustomerID());
         assertNotNull(read);
         System.out.println("Read: "+ read);
     }
@@ -40,7 +40,7 @@ class CustomerServiceImplTest {
     @Test
     @Order(3)
     void update() {
-        Customer updated = new Customer.Builder().copy(customer).setLastName("Gary").build();
+        User updated = new User.Builder().copy(customer).setLastName("Gary").build();
         assertNotNull(updated);
         System.out.println("Updated: " + updated);
     }

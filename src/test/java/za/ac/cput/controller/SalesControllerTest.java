@@ -15,9 +15,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Customer;
+import za.ac.cput.domain.User;
 import za.ac.cput.domain.Sales;
-import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.factory.UserFactory;
 import za.ac.cput.factory.SalesFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,8 +26,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
 class SalesControllerTest {
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            3L
+    private static final User customer = UserFactory.buildTestCustomer(
+            14L
     );
 
 

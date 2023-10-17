@@ -9,10 +9,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.City;
-import za.ac.cput.domain.Customer;
+import za.ac.cput.domain.User;
 import za.ac.cput.domain.Enquiry;
-import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.factory.UserFactory;
 import za.ac.cput.factory.EnquiryFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,8 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class EnquiryControllerTest {
 
-    private static final Customer customer = CustomerFactory.buildTestCustomer(
-            3L
+    private static final User customer = UserFactory.buildTestCustomer(
+            4L
     );
 
     private static final Enquiry enquiry = EnquiryFactory.buildEnquiry(customer,"Delivery complaint","Did not get my delivery","Payed but did not receive my product", "20-09-2023");

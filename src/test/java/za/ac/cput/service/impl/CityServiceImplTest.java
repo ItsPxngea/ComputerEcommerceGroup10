@@ -6,13 +6,11 @@ Author: Michael Daniel Johnson 221094040
 Date: 19 August 2023
 */
 
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
-import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CityFactory;
 import za.ac.cput.factory.CountryFactory;
 import za.ac.cput.repository.CountryRepository;

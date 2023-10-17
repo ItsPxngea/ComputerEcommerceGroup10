@@ -11,22 +11,18 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.*;
 import za.ac.cput.factory.*;
-import za.ac.cput.service.impl.StoreDetailsServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class InvoiceControllerTest {
 
-    private static  Customer customer = CustomerFactory.buildTestCustomer(
-            3L
-    );
 
     private static  Sales sales = SalesFactory.buildTestSales(
-            6L
+            1L
     );
     private static  StoreDetails storeDetails = StoreDetailsFactory.buildTestStoreDetails(
-            4L
+            1L
     );
 
     private static  Invoice invoice = InvoiceFactory.buildInvoice(

@@ -1,14 +1,13 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Entity
+@Setter
 public class Review implements Serializable {
 
     @Id
@@ -16,11 +15,11 @@ public class Review implements Serializable {
     public Long reviewID;
 
     private int rating;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID")
-    private Customer customer;
+    private User customer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "productID")
     private Product product;
 
@@ -39,7 +38,7 @@ public class Review implements Serializable {
         return reviewID;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
@@ -79,7 +78,7 @@ public class Review implements Serializable {
     public static class Builder {
         public Long reviewID;
         private int rating;
-        private Customer customer;
+        private User customer;
         private Product product;
 
 
@@ -93,7 +92,7 @@ public class Review implements Serializable {
             return this;
         }
 
-        public Builder setCustomer(Customer customer){
+        public Builder setCustomer(User customer){
             this.customer = customer;
             return this;
         }

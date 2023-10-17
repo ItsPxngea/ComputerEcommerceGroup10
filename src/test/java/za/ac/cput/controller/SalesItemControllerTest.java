@@ -9,11 +9,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Product;
 import za.ac.cput.domain.Sales;
 import za.ac.cput.domain.SalesItem;
-import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.factory.ProductFactory;
 import za.ac.cput.factory.SalesFactory;
 import za.ac.cput.factory.SalesItemFactory;
@@ -28,11 +26,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class SalesItemControllerTest {
     private static final List<Product> products = Arrays.asList(
             ProductFactory.buildTestProduct(1L),
-            ProductFactory.buildTestProduct(3L)
+            ProductFactory.buildTestProduct(2L)
     );
 
     private static final Sales sales = SalesFactory.buildTestSales(
-            5L
+            1L
     );
 
     private static final SalesItem salesItem = SalesItemFactory.buildSales(sales, products, products.size());
