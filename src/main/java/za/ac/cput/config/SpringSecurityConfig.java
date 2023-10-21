@@ -30,7 +30,8 @@ public class SpringSecurityConfig {
                     authorizeRequests
                             .requestMatchers("/user/register", "/user/authenticate", "/post/search", "/storeDetails/getAll",
                                     "/city/getAll", "/country/getAll", "/address/getAll", "/city/read", "/country/read", "/address/read",
-                                    "/storeDetails/read", "user/**").permitAll()
+                                    "/storeDetails/read").permitAll()
+                            //, "user/**" add this if users becomes janky
                             .requestMatchers("sales/create", "review/create", "enquiry/create").hasAuthority("CUSTOMER")
                             .requestMatchers("product/create", "address/create").hasAuthority("EMPLOYEE")
 
